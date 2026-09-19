@@ -6,7 +6,7 @@ is left is a look at it in a browser.
 
 ## Where things stand
 
-Tenon is at **v0.5.0**, on `main` and tagged, public at
+Tenon is at **v0.6.0**, on `main` and tagged, public at
 `github.com/tiagopedras/tenon`. 327 colour primitives, 90 semantic tokens per
 theme, one dimension scale that type and spacing now share, fourteen React
 components.

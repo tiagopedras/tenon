@@ -1,7 +1,13 @@
 # Handover: Tenon into the to-dos board
 
-Written 19 Sep 2026, at the end of the session that built Tenon. Everything
-below is decided; none of it is built.
+Written 19 Sep 2026, at the end of the session that built Tenon.
+
+**Part 1 is built and shipped as v0.4.0**, on `main` and tagged, so
+`github:tiagopedras/tenon#v0.4.0` resolves. Parts 2 and 3 are decided and not
+built. Two things came out differently from what Part 1 describes below: green
+and amber fill at ramp step 600 rather than 550, because at 550 neither clears
+4.5:1 under white, and `running` got six tokens rather than three, so the
+solid/subtle rule holds for it too.
 
 ## Where things stand
 

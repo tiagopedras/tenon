@@ -3,14 +3,15 @@
 The shared design system for the projects in `~/Code`. Code is the source of
 truth; the Figma library is a replica built from it, not the other way round.
 
-Tenon is tokens plus four React components. The tokens came first on purpose:
+Tenon is tokens plus seven React components. The tokens came first on purpose:
 a component built on a set that is still moving has to be rebuilt when the set
 settles.
 
 One thing to know about reach. The CSS file works anywhere, so the to-dos
 board, which is plain HTML and CSS, can adopt the tokens today. The React
-components only reach a React app, which today means the personal site. That
-is an argument for the token layer being the part that matters first.
+components only reach a React app, which means the personal site and the
+board's own `kanban/ui/`. That is an argument for the token layer being the
+part that matters first.
 
 ## Where it came from
 
@@ -119,18 +120,24 @@ npm run dev        # the component playground
 ```
 
 `scripts/build.mjs` writes `dist/tenon.css` and `dist/tenon.tokens.json`, and
-refuses to write either if any of four checks fail: light and dark must hold
+refuses to write either if any of five checks fail: light and dark must hold
 the identical key set, every `{alias}` must resolve, no semantic token may
-alias another semantic token, and no component CSS may name a colour
-primitive.
+alias another semantic token, no component CSS may name a colour primitive,
+and every `--tenon-` name a component reads must be one the build emits.
 
 The first is the reason a token pipeline exists here at all. `board.css` had
 `--accent` missing from its dark block for months, used as a `color:` in
 twenty-two places and as a border in nine more, and nothing said a word,
-because a hand-written stylesheet has no way to know a key is absent. A fourth
-check reports WCAG contrast for every text and icon token against its own
-background, and reports rather than fails, because `text.faint` is meant to sit
-where it sits.
+because a hand-written stylesheet has no way to know a key is absent. The last
+is there because a `var()` naming a token that does not exist falls back
+silently and looks completely fine, which has happened twice here.
+
+Contrast reports rather than fails, because `text.faint` is meant to sit where
+it sits. It measures every text and icon token against its own background, and
+every `text.on-X` against `background.X`, which is the only surface an on-X is
+ever read on. Measuring the on-X tokens against a page surface, as it did until
+v0.4.0, printed ten rows of 1.00 that meant nothing and hid the one row that
+did.
 
 ## Components
 
@@ -168,102 +175,11 @@ component tokens, and the build enforces it: a `var(--tenon-color-*)` anywhere
 under `src/` fails the build, because a component naming a primitive is a
 component that will not follow a theme.
 
-`Column` is the board's column, where every column in the app is one shape —
-three boards, Overview's seven sections, Matrix, Timeline, Backups, Projects —
-so the fill, border, radius, gap and both paddings are settled in one place.
-That part came across whole. Its head is two groups pushed apart rather than
-one row with things floated right: what the column is called sits left, what
-you do to it sits right, and neither shrinks the other away.
-
-What did not come across is what those columns mean on that board. The dashed
-edge there says an agent owns the column and you do not drag into it; here
-`dashed` draws a dashed edge and the app decides what it means. The orange
-tint and turning gear on a running queue became `tone` and a `titleAfter`
-slot, so the icon belongs to the app. Keep the dash to one meaning per app and
-it keeps reading.
-
-`layout="prose"` is for a column of paragraphs rather than a column of cards:
-their own margins do the spacing and the edges get more room. `collapsible`
-draws the whole thing as a `<details>` whose `<summary>` is the same head, so
-nothing about a column changes by being foldable except the element it is made
-of. `ColumnEmpty` is what a column draws when there is nothing in it, and
-`boxed` is for a wide one, where a single faint line reads as a column that
-failed to load.
-
-`Stat` is the board's StatCard: one number, boxed, with what it counts under
-it. It was three spans scoped to the Reports view until it was pulled out, so
-the shape the board uses for "the answer to the question you opened this view
-for" could not be drawn anywhere else.
-
-Two props on `Card` exist because the board's plan card needed them and the
-first port did not have them. `eyebrowEnd` pushes something to the right-hand
-end of the eyebrow row, where the plan card puts how far the agent got.
-`titleAs` sets the title's element, a div by default, because a card in a list
-of cards is usually not a section of the document — pass a heading where it
-is. Nothing is styled off it; the page outline is what cares.
-
-A `Card` with `interactive` and a control inside it needs the control to call
-`stopPropagation`, or the card's own click fires too. The board's plan card
-has always done this for its link back to the task.
-
-`Field` owns its label, hint and error together. A bare input with the label
-wired up somewhere else is how a form loses its labels, and `aria-describedby`
-points at whichever note is actually rendered rather than at an element that
-might not be there.
-
-```bash
-npm run dev     # the component playground, localhost:5199
-```
-
-The playground and the token preview both carry no hard-coded values, so
-anything that looks wrong on either is a token that is wrong or missing. That
-is how the `--tenon-color-background-default` naming mistake was caught: the
-preview had been rendering on browser defaults and looked plausible.
-
-## The build, and the check that is the point of it
-
-```bash
-npm run all        # regenerate the ramps, then build everything
-npm run build      # tokens, then the React library
-npm run tokens     # tokens only
-npm run check      # tokens quietly plus a typecheck, for a pre-commit hook
-npm run dev        # the component playground
-```
-
-`scripts/build.mjs` writes `dist/tenon.css` and `dist/tenon.tokens.json`, and
-refuses to write either if any of four checks fail: light and dark must hold
-the identical key set, every `{alias}` must resolve, no semantic token may
-alias another semantic token, and no component CSS may name a colour
-primitive.
-
-The first is the reason a token pipeline exists here at all. `board.css` had
-`--accent` missing from its dark block for months, used as a `color:` in
-twenty-two places and as a border in nine more, and nothing said a word,
-because a hand-written stylesheet has no way to know a key is absent. A fourth
-check reports WCAG contrast for every text and icon token against its own
-background, and reports rather than fails, because `text.faint` is meant to sit
-where it sits.
-
-## Components
-
-Four so far: `Button`, `Badge`, `Card` and `Field`. Written in TypeScript so
-the `.d.ts` gives prop autocomplete in a plain JavaScript app too.
-
-```jsx
-import { Button, Badge, Card, Field } from '@tiagopedras/tenon';
-import '@tiagopedras/tenon/tenon.css';        // tokens
-import '@tiagopedras/tenon/tenon-react.css';  // component styles
-```
-
-Every component's CSS reads semantic tokens and nothing else. There are no
-component tokens, and the build enforces it: a `var(--tenon-color-*)` anywhere
-under `src/` fails the build, because a component naming a primitive is a
-component that will not follow a theme.
-
-`Badge` takes either a `tone` or a `chart` number. The ten chart colours are
-the board's buckets, and a chart badge colours its text rather than its fill,
-because ten saturated fills side by side is what the board's Timeline learned
-not to do.
+`Button` has six variants. `primary`, `secondary` and `ghost` start something.
+The other three answer something: `confirm` and `destructive` are solid green
+and solid red, for the pair of buttons that accept a plan or bin it, where
+neither answer should be the quiet one, and `danger` is the tinted one, for a
+delete sitting among other controls on a row.
 
 `Column` is the board's column, where every column in the app is one shape —
 three boards, Overview's seven sections, Matrix, Timeline, Backups, Projects —
@@ -350,7 +266,7 @@ as a git dependency at a tag. A tag rather than a branch: a branch reference
 moves under you on the next `npm install` with no diff to show for it.
 
 ```bash
-npm i github:tiagopedras/tenon#v0.1.0
+npm i github:tiagopedras/tenon#v0.4.0
 ```
 
 npm runs no build on a git dependency, which is why `dist/` is committed.

@@ -2,7 +2,6 @@
   "name": "@tiagopedras/tenon",
   "version": "0.1.0",
   "description": "The shared design system. Tokens first, components later.",
-  "private": true,
   "type": "module",
   "files": [
     "dist",
@@ -24,7 +23,8 @@
     "check": "node scripts/build.mjs --quiet && tsc --noEmit -p tsconfig.json",
     "build": "npm run tokens && vite build",
     "all": "npm run generate && npm run build",
-    "dev": "vite --config vite.playground.ts"
+    "dev": "vite --config vite.playground.ts",
+    "sync": "node scripts/sync.mjs"
   },
   "devDependencies": {
     "@types/react": "^18.3.31",
@@ -44,5 +44,10 @@
   "peerDependencies": {
     "react": ">=18",
     "react-dom": ">=18"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tiagopedras/tenon.git"
+  },
+  "license": "MIT"
 }

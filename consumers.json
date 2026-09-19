@@ -1,0 +1,21 @@
+{
+  "$comment": "Who reads Tenon, and how. Two kinds. An `npm` consumer installs it as a git dependency and pins a tag, so sync only reports what that tag is. A `vendor` consumer has no npm anywhere near it, so sync copies the built CSS in and the version stamp at the top of the file is the only record of which build it is. Paths are relative to this repo.",
+  "consumers": [
+    {
+      "name": "to-dos board",
+      "kind": "vendor",
+      "manifest": "../../to-dos/kanban",
+      "files": { "dist/tenon.css": "vendor/tenon.css" }
+    },
+    {
+      "name": "ai_canvas",
+      "kind": "npm",
+      "manifest": "../../ai_canvas/package.json"
+    },
+    {
+      "name": "tiagopedras.com",
+      "kind": "npm",
+      "manifest": "../../PERSONAL/tiagopedras.com_2026/app/package.json"
+    }
+  ]
+}

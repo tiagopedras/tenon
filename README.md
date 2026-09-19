@@ -180,6 +180,51 @@ Text styles come as five variables each and as a class:
 <h2 class="tenon-heading-2">Design oversight</h2>
 ```
 
+## Getting it into a project
+
+Tenon is a public repo with no npm publish behind it, so a project installs it
+as a git dependency at a tag. A tag rather than a branch: a branch reference
+moves under you on the next `npm install` with no diff to show for it.
+
+```bash
+npm i github:tiagopedras/tenon#v0.1.0
+```
+
+npm runs no build on a git dependency, which is why `dist/` is committed.
+
+```js
+import '@tiagopedras/tenon/tenon.css';        // tokens, everything needs this
+import '@tiagopedras/tenon/tenon-react.css';  // component styles
+import { Button, Card } from '@tiagopedras/tenon';
+```
+
+**A project with no npm** — the to-dos board is plain HTML, CSS and a Python
+server — gets the built file copied in instead, to `vendor/tenon.css`, linked
+before its own stylesheet. `scripts/build.mjs` stamps the version and build
+date into the first line of that file, because a copy has no other way to say
+which build it is and a stale one is otherwise indistinguishable from a
+current one.
+
+`consumers.json` lists who reads Tenon and by which route.
+
+```bash
+npm run sync              # who is on what, writes nothing
+npm run sync -- --write   # copy the built CSS into every vendor consumer
+```
+
+An npm consumer is never written to. Bumping one means editing the tag in its
+own `package.json` and reinstalling, which is the point of pinning.
+
+## Releasing
+
+```bash
+npm version patch         # or minor
+npm run all               # rebuild, so the stamp matches the new version
+git commit -am "chore(tenon): build vX.Y.Z"
+git tag vX.Y.Z && git push --tags
+npm run sync              # see who is behind
+```
+
 ## What changes cheaply and what does not
 
 Adding a hue, a step, a semantic token or a theme is an edit and a rebuild.

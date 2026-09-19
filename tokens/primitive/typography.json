@@ -13,20 +13,19 @@
       }
     },
     "size": {
-      "$description": "Below xl these are the sizes the to-dos board already uses, rounded off the half-pixels it had drifted into. From xl up it is a 1.2 ratio, which is range Tenon needs for a page that is not the board.",
-      "2xs": { "$type": "dimension", "$value": { "value": 10, "unit": "px" } },
-      "xs":  { "$type": "dimension", "$value": { "value": 11, "unit": "px" } },
+      "$description": "One ladder, 2px apart at the small end and 4px above, matching the dimension scale: 8, 10, 12, 14, 16, 20, 24, 28. Above that it is a 1.2 ratio, which is the range Tenon needs for a page that is not the board. 7xl is 56px so the largest figure on a page still sits on the 8-grid.",
+      "2xs": { "$type": "dimension", "$value": { "value": 8, "unit": "px" } },
+      "xs":  { "$type": "dimension", "$value": { "value": 10, "unit": "px" } },
       "sm":  { "$type": "dimension", "$value": { "value": 12, "unit": "px" } },
-      "base":{ "$type": "dimension", "$value": { "value": 13, "unit": "px" } },
       "md":  { "$type": "dimension", "$value": { "value": 14, "unit": "px" } },
       "lg":  { "$type": "dimension", "$value": { "value": 16, "unit": "px" } },
-      "xl":  { "$type": "dimension", "$value": { "value": 19, "unit": "px" } },
-      "2xl": { "$type": "dimension", "$value": { "value": 23, "unit": "px" } },
+      "xl":  { "$type": "dimension", "$value": { "value": 20, "unit": "px" } },
+      "2xl": { "$type": "dimension", "$value": { "value": 24, "unit": "px" } },
       "3xl": { "$type": "dimension", "$value": { "value": 28, "unit": "px" } },
       "4xl": { "$type": "dimension", "$value": { "value": 34, "unit": "px" } },
       "5xl": { "$type": "dimension", "$value": { "value": 41, "unit": "px" } },
       "6xl": { "$type": "dimension", "$value": { "value": 49, "unit": "px" } },
-      "7xl": { "$type": "dimension", "$value": { "value": 59, "unit": "px" } },
+      "7xl": { "$type": "dimension", "$value": { "value": 56, "unit": "px" } },
       "8xl": { "$type": "dimension", "$value": { "value": 71, "unit": "px" } }
     },
     "weight": {

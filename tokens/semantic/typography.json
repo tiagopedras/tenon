@@ -2,6 +2,17 @@
   "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
   "$description": "Assembled text styles. Not themed: a heading is the same size in dark mode, so there is one file rather than one per theme. Every value here aliases a primitive, so a size change happens once.",
   "text": {
+    "title": {
+      "$description": "One step above heading-1, for a single figure or word that is the whole point of the page. The Reports headline is the only thing reading it.",
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.family.sans}",
+        "fontSize": "{typography.size.7xl}",
+        "fontWeight": "{typography.weight.bold}",
+        "lineHeight": "{typography.line-height.tight}",
+        "letterSpacing": "{typography.letter-spacing.tight}"
+      }
+    },
     "heading-1": {
       "$type": "typography",
       "$value": {
@@ -77,7 +88,7 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.family.sans}",
-        "fontSize": "{typography.size.base}",
+        "fontSize": "{typography.size.sm}",
         "fontWeight": "{typography.weight.regular}",
         "lineHeight": "{typography.line-height.normal}",
         "letterSpacing": "{typography.letter-spacing.normal}"

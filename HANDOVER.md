@@ -1,21 +1,22 @@
 # Handover: Tenon into the to-dos board
 
-Rewritten 19 Sep 2026, part way through the type migration. The original
-handover planned three parts; all three are built. What is left is one
-decision and the work that follows from it.
+Rewritten 19 Sep 2026, after the type migration. Everything the original
+handover planned is built, and the one decision it was holding is taken. What
+is left is a look at it in a browser.
 
 ## Where things stand
 
-Tenon is at **v0.4.0**, on `main` and tagged, public at
+Tenon is at **v0.5.0**, on `main` and tagged, public at
 `github.com/tiagopedras/tenon`. 327 colour primitives, 90 semantic tokens per
-theme, one dimension scale, seven React components.
+theme, one dimension scale that type and spacing now share, seven React
+components.
 
 Three consumers, reaching it two different ways:
 
 | Consumer | How | State |
 | --- | --- | --- |
-| `to-dos` board | `npm i github:tiagopedras/tenon#v0.4.0`, CSS copied into `kanban/dist/` by its own vite build | on v0.4.0 |
-| `to-dos` companion | same install, imported in `main.tsx` | on v0.4.0 |
+| `to-dos` board | `npm i github:tiagopedras/tenon#v0.5.0`, CSS copied into `kanban/dist/` by its own vite build | on v0.5.0 |
+| `to-dos` companion | same install, imported in `main.tsx` | on v0.5.0 |
 | `PACKAGES/ai_chat_engine` | no install at all — every `--aic-*` default is `var(--tenon-…, <old literal>)` | live |
 
 `ai_chat_engine` is the second kind on purpose: it is dropped into hosts it
@@ -35,62 +36,39 @@ does not want it done.
 - `ba6c7d3` tokens built into `kanban/dist/`, companion onto Tenon, Vercel builds
 - `d088bdb` the component swap — Card, Column, Badge and Stat come from Tenon
 - `ff37727` `board.css` stops repeating what Tenon already says
-- `ee9cc75` every radius on Tenon's scale — **ahead of origin, not pushed**
+- `ee9cc75` every radius on Tenon's scale
+- `dd2113a` every font size on Tenon's scale, and both packages onto v0.5.0
 
-**`PACKAGES/tenon`** at `8f9e037`, pushed. **`PACKAGES/ai_chat_engine`** at
-`7cb638c`, pushed.
+**`PACKAGES/tenon`** at `4808422`, tagged `v0.5.0` and pushed.
+**`PACKAGES/ai_chat_engine`** at `7cb638c`, pushed.
 
-Two unmerged branches in `to-dos`, neither mine: `planning-floor` (the
-planning agent's schedule, finished, and carrying one stray commit of mine —
-`8de13cc`, an IMPROVEMENTS entry) and `improve/2026-09-16`.
+`planning-floor` is merged. **`improve/2026-09-16` is still unmerged and
+should be binned**: both its commits are already on `main` in fuller form, and
+it branched from 15 Sep, so its `board.css` additions still name `--accent`
+and `--line`. Merging it would drag older copies back.
 
-## The one decision left
+## The type migration, done
 
-Radius is migrated. Font sizes are not, and cannot be until Tenon's scale can
-express them.
+He chose the 2px-then-4px scale: **8, 10, 12, 14, 16, 20, 24, 28**, which is
+what `dimension` already was, so a font size and a gap now come off the same
+grid. The literal 4px grid was the other option and would have collapsed 244
+of 250 declarations onto three sizes.
 
-The board uses **17 distinct font sizes across 250 declarations**, twelve of
-them between 9px and 15px. Tenon's semantic scale is 11, 12, 13, 14, 16, 19,
-23, 28. Everything from 11px up lands within half a pixel of a step. Below
-that, 25 declarations have nowhere to go: 10.5px (8 uses), 10px (12), 9.5px
-(3), 9px (2) — the card eyebrow, the tag chips, the timeline labels.
+**Tenon v0.5.0** carries it. `2xs` is 8, `xs` 10, `xl` 20, `2xl` 24, `base`
+(13) is gone, and `7xl` moved 59 to 56 so the largest figure on a page sits on
+the 8-grid. Four semantic styles moved with it: `heading-2` 23 to 24,
+`heading-3` 19 to 20, `body-sm` 13 to 12, `caption` 11 to 10. No component
+reads a size primitive directly, so nothing under `src/components` was touched.
+`text.title` is new, 56px bold, for the Reports headline.
 
-He asked for **multiples of 8 starting at 4, closest match**. Run literally
-against a 4px grid, this is what happens:
+**`to-dos` at `dd2113a`**, pushed: 280 font-size declarations across
+`kanban/board.css` and the companion's two stylesheets now read
+`--tenon-typography-size-*`. Six steps carry the whole application — 10, 12,
+14, 16, 20, 56. All 40 `--tenon-` names either file reads were checked against
+the emitted CSS and every one resolves. `npm test` passes, both builds pass.
 
-```
- board  uses   grid   move         board  uses   grid   move
- 9.0px     2    8px   -1.0        13.0px    39   12px   -1.0
- 9.5px     3    8px   -1.5        13.5px    11   12px   -1.5
-10.0px    12    8px   -2.0        14.0px     6   12px   -2.0
-10.5px     8   12px   +1.5        15.0px     5   16px   +1.0
-11.0px    37   12px   +1.0        16.0px     2   16px    0.0
-11.5px    39   12px   +0.5        17.0px     1   16px   -1.0
-12.0px    40   12px    0.0        18.0px     1   16px   -2.0
-12.5px    42   12px   -0.5        19.0px     1   20px   +1.0
-                                  56.0px     1   56px    0.0
-```
-
-**244 of the 250 collapse onto three sizes: 8px, 12px and 16px.** Body text at
-13px becomes 12px, the card title at 13.5px becomes 12px, and the 10px labels
-become 8px, which is below what the board can be read at. That is one text
-size for almost the whole application.
-
-It may be what he wants — one body size, one label size, one heading size is a
-real position, and twelve sizes inside a 6px band is the same unexamined
-sprawl the radii were. But it restyles every piece of text in the app, so
-**ask before applying it**. The alternative that honours the same intent
-without the collapse is a 2px grid at the small end and 4px above — 8, 10, 12,
-14, 16, 20, 24, 28 — which is exactly what Tenon's `dimension` scale already
-is, and which every board value lands on within a pixel.
-
-Two things are settled whichever way it goes:
-
-- **A Title step**, which he asked for. The Reports headline figure is 56px
-  and `heading-1` is 28px. `typography.size` has `7xl` at 59px already; a 56px
-  primitive would sit on the 8-grid exactly. One token, one call site.
-- **`typography.size.2xs` is already 10px** and no semantic style reads it, so
-  a step at the small end costs one alias rather than a new primitive.
+**It has not been looked at in a browser.** Type moves by up to a pixel and a
+half everywhere, which is the point, but nobody has seen it.
 
 ## How to change Tenon without breaking a consumer
 
@@ -159,7 +137,7 @@ file, because `data/` is his and has one writer. Anything else that persists a
 token name needs the same treatment.
 
 **What is left in `board.css` under a `.tenon-` selector is a real override.**
-The verbatim repeats are gone. Nearly all of what remains is the type
-migration above; the rest is deliberate — the column's two-layer shadow, the
-stat box sitting on the page rather than raised, the card's hover border, the
-stat eyebrow one step fainter.
+The verbatim repeats are gone and so is the type migration, so what remains is
+deliberate — the column's two-layer shadow, the stat box sitting on the page
+rather than raised, the card's hover border, the stat eyebrow one step
+fainter.

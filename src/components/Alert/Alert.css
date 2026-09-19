@@ -1,0 +1,39 @@
+/* A banner that reports something, or asks for an answer. Came from the chat
+   engine's permission prompt, which sits between a header and a transcript
+   while a run waits on a decision. */
+
+.tenon-alert {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tenon-dimension-050);
+  padding: var(--tenon-dimension-150) var(--tenon-dimension-175);
+  border: 1px solid var(--tenon-stroke-default);
+  border-radius: var(--tenon-radius-lg);
+  background: var(--tenon-background-subtle);
+  color: var(--tenon-text-default);
+}
+
+.tenon-alert--info    { background: var(--tenon-background-info-subtle);    border-color: var(--tenon-stroke-info); }
+.tenon-alert--success { background: var(--tenon-background-success-subtle); border-color: var(--tenon-stroke-success); }
+.tenon-alert--warning { background: var(--tenon-background-warning-subtle); border-color: var(--tenon-stroke-warning); }
+.tenon-alert--error   { background: var(--tenon-background-error-subtle);   border-color: var(--tenon-stroke-error); }
+
+.tenon-alert__title {
+  font-family: var(--tenon-text-label-family);
+  font-size: var(--tenon-text-body-size);
+  font-weight: var(--tenon-typography-weight-semibold);
+  line-height: var(--tenon-text-body-line-height);
+}
+.tenon-alert--info    .tenon-alert__title { color: var(--tenon-text-info); }
+.tenon-alert--success .tenon-alert__title { color: var(--tenon-text-success); }
+.tenon-alert--warning .tenon-alert__title { color: var(--tenon-text-warning); }
+.tenon-alert--error   .tenon-alert__title { color: var(--tenon-text-error); }
+
+.tenon-alert__body {
+  font-family: var(--tenon-text-body-sm-family);
+  font-size: var(--tenon-text-body-sm-size);
+  line-height: var(--tenon-typography-line-height-relaxed);
+  color: var(--tenon-text-subtle);
+}
+
+.tenon-alert__actions { display: flex; flex-wrap: wrap; gap: var(--tenon-dimension-100); margin-top: var(--tenon-dimension-050); }

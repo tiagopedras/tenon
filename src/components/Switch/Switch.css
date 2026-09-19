@@ -1,0 +1,44 @@
+/* An on/off setting that takes effect the moment it is flipped. If it needs
+   a Save button after it, it should be a checkbox in a Field instead. Came
+   from the agents dashboard's row switch. */
+
+.tenon-switch {
+  position: relative;
+  flex: none;
+  width: var(--tenon-dimension-400);
+  height: var(--tenon-dimension-250);
+  padding: 0;
+  border: 1px solid var(--tenon-stroke-strong);
+  border-radius: var(--tenon-radius-full);
+  background: var(--tenon-background-neutral);
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+.tenon-switch::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: var(--tenon-dimension-025);
+  width: var(--tenon-dimension-175);
+  height: var(--tenon-dimension-175);
+  margin-top: calc(var(--tenon-dimension-175) / -2);
+  border-radius: var(--tenon-radius-full);
+  background: var(--tenon-background-raised);
+  box-shadow: var(--tenon-elevation-raised);
+  transition: transform 120ms ease;
+}
+
+.tenon-switch:not(:disabled):hover { border-color: var(--tenon-stroke-hovered); }
+.tenon-switch:focus-visible { outline: 2px solid var(--tenon-stroke-focus); outline-offset: 2px; }
+
+.tenon-switch--on { background: var(--tenon-background-accent); border-color: var(--tenon-stroke-accent); }
+.tenon-switch--on:not(:disabled):hover { background: var(--tenon-background-accent-hovered); }
+.tenon-switch--on::after { transform: translateX(var(--tenon-dimension-175)); }
+
+.tenon-switch:disabled { cursor: not-allowed; background: var(--tenon-background-disabled); border-color: transparent; }
+.tenon-switch:disabled::after { background: var(--tenon-text-disabled); box-shadow: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tenon-switch, .tenon-switch::after { transition: none; }
+}

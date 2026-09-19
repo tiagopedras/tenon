@@ -12,6 +12,10 @@
     {
       "name": "ai_canvas",
       "manifest": "../../ai_canvas/package.json"
+    },
+    {
+      "name": "agents-dashboard",
+      "manifest": "../../agents-dashboard/package.json"
     }
   ]
 }

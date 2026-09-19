@@ -1,0 +1,22 @@
+/* A sign of life, not a measure of progress: the words beside it are the
+   status and this only says something is still moving. Came from the chat
+   engine's working indicator. */
+
+.tenon-spinner {
+  display: inline-block;
+  flex: none;
+  border-radius: var(--tenon-radius-full);
+  background: conic-gradient(from 0deg, var(--tenon-background-accent), transparent 65%, var(--tenon-background-accent));
+  animation: tenon-spin 1.5s linear infinite;
+}
+
+.tenon-spinner--sm { width: var(--tenon-dimension-125); height: var(--tenon-dimension-125); }
+.tenon-spinner--md { width: var(--tenon-dimension-200); height: var(--tenon-dimension-200); }
+.tenon-spinner--lg { width: var(--tenon-dimension-400); height: var(--tenon-dimension-400); }
+
+@keyframes tenon-spin { to { transform: rotate(360deg); } }
+
+/* Held still, not removed: a static ring still says "busy". */
+@media (prefers-reduced-motion: reduce) {
+  .tenon-spinner { animation: none; }
+}

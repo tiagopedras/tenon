@@ -1,6 +1,6 @@
 import { StrictMode, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Button, Badge, Card, Tag, Stat, Column, ColumnEmpty, Field } from '../src';
+import { Button, Badge, Card, Tag, Stat, Column, ColumnEmpty, Field, Modal, Textarea, Spinner, Pill, Alert, Switch, SegmentedControl } from '../src';
 import type { TagChart } from '../src';
 import '../dist/tenon.css';
 import './playground.css';
@@ -25,6 +25,10 @@ function Row({ title, children }: { title: string; children: React.ReactNode }) 
 function App() {
   const [theme, setTheme] = useState<'system' | 'light' | 'dark'>('system');
   const [name, setName] = useState('');
+  const [on, setOn] = useState(true);
+  const [view, setView] = useState('cards');
+  const [draft, setDraft] = useState('');
+  const [modal, setModal] = useState(location.hash === '#modal');
 
   const next = () => {
     const order = ['system', 'light', 'dark'] as const;
@@ -161,6 +165,79 @@ function App() {
           <Field label="Notes" multiline rows={3} placeholder="Anything worth remembering" />
           <Field label="Locked" disabled defaultValue="Cannot be edited" />
         </div>
+      </section>
+      <section>
+        <h2 className="tenon-heading-2">Pill</h2>
+        <p className="tenon-body-sm muted">Tag's outlined counterpart, for a thing that happened or a state something is in.</p>
+        <Row title="tone">{(['neutral', 'accent', 'success', 'warning', 'error'] as const).map((t) => <Pill key={t} tone={t}>{t}</Pill>)}</Row>
+        <Row title="dot">{(['neutral', 'accent', 'success'] as const).map((t) => <Pill key={t} tone={t} dot>Read file</Pill>)}</Row>
+        <Row title="caps"><Pill caps>off</Pill><Pill caps tone="accent">built</Pill><Pill caps tone="warning">3 tonight</Pill></Row>
+      </section>
+
+      <section>
+        <h2 className="tenon-heading-2">Alert</h2>
+        <div className="fields">
+          <Alert tone="neutral" title="Run finished">Nothing changed on disk.</Alert>
+          <Alert tone="info" title="Claude wants to run a command">git status in /Users/tiagopedras/Code</Alert>
+          <Alert tone="success" title="Merged">Both commits are on main.</Alert>
+          <Alert tone="warning" title="Allow this edit?" actions={<><Button size="sm" variant="confirm">Allow</Button><Button size="sm" variant="secondary">Deny</Button></>}>
+            It rewrites board.css in place.
+          </Alert>
+          <Alert tone="error" title="The run stopped">The server did not answer.</Alert>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="tenon-heading-2">Switch</h2>
+        <Row title="on and off">
+          <Switch checked={on} onChange={setOn} aria-label="Improvements agent" />
+          <span className="tenon-body-sm">{on ? 'on' : 'off'}</span>
+          <Switch checked={false} disabled aria-label="Disabled, off" />
+          <Switch checked disabled aria-label="Disabled, on" />
+        </Row>
+      </section>
+
+      <section>
+        <h2 className="tenon-heading-2">SegmentedControl</h2>
+        <Row title="two">
+          <SegmentedControl aria-label="View" value={view} onChange={setView} options={[{ value: 'cards', label: 'Cards' }, { value: 'list', label: 'List' }]} />
+        </Row>
+        <Row title="four, one disabled">
+          <SegmentedControl aria-label="Range" value={view} onChange={setView}
+            options={[{ value: 'day', label: 'Day' }, { value: 'week', label: 'Week' }, { value: 'month', label: 'Month', disabled: true }, { value: 'cards', label: 'Cards' }]} />
+        </Row>
+      </section>
+
+      <section>
+        <h2 className="tenon-heading-2">Spinner</h2>
+        <Row title="size">{(['sm', 'md', 'lg'] as const).map((z) => <Spinner key={z} size={z} label={`Working, ${z}`} />)}</Row>
+        <Row title="beside words"><Spinner size="sm" /><span className="tenon-body-sm">Reading the improvements list…</span></Row>
+      </section>
+
+      <section>
+        <h2 className="tenon-heading-2">Textarea</h2>
+        <div className="fields">
+          <Textarea placeholder="Fixed, resizable" rows={3} />
+          <Textarea autoGrow placeholder="Grows as you type, then scrolls" value={draft} onChange={(e) => setDraft(e.target.value)} />
+          <Textarea invalid placeholder="Invalid" />
+        </div>
+      </section>
+
+      <section>
+        <h2 className="tenon-heading-2">Modal</h2>
+        <p className="tenon-body-sm muted">Escape and the scrim both close it. Tab stays inside, and focus goes back to the button.</p>
+        <Button variant="primary" onClick={() => setModal(true)}>Open the modal</Button>
+        <Modal
+          open={modal}
+          onClose={() => setModal(false)}
+          title="Improvements agent"
+          subtitle="agents-dashboard · 06:00"
+          headEnd={<Button size="sm" variant="ghost" onClick={() => setModal(false)}>Close</Button>}
+          footer={<><Textarea autoGrow placeholder="Reply…" style={{ flex: 1 }} /><Button variant="primary">Send</Button></>}
+        >
+          <p className="tenon-body">The body scrolls and the head and footer stay where they are.</p>
+          {Array.from({ length: 14 }, (_, i) => <p key={i} className="tenon-body-sm">Line {i + 1}. Something the agent did.</p>)}
+        </Modal>
       </section>
     </main>
   );

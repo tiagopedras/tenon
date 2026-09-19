@@ -1,0 +1,34 @@
+/* Came from the agents dashboard's Cards / List toggle. */
+
+.tenon-segmented {
+  display: inline-flex;
+  padding: var(--tenon-dimension-025);
+  gap: var(--tenon-dimension-025);
+  border: 1px solid var(--tenon-stroke-default);
+  border-radius: var(--tenon-radius-md);
+  background: var(--tenon-background-sunken);
+}
+
+.tenon-segmented__option {
+  padding: var(--tenon-dimension-050) var(--tenon-dimension-150);
+  border: 0;
+  border-radius: var(--tenon-radius-sm);
+  background: transparent;
+  color: var(--tenon-text-subtle);
+  font-family: var(--tenon-text-label-family);
+  font-size: var(--tenon-text-label-size);
+  font-weight: var(--tenon-text-label-weight);
+  line-height: var(--tenon-text-label-line-height);
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.tenon-segmented__option:not(:disabled):hover { color: var(--tenon-text-default); }
+.tenon-segmented__option:focus-visible { outline: 2px solid var(--tenon-stroke-focus); outline-offset: 1px; }
+.tenon-segmented__option:disabled { cursor: not-allowed; color: var(--tenon-text-disabled); }
+
+.tenon-segmented__option--on {
+  background: var(--tenon-background-raised);
+  color: var(--tenon-text-default);
+  box-shadow: var(--tenon-elevation-raised);
+}

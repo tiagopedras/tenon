@@ -3,7 +3,7 @@
 The shared design system for the projects in `~/Code`. Code is the source of
 truth; the Figma library is a replica built from it, not the other way round.
 
-Tenon is tokens plus seven React components. The tokens came first on purpose:
+Tenon is tokens plus fourteen React components. The tokens came first on purpose:
 a component built on a set that is still moving has to be rebuilt when the set
 settles.
 
@@ -141,11 +141,12 @@ did.
 
 ## Components
 
-Seven: `Button`, `Card`, `Column`, `Badge`, `Tag`, `Stat` and `Field`. Written in TypeScript so
+Fourteen: `Button`, `Card`, `Column`, `Badge`, `Tag`, `Stat` and `Field`, then `Modal`, `Textarea`,
+`Spinner`, `Pill`, `Alert`, `Switch` and `SegmentedControl`. Written in TypeScript so
 the `.d.ts` gives prop autocomplete in a plain JavaScript app too.
 
 ```jsx
-import { Button, Card, Column, Badge, Tag, Stat, Field } from '@tiagopedras/tenon';
+import { Button, Card, Column, Badge, Tag, Stat, Field, Modal } from '@tiagopedras/tenon';
 import '@tiagopedras/tenon/tenon.css';        // tokens
 import '@tiagopedras/tenon/tenon-react.css';  // component styles
 ```
@@ -227,6 +228,27 @@ might not be there.
 ```bash
 npm run dev     # the component playground, localhost:5199
 ```
+
+**The last seven came from two apps that had each drawn their own.** The chat
+engine supplied the `Modal` (its window), `Textarea` (its composer), `Spinner`
+(its working mark), `Pill` (its tool-call chip) and `Alert` (its permission
+prompt). The agents dashboard supplied `Switch` and `SegmentedControl`, and
+its detail and log sheets are the same shape as the chat's window, which is
+why `Modal` is written for both. Neither app loads them, because both are
+plain JavaScript with no React, and the chat engine is dropped into hosts it
+does not control, so it cannot require one. For now they are where the anatomy
+lives once: a change to how a switch or a dialog looks is made here, and the
+apps' own copies follow it by hand until the dashboard is rebuilt on React
+(its `IMPROVEMENTS.md` has that entry).
+
+`Pill` is `Tag`'s outlined counterpart. A `Tag` is a filled chip in a row of
+labels; a `Pill` is drawn round something that happened or a state something
+is in. `Modal` closes on Escape and on the scrim, keeps Tab inside the box and
+gives focus back to whatever opened it, and it renders into `document.body` so
+no ancestor's `overflow` or `transform` can clip it. `Switch` is for a setting
+that applies the moment it flips; one that needs a Save is a checkbox in a
+`Field`. `Textarea` is the bare control; with a label, use `Field` with
+`multiline`.
 
 The playground and the token preview both carry no hard-coded values, so
 anything that looks wrong on either is a token that is wrong or missing. That

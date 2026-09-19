@@ -1,0 +1,36 @@
+/* Same skin as Field's control. It is repeated rather than shared because
+   Field's class names describe a control inside a labelled block, and this
+   one has no block. Came from the chat engine's composer. */
+
+.tenon-textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: var(--tenon-dimension-500);
+  padding: var(--tenon-dimension-100) var(--tenon-dimension-150);
+  background: var(--tenon-background-input);
+  color: var(--tenon-text-default);
+  border: 1px solid var(--tenon-stroke-default);
+  border-radius: var(--tenon-radius-lg);
+  font-family: var(--tenon-text-body-family);
+  font-size: var(--tenon-text-body-size);
+  line-height: var(--tenon-typography-line-height-relaxed);
+  resize: vertical;
+}
+
+.tenon-textarea::placeholder { color: var(--tenon-text-faint); }
+.tenon-textarea:hover:not(:disabled) { background: var(--tenon-background-input-hovered); border-color: var(--tenon-stroke-hovered); }
+.tenon-textarea:focus-visible {
+  background: var(--tenon-background-input-active);
+  border-color: var(--tenon-stroke-accent);
+  outline: 2px solid var(--tenon-stroke-focus);
+  outline-offset: -1px;
+}
+.tenon-textarea:disabled { background: var(--tenon-background-disabled); color: var(--tenon-text-disabled); cursor: not-allowed; }
+
+.tenon-textarea--invalid { border-color: var(--tenon-stroke-error); }
+.tenon-textarea--invalid:focus-visible { outline-color: var(--tenon-stroke-error); }
+
+/* Stops growing at 160px, where the chat's own composer stopped, and
+   scrolls from there. */
+.tenon-textarea--auto { resize: none; overflow-y: auto; max-height: calc(var(--tenon-dimension-1000) * 2); }

@@ -13,6 +13,7 @@
 .tenon-field__required { color: var(--tenon-text-error); margin-left: 2px; }
 
 .tenon-field__control {
+  box-sizing: border-box;
   width: 100%;
   background: var(--tenon-background-input);
   color: var(--tenon-text-default);

@@ -23,4 +23,28 @@ export type { StatProps, StatTone } from './components/Stat/Stat';
 export { Field } from './components/Field/Field';
 export type { FieldProps } from './components/Field/Field';
 
+/* The rest came from the chat engine and the agents dashboard, two apps that
+   had each drawn their own. Neither loads them: both are plain JavaScript
+   with no React, so for now this is where the anatomy is written down. */
+export { Modal } from './components/Modal/Modal';
+export type { ModalProps, ModalSize } from './components/Modal/Modal';
+
+export { Textarea } from './components/Textarea/Textarea';
+export type { TextareaProps } from './components/Textarea/Textarea';
+
+export { Spinner } from './components/Spinner/Spinner';
+export type { SpinnerProps, SpinnerSize } from './components/Spinner/Spinner';
+
+export { Pill } from './components/Pill/Pill';
+export type { PillProps, PillTone } from './components/Pill/Pill';
+
+export { Alert } from './components/Alert/Alert';
+export type { AlertProps, AlertTone } from './components/Alert/Alert';
+
+export { Switch } from './components/Switch/Switch';
+export type { SwitchProps } from './components/Switch/Switch';
+
+export { SegmentedControl } from './components/SegmentedControl/SegmentedControl';
+export type { SegmentedControlProps, SegmentOption } from './components/SegmentedControl/SegmentedControl';
+
 export { cx } from './utils';

@@ -1,0 +1,36 @@
+/* Tag's outlined counterpart. A Tag is a filled chip that sits in a row of
+   labels; a Pill is drawn round a thing that happened or a state something
+   is in, so it takes a border and lets the surface behind it show. Came from
+   the chat engine's tool-call pill and the agents dashboard's state pill. */
+
+.tenon-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tenon-dimension-050);
+  padding: var(--tenon-dimension-012) var(--tenon-dimension-100);
+  border: 1px solid var(--tenon-stroke-default);
+  border-radius: var(--tenon-radius-full);
+  background: transparent;
+  color: var(--tenon-text-subtle);
+  font-family: var(--tenon-text-caption-family);
+  font-size: var(--tenon-text-caption-size);
+  font-weight: var(--tenon-text-label-weight);
+  line-height: var(--tenon-text-caption-line-height);
+  white-space: nowrap;
+}
+
+.tenon-pill--accent  { border-color: var(--tenon-stroke-accent);  background: var(--tenon-background-selected);        color: var(--tenon-text-accent); }
+.tenon-pill--success { border-color: var(--tenon-stroke-success); background: var(--tenon-background-success-subtle);  color: var(--tenon-text-success); }
+.tenon-pill--warning { border-color: var(--tenon-stroke-warning); background: var(--tenon-background-warning-subtle);  color: var(--tenon-text-warning); }
+.tenon-pill--error   { border-color: var(--tenon-stroke-error);   background: var(--tenon-background-error-subtle);    color: var(--tenon-text-error); }
+
+.tenon-pill--caps { text-transform: uppercase; letter-spacing: var(--tenon-typography-letter-spacing-wider); }
+
+.tenon-pill__dot {
+  width: var(--tenon-dimension-050);
+  height: var(--tenon-dimension-050);
+  border-radius: var(--tenon-radius-full);
+  background: currentColor;
+  flex: none;
+  opacity: 0.7;
+}

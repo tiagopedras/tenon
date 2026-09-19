@@ -20,6 +20,8 @@ export interface ModalProps {
     resizeKey?: string;
     /** The X in the head. On unless it is turned off, because the scrim and Escape are not visible. */
     closeButton?: boolean;
+    /** The body and footer draw no padding and no layout of their own, for content that arranges itself: a transcript and its composer. */
+    bare?: boolean;
     /** Where focus lands. `footer` is the first footer button, for a confirmation whose first answer is the safe one. */
     initialFocus?: 'box' | 'footer';
     /** ⌘↵ or Ctrl↵ from inside a text field. Never from a button, so a stray shortcut cannot answer a confirmation. */
@@ -27,7 +29,7 @@ export interface ModalProps {
     className?: string;
     children: ReactNode;
 }
-export declare function Modal({ open, onClose, title, subtitle, headEnd, footer, size, layout, resizable, resizeKey, closeButton, initialFocus, onSubmit, className, children, }: ModalProps): import('react').ReactPortal | null;
+export declare function Modal({ open, onClose, title, subtitle, headEnd, footer, size, layout, resizable, resizeKey, closeButton, bare, initialFocus, onSubmit, className, children, }: ModalProps): import('react').ReactPortal | null;
 export interface ModalPaneProps {
     /** A quieter column on the default background, for what sits beside the main one: a history, a list of sections. */
     aside?: boolean;

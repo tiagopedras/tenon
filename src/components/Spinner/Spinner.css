@@ -14,6 +14,23 @@
 .tenon-spinner--md { width: var(--tenon-dimension-200); height: var(--tenon-dimension-200); }
 .tenon-spinner--lg { width: var(--tenon-dimension-400); height: var(--tenon-dimension-400); }
 
+/* The glyph is text, not a drawn ring, so it takes a font size where the
+   ring takes a width, and does not turn. */
+.tenon-spinner--glyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  background: none;
+  animation: none;
+  color: var(--tenon-text-accent);
+  line-height: 1;
+}
+.tenon-spinner--glyph.tenon-spinner--sm { font-size: var(--tenon-text-caption-size); }
+.tenon-spinner--glyph.tenon-spinner--md { font-size: var(--tenon-text-body-size); }
+.tenon-spinner--glyph.tenon-spinner--lg { font-size: var(--tenon-text-heading-4-size); }
+
 @keyframes tenon-spin { to { transform: rotate(360deg); } }
 
 /* Held still, not removed: a static ring still says "busy". */

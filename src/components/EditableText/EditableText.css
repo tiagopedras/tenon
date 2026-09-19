@@ -1,0 +1,13 @@
+/* Only a hint that it can be edited until it is one. Came from the chat
+   window's title, which a card on the canvas lets you rename in place. */
+
+.tenon-editable { cursor: text; }
+.tenon-editable:hover:not(.tenon-editable--editing) {
+  text-decoration: underline dotted var(--tenon-text-faint);
+  text-underline-offset: 3px;
+}
+.tenon-editable--editing {
+  outline: none;
+  border-bottom: 1px solid var(--tenon-stroke-accent);
+  text-decoration: none;
+}

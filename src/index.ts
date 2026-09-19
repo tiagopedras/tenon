@@ -1,7 +1,7 @@
 /* The public surface. A consumer imports from here and from the two CSS
    files; nothing reaches into src/components directly. */
-export { Button } from './components/Button/Button';
-export type { ButtonProps, ButtonVariant, ButtonSize } from './components/Button/Button';
+export { Button, LinkButton } from './components/Button/Button';
+export type { ButtonProps, ButtonVariant, ButtonSize, LinkButtonProps } from './components/Button/Button';
 
 /* Card and Badge came from the to-dos board, which had already run them
    across five views. Their anatomy is the board's; only the names changed. */
@@ -46,5 +46,20 @@ export type { SwitchProps } from './components/Switch/Switch';
 
 export { SegmentedControl } from './components/SegmentedControl/SegmentedControl';
 export type { SegmentedControlProps, SegmentOption } from './components/SegmentedControl/SegmentedControl';
+
+/* Added for the chat window, which became a React component in the chat
+   engine and needed more than the first fourteen had. Each is a thing another
+   window, a dashboard or a reader of model output will want too. */
+export { Window } from './components/Window/Window';
+export type { WindowProps, WindowRect, WindowOrigin } from './components/Window/Window';
+
+export { Markdown, inlineNodes } from './components/Markdown/Markdown';
+export type { MarkdownProps } from './components/Markdown/Markdown';
+
+export { EditableText } from './components/EditableText/EditableText';
+export type { EditableTextProps } from './components/EditableText/EditableText';
+
+export { Disclosure } from './components/Disclosure/Disclosure';
+export type { DisclosureProps } from './components/Disclosure/Disclosure';
 
 export { cx } from './utils';

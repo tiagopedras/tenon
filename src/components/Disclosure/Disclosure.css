@@ -1,0 +1,18 @@
+.tenon-disclosure__head {
+  display: flex;
+  align-items: center;
+  gap: var(--tenon-dimension-075);
+  padding: var(--tenon-dimension-025) 0;
+  background: none;
+  border: 0;
+  border-radius: var(--tenon-radius-sm);
+  color: var(--tenon-text-faint);
+  font-family: var(--tenon-text-label-family);
+  font-size: var(--tenon-text-body-sm-size);
+  font-weight: var(--tenon-typography-weight-medium);
+  cursor: pointer;
+}
+.tenon-disclosure__head:hover { color: var(--tenon-text-subtle); }
+.tenon-disclosure__head:focus-visible { outline: 2px solid var(--tenon-stroke-focus); outline-offset: 2px; }
+.tenon-disclosure__twist { display: inline-block; width: var(--tenon-dimension-125); color: var(--tenon-text-faint); }
+.tenon-disclosure__panel { margin-top: var(--tenon-dimension-075); }

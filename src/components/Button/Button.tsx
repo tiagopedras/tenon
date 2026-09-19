@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react';
 import { cx } from '../../utils';
 import './Button.css';
 
@@ -36,5 +36,28 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       {children}
       {endIcon}
     </button>
+  );
+});
+
+export interface LinkButtonProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  startIcon?: ReactNode;
+  endIcon?: ReactNode;
+}
+
+/* A link that looks like a Button, for something that goes somewhere rather
+   than doing something: Open in Claude, a download. Same skin, and an anchor
+   underneath, so middle-click and copy-link keep working. */
+export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(function LinkButton(
+  { variant = 'secondary', size = 'md', startIcon, endIcon, className, children, ...rest },
+  ref,
+) {
+  return (
+    <a ref={ref} className={cx('tenon-button', `tenon-button--${variant}`, `tenon-button--${size}`, className)} {...rest}>
+      {startIcon}
+      {children}
+      {endIcon}
+    </a>
   );
 });

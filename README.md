@@ -3,7 +3,7 @@
 The shared design system for the projects in `~/Code`. Code is the source of
 truth; the Figma library is a replica built from it, not the other way round.
 
-Tenon is tokens plus fourteen React components. The tokens came first on purpose:
+Tenon is tokens plus eighteen React components. The tokens came first on purpose:
 a component built on a set that is still moving has to be rebuilt when the set
 settles.
 
@@ -141,9 +141,11 @@ did.
 
 ## Components
 
-Fourteen: `Button`, `Card`, `Column`, `Badge`, `Tag`, `Stat` and `Field`, then `Modal`, `Textarea`,
-`Spinner`, `Pill`, `Alert`, `Switch` and `SegmentedControl`. Written in TypeScript so
-the `.d.ts` gives prop autocomplete in a plain JavaScript app too.
+Eighteen: `Button`, `Card`, `Column`, `Badge`, `Tag`, `Stat` and `Field`, then `Modal`, `Textarea`,
+`Spinner`, `Pill`, `Alert`, `Switch` and `SegmentedControl`, then `Window`, `Markdown`,
+`EditableText` and `Disclosure`. `LinkButton` is `Button`'s anchor form and is not counted
+separately. Written in TypeScript so the `.d.ts` gives prop autocomplete in a plain
+JavaScript app too.
 
 ```jsx
 import { Button, Card, Column, Badge, Tag, Stat, Field, Modal } from '@tiagopedras/tenon';
@@ -256,6 +258,29 @@ that applies the moment it flips; one that needs a Save is a checkbox in a
 `Field`. `Textarea` is the bare control; with a label, use `Field` with
 `multiline`.
 
+**The last four came from the chat window becoming React.** The chat engine's window was
+plain JavaScript that drew its own dialog, and rebuilding it on Tenon's components showed
+what Tenon did not have yet. `Window` is `Modal`'s counterpart for a panel the page places:
+no scrim, dragged by its head, resized from any edge or corner, stacked by the page,
+grown out of the thing that opened it and shrunk back into it on the way out. It takes
+`rect` and reports `onRectChange`, and it never decides where it sits, so a grid of
+windows, a parked position and a saved layout all stay the page's business. Several can be
+open at once and only the `active` one answers Escape. `Markdown` renders the subset a
+model's reply uses (paragraphs, lists, headings, fenced code, and code spans, bold, italics
+and bare links inside them) as React elements rather than an HTML string, so there is
+nothing to escape and nothing to inject; what falls outside the subset shows as written.
+`EditableText` is a name that becomes a field on double-click, and marks itself with
+`data-tenon-editing` so a `Window` around it leaves Escape and drags alone. `Disclosure` is
+the quiet summary line that opens into more, with the arrow always drawn.
+
+Four smaller additions came with them. `Modal` takes `bare` (and so does `Window`), which
+drops the body and footer's padding and layout for content that arranges itself, a
+transcript over a composer; and it now leaves focus where it already is inside the box
+rather than moving it to the box, so an `autoFocus` field keeps it. `Spinner` takes
+`variant="glyph"`, the cycling asterisks the Claude CLI draws while it thinks, which hold
+still under reduced motion. `LinkButton` is a link that looks like a `Button`, for something
+that goes somewhere rather than doing something.
+
 The playground and the token preview both carry no hard-coded values, so
 anything that looks wrong on either is a token that is wrong or missing. That
 is how the `--tenon-color-background-default` naming mistake was caught: the
@@ -294,7 +319,7 @@ as a git dependency at a tag. A tag rather than a branch: a branch reference
 moves under you on the next `npm install` with no diff to show for it.
 
 ```bash
-npm i github:tiagopedras/tenon#v0.4.0
+npm i github:tiagopedras/tenon#v0.7.0
 ```
 
 npm runs no build on a git dependency, which is why `dist/` is committed.

@@ -27,6 +27,8 @@ export interface ModalProps {
   resizeKey?: string;
   /** The X in the head. On unless it is turned off, because the scrim and Escape are not visible. */
   closeButton?: boolean;
+  /** The body and footer draw no padding and no layout of their own, for content that arranges itself: a transcript and its composer. */
+  bare?: boolean;
   /** Where focus lands. `footer` is the first footer button, for a confirmation whose first answer is the safe one. */
   initialFocus?: 'box' | 'footer';
   /** ⌘↵ or Ctrl↵ from inside a text field. Never from a button, so a stray shortcut cannot answer a confirmation. */
@@ -58,7 +60,7 @@ function readSize(key: string): Stored | null {
 
 export function Modal({
   open, onClose, title, subtitle, headEnd, footer, size = 'md', layout = 'stack',
-  resizable = false, resizeKey, closeButton = true, initialFocus = 'box', onSubmit, className, children,
+  resizable = false, resizeKey, closeButton = true, bare = false, initialFocus = 'box', onSubmit, className, children,
 }: ModalProps) {
   const box = useRef<HTMLDivElement>(null);
   const titleId = useId();
@@ -74,7 +76,11 @@ export function Modal({
     const opener = document.activeElement as HTMLElement | null;
     const node = box.current!;
     const start = initialFocus === 'footer' ? node.querySelector<HTMLElement>('.tenon-modal__footer button:not([disabled])') : null;
-    (start ?? node.querySelector<HTMLElement>('[autofocus]') ?? node).focus();
+    /* Something inside already took focus, an autoFocus field say. Moving it
+       to the box would undo that. */
+    if (!node.contains(document.activeElement)) {
+      (start ?? node.querySelector<HTMLElement>('[autofocus]') ?? node).focus();
+    }
 
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') { e.stopPropagation(); close.current(); return; }
@@ -140,8 +146,8 @@ export function Modal({
             <Button variant="ghost" size="sm" iconOnly aria-label="Close" onClick={() => close.current()}>×</Button>
           )}
         </div>
-        <div className={cx('tenon-modal__body', layout === 'split' && 'tenon-modal__body--split')}>{children}</div>
-        {footer && <div className="tenon-modal__footer">{footer}</div>}
+        <div className={cx('tenon-modal__body', layout === 'split' && 'tenon-modal__body--split', bare && 'tenon-modal__body--bare')}>{children}</div>
+        {footer && <div className={cx('tenon-modal__footer', bare && 'tenon-modal__footer--bare')}>{footer}</div>}
       </div>
     </div>,
     document.body,

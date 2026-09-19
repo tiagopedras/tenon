@@ -1,0 +1,48 @@
+/* A window rather than a dialog: no scrim, so the layer that holds it lets
+   every click through and only the box catches them. The head, body and
+   footer are Modal's, so the two read as the same object. */
+
+.tenon-window-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+}
+
+.tenon-window {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  pointer-events: auto;
+  background: var(--tenon-background-raised);
+  color: var(--tenon-text-default);
+  border: 1px solid var(--tenon-stroke-default);
+  border-radius: var(--tenon-radius-xl);
+  box-shadow: var(--tenon-elevation-modal);
+  overflow: hidden;
+}
+.tenon-window:focus { outline: none; }
+
+.tenon-window__head { cursor: grab; }
+.tenon-window__head:active { cursor: grabbing; }
+
+/* Parked while the page clears the desk. Dimmed, and the whole box reads as
+   one thing to click to bring everything back. */
+.tenon-window--peeked { opacity: 0.45; cursor: pointer; transition: opacity 200ms ease; }
+.tenon-window--peeked:hover { opacity: 0.7; }
+
+/* Eight hit areas kept inside the box's own edge rather than straddling it,
+   so its overflow:hidden never clips one. */
+.tenon-window__grip { position: absolute; z-index: 1; }
+.tenon-window__grip--n, .tenon-window__grip--s { left: var(--tenon-dimension-175); right: var(--tenon-dimension-175); height: var(--tenon-dimension-100); }
+.tenon-window__grip--e, .tenon-window__grip--w { top: var(--tenon-dimension-175); bottom: var(--tenon-dimension-175); width: var(--tenon-dimension-100); }
+.tenon-window__grip--n { top: 0; cursor: ns-resize; }
+.tenon-window__grip--s { bottom: 0; cursor: ns-resize; }
+.tenon-window__grip--e { right: 0; cursor: ew-resize; }
+.tenon-window__grip--w { left: 0; cursor: ew-resize; }
+.tenon-window__grip--ne, .tenon-window__grip--nw, .tenon-window__grip--se, .tenon-window__grip--sw { width: var(--tenon-dimension-175); height: var(--tenon-dimension-175); }
+.tenon-window__grip--ne { top: 0; right: 0; cursor: nesw-resize; }
+.tenon-window__grip--nw { top: 0; left: 0; cursor: nwse-resize; }
+.tenon-window__grip--se { bottom: 0; right: 0; cursor: nwse-resize; }
+.tenon-window__grip--sw { bottom: 0; left: 0; cursor: nesw-resize; }

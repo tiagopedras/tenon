@@ -102,6 +102,10 @@
    resizable box leaves it room rather than growing a second grip. */
 .tenon-modal__box--resizable .tenon-modal__footer { padding-right: calc(var(--tenon-dimension-175) + var(--tenon-dimension-200)); }
 
+/* ---- bare: the content arranges itself ---- */
+.tenon-modal__body--bare { display: flex; flex-direction: column; padding: 0; overflow: hidden; }
+.tenon-modal__footer--bare { display: block; padding: 0; border-top: 0; background: none; }
+
 /* ---- split body ---- */
 .tenon-modal__body--split { display: flex; padding: 0; overflow: hidden; }
 .tenon-modal__pane { flex: 1 1 auto; min-width: 0; overflow: auto; padding: var(--tenon-dimension-200) var(--tenon-dimension-250); }

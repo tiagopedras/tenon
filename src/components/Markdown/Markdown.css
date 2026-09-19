@@ -1,0 +1,35 @@
+/* The typography of a reply: relaxed, so a long answer is comfortable to
+   read. Colours and sizes come from the text tokens, nothing else. */
+
+.tenon-markdown {
+  font-family: var(--tenon-text-body-family);
+  font-size: var(--tenon-text-body-size);
+  line-height: var(--tenon-typography-line-height-loose);
+  color: var(--tenon-text-default);
+  overflow-wrap: anywhere;
+}
+div.tenon-markdown > * { margin: 0 0 var(--tenon-dimension-125); }
+div.tenon-markdown > *:last-child { margin-bottom: 0; }
+
+.tenon-markdown__heading { font-weight: var(--tenon-typography-weight-semibold); }
+.tenon-markdown ul, .tenon-markdown ol { padding-left: var(--tenon-dimension-250); }
+.tenon-markdown li { margin: var(--tenon-dimension-037) 0; }
+.tenon-markdown a { color: var(--tenon-text-link); }
+.tenon-markdown a:hover { color: var(--tenon-text-link-hovered); }
+
+.tenon-markdown code {
+  font-family: var(--tenon-text-code-family);
+  font-size: 0.92em;
+  padding: 0 var(--tenon-dimension-037);
+  background: var(--tenon-background-neutral);
+  border-radius: var(--tenon-radius-sm);
+}
+.tenon-markdown pre {
+  padding: var(--tenon-dimension-125) var(--tenon-dimension-150);
+  background: var(--tenon-background-default);
+  border: 1px solid var(--tenon-stroke-default);
+  border-radius: var(--tenon-radius-md);
+  overflow-x: auto;
+  font-size: var(--tenon-text-caption-size);
+}
+.tenon-markdown pre code { padding: 0; background: none; font-size: inherit; }

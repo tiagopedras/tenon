@@ -1,7 +1,7 @@
 import { StrictMode, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Button, Badge, Card, Tag, Stat, Column, ColumnEmpty, Field, Modal, ModalPane, Textarea, Spinner, Pill, Alert, Switch, SegmentedControl } from '../src';
-import type { TagChart } from '../src';
+import { Button, LinkButton, Window, Markdown, EditableText, Disclosure, Badge, Card, Tag, Stat, Column, ColumnEmpty, Field, Modal, ModalPane, Textarea, Spinner, Pill, Alert, Switch, SegmentedControl } from '../src';
+import type { TagChart, WindowRect } from '../src';
 import '../dist/tenon.css';
 import './playground.css';
 
@@ -28,6 +28,10 @@ function App() {
   const [on, setOn] = useState(true);
   const [view, setView] = useState('cards');
   const [draft, setDraft] = useState('');
+  const [win, setWin] = useState(false);
+  const [winRect, setWinRect] = useState<WindowRect | null>(null);
+  const [winName, setWinName] = useState('Reading the 360 responses');
+  const [origin, setOrigin] = useState<DOMRect | null>(null);
   const [modal, setModal] = useState(location.hash === '#modal');
   const [doc, setDoc] = useState(location.hash === '#doc');
   const [ask, setAsk] = useState(false);
@@ -213,6 +217,7 @@ function App() {
       <section>
         <h2 className="tenon-heading-2">Spinner</h2>
         <Row title="size">{(['sm', 'md', 'lg'] as const).map((z) => <Spinner key={z} size={z} label={`Working, ${z}`} />)}</Row>
+        <Row title="glyph, as the CLI draws it">{(['sm', 'md', 'lg'] as const).map((z) => <Spinner key={z} variant="glyph" size={z} label={`Thinking, ${z}`} />)}</Row>
         <Row title="beside words"><Spinner size="sm" /><span className="tenon-body-sm">Reading the improvements list…</span></Row>
       </section>
 
@@ -276,6 +281,34 @@ function App() {
         >
           <Field label="Why" multiline rows={3} placeholder="⌘↵ sends it from here" />
         </Modal>
+      </section>
+
+      <section>
+        <h2 className="tenon-heading-2">Window</h2>
+        <p className="tenon-body-sm muted">No scrim, so the page stays reachable. Drag by the head, resize from any edge, and it grows out of the button and shrinks back into it. Double-click the title to rename it. Escape closes it, unless the title is being edited.</p>
+        <Row title="open one">
+          <Button variant="primary" onClick={(e) => { setOrigin(e.currentTarget.getBoundingClientRect()); setWin(true); }}>Card window</Button>
+          <LinkButton variant="ghost" href="https://claude.ai" target="_blank" rel="noopener">A link that looks like a button</LinkButton>
+        </Row>
+        <Window
+          open={win}
+          onClose={() => setWin(false)}
+          title={<EditableText value={winName} onCommit={setWinName} />}
+          subtitle="Design oversight · ~/Code/twinkl-hr"
+          rect={winRect}
+          onRectChange={setWinRect}
+          growFrom={origin}
+          headEnd={<LinkButton variant="ghost" size="sm" href="#">Open in Claude</LinkButton>}
+          bare
+          footer={<div style={{ display: 'flex', gap: 8, padding: 12 }}><Textarea autoGrow placeholder="Reply…" style={{ flex: 1 }} /><Button variant="primary">Send</Button></div>}
+        >
+          <div style={{ padding: 16, overflowY: 'auto' }}>
+            <Disclosure summary="3 steps · Read, Grep">
+              <ol style={{ margin: 0 }}><li>Read 360.md</li><li>Grep probation</li><li>Read template</li></ol>
+            </Disclosure>
+            <Markdown>{'A **reply** with `code`, _italics_ and a link https://tenon.example/docs.\n\n- one\n- two\n\n```\nnpm run build\n```'}</Markdown>
+          </div>
+        </Window>
       </section>
     </main>
   );

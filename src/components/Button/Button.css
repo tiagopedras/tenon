@@ -1,0 +1,56 @@
+/* Reads semantic tokens only. No primitive is named here, and there are no
+   button tokens: Twinkl has 26 of them and every one is a place a decision
+   can drift away from the one the semantic layer already made. */
+
+.tenon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--tenon-dimension-075);
+  border: 1px solid transparent;
+  border-radius: var(--tenon-radius-default);
+  font-family: var(--tenon-text-label-family);
+  font-weight: var(--tenon-text-label-weight);
+  letter-spacing: var(--tenon-text-label-letter-spacing);
+  line-height: 1;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+.tenon-button:focus-visible {
+  outline: 2px solid var(--tenon-stroke-focus);
+  outline-offset: 2px;
+}
+
+.tenon-button:disabled,
+.tenon-button[aria-disabled='true'] {
+  cursor: not-allowed;
+  background: var(--tenon-background-disabled);
+  border-color: transparent;
+  color: var(--tenon-text-disabled);
+}
+
+/* ---- size ---- */
+.tenon-button--sm { font-size: var(--tenon-text-caption-size); padding: 0 var(--tenon-dimension-100); height: var(--tenon-dimension-300); }
+.tenon-button--md { font-size: var(--tenon-text-label-size);   padding: 0 var(--tenon-dimension-150); height: var(--tenon-dimension-400); }
+.tenon-button--lg { font-size: var(--tenon-text-body-size);    padding: 0 var(--tenon-dimension-200); height: var(--tenon-dimension-500); }
+
+.tenon-button--icon-only { padding: 0; aspect-ratio: 1; }
+
+/* ---- variant ---- */
+.tenon-button--primary { background: var(--tenon-background-accent); color: var(--tenon-text-on-accent); }
+.tenon-button--primary:not(:disabled):hover  { background: var(--tenon-background-accent-hovered); }
+.tenon-button--primary:not(:disabled):active { background: var(--tenon-background-accent-active); }
+
+.tenon-button--secondary { background: var(--tenon-background-raised); color: var(--tenon-text-default); border-color: var(--tenon-stroke-default); }
+.tenon-button--secondary:not(:disabled):hover  { background: var(--tenon-background-hovered); border-color: var(--tenon-stroke-hovered); }
+.tenon-button--secondary:not(:disabled):active { background: var(--tenon-background-active); }
+
+.tenon-button--ghost { background: transparent; color: var(--tenon-text-subtle); }
+.tenon-button--ghost:not(:disabled):hover  { background: var(--tenon-background-hovered); color: var(--tenon-text-default); }
+.tenon-button--ghost:not(:disabled):active { background: var(--tenon-background-active); }
+
+.tenon-button--danger { background: var(--tenon-background-error); color: var(--tenon-text-error); border-color: var(--tenon-stroke-error); }
+.tenon-button--danger:not(:disabled):hover  { background: var(--tenon-stroke-error); color: var(--tenon-text-on-accent); }

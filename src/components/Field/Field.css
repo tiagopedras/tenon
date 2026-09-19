@@ -1,0 +1,52 @@
+/* Label, control, hint and error as one block, because a bare input with
+   the label wired up somewhere else is how a form loses its labels. */
+
+.tenon-field { display: flex; flex-direction: column; gap: var(--tenon-dimension-050); }
+
+.tenon-field__label {
+  font-family: var(--tenon-text-label-family);
+  font-size: var(--tenon-text-label-size);
+  font-weight: var(--tenon-text-label-weight);
+  color: var(--tenon-text-default);
+}
+
+.tenon-field__required { color: var(--tenon-text-error); margin-left: 2px; }
+
+.tenon-field__control {
+  width: 100%;
+  background: var(--tenon-background-input);
+  color: var(--tenon-text-default);
+  border: 1px solid var(--tenon-stroke-default);
+  border-radius: var(--tenon-radius-default);
+  font-family: var(--tenon-text-body-family);
+  font-size: var(--tenon-text-body-size);
+  line-height: var(--tenon-text-body-line-height);
+  padding: var(--tenon-dimension-075) var(--tenon-dimension-100);
+}
+
+.tenon-field__control::placeholder { color: var(--tenon-text-faint); }
+.tenon-field__control:hover:not(:disabled) { background: var(--tenon-background-input-hovered); border-color: var(--tenon-stroke-hovered); }
+.tenon-field__control:focus-visible {
+  background: var(--tenon-background-input-active);
+  border-color: var(--tenon-stroke-accent);
+  outline: 2px solid var(--tenon-stroke-focus);
+  outline-offset: -1px;
+}
+.tenon-field__control:disabled {
+  background: var(--tenon-background-disabled);
+  color: var(--tenon-text-disabled);
+  cursor: not-allowed;
+}
+
+.tenon-field--invalid .tenon-field__control { border-color: var(--tenon-stroke-error); }
+.tenon-field--invalid .tenon-field__control:focus-visible { outline-color: var(--tenon-stroke-error); }
+
+.tenon-field__note {
+  font-family: var(--tenon-text-caption-family);
+  font-size: var(--tenon-text-caption-size);
+  line-height: var(--tenon-text-caption-line-height);
+  color: var(--tenon-text-subtle);
+}
+.tenon-field__note--error { color: var(--tenon-text-error); }
+
+textarea.tenon-field__control { resize: vertical; min-height: var(--tenon-dimension-800); }

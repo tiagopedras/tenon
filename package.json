@@ -4,16 +4,45 @@
   "description": "The shared design system. Tokens first, components later.",
   "private": true,
   "type": "module",
-  "files": ["dist", "tokens"],
+  "files": [
+    "dist",
+    "tokens"
+  ],
   "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/tenon-react.js"
+    },
     "./tenon.css": "./dist/tenon.css",
+    "./tenon-react.css": "./dist/tenon-react.css",
     "./tokens": "./dist/tenon.tokens.json",
     "./tokens/*": "./tokens/*"
   },
   "scripts": {
     "generate": "node scripts/generate-ramps.mjs",
-    "build": "node scripts/build.mjs",
-    "check": "node scripts/build.mjs --quiet",
-    "all": "npm run generate && npm run build"
+    "tokens": "node scripts/build.mjs",
+    "check": "node scripts/build.mjs --quiet && tsc --noEmit -p tsconfig.json",
+    "build": "npm run tokens && vite build",
+    "all": "npm run generate && npm run build",
+    "dev": "vite --config vite.playground.ts"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.0",
+    "vite-plugin-dts": "^4.5.4"
+  },
+  "main": "./dist/tenon-react.js",
+  "types": "./dist/types/index.d.ts",
+  "sideEffects": [
+    "*.css"
+  ],
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
   }
 }

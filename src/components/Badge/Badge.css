@@ -1,0 +1,36 @@
+/* The board's chips and status pills. `tone` picks a background/text pair
+   that already exists; `chart` picks one of the ten categorical colours
+   and is the bucket label. */
+
+.tenon-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tenon-dimension-050);
+  padding: var(--tenon-dimension-012) var(--tenon-dimension-100);
+  border-radius: var(--tenon-radius-full);
+  font-family: var(--tenon-text-caption-family);
+  font-size: var(--tenon-text-caption-size);
+  font-weight: var(--tenon-text-label-weight);
+  line-height: var(--tenon-text-caption-line-height);
+  white-space: nowrap;
+}
+
+.tenon-badge--neutral { background: var(--tenon-background-neutral); color: var(--tenon-text-subtle); }
+.tenon-badge--accent  { background: var(--tenon-background-selected); color: var(--tenon-text-accent); }
+.tenon-badge--success { background: var(--tenon-background-success); color: var(--tenon-text-success); }
+.tenon-badge--warning { background: var(--tenon-background-warning); color: var(--tenon-text-warning); }
+.tenon-badge--error   { background: var(--tenon-background-error);   color: var(--tenon-text-error); }
+.tenon-badge--info    { background: var(--tenon-background-info);    color: var(--tenon-text-info); }
+
+/* A chart badge is the categorical colour as text on the neutral chip,
+   rather than as a fill. Ten saturated fills side by side is what the
+   board's Timeline learned not to do. */
+.tenon-badge--chart { background: var(--tenon-background-neutral); color: var(--tenon-chart-colour); }
+
+.tenon-badge__dot {
+  width: var(--tenon-dimension-075);
+  height: var(--tenon-dimension-075);
+  border-radius: var(--tenon-radius-full);
+  background: currentColor;
+  flex: none;
+}

@@ -1,0 +1,21 @@
+.tenon-card {
+  background: var(--tenon-background-raised);
+  border: 1px solid var(--tenon-stroke-default);
+  border-radius: var(--tenon-radius-lg);
+  color: var(--tenon-text-default);
+}
+
+.tenon-card--flat    { box-shadow: none; }
+.tenon-card--raised  { box-shadow: var(--tenon-elevation-raised); }
+.tenon-card--overlay { box-shadow: var(--tenon-elevation-overlay); }
+
+.tenon-card--pad-none { padding: 0; }
+.tenon-card--pad-sm   { padding: var(--tenon-dimension-150); }
+.tenon-card--pad-md   { padding: var(--tenon-dimension-200); }
+.tenon-card--pad-lg   { padding: var(--tenon-dimension-300); }
+
+/* Interactive only when something is going to happen on click, so the
+   cursor and the hover are not promised where they are not kept. */
+.tenon-card--interactive { cursor: pointer; transition: border-color 120ms ease, box-shadow 120ms ease; }
+.tenon-card--interactive:hover { border-color: var(--tenon-stroke-hovered); box-shadow: var(--tenon-elevation-overlay); }
+.tenon-card--interactive:focus-visible { outline: 2px solid var(--tenon-stroke-focus); outline-offset: 2px; }

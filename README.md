@@ -3,9 +3,14 @@
 The shared design system for the projects in `~/Code`. Code is the source of
 truth; the Figma library is a replica built from it, not the other way round.
 
-Today Tenon is tokens and nothing else. That is deliberate. A component built
-on a token set that is still moving has to be rebuilt when the set settles, so
-the tokens hold still first and React components come after.
+Tenon is tokens plus four React components. The tokens came first on purpose:
+a component built on a set that is still moving has to be rebuilt when the set
+settles.
+
+One thing to know about reach. The CSS file works anywhere, so the to-dos
+board, which is plain HTML and CSS, can adopt the tokens today. The React
+components only reach a React app, which today means the personal site. That
+is an argument for the token layer being the part that matters first.
 
 ## Where it came from
 
@@ -93,15 +98,18 @@ stays one file either way.
 ## The build, and the check that is the point of it
 
 ```bash
-npm run all        # regenerate the ramps, then build
-npm run build      # build only
-npm run check      # build quietly, for a pre-commit hook
+npm run all        # regenerate the ramps, then build everything
+npm run build      # tokens, then the React library
+npm run tokens     # tokens only
+npm run check      # tokens quietly plus a typecheck, for a pre-commit hook
+npm run dev        # the component playground
 ```
 
 `scripts/build.mjs` writes `dist/tenon.css` and `dist/tenon.tokens.json`, and
-refuses to write either if any of three checks fail: light and dark must hold
-the identical key set, every `{alias}` must resolve, and no semantic token may
-alias another semantic token.
+refuses to write either if any of four checks fail: light and dark must hold
+the identical key set, every `{alias}` must resolve, no semantic token may
+alias another semantic token, and no component CSS may name a colour
+primitive.
 
 The first is the reason a token pipeline exists here at all. `board.css` had
 `--accent` missing from its dark block for months, used as a `color:` in
@@ -110,6 +118,41 @@ because a hand-written stylesheet has no way to know a key is absent. A fourth
 check reports WCAG contrast for every text and icon token against its own
 background, and reports rather than fails, because `text.faint` is meant to sit
 where it sits.
+
+## Components
+
+Four so far: `Button`, `Badge`, `Card` and `Field`. Written in TypeScript so
+the `.d.ts` gives prop autocomplete in a plain JavaScript app too.
+
+```jsx
+import { Button, Badge, Card, Field } from '@tiagopedras/tenon';
+import '@tiagopedras/tenon/tenon.css';        // tokens
+import '@tiagopedras/tenon/tenon-react.css';  // component styles
+```
+
+Every component's CSS reads semantic tokens and nothing else. There are no
+component tokens, and the build enforces it: a `var(--tenon-color-*)` anywhere
+under `src/` fails the build, because a component naming a primitive is a
+component that will not follow a theme.
+
+`Badge` takes either a `tone` or a `chart` number. The ten chart colours are
+the board's buckets, and a chart badge colours its text rather than its fill,
+because ten saturated fills side by side is what the board's Timeline learned
+not to do.
+
+`Field` owns its label, hint and error together. A bare input with the label
+wired up somewhere else is how a form loses its labels, and `aria-describedby`
+points at whichever note is actually rendered rather than at an element that
+might not be there.
+
+```bash
+npm run dev     # the component playground, localhost:5199
+```
+
+The playground and the token preview both carry no hard-coded values, so
+anything that looks wrong on either is a token that is wrong or missing. That
+is how the `--tenon-color-background-default` naming mistake was caught: the
+preview had been rendering on browser defaults and looked plausible.
 
 ## Using it
 

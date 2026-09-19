@@ -14,7 +14,7 @@
    meant to sit below 4.5:1 and the token file says which.
    ------------------------------------------------------------------- */
 
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { contrast } from './color.mjs';
@@ -99,6 +99,24 @@ for (const [theme, flat] of Object.entries(flatThemes)) {
     if (m && !(m[1] in flatPrimitives)) {
       errors.push(`${theme}: ${key} aliases {${m[1]}}, which is not a primitive`);
     }
+  }
+}
+
+/* Component CSS may read the dimension scale directly, because that scale
+   has one tier on purpose. It may not read a colour primitive: a component
+   naming --tenon-color-blue-600 is a component that will not follow a
+   theme, and it is the one mistake the two-tier split exists to prevent. */
+function cssFiles(dir) {
+  if (!existsSync(dir)) return [];
+  return readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
+    const full = join(dir, e.name);
+    return e.isDirectory() ? cssFiles(full) : e.name.endsWith('.css') ? [full] : [];
+  });
+}
+for (const file of cssFiles(join(ROOT, 'src'))) {
+  const text = readFileSync(file, 'utf8');
+  for (const m of text.matchAll(/var\(\s*(--tenon-color-[a-z0-9-]+)/g)) {
+    errors.push(`${file.replace(ROOT + '/', '')} reads the primitive ${m[1]}`);
   }
 }
 
@@ -240,7 +258,7 @@ for (const theme of ['light', 'dark']) {
 
 console.log(`dist/tenon.css          ${primitiveVars.length} primitives, ${lightKeys.length} semantics x 2 themes`);
 console.log(`dist/tenon.tokens.json  resolved values`);
-console.log(`\nChecks passed: theme parity, alias targets, no semantic-to-semantic aliases.`);
+console.log(`\nChecks passed: theme parity, alias targets, no semantic-to-semantic aliases,\n               no component CSS reading a colour primitive.`);
 if (!QUIET) {
   if (rows.length) {
     console.log(`\n${rows.length} text or icon tokens below 4.5:1 on their own background:`);

@@ -198,22 +198,15 @@ import '@tiagopedras/tenon/tenon-react.css';  // component styles
 import { Button, Card } from '@tiagopedras/tenon';
 ```
 
-**A project with no npm** — the to-dos board is plain HTML, CSS and a Python
-server — gets the built file copied in instead, to `vendor/tenon.css`, linked
-before its own stylesheet. `scripts/build.mjs` stamps the version and build
-date into the first line of that file, because a copy has no other way to say
-which build it is and a stale one is otherwise indistinguishable from a
-current one.
+`consumers.json` lists who reads Tenon. `npm run sync` says which tag each
+one is on and writes nothing: moving a consumer forward means editing its own
+`package.json`, which is the point of pinning.
 
-`consumers.json` lists who reads Tenon and by which route.
-
-```bash
-npm run sync              # who is on what, writes nothing
-npm run sync -- --write   # copy the built CSS into every vendor consumer
-```
-
-An npm consumer is never written to. Bumping one means editing the tag in its
-own `package.json` and reinstalling, which is the point of pinning.
+Both consumers are React. The to-dos board looks like it is not — plain HTML,
+CSS and a Python server — but it has React 18, Vite and TypeScript at its root
+and a growing `kanban/ui/`, and `server.py` already serves a sibling package's
+assets twice over. There was briefly a second route here that copied the built
+CSS into it. There is one route.
 
 ## Releasing
 

@@ -1,0 +1,367 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$description": "Tenon semantic colour, light theme. Every value aliases a primitive; none is a literal except the overlay and the shadows, which carry alpha. The dark file must hold the identical key set, and scripts/build.mjs fails if it does not.",
+  "color": {
+    "background": {
+      "default": {
+        "$type": "color",
+        "$value": "{color.neutral.50}"
+      },
+      "raised": {
+        "$type": "color",
+        "$value": "{color.base.white}",
+        "$description": "Cards, panels, anything sitting above the page."
+      },
+      "sunken": {
+        "$type": "color",
+        "$value": "{color.neutral.100}"
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{color.neutral.100}"
+      },
+      "hovered": {
+        "$type": "color",
+        "$value": "{color.neutral.100}"
+      },
+      "active": {
+        "$type": "color",
+        "$value": "{color.neutral.150}"
+      },
+      "selected": {
+        "$type": "color",
+        "$value": "{color.blue.100}"
+      },
+      "accent": {
+        "$type": "color",
+        "$value": "{color.blue.550}"
+      },
+      "accent-hovered": {
+        "$type": "color",
+        "$value": "{color.blue.600}"
+      },
+      "accent-active": {
+        "$type": "color",
+        "$value": "{color.blue.650}"
+      },
+      "neutral": {
+        "$type": "color",
+        "$value": "{color.neutral.150}"
+      },
+      "neutral-hovered": {
+        "$type": "color",
+        "$value": "{color.neutral.200}"
+      },
+      "neutral-active": {
+        "$type": "color",
+        "$value": "{color.neutral.250}"
+      },
+      "inverse": {
+        "$type": "color",
+        "$value": "{color.neutral.900}"
+      },
+      "inverse-hovered": {
+        "$type": "color",
+        "$value": "{color.neutral.850}"
+      },
+      "inverse-active": {
+        "$type": "color",
+        "$value": "{color.neutral.800}"
+      },
+      "input": {
+        "$type": "color",
+        "$value": "{color.base.white}"
+      },
+      "input-hovered": {
+        "$type": "color",
+        "$value": "{color.neutral.50}"
+      },
+      "input-active": {
+        "$type": "color",
+        "$value": "{color.base.white}"
+      },
+      "disabled": {
+        "$type": "color",
+        "$value": "{color.neutral.100}"
+      },
+      "skeleton": {
+        "$type": "color",
+        "$value": "{color.neutral.150}"
+      },
+      "success": {
+        "$type": "color",
+        "$value": "{color.green.100}"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "{color.amber.100}"
+      },
+      "error": {
+        "$type": "color",
+        "$value": "{color.red.100}"
+      },
+      "info": {
+        "$type": "color",
+        "$value": "{color.blue.100}"
+      },
+      "overlay": {
+        "$type": "color",
+        "$value": "#1f2226a6",
+        "$description": "Literal rather than an alias: no ramp step carries an alpha channel."
+      }
+    },
+    "text": {
+      "default": {
+        "$type": "color",
+        "$value": "{color.neutral.900}"
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{color.neutral.650}"
+      },
+      "faint": {
+        "$type": "color",
+        "$value": "{color.neutral.550}",
+        "$description": "Non-essential text only. It does not clear 4.5:1 and the build says so."
+      },
+      "accent": {
+        "$type": "color",
+        "$value": "{color.blue.600}"
+      },
+      "on-accent": {
+        "$type": "color",
+        "$value": "{color.base.white}"
+      },
+      "inverse": {
+        "$type": "color",
+        "$value": "{color.neutral.50}"
+      },
+      "disabled": {
+        "$type": "color",
+        "$value": "{color.neutral.400}"
+      },
+      "link": {
+        "$type": "color",
+        "$value": "{color.blue.600}"
+      },
+      "link-hovered": {
+        "$type": "color",
+        "$value": "{color.blue.700}"
+      },
+      "success": {
+        "$type": "color",
+        "$value": "{color.green.650}"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "{color.amber.650}"
+      },
+      "error": {
+        "$type": "color",
+        "$value": "{color.red.650}"
+      },
+      "info": {
+        "$type": "color",
+        "$value": "{color.blue.650}"
+      }
+    },
+    "icon": {
+      "default": {
+        "$type": "color",
+        "$value": "{color.neutral.650}"
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{color.neutral.550}"
+      },
+      "strong": {
+        "$type": "color",
+        "$value": "{color.neutral.900}"
+      },
+      "accent": {
+        "$type": "color",
+        "$value": "{color.blue.600}"
+      },
+      "on-accent": {
+        "$type": "color",
+        "$value": "{color.base.white}"
+      },
+      "inverse": {
+        "$type": "color",
+        "$value": "{color.neutral.50}"
+      },
+      "disabled": {
+        "$type": "color",
+        "$value": "{color.neutral.400}"
+      },
+      "success": {
+        "$type": "color",
+        "$value": "{color.green.650}"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "{color.amber.650}"
+      },
+      "error": {
+        "$type": "color",
+        "$value": "{color.red.650}"
+      },
+      "info": {
+        "$type": "color",
+        "$value": "{color.blue.650}"
+      }
+    },
+    "stroke": {
+      "default": {
+        "$type": "color",
+        "$value": "{color.neutral.200}"
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{color.neutral.150}"
+      },
+      "strong": {
+        "$type": "color",
+        "$value": "{color.neutral.300}"
+      },
+      "accent": {
+        "$type": "color",
+        "$value": "{color.blue.550}"
+      },
+      "focus": {
+        "$type": "color",
+        "$value": "{color.blue.550}"
+      },
+      "disabled": {
+        "$type": "color",
+        "$value": "{color.neutral.150}"
+      },
+      "hovered": {
+        "$type": "color",
+        "$value": "{color.neutral.300}"
+      },
+      "success": {
+        "$type": "color",
+        "$value": "{color.green.550}"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "{color.amber.550}"
+      },
+      "error": {
+        "$type": "color",
+        "$value": "{color.red.550}"
+      },
+      "info": {
+        "$type": "color",
+        "$value": "{color.blue.550}"
+      }
+    },
+    "chart": {
+      "1": {
+        "$type": "color",
+        "$value": "{color.blue.600}",
+        "$description": "Ten categorical colours, one step off ten different ramps. Same job as the board's bucket colours, and the reason the hue list is as long as it is."
+      },
+      "2": {
+        "$type": "color",
+        "$value": "{color.orange.600}"
+      },
+      "3": {
+        "$type": "color",
+        "$value": "{color.purple.600}"
+      },
+      "4": {
+        "$type": "color",
+        "$value": "{color.green.600}"
+      },
+      "5": {
+        "$type": "color",
+        "$value": "{color.magenta.600}"
+      },
+      "6": {
+        "$type": "color",
+        "$value": "{color.teal.600}"
+      },
+      "7": {
+        "$type": "color",
+        "$value": "{color.brown.600}"
+      },
+      "8": {
+        "$type": "color",
+        "$value": "{color.indigo.600}"
+      },
+      "9": {
+        "$type": "color",
+        "$value": "{color.red.600}"
+      },
+      "10": {
+        "$type": "color",
+        "$value": "{color.slate.600}"
+      }
+    },
+    "status": {
+      "over": {
+        "$type": "color",
+        "$value": "{color.base.urgent}",
+        "$description": "Timeline urgency, and only there. Full chroma so an overdue bar does not read as an eleventh bucket. Same in both themes."
+      },
+      "soon": {
+        "$type": "color",
+        "$value": "{color.base.soon}"
+      }
+    }
+  },
+  "elevation": {
+    "raised": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "color": "#101c2c10",
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0px"
+        }
+      ]
+    },
+    "overlay": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "color": "#101c2c0f",
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0px"
+        },
+        {
+          "color": "#101c2c0d",
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "12px",
+          "spread": "0px"
+        }
+      ]
+    },
+    "modal": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "color": "#101c2c14",
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "8px",
+          "spread": "0px"
+        },
+        {
+          "color": "#101c2c14",
+          "offsetX": "0px",
+          "offsetY": "16px",
+          "blur": "32px",
+          "spread": "0px"
+        }
+      ]
+    }
+  }
+}

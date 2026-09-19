@@ -1,0 +1,1369 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$description": "Tenon colour primitives. Generated, not authored.",
+  "color": {
+    "neutral": {
+      "50": {
+        "$type": "color",
+        "$value": "#f6f7f8"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#edeef1"
+      },
+      "150": {
+        "$type": "color",
+        "$value": "#e2e5e9"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#d6d9df"
+      },
+      "250": {
+        "$type": "color",
+        "$value": "#c8ccd4"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#b9bec7"
+      },
+      "350": {
+        "$type": "color",
+        "$value": "#aab0ba"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#9ba2ad"
+      },
+      "450": {
+        "$type": "color",
+        "$value": "#8d94a0"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#808693"
+      },
+      "550": {
+        "$type": "color",
+        "$value": "#737985"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#666c78"
+      },
+      "650": {
+        "$type": "color",
+        "$value": "#595f6a"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#4d535d"
+      },
+      "750": {
+        "$type": "color",
+        "$value": "#42474f"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#373b42"
+      },
+      "850": {
+        "$type": "color",
+        "$value": "#2b2e34"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#1f2226"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#131518"
+      },
+      "$description": "Generated from #5d636e (board --n-500). Do not hand-edit; run scripts/generate-ramps.mjs."
+    },
+    "slate": {
+      "50": {
+        "$type": "color",
+        "$value": "#f5f7f9"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#eceff3"
+      },
+      "150": {
+        "$type": "color",
+        "$value": "#e0e5eb"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#d3dae2"
+      },
+      "250": {
+        "$type": "color",
+        "$value": "#c5cdd7"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#b5bfcb"
+      },
+      "350": {
+        "$type": "color",
+        "$value": "#a6b1be"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#97a3b2"
+      },
+      "450": {
+        "$type": "color",
+        "$value": "#8995a5"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#7b8797"
+      },
+      "550": {
+        "$type": "color",
+        "$value": "#6e7a8a"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#616d7c"
+      },
+      "650": {
+        "$type": "color",
+        "$value": "#55606e"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#495360"
+      },
+      "750": {
+        "$type": "color",
+        "$value": "#3e4752"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#343b45"
+      },
+      "850": {
+        "$type": "color",
+        "$value": "#282e36"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#1d2228"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#121519"
+      },
+      "$description": "Generated from #55606e (board --bucket-10-light). Do not hand-edit; run scripts/generate-ramps.mjs."
+    },
+    "blue": {
+      "50": {
+        "$type": "color",
+        "$value": "#f2f7ff"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#e6efff"
+      },
+      "150": {
+        "$type": "color",
+        "$value": "#d7e5ff"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#c5daff"
+      },
+      "250": {
+        "$type": "color",
+        "$value": "#b1cdff"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#9abeff"
+      },
+      "350": {
+        "$type": "color",
+        "$value": "#83afff"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#6c9fff"
+      },
+      "450": {
+        "$type": "color",
+        "$value": "#548fff"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#3d7efc"
+      },
+      "550": {
+        "$type": "color",
+        "$value": "#3070ec"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#2462da"
+      },
+      "650": {
+        "$type": "color",
+        "$value": "#1a55c6"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#1249b1"
+      },
+      "750": {
+        "$type": "color",
+        "$value": "#0d3d9a"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#093382"
+      },
+      "850": {
+        "$type": "color",
+        "$value": "#072868"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#051d4e"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#031234"
+      },
+      "$description": "Generated from #2f6feb (board --blue-500, the accent). Do not hand-edit; run scripts/generate-ramps.mjs."
+    },
+    "indigo": {
+      "50": {
+        "$type": "color",
+        "$value": "#f4f6ff"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#e9eeff"
+      },
+      "150": {
+        "$type": "color",
+        "$value": "#dce3ff"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#cdd7ff"
+      },
+      "250": {
+        "$type": "color",
+        "$value": "#bcc9ff"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#a9b9ff"
+      },
+      "350": {
+        "$type": "color",
+        "$value": "#96a9ff"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#8498ff"
+      },
+      "450": {
+        "$type": "color",
+        "$value": "#7387ff"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#6476f9"
+      },
+      "550": {
+        "$type": "color",
+        "$value": "#5867ea"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#4d5ad8"
+      },
+      "650": {
+        "$type": "color",
+        "$value": "#434dc4"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#3941af"
+      },
+      "750": {
+        "$type": "color",
+        "$value": "#303798"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#272d81"
+      },
+      "850": {
+        "$type": "color",
+        "$value": "#1e2367"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#151a4d"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#0c1034"
+      },
+      "$description": "Generated from #4550c9 (board --bucket-8-light). Do not hand-edit; run scripts/generate-ramps.mjs."
+    },
+    "purple": {
+      "50": {
+        "$type": "color",
+        "$value": "#f7f5ff"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#efecff"
+      },
+      "150": {
+        "$type": "color",
+        "$value": "#e5e0ff"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#dad2ff"
+      },
+      "250": {
+        "$type": "color",
+        "$value": "#cec2ff"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#c1b0ff"
+      },
+      "350": {
+        "$type": "color",
+        "$value": "#b49dff"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#a889ff"
+      },
+      "450": {
+        "$type": "color",
+        "$value": "#9d74ff"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#9063f4"
+      },
+      "550": {
+        "$type": "color",
+        "$value": "#8355e5"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#7647d3"
+      },
+      "650": {
+        "$type": "color",
+        "$value": "#693bc0"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#5c30ab"
+      },
+      "750": {
+        "$type": "color",
+        "$value": "#4f2895"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#42207e"
+      },
+      "850": {
+        "$type": "color",
+        "$value": "#341965"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#26124c"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#180a32"
+      },
+      "$description": "Generated from #7c4ddb (board --bucket-3-light). Do not hand-edit; run scripts/generate-ramps.mjs."
+    },
+    "plum": {
+      "50": {
+        "$type": "color",
+        "$value": "#fff2fe"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#fde6fc"
+      },
+      "150": {
+        "$type": "color",
+        "$value": "#fbd7f9"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#f8c6f5"
+      },
+      "250": {
+        "$type": "color",
+        "$value": "#f2b4f0"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#e9a0e7"
+      },
+      "350": {
+        "$type": "color",
+        "$value": "#e08cde"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#d57ad4"
+      },
+      "450": {
+        "$type": "color",
+        "$value": "#c969c8"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#bc59bb"
+      },
+      "550": {
+        "$type": "color",
+        "$value": "#ad4bad"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#9d3e9d"
+      },
+      "650": {
+        "$type": "color",
+        "$value": "#8d338d"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#7d297d"
+      },
+      "750": {
+        "$type": "color",
+        "$value": "#6b216c"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#5a1b5b"
+      },
+      "850": {
+        "$type": "color",
+        "$value": "#481448"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#360f36"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#230823"
+      },
+      "$description": "Generated from #9c3d9c (new, fills the purple-to-magenta gap). Do not hand-edit; run scripts/generate-ramps.mjs."
+    },
+    "magenta": {
+      "50": {
+        "$type": "color",
+        "$value": "#fff3f7"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#ffe7ef"
+      },
+      "150": {
+        "$type": "color",
+        "$value": "#ffd9e5"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#ffc7da"
+      },
+      "250": {
+        "$type": "color",
+        "$value": "#ffb3cd"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#ff9abf"
+      },
+      "350": {
+        "$type": "color",
+        "$value": "#f885b1"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#ee72a3"
+      },
+      "450": {
+        "$type": "color",
+        "$value": "#e25f95"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#d44e87"
+      },
+      "550": {
+        "$type": "color",
+        "$value": "#c53f7a"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#b4326d"
+      },
+      "650": {
+        "$type": "color",
+        "$value": "#a22660"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#8f1d54"
+      },
+      "750": {
+        "$type": "color",
+        "$value": "#7c1647"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#69113b"
+      },
+      "850": {
+        "$type": "color",
+        "$value": "#540d2e"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#3f0922"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#290515"
+      },
+      "$description": "Generated from #b1306b (board --bucket-5-light). Do not hand-edit; run scripts/generate-ramps.mjs."
+    },
+    "rose": {
+      "50": {
+        "$type": "color",
+        "$value": "#fff4f5"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#ffe8eb"
+      },
+      "150": {
+        "$type": "color",
+        "$value": "#ffdade"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#ffc9d0"
+      },
+      "250": {
+        "$type": "color",
+        "$value": "#ffb5c0"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#ff9dad"
+      },
+      "350": {
+        "$type": "color",
+        "$value": "#fb869c"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#f2728c"
+      },
+      "450": {
+        "$type": "color",
+        "$value": "#e6607d"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#d84f70"
+      },
+      "550": {
+        "$type": "color",
+        "$value": "#c84063"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#b73356"
+      },
+      "650": {
+        "$type": "color",
+        "$value": "#a5274b"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#921e40"
+      },
+      "750": {
+        "$type": "color",
+        "$value": "#7f1736"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#6b112d"
+      },
+      "850": {
+        "$type": "color",
+        "$value": "#550d22"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#400a19"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#2b050f"
+      },
+      "$description": "Generated from #c23b5e (new, fills the magenta-to-red gap). Do not hand-edit; run scripts/generate-ramps.mjs."
+    },
+    "red": {
+      "50": {
+        "$type": "color",
+        "$value": "#fff4f2"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#ffe9e6"
+      },
+      "150": {
+        "$type": "color",
+        "$value": "#ffdbd6"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#ffcbc4"
+      },
+      "250": {
+        "$type": "color",
+        "$value": "#ffb7af"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#ffa096"
+      },
+      "350": {
+        "$type": "color",
+        "$value": "#ff887c"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#fb7065"
+      },
+      "450": {
+        "$type": "color",
+        "$value": "#ef5c53"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#e14a43"
+      },
+      "550": {
+        "$type": "color",
+        "$value": "#d13a35"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#c02b29"
+      },
+      "650": {
+        "$type": "color",
+        "$value": "#ad1e1f"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#9a1417"
+      },
+      "750": {
+        "$type": "color",
+        "$value": "#850e12"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#71090d"
+      },
+      "850": {
+        "$type": "color",
+        "$value": "#5a0709"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#440607"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#2d0404"
+      },
+      "$description": "Generated from #c8322f (board --red-500). Do not hand-edit; run scripts/generate-ramps.mjs."
+    },
+    "orange": {
+      "50": {
+        "$type": "color",
+        "$value": "#fff4f0"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#ffe9e0"
+      },
+      "150": {
+        "$type": "color",
+        "$value": "#ffdccd"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#ffccb6"
+      },
+      "250": {
+        "$type": "color",
+        "$value": "#ffba9a"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#ffa479"
+      },
+      "350": {
+        "$type": "color",
+        "$value": "#fc8e59"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#f27b3e"
+      },
+      "450": {
+        "$type": "color",
+        "$value": "#e76921"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#d85a00"
+      },
+      "550": {
+        "$type": "color",
+        "$value": "#c35100"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#af4800"
+      },
+      "650": {
+        "$type": "color",
+        "$value": "#9b3f00"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#883600"
+      },
+      "750": {
+        "$type": "color",
+        "$value": "#752d00"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#622500"
+      },
+      "850": {
+        "$type": "color",
+        "$value": "#4f1c00"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#3c1300"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#280a00"
+      },
+      "$description": "Generated from #e0610f (board --orange-500). Do not hand-edit; run scripts/generate-ramps.mjs."
+    },
+    "brown": {
+      "50": {
+        "$type": "color",
+        "$value": "#fcf5f0"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#f9ece2"
+      },
+      "150": {
+        "$type": "color",
+        "$value": "#f4e0d1"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#efd3be"
+      },
+      "250": {
+        "$type": "color",
+        "$value": "#e7c5a9"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#ddb594"
+      },
+      "350": {
+        "$type": "color",
+        "$value": "#d3a580"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#c7966d"
+      },
+      "450": {
+        "$type": "color",
+        "$value": "#bb875c"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#ad794c"
+      },
+      "550": {
+        "$type": "color",
+        "$value": "#9f6c3f"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#905f33"
+      },
+      "650": {
+        "$type": "color",
+        "$value": "#815329"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#724721"
+      },
+      "750": {
+        "$type": "color",
+        "$value": "#623c1a"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#523214"
+      },
+      "850": {
+        "$type": "color",
+        "$value": "#41270f"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#301c0a"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#1f1106"
+      },
+      "$description": "Generated from #8a5a2f (board --bucket-7-light). Do not hand-edit; run scripts/generate-ramps.mjs."
+    },
+    "amber": {
+      "50": {
+        "$type": "color",
+        "$value": "#fdf5ed"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#faecdc"
+      },
+      "150": {
+        "$type": "color",
+        "$value": "#f7e1c8"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#f2d3b2"
+      },
+      "250": {
+        "$type": "color",
+        "$value": "#ebc59a"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#e2b480"
+      },
+      "350": {
+        "$type": "color",
+        "$value": "#d8a468"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#cd9551"
+      },
+      "450": {
+        "$type": "color",
+        "$value": "#c1863b"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#b37826"
+      },
+      "550": {
+        "$type": "color",
+        "$value": "#a56a11"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#955e00"
+      },
+      "650": {
+        "$type": "color",
+        "$value": "#845200"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#734700"
+      },
+      "750": {
+        "$type": "color",
+        "$value": "#633d00"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#533200"
+      },
+      "850": {
+        "$type": "color",
+        "$value": "#422700"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#321c00"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#211100"
+      },
+      "$description": "Generated from #9a6100 (board --amber-500). Do not hand-edit; run scripts/generate-ramps.mjs."
+    },
+    "yellow": {
+      "50": {
+        "$type": "color",
+        "$value": "#fcf6eb"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#f8edd9"
+      },
+      "150": {
+        "$type": "color",
+        "$value": "#f3e3c3"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#edd7aa"
+      },
+      "250": {
+        "$type": "color",
+        "$value": "#e5c98f"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#dbb973"
+      },
+      "350": {
+        "$type": "color",
+        "$value": "#d0aa56"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#c59b3a"
+      },
+      "450": {
+        "$type": "color",
+        "$value": "#b98c17"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#a97f00"
+      },
+      "550": {
+        "$type": "color",
+        "$value": "#997200"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#896600"
+      },
+      "650": {
+        "$type": "color",
+        "$value": "#795900"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#694e00"
+      },
+      "750": {
+        "$type": "color",
+        "$value": "#5a4200"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#4c3700"
+      },
+      "850": {
+        "$type": "color",
+        "$value": "#3c2b00"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#2d1f00"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#1d1300"
+      },
+      "$description": "Generated from #b38600 (new, fills the amber-to-lime gap). Do not hand-edit; run scripts/generate-ramps.mjs."
+    },
+    "lime": {
+      "50": {
+        "$type": "color",
+        "$value": "#f2faed"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#e6f4dc"
+      },
+      "150": {
+        "$type": "color",
+        "$value": "#d7edc8"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#c7e4b1"
+      },
+      "250": {
+        "$type": "color",
+        "$value": "#b5da99"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#a2cd80"
+      },
+      "350": {
+        "$type": "color",
+        "$value": "#90c166"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#7fb44f"
+      },
+      "450": {
+        "$type": "color",
+        "$value": "#6fa638"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#609921"
+      },
+      "550": {
+        "$type": "color",
+        "$value": "#538b05"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#497c00"
+      },
+      "650": {
+        "$type": "color",
+        "$value": "#406e00"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#375f00"
+      },
+      "750": {
+        "$type": "color",
+        "$value": "#2e5200"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#264400"
+      },
+      "850": {
+        "$type": "color",
+        "$value": "#1d3600"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#142800"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#0b1a00"
+      },
+      "$description": "Generated from #5a9216 (new, fills the yellow-to-green gap). Do not hand-edit; run scripts/generate-ramps.mjs."
+    },
+    "green": {
+      "50": {
+        "$type": "color",
+        "$value": "#f0faf2"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#e2f4e6"
+      },
+      "150": {
+        "$type": "color",
+        "$value": "#d1edd8"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#bde5c7"
+      },
+      "250": {
+        "$type": "color",
+        "$value": "#a8dbb6"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#92cfa3"
+      },
+      "350": {
+        "$type": "color",
+        "$value": "#7bc291"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#67b680"
+      },
+      "450": {
+        "$type": "color",
+        "$value": "#53a970"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#419b62"
+      },
+      "550": {
+        "$type": "color",
+        "$value": "#328d55"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#237f49"
+      },
+      "650": {
+        "$type": "color",
+        "$value": "#17713e"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#0d6334"
+      },
+      "750": {
+        "$type": "color",
+        "$value": "#07552c"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#054723"
+      },
+      "850": {
+        "$type": "color",
+        "$value": "#04381b"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#042913"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#031a0b"
+      },
+      "$description": "Generated from #1f7a45 (board --green-500). Do not hand-edit; run scripts/generate-ramps.mjs."
+    },
+    "teal": {
+      "50": {
+        "$type": "color",
+        "$value": "#eff9fc"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#e0f2f8"
+      },
+      "150": {
+        "$type": "color",
+        "$value": "#ceeaf3"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#b9e1ec"
+      },
+      "250": {
+        "$type": "color",
+        "$value": "#a2d6e4"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#8ac9da"
+      },
+      "350": {
+        "$type": "color",
+        "$value": "#72bcd0"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#5cafc4"
+      },
+      "450": {
+        "$type": "color",
+        "$value": "#46a2b8"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#3194ab"
+      },
+      "550": {
+        "$type": "color",
+        "$value": "#1d869d"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#05798e"
+      },
+      "650": {
+        "$type": "color",
+        "$value": "#006b7e"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#005d6e"
+      },
+      "750": {
+        "$type": "color",
+        "$value": "#004f5f"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#00424f"
+      },
+      "850": {
+        "$type": "color",
+        "$value": "#00343f"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#00272f"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#00191f"
+      },
+      "$description": "Generated from #0f7d93 (board --bucket-6-light). Do not hand-edit; run scripts/generate-ramps.mjs."
+    },
+    "cyan": {
+      "50": {
+        "$type": "color",
+        "$value": "#eef9fc"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#def3f8"
+      },
+      "150": {
+        "$type": "color",
+        "$value": "#cbebf4"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#b5e2ee"
+      },
+      "250": {
+        "$type": "color",
+        "$value": "#9dd7e7"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#84cadd"
+      },
+      "350": {
+        "$type": "color",
+        "$value": "#6abdd3"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#51b0c8"
+      },
+      "450": {
+        "$type": "color",
+        "$value": "#38a3bb"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#1c95ae"
+      },
+      "550": {
+        "$type": "color",
+        "$value": "#00879f"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#00798f"
+      },
+      "650": {
+        "$type": "color",
+        "$value": "#006b7e"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#005d6e"
+      },
+      "750": {
+        "$type": "color",
+        "$value": "#004f5f"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#00424f"
+      },
+      "850": {
+        "$type": "color",
+        "$value": "#00343f"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#00272f"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#00191f"
+      },
+      "$description": "Generated from #0e8fa8 (new, fills the teal-to-blue gap). Do not hand-edit; run scripts/generate-ramps.mjs."
+    },
+    "base": {
+      "white": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "black": {
+        "$type": "color",
+        "$value": "#000000"
+      },
+      "urgent": {
+        "$type": "color",
+        "$value": "#ff1e2d",
+        "$description": "Full chroma, outside the red ramp. Fills only, never text."
+      },
+      "soon": {
+        "$type": "color",
+        "$value": "#ffa600",
+        "$description": "Full chroma, outside the amber ramp. Fills only, never text."
+      }
+    }
+  }
+}

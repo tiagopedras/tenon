@@ -1,0 +1,128 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$description": "Assembled text styles. Not themed: a heading is the same size in dark mode, so there is one file rather than one per theme. Every value here aliases a primitive, so a size change happens once.",
+  "text": {
+    "heading-1": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.family.sans}",
+        "fontSize": "{typography.size.3xl}",
+        "fontWeight": "{typography.weight.bold}",
+        "lineHeight": "{typography.line-height.tight}",
+        "letterSpacing": "{typography.letter-spacing.tight}"
+      }
+    },
+    "heading-2": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.family.sans}",
+        "fontSize": "{typography.size.2xl}",
+        "fontWeight": "{typography.weight.bold}",
+        "lineHeight": "{typography.line-height.snug}",
+        "letterSpacing": "{typography.letter-spacing.tight}"
+      }
+    },
+    "heading-3": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.family.sans}",
+        "fontSize": "{typography.size.xl}",
+        "fontWeight": "{typography.weight.semibold}",
+        "lineHeight": "{typography.line-height.snug}",
+        "letterSpacing": "{typography.letter-spacing.normal}"
+      }
+    },
+    "heading-4": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.family.sans}",
+        "fontSize": "{typography.size.lg}",
+        "fontWeight": "{typography.weight.semibold}",
+        "lineHeight": "{typography.line-height.normal}",
+        "letterSpacing": "{typography.letter-spacing.normal}"
+      }
+    },
+    "heading-5": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.family.sans}",
+        "fontSize": "{typography.size.md}",
+        "fontWeight": "{typography.weight.semibold}",
+        "lineHeight": "{typography.line-height.normal}",
+        "letterSpacing": "{typography.letter-spacing.normal}"
+      }
+    },
+    "heading-6": {
+      "$description": "The smallest heading, and the one that has to work as a section label above a list. At 12px it is the same size as a label, so it earns its separation with tracking rather than with a capital, and the words read as they were written.",
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.family.sans}",
+        "fontSize": "{typography.size.sm}",
+        "fontWeight": "{typography.weight.semibold}",
+        "lineHeight": "{typography.line-height.normal}",
+        "letterSpacing": "{typography.letter-spacing.wide}"
+      }
+    },
+    "body": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.family.sans}",
+        "fontSize": "{typography.size.md}",
+        "fontWeight": "{typography.weight.regular}",
+        "lineHeight": "{typography.line-height.normal}",
+        "letterSpacing": "{typography.letter-spacing.normal}"
+      }
+    },
+    "body-sm": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.family.sans}",
+        "fontSize": "{typography.size.base}",
+        "fontWeight": "{typography.weight.regular}",
+        "lineHeight": "{typography.line-height.normal}",
+        "letterSpacing": "{typography.letter-spacing.normal}"
+      }
+    },
+    "label": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.family.sans}",
+        "fontSize": "{typography.size.sm}",
+        "fontWeight": "{typography.weight.medium}",
+        "lineHeight": "{typography.line-height.normal}",
+        "letterSpacing": "{typography.letter-spacing.normal}"
+      }
+    },
+    "caption": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.family.sans}",
+        "fontSize": "{typography.size.xs}",
+        "fontWeight": "{typography.weight.regular}",
+        "lineHeight": "{typography.line-height.normal}",
+        "letterSpacing": "{typography.letter-spacing.normal}"
+      }
+    },
+    "code": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.family.mono}",
+        "fontSize": "{typography.size.sm}",
+        "fontWeight": "{typography.weight.regular}",
+        "lineHeight": "{typography.line-height.relaxed}",
+        "letterSpacing": "{typography.letter-spacing.normal}"
+      }
+    }
+  },
+  "radius": {
+    "$description": "Named picks off the dimension scale. A name rather than a raw step because a radius is the one measurement a component should not choose freely.",
+    "none":    { "$type": "dimension", "$value": "{dimension.0}" },
+    "sm":      { "$type": "dimension", "$value": "{dimension.037}" },
+    "default": { "$type": "dimension", "$value": "{dimension.075}" },
+    "md":      { "$type": "dimension", "$value": "{dimension.100}" },
+    "lg":      { "$type": "dimension", "$value": "{dimension.150}" },
+    "xl":      { "$type": "dimension", "$value": "{dimension.200}" },
+    "2xl":     { "$type": "dimension", "$value": "{dimension.300}" },
+    "full":    { "$type": "dimension", "$value": "{dimension.full}" }
+  }
+}

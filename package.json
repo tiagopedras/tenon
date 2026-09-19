@@ -1,0 +1,19 @@
+{
+  "name": "@tiagopedras/tenon",
+  "version": "0.1.0",
+  "description": "The shared design system. Tokens first, components later.",
+  "private": true,
+  "type": "module",
+  "files": ["dist", "tokens"],
+  "exports": {
+    "./tenon.css": "./dist/tenon.css",
+    "./tokens": "./dist/tenon.tokens.json",
+    "./tokens/*": "./tokens/*"
+  },
+  "scripts": {
+    "generate": "node scripts/generate-ramps.mjs",
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/build.mjs --quiet",
+    "all": "npm run generate && npm run build"
+  }
+}

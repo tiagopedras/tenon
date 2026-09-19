@@ -1,0 +1,41 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$description": "One dimension scale, read by spacing, radius, border width, icon size and anything else measured in pixels. There is no semantic tier above it: a gap does not change between light and dark, so the tier would rename a value and add nothing. The numbering matches Twinkl's spacing collection, where the step is the pixel value times 12.5, so 100 is 8px.",
+  "dimension": {
+    "0":    { "$type": "dimension", "$value": { "value": 0,   "unit": "px" } },
+    "012":  { "$type": "dimension", "$value": { "value": 1,   "unit": "px" } },
+    "025":  { "$type": "dimension", "$value": { "value": 2,   "unit": "px" } },
+    "037":  { "$type": "dimension", "$value": { "value": 3,   "unit": "px" } },
+    "050":  { "$type": "dimension", "$value": { "value": 4,   "unit": "px" } },
+    "075":  { "$type": "dimension", "$value": { "value": 6,   "unit": "px" } },
+    "100":  { "$type": "dimension", "$value": { "value": 8,   "unit": "px" } },
+    "125":  { "$type": "dimension", "$value": { "value": 10,  "unit": "px" } },
+    "150":  { "$type": "dimension", "$value": { "value": 12,  "unit": "px" } },
+    "175":  { "$type": "dimension", "$value": { "value": 14,  "unit": "px" } },
+    "200":  { "$type": "dimension", "$value": { "value": 16,  "unit": "px" } },
+    "250":  { "$type": "dimension", "$value": { "value": 20,  "unit": "px" } },
+    "300":  { "$type": "dimension", "$value": { "value": 24,  "unit": "px" } },
+    "400":  { "$type": "dimension", "$value": { "value": 32,  "unit": "px" } },
+    "500":  { "$type": "dimension", "$value": { "value": 40,  "unit": "px" } },
+    "600":  { "$type": "dimension", "$value": { "value": 48,  "unit": "px" } },
+    "800":  { "$type": "dimension", "$value": { "value": 64,  "unit": "px" } },
+    "1000": { "$type": "dimension", "$value": { "value": 80,  "unit": "px" } },
+    "1200": { "$type": "dimension", "$value": { "value": 96,  "unit": "px" } },
+    "1400": { "$type": "dimension", "$value": { "value": 112, "unit": "px" } },
+    "full": {
+      "$type": "dimension",
+      "$value": { "value": 9999, "unit": "px" },
+      "$description": "Pill radius. Not a step on the scale, and nothing but a radius should read it."
+    }
+  },
+  "breakpoint": {
+    "2xs": { "$type": "dimension", "$value": { "value": 375,  "unit": "px" } },
+    "xs":  { "$type": "dimension", "$value": { "value": 480,  "unit": "px" } },
+    "sm":  { "$type": "dimension", "$value": { "value": 640,  "unit": "px" } },
+    "md":  { "$type": "dimension", "$value": { "value": 768,  "unit": "px" } },
+    "lg":  { "$type": "dimension", "$value": { "value": 1024, "unit": "px" } },
+    "xl":  { "$type": "dimension", "$value": { "value": 1280, "unit": "px" } },
+    "2xl": { "$type": "dimension", "$value": { "value": 1440, "unit": "px" } },
+    "3xl": { "$type": "dimension", "$value": { "value": 1768, "unit": "px" } }
+  }
+}

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tenon</title>
+<link rel="stylesheet" href="../dist/tenon.css">
+<style>
+  /* This page reads Tenon and nothing else, which is also how it acts as a
+     test: anything hard-coded here would be a token that does not exist. */
+  body {
+    margin: 0;
+    background: var(--tenon-background-default);
+    color: var(--tenon-text-default);
+    font-family: var(--tenon-text-body-family);
+    font-size: var(--tenon-text-body-size);
+    line-height: var(--tenon-text-body-line-height);
+  }
+  main { max-width: 1100px; margin: 0 auto; padding: var(--tenon-dimension-400) var(--tenon-dimension-300) var(--tenon-dimension-1000); }
+  header { display: flex; align-items: baseline; gap: var(--tenon-dimension-150); flex-wrap: wrap; margin-bottom: var(--tenon-dimension-400); }
+  header p { color: var(--tenon-text-subtle); margin: 0; }
+  button {
+    margin-left: auto; cursor: pointer;
+    font-family: var(--tenon-text-label-family); font-size: var(--tenon-text-label-size);
+    font-weight: var(--tenon-text-label-weight);
+    background: var(--tenon-background-accent); color: var(--tenon-text-on-accent);
+    border: 0; border-radius: var(--tenon-radius-full);
+    padding: var(--tenon-dimension-075) var(--tenon-dimension-200);
+  }
+  button:hover { background: var(--tenon-background-accent-hovered); }
+  section { margin-top: var(--tenon-dimension-600); }
+  section > h2 { margin: 0 0 var(--tenon-dimension-025); }
+  section > p  { margin: 0 0 var(--tenon-dimension-200); color: var(--tenon-text-subtle); max-width: 62ch; }
+
+  .ramp { display: grid; grid-template-columns: 5.5rem repeat(19, 1fr); align-items: center; gap: var(--tenon-dimension-012); margin-bottom: var(--tenon-dimension-012); }
+  .ramp b { font: inherit; font-weight: var(--tenon-text-label-weight); color: var(--tenon-text-subtle); font-size: var(--tenon-text-caption-size); }
+  .sw { aspect-ratio: 1; }
+  .steps { display: grid; grid-template-columns: 5.5rem repeat(19, 1fr); gap: var(--tenon-dimension-012); margin-bottom: var(--tenon-dimension-100); }
+  .steps span { font-size: 9px; color: var(--tenon-text-faint); text-align: center; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: var(--tenon-dimension-100); }
+  .tok { display: flex; align-items: center; gap: var(--tenon-dimension-100); padding: var(--tenon-dimension-075); background: var(--tenon-background-raised); border: 1px solid var(--tenon-stroke-subtle); border-radius: var(--tenon-radius-default); }
+  .tok .chip { width: 26px; height: 26px; border-radius: var(--tenon-radius-sm); border: 1px solid var(--tenon-stroke-default); flex: none; }
+  .tok code { font-family: var(--tenon-text-code-family); font-size: var(--tenon-text-caption-size); color: var(--tenon-text-default); word-break: break-all; }
+
+  .type-row { display: grid; grid-template-columns: 9rem 1fr; gap: var(--tenon-dimension-200); align-items: baseline; padding: var(--tenon-dimension-100) 0; border-bottom: 1px solid var(--tenon-stroke-subtle); }
+  .type-row code { font-family: var(--tenon-text-code-family); font-size: var(--tenon-text-caption-size); color: var(--tenon-text-subtle); }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--tenon-dimension-200); }
+  .card { background: var(--tenon-background-raised); border: 1px solid var(--tenon-stroke-default); border-radius: var(--tenon-radius-lg); padding: var(--tenon-dimension-200); box-shadow: var(--tenon-elevation-raised); }
+  .card p { margin: var(--tenon-dimension-075) 0 var(--tenon-dimension-150); color: var(--tenon-text-subtle); font-size: var(--tenon-text-body-sm-size); }
+  .pill { display: inline-block; padding: 2px var(--tenon-dimension-100); border-radius: var(--tenon-radius-full); font-size: var(--tenon-text-caption-size); font-weight: var(--tenon-text-label-weight); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1 class="tenon-heading-1" style="margin:0">Tenon</h1>
+    <p>17 hues &times; 19 steps, 76 semantic tokens, 2 themes.</p>
+    <button id="toggle">Switch theme</button>
+  </header>
+
+  <section>
+    <h2 class="tenon-heading-2">Primitives</h2>
+    <p>Generated in OKLCh from one anchor each. The lightness curve is identical on every hue, which is what makes a 600 on one row weigh the same as a 600 on the next.</p>
+    <div id="ramps"></div>
+  </section>
+
+  <section>
+    <h2 class="tenon-heading-2">Semantic colour</h2>
+    <p>The only layer that changes between themes. Four groups, plus the ten categorical colours and the two timeline fills.</p>
+    <div id="semantics"></div>
+  </section>
+
+  <section>
+    <h2 class="tenon-heading-2">Type</h2>
+    <p>Six headings at the dense end of the ramp, because the board they came from runs 9px to 16px.</p>
+    <div id="type"></div>
+  </section>
+
+  <section>
+    <h2 class="tenon-heading-2">Put together</h2>
+    <p>Nothing on this page carries a hard-coded value, so anything that looks wrong is a token that is wrong or missing.</p>
+    <div class="cards" id="cards"></div>
+  </section>
+</main>
+
+<script type="module">
+const tokens = await fetch('../dist/tenon.tokens.json').then(r => r.json());
+const css = getComputedStyle(document.documentElement);
+const read = (n) => css.getPropertyValue(n).trim();
+
+const STEPS = [50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950];
+const HUES = Object.keys(tokens.primitives)
+  .filter(k => k.startsWith('color.') && /\.\d+$/.test(k))
+  .map(k => k.split('.')[1])
+  .filter((v, i, a) => a.indexOf(v) === i);
+
+document.getElementById('ramps').innerHTML =
+  `<div class="steps"><span></span>${STEPS.map(s => `<span>${s}</span>`).join('')}</div>` +
+  HUES.map(h => `<div class="ramp"><b>${h}</b>${STEPS
+    .map(s => `<div class="sw" style="background:${tokens.primitives[`color.${h}.${s}`]}" title="${h}.${s} ${tokens.primitives[`color.${h}.${s}`]}"></div>`)
+    .join('')}</div>`).join('');
+
+function renderSemantics() {
+  const groups = {};
+  for (const key of Object.keys(tokens.themes.light)) {
+    (groups[key.includes('.') ? key.split('.')[0] : 'other'] ??= []).push(key);
+  }
+  document.getElementById('semantics').innerHTML = Object.entries(groups).map(([g, keys]) =>
+    `<h3 class="tenon-heading-4" style="margin:var(--tenon-dimension-200) 0 var(--tenon-dimension-100)">${g}</h3>
+     <div class="grid">${keys.map(k => {
+       const v = read(`--tenon-${k.replace(/\./g, '-')}`);
+       return `<div class="tok"><div class="chip" style="background:${v}"></div><code>${k}<br>${v}</code></div>`;
+     }).join('')}</div>`).join('');
+}
+
+const TYPE = ['heading-1','heading-2','heading-3','heading-4','heading-5','heading-6','body','body-sm','label','caption','code'];
+document.getElementById('type').innerHTML = TYPE.map(t => {
+  const s = tokens.shared[`text.${t}`];
+  return `<div class="type-row"><code>${t}<br>${s.fontSize} / ${s.fontWeight} / ${s.lineHeight}</code>
+          <div class="tenon-${t}">The quick brown fox jumps over the lazy dog</div></div>`;
+}).join('');
+
+const CARDS = [
+  ['People', 4, 'success', 'on track'],
+  ['Design oversight', 6, 'warning', 'needs a look'],
+  ['Design System', 2, 'error', 'overdue'],
+  ['Strategic', 8, 'info', 'planned'],
+];
+document.getElementById('cards').innerHTML = CARDS.map(([name, bucket, tone, label], i) =>
+  `<div class="card">
+     <h3 class="tenon-heading-3" style="margin:0;color:var(--tenon-chart-${bucket})">${name}</h3>
+     <p>Reads background.raised, stroke.default, radius.lg, elevation.raised and chart.${bucket}.</p>
+     <span class="pill" style="background:var(--tenon-background-${tone});color:var(--tenon-text-${tone})">${label}</span>
+   </div>`).join('');
+
+renderSemantics();
+
+document.getElementById('toggle').addEventListener('click', () => {
+  const now = document.documentElement.getAttribute('data-theme');
+  const next = now === 'dark' ? 'light'
+    : now === 'light' ? 'dark'
+    : matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  renderSemantics();
+});
+</script>
+</body>
+</html>

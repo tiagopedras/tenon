@@ -15,9 +15,9 @@ Three consumers, reaching it two different ways:
 
 | Consumer | How | State |
 | --- | --- | --- |
-| `to-dos` board | `npm i github:tiagopedras/tenon#v0.7.0`, CSS copied into `kanban/dist/` by its own vite build | needs v0.7.0 for the chat window, tag not pushed yet |
+| `to-dos` board | `npm i github:tiagopedras/tenon#v0.7.0`, CSS copied into `kanban/dist/` by its own vite build | on v0.7.0, which the chat window needs |
 | `to-dos` companion | same install, imported in `main.tsx` | on v0.5.0 |
-| `PACKAGES/ai_chat_engine` | devDependency by relative path, built into its own output | live, on v0.7.0 |
+| `PACKAGES/ai_chat_engine` | devDependency at the tag, built into its own output | live, on v0.7.0 |
 
 `ai_chat_engine` is the second kind on purpose: it is dropped into hosts it
 does not control, so it must not require one to load a stylesheet first. Its
@@ -25,8 +25,7 @@ window is React on Tenon's components (rewritten 19 Sep 2026), and it ships
 Tenon inside its one-file bundle, plus a `chat.standalone.css` that carries the
 tokens and component styles for a page that has neither. `npm run sync` cannot
 see that and should not try to; `consumers.json` says so. It devDepends on
-`../tenon` by path until v0.7.0 is tagged, after which it should point at the
-tag like the others.
+the tag like the others.
 
 `ai_canvas` is the one listed consumer not installed. He is not using it and
 does not want it done.

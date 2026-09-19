@@ -1,6 +1,6 @@
 import { StrictMode, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Button, Badge, Card, Tag, Stat, Column, ColumnEmpty, Field, Modal, Textarea, Spinner, Pill, Alert, Switch, SegmentedControl } from '../src';
+import { Button, Badge, Card, Tag, Stat, Column, ColumnEmpty, Field, Modal, ModalPane, Textarea, Spinner, Pill, Alert, Switch, SegmentedControl } from '../src';
 import type { TagChart } from '../src';
 import '../dist/tenon.css';
 import './playground.css';
@@ -29,6 +29,8 @@ function App() {
   const [view, setView] = useState('cards');
   const [draft, setDraft] = useState('');
   const [modal, setModal] = useState(location.hash === '#modal');
+  const [doc, setDoc] = useState(location.hash === '#doc');
+  const [ask, setAsk] = useState(false);
 
   const next = () => {
     const order = ['system', 'light', 'dark'] as const;
@@ -225,18 +227,54 @@ function App() {
 
       <section>
         <h2 className="tenon-heading-2">Modal</h2>
-        <p className="tenon-body-sm muted">Escape and the scrim both close it. Tab stays inside, and focus goes back to the button.</p>
-        <Button variant="primary" onClick={() => setModal(true)}>Open the modal</Button>
+        <p className="tenon-body-sm muted">Escape, the X and the scrim close it. Tab stays inside, and focus goes back to the button. The document one keeps the size you drag it to.</p>
+        <Row title="open one">
+          <Button variant="primary" onClick={() => setModal(true)}>Chat window</Button>
+          <Button variant="secondary" onClick={() => setDoc(true)}>Document, split and resizable</Button>
+          <Button variant="secondary" onClick={() => setAsk(true)}>Confirmation</Button>
+        </Row>
         <Modal
           open={modal}
           onClose={() => setModal(false)}
           title="Improvements agent"
           subtitle="agents-dashboard · 06:00"
-          headEnd={<Button size="sm" variant="ghost" onClick={() => setModal(false)}>Close</Button>}
+          size="lg"
           footer={<><Textarea autoGrow placeholder="Reply…" style={{ flex: 1 }} /><Button variant="primary">Send</Button></>}
         >
           <p className="tenon-body">The body scrolls and the head and footer stay where they are.</p>
           {Array.from({ length: 14 }, (_, i) => <p key={i} className="tenon-body-sm">Line {i + 1}. Something the agent did.</p>)}
+        </Modal>
+        <Modal
+          open={doc}
+          onClose={() => setDoc(false)}
+          title="Write the Tenon migration note"
+          subtitle="In Waiting for review · Design System · Doing · 14 Sep, 02:14 · planning agent"
+          size="xl"
+          layout="split"
+          resizable
+          resizeKey="tenon-playground-doc-size"
+          footer={<><Button variant="secondary">Turn it down</Button><Button variant="confirm">Accept</Button></>}
+        >
+          <ModalPane aside>
+            <h3 className="tenon-heading-6">History</h3>
+            {Array.from({ length: 12 }, (_, i) => <p key={i} className="tenon-body-sm">Night {i + 1}: replanned.</p>)}
+          </ModalPane>
+          <ModalPane>
+            <h3 className="tenon-heading-4">Plan</h3>
+            {Array.from({ length: 24 }, (_, i) => <p key={i} className="tenon-body-sm">Step {i + 1}. Each column scrolls on its own. Drag the corner; the size is kept.</p>)}
+          </ModalPane>
+        </Modal>
+        <Modal
+          open={ask}
+          onClose={() => setAsk(false)}
+          title="Turn this one down?"
+          subtitle="Write the Tenon migration note"
+          size="sm"
+          initialFocus="footer"
+          onSubmit={() => setAsk(false)}
+          footer={<><Button variant="secondary" onClick={() => setAsk(false)}>Keep it</Button><Button variant="destructive" onClick={() => setAsk(false)}>Turn it down</Button></>}
+        >
+          <Field label="Why" multiline rows={3} placeholder="⌘↵ sends it from here" />
         </Modal>
       </section>
     </main>

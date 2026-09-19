@@ -229,16 +229,41 @@ function y({ label: e, hint: t, error: n, required: i, className: a, ...o }) {
 }
 //#endregion
 //#region src/components/Modal/Modal.tsx
-var b = "a[href],button:not([disabled]),textarea:not([disabled]),input:not([disabled]),select:not([disabled]),[tabindex]:not([tabindex=\"-1\"])";
-function x({ open: e, onClose: t, title: i, subtitle: o, headEnd: d, footer: f, size: p = "md", className: m, children: h }) {
-	let g = a(null), _ = r(), v = a(t);
-	return v.current = t, n(() => {
+var b = "a[href],button:not([disabled]),textarea:not([disabled]),input:not([disabled]),select:not([disabled]),[tabindex]:not([tabindex=\"-1\"])", x = [
+	"text",
+	"search",
+	"url",
+	"email",
+	"tel",
+	"password",
+	"number",
+	"date"
+];
+function S(e) {
+	return e instanceof HTMLElement ? e instanceof HTMLTextAreaElement || e.isContentEditable ? !0 : e instanceof HTMLInputElement && x.includes((e.type || "text").toLowerCase()) : !1;
+}
+function C(e) {
+	try {
+		let t = JSON.parse(localStorage.getItem(e) || "null");
+		if (t && t.w > 0 && t.h > 0) return t;
+	} catch {}
+	return null;
+}
+function w({ open: e, onClose: t, title: i, subtitle: o, headEnd: f, footer: p, size: m = "md", layout: h = "stack", resizable: g = !1, resizeKey: _, closeButton: v = !0, initialFocus: y = "box", onSubmit: x, className: w, children: T }) {
+	let E = a(null), D = r(), O = a(t);
+	O.current = t;
+	let k = a(x);
+	return k.current = x, n(() => {
 		if (!e) return;
-		let t = document.activeElement, n = g.current;
-		(n.querySelector("[autofocus]") ?? n).focus();
+		let t = document.activeElement, n = E.current;
+		((y === "footer" ? n.querySelector(".tenon-modal__footer button:not([disabled])") : null) ?? n.querySelector("[autofocus]") ?? n).focus();
 		let r = (e) => {
 			if (e.key === "Escape") {
-				e.stopPropagation(), v.current();
+				e.stopPropagation(), O.current();
+				return;
+			}
+			if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
+				k.current && n.contains(e.target) && S(e.target) && (e.preventDefault(), k.current());
 				return;
 			}
 			if (e.key !== "Tab") return;
@@ -253,48 +278,84 @@ function x({ open: e, onClose: t, title: i, subtitle: o, headEnd: d, footer: f, 
 		return document.addEventListener("keydown", r, !0), () => {
 			document.removeEventListener("keydown", r, !0), t?.focus?.();
 		};
-	}, [e]), e ? l(/* @__PURE__ */ c("div", {
+	}, [e, y]), n(() => {
+		if (!e || !g || !_ || typeof ResizeObserver != "function") return;
+		let t = E.current, n = C(_);
+		n && (t.style.width = `${n.w}px`, t.style.height = `${n.h}px`);
+		let r = () => ({
+			w: t.offsetWidth,
+			h: t.offsetHeight
+		}), i = r(), a = new ResizeObserver(() => {
+			if (!t.isConnected) return;
+			let e = r();
+			if (!(Math.abs(e.w - i.w) < 2 && Math.abs(e.h - i.h) < 2)) try {
+				localStorage.setItem(_, JSON.stringify(e));
+			} catch {}
+		});
+		return a.observe(t), () => a.disconnect();
+	}, [
+		e,
+		g,
+		_
+	]), e ? l(/* @__PURE__ */ c("div", {
 		className: "tenon-modal",
 		children: [/* @__PURE__ */ s("div", {
 			className: "tenon-modal__scrim",
-			onClick: () => v.current()
+			onClick: () => O.current()
 		}), /* @__PURE__ */ c("div", {
-			ref: g,
+			ref: E,
 			role: "dialog",
 			"aria-modal": "true",
-			"aria-labelledby": _,
+			"aria-labelledby": D,
 			tabIndex: -1,
-			className: u("tenon-modal__box", `tenon-modal__box--${p}`, m),
+			className: u("tenon-modal__box", `tenon-modal__box--${m}`, g && "tenon-modal__box--resizable", w),
 			children: [
 				/* @__PURE__ */ c("div", {
 					className: "tenon-modal__head",
-					children: [/* @__PURE__ */ c("div", {
-						className: "tenon-modal__titles",
-						children: [/* @__PURE__ */ s("h2", {
-							id: _,
-							className: "tenon-modal__title",
-							children: i
-						}), o && /* @__PURE__ */ s("div", {
-							className: "tenon-modal__subtitle",
-							children: o
-						})]
-					}), d]
+					children: [
+						/* @__PURE__ */ c("div", {
+							className: "tenon-modal__titles",
+							children: [/* @__PURE__ */ s("h2", {
+								id: D,
+								className: "tenon-modal__title",
+								children: i
+							}), o && /* @__PURE__ */ s("div", {
+								className: "tenon-modal__subtitle",
+								children: o
+							})]
+						}),
+						f,
+						v && /* @__PURE__ */ s(d, {
+							variant: "ghost",
+							size: "sm",
+							iconOnly: !0,
+							"aria-label": "Close",
+							onClick: () => O.current(),
+							children: "×"
+						})
+					]
 				}),
 				/* @__PURE__ */ s("div", {
-					className: "tenon-modal__body",
-					children: h
+					className: u("tenon-modal__body", h === "split" && "tenon-modal__body--split"),
+					children: T
 				}),
-				f && /* @__PURE__ */ s("div", {
+				p && /* @__PURE__ */ s("div", {
 					className: "tenon-modal__footer",
-					children: f
+					children: p
 				})
 			]
 		})]
 	}), document.body) : null;
 }
+function T({ aside: e = !1, className: t, children: n }) {
+	return /* @__PURE__ */ s("div", {
+		className: u("tenon-modal__pane", e && "tenon-modal__pane--aside", t),
+		children: n
+	});
+}
 //#endregion
 //#region src/components/Textarea/Textarea.tsx
-var S = e(function({ autoGrow: e = !1, invalid: n, className: r, onChange: o, value: c, rows: l = 1, ...d }, f) {
+var E = e(function({ autoGrow: e = !1, invalid: n, className: r, onChange: o, value: c, rows: l = 1, ...d }, f) {
 	let p = a(null), m = t(() => {
 		let t = p.current;
 		t && e && (t.style.height = "auto", t.style.height = `${t.scrollHeight + (t.offsetHeight - t.clientHeight)}px`);
@@ -315,7 +376,7 @@ var S = e(function({ autoGrow: e = !1, invalid: n, className: r, onChange: o, va
 });
 //#endregion
 //#region src/components/Spinner/Spinner.tsx
-function C({ size: e = "md", label: t = "Working", className: n, ...r }) {
+function D({ size: e = "md", label: t = "Working", className: n, ...r }) {
 	return /* @__PURE__ */ s("span", {
 		role: "status",
 		"aria-label": t,
@@ -325,7 +386,7 @@ function C({ size: e = "md", label: t = "Working", className: n, ...r }) {
 }
 //#endregion
 //#region src/components/Pill/Pill.tsx
-function w({ tone: e = "neutral", dot: t = !1, caps: n = !1, className: r, children: i, ...a }) {
+function O({ tone: e = "neutral", dot: t = !1, caps: n = !1, className: r, children: i, ...a }) {
 	return /* @__PURE__ */ c("span", {
 		className: u("tenon-pill", `tenon-pill--${e}`, n && "tenon-pill--caps", r),
 		...a,
@@ -337,16 +398,16 @@ function w({ tone: e = "neutral", dot: t = !1, caps: n = !1, className: r, child
 }
 //#endregion
 //#region src/components/Alert/Alert.tsx
-var T = {
+var k = {
 	neutral: "status",
 	info: "status",
 	success: "status",
 	warning: "alert",
 	error: "alert"
 };
-function E({ tone: e = "neutral", title: t, actions: n, className: r, children: i, ...a }) {
+function A({ tone: e = "neutral", title: t, actions: n, className: r, children: i, ...a }) {
 	return /* @__PURE__ */ c("div", {
-		role: T[e],
+		role: k[e],
 		className: u("tenon-alert", `tenon-alert--${e}`, r),
 		...a,
 		children: [
@@ -367,7 +428,7 @@ function E({ tone: e = "neutral", title: t, actions: n, className: r, children: 
 }
 //#endregion
 //#region src/components/Switch/Switch.tsx
-var D = e(function({ checked: e, onChange: t, className: n, onClick: r, type: i = "button", ...a }, o) {
+var j = e(function({ checked: e, onChange: t, className: n, onClick: r, type: i = "button", ...a }, o) {
 	return /* @__PURE__ */ s("button", {
 		ref: o,
 		type: i,
@@ -382,7 +443,7 @@ var D = e(function({ checked: e, onChange: t, className: n, onClick: r, type: i 
 });
 //#endregion
 //#region src/components/SegmentedControl/SegmentedControl.tsx
-function O({ options: e, value: t, onChange: n, className: r, ...i }) {
+function M({ options: e, value: t, onChange: n, className: r, ...i }) {
 	let o = a(null), c = (t, r) => {
 		let i = t.key === "ArrowRight" || t.key === "ArrowDown" ? 1 : t.key === "ArrowLeft" || t.key === "ArrowUp" ? -1 : 0;
 		if (i) {
@@ -419,4 +480,4 @@ function O({ options: e, value: t, onChange: n, className: r, ...i }) {
 	});
 }
 //#endregion
-export { E as Alert, m as Badge, d as Button, p as Card, g as Column, _ as ColumnEmpty, y as Field, x as Modal, w as Pill, O as SegmentedControl, C as Spinner, v as Stat, D as Switch, h as Tag, S as Textarea, u as cx };
+export { A as Alert, m as Badge, d as Button, p as Card, g as Column, _ as ColumnEmpty, y as Field, w as Modal, T as ModalPane, O as Pill, M as SegmentedControl, D as Spinner, v as Stat, j as Switch, h as Tag, E as Textarea, u as cx };

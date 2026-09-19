@@ -243,9 +243,15 @@ apps' own copies follow it by hand until the dashboard is rebuilt on React
 
 `Pill` is `Tag`'s outlined counterpart. A `Tag` is a filled chip in a row of
 labels; a `Pill` is drawn round something that happened or a state something
-is in. `Modal` closes on Escape and on the scrim, keeps Tab inside the box and
-gives focus back to whatever opened it, and it renders into `document.body` so
-no ancestor's `overflow` or `transform` can clip it. `Switch` is for a setting
+is in. `Modal` closes on Escape, the X and the scrim, keeps Tab inside the box
+and gives focus back to whatever opened it, and it renders into `document.body`
+so no ancestor's `overflow` or `transform` can clip it. Its four sizes are
+400, 560, 760 and 912px. The to-dos board's plan modal is the most developed
+of the three it came from, so `Modal` also takes `resizable` (drag the corner,
+and `resizeKey` keeps the size for next time), `layout="split"` with
+`ModalPane` columns that each scroll and stack on a phone, `initialFocus="footer"`
+for a confirmation whose first answer is the safe one, and `onSubmit` for ⌘↵
+from inside a text field. `Switch` is for a setting
 that applies the moment it flips; one that needs a Save is a checkbox in a
 `Field`. `Textarea` is the bare control; with a label, use `Field` with
 `multiline`.

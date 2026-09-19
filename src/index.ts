@@ -26,8 +26,8 @@ export type { FieldProps } from './components/Field/Field';
 /* The rest came from the chat engine and the agents dashboard, two apps that
    had each drawn their own. Neither loads them: both are plain JavaScript
    with no React, so for now this is where the anatomy is written down. */
-export { Modal } from './components/Modal/Modal';
-export type { ModalProps, ModalSize } from './components/Modal/Modal';
+export { Modal, ModalPane } from './components/Modal/Modal';
+export type { ModalProps, ModalPaneProps, ModalSize } from './components/Modal/Modal';
 
 export { Textarea } from './components/Textarea/Textarea';
 export type { TextareaProps } from './components/Textarea/Textarea';

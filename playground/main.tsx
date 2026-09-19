@@ -1,6 +1,6 @@
 import { StrictMode, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Button, Badge, Card, Tag, Field } from '../src';
+import { Button, Badge, Card, Tag, Stat, Field } from '../src';
 import type { TagChart } from '../src';
 import '../dist/tenon.css';
 import './playground.css';
@@ -81,6 +81,8 @@ function App() {
           <Card
             accent="var(--tenon-chart-3)"
             eyebrow="design system"
+            eyebrowEnd={<Tag tone="info">needs you</Tag>}
+            titleAs="h3"
             lead="12"
             title="Write the Tenon migration note"
             action={<Badge count={2} label="notes" />}
@@ -106,6 +108,17 @@ function App() {
             body={<div className="bar"><span style={{ width: '62%' }} /></div>}
             footer="5 of 8 steps"
           />
+        </div>
+      </section>
+
+      <section>
+        <h2 className="tenon-heading-2">Stat</h2>
+        <p className="tenon-body-sm muted">The board's StatCard. One number, and what it counts.</p>
+        <div className="stats">
+          <Stat eyebrow="completed" value={42} caption="tasks this month" />
+          <Stat eyebrow="agreed" value="2 of 2" caption="plans actioned" tone="success" />
+          <Stat eyebrow="overdue" value={3} caption="past their date" tone="error" />
+          <Stat value="94%" caption="no eyebrow, just a figure" tone="accent" />
         </div>
       </section>
 

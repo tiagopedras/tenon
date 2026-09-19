@@ -25,44 +25,50 @@ function o(e, t) {
 		children: t
 	}) : null;
 }
-function s({ title: e, eyebrow: t, lead: a, action: s, tags: c, meta: l, summary: u, body: d, footer: f, accent: p, elevation: m = "flat", draggable: h, dragging: g, interactive: _, as: v = "article", className: y, style: b, children: x, ...S }) {
-	let C = p ? {
-		"--tenon-card-accent": p,
-		...b
-	} : b;
-	return /* @__PURE__ */ r(v, {
-		className: i("tenon-card", `tenon-card--${m}`, p && "tenon-card--accent", h && "tenon-card--draggable", g && "tenon-card--dragging", _ && "tenon-card--interactive", y),
-		style: C,
-		draggable: h,
-		...S,
+function s({ title: e, eyebrow: t, eyebrowEnd: a, lead: s, action: c, tags: l, meta: u, summary: d, body: f, footer: p, accent: m, elevation: h = "flat", draggable: g, dragging: _, interactive: v, as: y = "article", titleAs: b = "div", className: x, style: S, children: C, ...w }) {
+	let T = m ? {
+		"--tenon-card-accent": m,
+		...S
+	} : S;
+	return /* @__PURE__ */ r(y, {
+		className: i("tenon-card", `tenon-card--${h}`, m && "tenon-card--accent", g && "tenon-card--draggable", _ && "tenon-card--dragging", v && "tenon-card--interactive", x),
+		style: T,
+		draggable: g,
+		...w,
 		children: [
-			o("tenon-card__eyebrow", t),
-			(a || e || s) && /* @__PURE__ */ r("div", {
+			(t || a) && /* @__PURE__ */ r("div", {
+				className: "tenon-card__eyebrow",
+				children: [t && typeof t == "object" && "__html" in t ? /* @__PURE__ */ n("span", { dangerouslySetInnerHTML: t }) : t, a ? /* @__PURE__ */ n("span", {
+					className: "tenon-card__eyebrow-end",
+					children: a
+				}) : null]
+			}),
+			(s || e || c) && /* @__PURE__ */ r("div", {
 				className: "tenon-card__head",
 				children: [
-					a ? /* @__PURE__ */ n("span", {
+					s ? /* @__PURE__ */ n("span", {
 						className: "tenon-card__lead",
-						children: a
+						children: s
 					}) : null,
-					e ? /* @__PURE__ */ n("div", {
+					e ? /* @__PURE__ */ n(b, {
 						className: "tenon-card__title",
 						children: e
 					}) : null,
-					s ? /* @__PURE__ */ n("span", {
+					c ? /* @__PURE__ */ n("span", {
 						className: "tenon-card__action",
-						children: s
+						children: c
 					}) : null
 				]
 			}),
-			o("tenon-card__tags", c),
-			o("tenon-card__meta", l),
-			o("tenon-card__summary", u),
-			d ? /* @__PURE__ */ n("div", {
+			o("tenon-card__tags", l),
+			o("tenon-card__meta", u),
+			o("tenon-card__summary", d),
+			f ? /* @__PURE__ */ n("div", {
 				className: "tenon-card__body",
-				children: d
+				children: f
 			}) : null,
-			o("tenon-card__footer", f),
-			x
+			o("tenon-card__footer", p),
+			C
 		]
 	});
 }
@@ -98,8 +104,30 @@ function l({ tone: e = "neutral", chart: t, dot: a = !1, className: o, children:
 	});
 }
 //#endregion
+//#region src/components/Stat/Stat.tsx
+function u({ eyebrow: e, value: t, caption: a, tone: o = "default", className: s, ...c }) {
+	return /* @__PURE__ */ r("div", {
+		className: i("tenon-stat", o !== "default" && `tenon-stat--${o}`, s),
+		...c,
+		children: [
+			e ? /* @__PURE__ */ n("span", {
+				className: "tenon-stat__eyebrow",
+				children: e
+			}) : null,
+			/* @__PURE__ */ n("span", {
+				className: "tenon-stat__value",
+				children: t
+			}),
+			a ? /* @__PURE__ */ n("span", {
+				className: "tenon-stat__caption",
+				children: a
+			}) : null
+		]
+	});
+}
+//#endregion
 //#region src/components/Field/Field.tsx
-function u({ label: e, hint: a, error: o, required: s, className: c, ...l }) {
+function d({ label: e, hint: a, error: o, required: s, className: c, ...l }) {
 	let u = t(), d = `${u}-note`, { multiline: f, ...p } = l, m = o ?? a, h = {
 		id: u,
 		className: "tenon-field__control",
@@ -130,4 +158,4 @@ function u({ label: e, hint: a, error: o, required: s, className: c, ...l }) {
 	});
 }
 //#endregion
-export { c as Badge, a as Button, s as Card, u as Field, l as Tag, i as cx };
+export { c as Badge, a as Button, s as Card, d as Field, u as Stat, l as Tag, i as cx };

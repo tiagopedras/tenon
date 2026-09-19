@@ -16,6 +16,9 @@ export interface CardProps extends Omit<HTMLAttributes<HTMLElement>, 'title' | '
   title?: ReactNode;
   /** Above the title, in the accent colour, so a card's mark and its label agree. */
   eyebrow?: CardSlot;
+  /** Pushed to the right-hand end of the eyebrow row. The board's plan card
+   *  puts how far the agent got, and whether it stopped to ask, up here. */
+  eyebrowEnd?: ReactNode;
   /** Before the title. A position, an index, a key. */
   lead?: ReactNode;
   /** After the title, pushed right. */
@@ -36,6 +39,10 @@ export interface CardProps extends Omit<HTMLAttributes<HTMLElement>, 'title' | '
   interactive?: boolean;
   /** 'article' unless a caller needs the card to be something else. */
   as?: ElementType;
+  /** The title's element. A div by default, because a card in a list of cards
+   *  is usually not a section of the document. Pass a heading where it is —
+   *  nothing is styled off this, the page outline is what cares. */
+  titleAs?: ElementType;
   children?: ReactNode;
 }
 
@@ -50,9 +57,9 @@ function row(className: string, value: CardSlot) {
 }
 
 export function Card({
-  title, eyebrow, lead, action, tags, meta, summary, body, footer,
+  title, eyebrow, eyebrowEnd, lead, action, tags, meta, summary, body, footer,
   accent, elevation = 'flat', draggable, dragging, interactive,
-  as: Tag = 'article', className, style, children, ...rest
+  as: Tag = 'article', titleAs: Title = 'div', className, style, children, ...rest
 }: CardProps) {
   /* React types `style` as CSSProperties and a custom property is not one,
      hence the cast. The component sets it rather than exposing the variable,
@@ -76,11 +83,18 @@ export function Card({
       draggable={draggable}
       {...rest}
     >
-      {row('tenon-card__eyebrow', eyebrow)}
+      {(eyebrow || eyebrowEnd) && (
+        <div className="tenon-card__eyebrow">
+          {eyebrow && typeof eyebrow === 'object' && '__html' in eyebrow
+            ? <span dangerouslySetInnerHTML={eyebrow as { __html: string }} />
+            : (eyebrow as ReactNode)}
+          {eyebrowEnd ? <span className="tenon-card__eyebrow-end">{eyebrowEnd}</span> : null}
+        </div>
+      )}
       {(lead || title || action) && (
         <div className="tenon-card__head">
           {lead ? <span className="tenon-card__lead">{lead}</span> : null}
-          {title ? <div className="tenon-card__title">{title}</div> : null}
+          {title ? <Title className="tenon-card__title">{title}</Title> : null}
           {action ? <span className="tenon-card__action">{action}</span> : null}
         </div>
       )}

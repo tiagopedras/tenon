@@ -63,6 +63,15 @@
   color: var(--tenon-card-accent, var(--tenon-text-subtle));
 }
 
+/* Anything in the eyebrow that belongs at the far end. The board's plan card
+   puts how far the agent got up here, beside the state word. */
+.tenon-card__eyebrow-end {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--tenon-dimension-075);
+}
+
 .tenon-card__head { display: flex; align-items: baseline; gap: var(--tenon-dimension-100); min-width: 0; }
 
 .tenon-card__lead {
@@ -75,6 +84,7 @@
 }
 
 .tenon-card__title {
+  margin: 0;
   font-size: var(--tenon-text-body-sm-size);
   font-weight: var(--tenon-text-heading-4-weight);
   line-height: var(--tenon-text-heading-4-line-height);

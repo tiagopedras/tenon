@@ -121,11 +121,11 @@ where it sits.
 
 ## Components
 
-Five: `Button`, `Card`, `Badge`, `Tag` and `Field`. Written in TypeScript so
+Six: `Button`, `Card`, `Badge`, `Tag`, `Stat` and `Field`. Written in TypeScript so
 the `.d.ts` gives prop autocomplete in a plain JavaScript app too.
 
 ```jsx
-import { Button, Card, Badge, Tag, Field } from '@tiagopedras/tenon';
+import { Button, Card, Badge, Tag, Stat, Field } from '@tiagopedras/tenon';
 import '@tiagopedras/tenon/tenon.css';        // tokens
 import '@tiagopedras/tenon/tenon-react.css';  // component styles
 ```
@@ -154,6 +154,22 @@ Every component's CSS reads semantic tokens and nothing else. There are no
 component tokens, and the build enforces it: a `var(--tenon-color-*)` anywhere
 under `src/` fails the build, because a component naming a primitive is a
 component that will not follow a theme.
+
+`Stat` is the board's StatCard: one number, boxed, with what it counts under
+it. It was three spans scoped to the Reports view until it was pulled out, so
+the shape the board uses for "the answer to the question you opened this view
+for" could not be drawn anywhere else.
+
+Two props on `Card` exist because the board's plan card needed them and the
+first port did not have them. `eyebrowEnd` pushes something to the right-hand
+end of the eyebrow row, where the plan card puts how far the agent got.
+`titleAs` sets the title's element, a div by default, because a card in a list
+of cards is usually not a section of the document — pass a heading where it
+is. Nothing is styled off it; the page outline is what cares.
+
+A `Card` with `interactive` and a control inside it needs the control to call
+`stopPropagation`, or the card's own click fires too. The board's plan card
+has always done this for its link back to the task.
 
 `Field` owns its label, hint and error together. A bare input with the label
 wired up somewhere else is how a form loses its labels, and `aria-describedby`
@@ -213,6 +229,22 @@ component that will not follow a theme.
 the board's buckets, and a chart badge colours its text rather than its fill,
 because ten saturated fills side by side is what the board's Timeline learned
 not to do.
+
+`Stat` is the board's StatCard: one number, boxed, with what it counts under
+it. It was three spans scoped to the Reports view until it was pulled out, so
+the shape the board uses for "the answer to the question you opened this view
+for" could not be drawn anywhere else.
+
+Two props on `Card` exist because the board's plan card needed them and the
+first port did not have them. `eyebrowEnd` pushes something to the right-hand
+end of the eyebrow row, where the plan card puts how far the agent got.
+`titleAs` sets the title's element, a div by default, because a card in a list
+of cards is usually not a section of the document — pass a heading where it
+is. Nothing is styled off it; the page outline is what cares.
+
+A `Card` with `interactive` and a control inside it needs the control to call
+`stopPropagation`, or the card's own click fires too. The board's plan card
+has always done this for its link back to the task.
 
 `Field` owns its label, hint and error together. A bare input with the label
 wired up somewhere else is how a form loses its labels, and `aria-describedby`

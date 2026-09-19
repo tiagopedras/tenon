@@ -7,6 +7,9 @@ export interface CardProps extends Omit<HTMLAttributes<HTMLElement>, 'title' | '
     title?: ReactNode;
     /** Above the title, in the accent colour, so a card's mark and its label agree. */
     eyebrow?: CardSlot;
+    /** Pushed to the right-hand end of the eyebrow row. The board's plan card
+     *  puts how far the agent got, and whether it stopped to ask, up here. */
+    eyebrowEnd?: ReactNode;
     /** Before the title. A position, an index, a key. */
     lead?: ReactNode;
     /** After the title, pushed right. */
@@ -27,6 +30,10 @@ export interface CardProps extends Omit<HTMLAttributes<HTMLElement>, 'title' | '
     interactive?: boolean;
     /** 'article' unless a caller needs the card to be something else. */
     as?: ElementType;
+    /** The title's element. A div by default, because a card in a list of cards
+     *  is usually not a section of the document. Pass a heading where it is —
+     *  nothing is styled off this, the page outline is what cares. */
+    titleAs?: ElementType;
     children?: ReactNode;
 }
-export declare function Card({ title, eyebrow, lead, action, tags, meta, summary, body, footer, accent, elevation, draggable, dragging, interactive, as: Tag, className, style, children, ...rest }: CardProps): import("react").JSX.Element;
+export declare function Card({ title, eyebrow, eyebrowEnd, lead, action, tags, meta, summary, body, footer, accent, elevation, draggable, dragging, interactive, as: Tag, titleAs: Title, className, style, children, ...rest }: CardProps): import("react").JSX.Element;

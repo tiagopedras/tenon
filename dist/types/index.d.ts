@@ -6,6 +6,8 @@ export { Badge } from './components/Badge/Badge';
 export type { BadgeProps, BadgeTone } from './components/Badge/Badge';
 export { Tag } from './components/Tag/Tag';
 export type { TagProps, TagTone, TagChart } from './components/Tag/Tag';
+export { Stat } from './components/Stat/Stat';
+export type { StatProps, StatTone } from './components/Stat/Stat';
 export { Field } from './components/Field/Field';
 export type { FieldProps } from './components/Field/Field';
 export { cx } from './utils';

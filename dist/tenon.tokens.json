@@ -1,6 +1,6 @@
 {
-  "$version": "0.1.0",
-  "$built": "Tenon v0.1.0, built 2026-09-19",
+  "$version": "0.2.0",
+  "$built": "Tenon v0.2.0, built 2026-09-19",
   "primitives": {
     "color.neutral.50": "#f6f7f8",
     "color.neutral.100": "#edeef1",

@@ -2,12 +2,30 @@
 
 Written 19 Sep 2026, at the end of the session that built Tenon.
 
-**Part 1 is built and shipped as v0.4.0**, on `main` and tagged, so
-`github:tiagopedras/tenon#v0.4.0` resolves. Parts 2 and 3 are decided and not
-built. Two things came out differently from what Part 1 describes below: green
-and amber fill at ramp step 600 rather than 550, because at 550 neither clears
-4.5:1 under white, and `running` got six tokens rather than three, so the
-solid/subtle rule holds for it too.
+**All three parts are built.** Part 1 shipped as v0.4.0, on `main` and tagged.
+Parts 2 and 3 are on the `tenon-tokens` branch in `to-dos`, not merged. What
+follows is the plan as it was written; four things came out differently.
+
+1. Green and amber fill at ramp step 600 rather than 550, because at 550
+   neither clears 4.5:1 under white. `running` got six tokens rather than
+   three, so the solid/subtle rule holds for it too.
+2. `--shadow` is `elevation-overlay`, not `elevation-raised`. The board's
+   shadow is two layers and raised is one.
+3. The tokens reach the page from `kanban/dist/`, built there by vite, not
+   from a `server.py` route. The Vercel deployment has no server and no
+   `node_modules`, and it never ran a build at all, so it had been serving a
+   page linking `board-ui.js` into a 404 for as long as that file existed.
+4. Part 3 was bigger than it reads below. Only half the board is React; the
+   Board, the Timeline and the drawer draw cards as HTML strings. Swapping
+   only the React four would have put two different cards on one board, so
+   `colHTML()` and `cardShellHTML()` emit Tenon's markup too and the 90
+   `.card`/`.col` selectors in `board.css` were renamed onto it.
+
+Two things are left, neither urgent. `board.css` still carries the card and
+column declarations Tenon now also provides, under the new names — renaming
+was the safe move, thinning them is a separate pass with the board in front of
+you. And radius, spacing and type never moved, which is the conversation Part
+2 said it would be.
 
 ## Where things stand
 

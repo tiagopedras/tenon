@@ -1,9 +1,11 @@
 export { Button } from './components/Button/Button';
 export type { ButtonProps, ButtonVariant, ButtonSize } from './components/Button/Button';
-export { Badge } from './components/Badge/Badge';
-export type { BadgeProps, BadgeTone, BadgeChart } from './components/Badge/Badge';
 export { Card } from './components/Card/Card';
-export type { CardProps, CardElevation, CardPadding } from './components/Card/Card';
+export type { CardProps, CardSlot, CardElevation } from './components/Card/Card';
+export { Badge } from './components/Badge/Badge';
+export type { BadgeProps, BadgeTone } from './components/Badge/Badge';
+export { Tag } from './components/Tag/Tag';
+export type { TagProps, TagTone, TagChart } from './components/Tag/Tag';
 export { Field } from './components/Field/Field';
 export type { FieldProps } from './components/Field/Field';
 export { cx } from './utils';

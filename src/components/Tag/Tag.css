@@ -1,0 +1,37 @@
+/* The chip that sits in a card's tags row, or anywhere a short label needs
+   a colour. This was Tenon's own Badge until the board's count badge took
+   that name; they are different objects and were only ever both called
+   "badge" by accident. */
+
+.tenon-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tenon-dimension-050);
+  padding: var(--tenon-dimension-012) var(--tenon-dimension-100);
+  border-radius: var(--tenon-radius-full);
+  font-family: var(--tenon-text-caption-family);
+  font-size: var(--tenon-text-caption-size);
+  font-weight: var(--tenon-text-label-weight);
+  line-height: var(--tenon-text-caption-line-height);
+  white-space: nowrap;
+}
+
+.tenon-tag--neutral { background: var(--tenon-background-neutral); color: var(--tenon-text-subtle); }
+.tenon-tag--accent  { background: var(--tenon-background-selected); color: var(--tenon-text-accent); }
+.tenon-tag--success { background: var(--tenon-background-success); color: var(--tenon-text-success); }
+.tenon-tag--warning { background: var(--tenon-background-warning); color: var(--tenon-text-warning); }
+.tenon-tag--error   { background: var(--tenon-background-error);   color: var(--tenon-text-error); }
+.tenon-tag--info    { background: var(--tenon-background-info);    color: var(--tenon-text-info); }
+
+/* A chart tag colours its text on the neutral chip rather than filling.
+   Ten saturated fills side by side is what the board's Timeline learned
+   not to do. */
+.tenon-tag--chart { background: var(--tenon-background-neutral); color: var(--tenon-tag-colour); }
+
+.tenon-tag__dot {
+  width: var(--tenon-dimension-075);
+  height: var(--tenon-dimension-075);
+  border-radius: var(--tenon-radius-full);
+  background: currentColor;
+  flex: none;
+}

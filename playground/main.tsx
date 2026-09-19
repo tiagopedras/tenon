@@ -1,14 +1,14 @@
 import { StrictMode, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Button, Badge, Card, Field } from '../src';
-import type { BadgeChart } from '../src';
+import { Button, Badge, Card, Tag, Field } from '../src';
+import type { TagChart } from '../src';
 import '../dist/tenon.css';
 import './playground.css';
 
 const VARIANTS = ['primary', 'secondary', 'ghost', 'danger'] as const;
 const SIZES = ['sm', 'md', 'lg'] as const;
 const TONES = ['neutral', 'accent', 'success', 'warning', 'error', 'info'] as const;
-const BUCKETS: Array<[BadgeChart, string]> = [
+const BUCKETS: Array<[TagChart, string]> = [
   [1, 'People'], [2, 'Design oversight'], [3, 'Design System'], [4, 'Strategic'],
   [5, 'Hiring'], [6, 'Tooling'], [7, 'Research'], [8, 'Ops'], [9, 'Blocked'], [10, 'Archive'],
 ];
@@ -60,19 +60,52 @@ function App() {
       </section>
 
       <section>
-        <h2 className="tenon-heading-2">Badge</h2>
-        <Row title="tone">{TONES.map((t) => <Badge key={t} tone={t}>{t}</Badge>)}</Row>
+        <h2 className="tenon-heading-2">Tag</h2>
+        <Row title="tone">{TONES.map((t) => <Tag key={t} tone={t}>{t}</Tag>)}</Row>
         <Row title="buckets, chart.1 to chart.10">
-          {BUCKETS.map(([n, label]) => <Badge key={n} chart={n} dot>{label}</Badge>)}
+          {BUCKETS.map(([n, label]) => <Tag key={n} chart={n} dot>{label}</Tag>)}
         </Row>
       </section>
 
       <section>
+        <h2 className="tenon-heading-2">Badge</h2>
+        <Row title="count">{[1, 7, 42, 128].map((n) => <Badge key={n} count={n} label="waiting on you" />)}</Row>
+        <Row title="tone">{(['accent', 'neutral', 'success', 'warning', 'error'] as const).map((t) => <Badge key={t} count={3} tone={t} />)}</Row>
+        <Row title="zero draws nothing"><Badge count={0} /><span className="tenon-caption">(nothing between these)</span></Row>
+      </section>
+
+      <section>
         <h2 className="tenon-heading-2">Card</h2>
+        <p className="tenon-body-sm muted">The board's card, renamed. Every row optional but the title.</p>
         <div className="cards">
-          <Card elevation="flat"><h3 className="tenon-heading-4">flat</h3><p className="tenon-body-sm">No shadow. Sits in a list.</p></Card>
-          <Card elevation="raised"><h3 className="tenon-heading-4">raised</h3><p className="tenon-body-sm">The default. A card on a page.</p></Card>
-          <Card elevation="overlay" interactive tabIndex={0}><h3 className="tenon-heading-4">overlay, interactive</h3><p className="tenon-body-sm">Hover and focus it.</p></Card>
+          <Card
+            accent="var(--tenon-chart-3)"
+            eyebrow="design system"
+            lead="12"
+            title="Write the Tenon migration note"
+            action={<Badge count={2} label="notes" />}
+            tags={<><Tag tone="warning">due Friday</Tag><Tag tone="neutral">2 steps</Tag></>}
+            meta="Design System · added 14 Sep"
+            summary="Every row here is optional. Leave the accent off and no mark is drawn, which is not the same as drawing a grey one."
+            footer="2 notes"
+            draggable
+          />
+          <Card
+            accent="var(--tenon-chart-9)"
+            eyebrow="blocked"
+            title="Waiting on the API key"
+            summary="An accent and an eyebrow, and nothing else."
+          />
+          <Card title="No accent at all" summary="Nothing to mark, so nothing is marked." meta="Queue" />
+          <Card
+            elevation="raised"
+            interactive
+            tabIndex={0}
+            title="Raised and interactive"
+            summary="Hover it, then tab to it."
+            body={<div className="bar"><span style={{ width: '62%' }} /></div>}
+            footer="5 of 8 steps"
+          />
         </div>
       </section>
 

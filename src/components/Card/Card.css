@@ -1,21 +1,113 @@
+/* The card, ported from the to-dos board's cardShellHTML / Card.tsx. The
+   board's version is the one that survived five views, so its anatomy is
+   the one Tenon keeps. What changed is the names: no `.card`, no `--bc`,
+   no assumption that the thing on a card is a task.
+
+   Anatomy, top to bottom, every row optional but the title:
+
+     eyebrow   small, bold, coloured by the accent, so a card's mark and
+               its label agree
+     head      lead · title · action
+     tags      chips
+     meta      where it sits, and links off it
+     summary   what the thing says, at rest
+     body      an unwrapped slot, for a progress bar or a chart
+     footer    a last quiet line
+
+   The accent is a 4px inset down the left edge. Left undefined it draws
+   nothing rather than drawing a grey one, and that difference is the
+   point: a grey stripe still reads as a mark, and the reason to leave it
+   off is that there is nothing to mark. The padding does not change
+   between the two, so a row of cards lines up whether or not they are
+   marked. */
+
 .tenon-card {
   background: var(--tenon-background-raised);
   border: 1px solid var(--tenon-stroke-default);
-  border-radius: var(--tenon-radius-lg);
+  border-radius: var(--tenon-radius-md);
+  padding: var(--tenon-dimension-100) var(--tenon-dimension-125) var(--tenon-dimension-100) var(--tenon-dimension-150);
   color: var(--tenon-text-default);
 }
 
+.tenon-card:hover { border-color: var(--tenon-stroke-hovered); }
+.tenon-card:focus-visible { outline: 2px solid var(--tenon-stroke-focus); outline-offset: 2px; }
+
+/* --tenon-card-accent is set by the component from its `accent` prop. It is
+   a local custom property, not a token: the value is whatever the caller
+   is marking with, most often one of the ten chart colours. */
+.tenon-card--accent { box-shadow: inset var(--tenon-dimension-050) 0 0 var(--tenon-card-accent); }
+
 .tenon-card--flat    { box-shadow: none; }
 .tenon-card--raised  { box-shadow: var(--tenon-elevation-raised); }
-.tenon-card--overlay { box-shadow: var(--tenon-elevation-overlay); }
+.tenon-card--raised.tenon-card--accent {
+  box-shadow: inset var(--tenon-dimension-050) 0 0 var(--tenon-card-accent), var(--tenon-elevation-raised);
+}
 
-.tenon-card--pad-none { padding: 0; }
-.tenon-card--pad-sm   { padding: var(--tenon-dimension-150); }
-.tenon-card--pad-md   { padding: var(--tenon-dimension-200); }
-.tenon-card--pad-lg   { padding: var(--tenon-dimension-300); }
+.tenon-card--draggable { cursor: grab; }
+.tenon-card--draggable:active { cursor: grabbing; }
+.tenon-card--dragging { opacity: 0.4; }
 
-/* Interactive only when something is going to happen on click, so the
-   cursor and the hover are not promised where they are not kept. */
-.tenon-card--interactive { cursor: pointer; transition: border-color 120ms ease, box-shadow 120ms ease; }
-.tenon-card--interactive:hover { border-color: var(--tenon-stroke-hovered); box-shadow: var(--tenon-elevation-overlay); }
-.tenon-card--interactive:focus-visible { outline: 2px solid var(--tenon-stroke-focus); outline-offset: 2px; }
+.tenon-card--interactive { cursor: pointer; transition: border-color 120ms ease; }
+.tenon-card--interactive:hover { border-color: var(--tenon-stroke-accent); }
+
+/* ---- the rows ---- */
+
+.tenon-card__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--tenon-dimension-075);
+  margin-bottom: var(--tenon-dimension-075);
+  font-size: var(--tenon-text-caption-size);
+  font-weight: var(--tenon-text-heading-6-weight);
+  letter-spacing: var(--tenon-text-heading-6-letter-spacing);
+  color: var(--tenon-card-accent, var(--tenon-text-subtle));
+}
+
+.tenon-card__head { display: flex; align-items: baseline; gap: var(--tenon-dimension-100); min-width: 0; }
+
+.tenon-card__lead {
+  flex: none;
+  min-width: 1.6em;
+  font-family: var(--tenon-text-code-family);
+  font-size: var(--tenon-text-caption-size);
+  font-weight: var(--tenon-text-heading-6-weight);
+  color: var(--tenon-text-faint);
+}
+
+.tenon-card__title {
+  font-size: var(--tenon-text-body-sm-size);
+  font-weight: var(--tenon-text-heading-4-weight);
+  line-height: var(--tenon-text-heading-4-line-height);
+  min-width: 0;
+}
+
+.tenon-card__action { flex: none; margin-left: auto; }
+
+.tenon-card__tags {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: var(--tenon-dimension-075);
+  margin-top: var(--tenon-dimension-075);
+}
+
+.tenon-card__meta {
+  display: flex; flex-wrap: wrap; align-items: baseline;
+  gap: var(--tenon-dimension-050);
+  margin-top: var(--tenon-dimension-100);
+  font-size: var(--tenon-text-caption-size);
+  color: var(--tenon-text-faint);
+}
+
+.tenon-card__summary {
+  margin-top: var(--tenon-dimension-125);
+  font-size: var(--tenon-text-body-sm-size);
+  line-height: var(--tenon-text-body-sm-line-height);
+  color: var(--tenon-text-subtle);
+}
+
+.tenon-card__body { margin-top: var(--tenon-dimension-075); }
+
+.tenon-card__footer {
+  margin-top: var(--tenon-dimension-075);
+  font-size: var(--tenon-text-caption-size);
+  color: var(--tenon-text-faint);
+}

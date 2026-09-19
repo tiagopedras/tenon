@@ -15,35 +15,91 @@ var i = (...e) => e.filter((e) => typeof e == "string" && e.length > 0).join(" "
 	});
 });
 //#endregion
+//#region src/components/Card/Card.tsx
+function o(e, t) {
+	return t ? typeof t == "object" && t && "__html" in t ? /* @__PURE__ */ n("div", {
+		className: e,
+		dangerouslySetInnerHTML: t
+	}) : /* @__PURE__ */ n("div", {
+		className: e,
+		children: t
+	}) : null;
+}
+function s({ title: e, eyebrow: t, lead: a, action: s, tags: c, meta: l, summary: u, body: d, footer: f, accent: p, elevation: m = "flat", draggable: h, dragging: g, interactive: _, as: v = "article", className: y, style: b, children: x, ...S }) {
+	let C = p ? {
+		"--tenon-card-accent": p,
+		...b
+	} : b;
+	return /* @__PURE__ */ r(v, {
+		className: i("tenon-card", `tenon-card--${m}`, p && "tenon-card--accent", h && "tenon-card--draggable", g && "tenon-card--dragging", _ && "tenon-card--interactive", y),
+		style: C,
+		draggable: h,
+		...S,
+		children: [
+			o("tenon-card__eyebrow", t),
+			(a || e || s) && /* @__PURE__ */ r("div", {
+				className: "tenon-card__head",
+				children: [
+					a ? /* @__PURE__ */ n("span", {
+						className: "tenon-card__lead",
+						children: a
+					}) : null,
+					e ? /* @__PURE__ */ n("div", {
+						className: "tenon-card__title",
+						children: e
+					}) : null,
+					s ? /* @__PURE__ */ n("span", {
+						className: "tenon-card__action",
+						children: s
+					}) : null
+				]
+			}),
+			o("tenon-card__tags", c),
+			o("tenon-card__meta", l),
+			o("tenon-card__summary", u),
+			d ? /* @__PURE__ */ n("div", {
+				className: "tenon-card__body",
+				children: d
+			}) : null,
+			o("tenon-card__footer", f),
+			x
+		]
+	});
+}
+//#endregion
 //#region src/components/Badge/Badge.tsx
-function o({ tone: e = "neutral", chart: t, dot: a = !1, className: o, children: s, style: c, ...l }) {
+function c({ count: e, label: t, max: r = 99, tone: a = "accent", className: o, ...s }) {
+	let c = Math.floor(Number(e) || 0);
+	if (c < 1) return null;
+	let l = c > r ? `${r}+` : String(c), u = t ? `${c} ${t}` : void 0;
+	return /* @__PURE__ */ n("span", {
+		className: i("tenon-badge", `tenon-badge--${a}`, o),
+		title: u,
+		"aria-label": u,
+		...s,
+		children: l
+	});
+}
+//#endregion
+//#region src/components/Tag/Tag.tsx
+function l({ tone: e = "neutral", chart: t, dot: a = !1, className: o, children: s, style: c, ...l }) {
 	let u = t ? {
-		"--tenon-chart-colour": `var(--tenon-chart-${t})`,
+		"--tenon-tag-colour": `var(--tenon-chart-${t})`,
 		...c
 	} : c;
 	return /* @__PURE__ */ r("span", {
-		className: i("tenon-badge", t ? "tenon-badge--chart" : `tenon-badge--${e}`, o),
+		className: i("tenon-tag", t ? "tenon-tag--chart" : `tenon-tag--${e}`, o),
 		style: u,
 		...l,
 		children: [a && /* @__PURE__ */ n("span", {
-			className: "tenon-badge__dot",
+			className: "tenon-tag__dot",
 			"aria-hidden": "true"
 		}), s]
 	});
 }
 //#endregion
-//#region src/components/Card/Card.tsx
-var s = e(function({ elevation: e = "raised", padding: t = "md", interactive: r = !1, className: a, children: o, ...s }, c) {
-	return /* @__PURE__ */ n("div", {
-		ref: c,
-		className: i("tenon-card", `tenon-card--${e}`, `tenon-card--pad-${t}`, r && "tenon-card--interactive", a),
-		...s,
-		children: o
-	});
-});
-//#endregion
 //#region src/components/Field/Field.tsx
-function c({ label: e, hint: a, error: o, required: s, className: c, ...l }) {
+function u({ label: e, hint: a, error: o, required: s, className: c, ...l }) {
 	let u = t(), d = `${u}-note`, { multiline: f, ...p } = l, m = o ?? a, h = {
 		id: u,
 		className: "tenon-field__control",
@@ -74,4 +130,4 @@ function c({ label: e, hint: a, error: o, required: s, className: c, ...l }) {
 	});
 }
 //#endregion
-export { o as Badge, a as Button, s as Card, c as Field, i as cx };
+export { c as Badge, a as Button, s as Card, u as Field, l as Tag, i as cx };

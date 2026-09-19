@@ -121,6 +121,80 @@ where it sits.
 
 ## Components
 
+Five: `Button`, `Card`, `Badge`, `Tag` and `Field`. Written in TypeScript so
+the `.d.ts` gives prop autocomplete in a plain JavaScript app too.
+
+```jsx
+import { Button, Card, Badge, Tag, Field } from '@tiagopedras/tenon';
+import '@tiagopedras/tenon/tenon.css';        // tokens
+import '@tiagopedras/tenon/tenon-react.css';  // component styles
+```
+
+**`Card` and `Badge` came from the to-dos board**, not from here. The board's
+card had already survived five views — the board, Plans, Execution, Overview
+and the queue — which is a harder test than anything Tenon could have given a
+card written fresh. So its anatomy is the one Tenon keeps, and what changed is
+only the names: `.card` became `.tenon-card`, `--bc` became a local
+`--tenon-card-accent` the component sets from its `accent` prop, `cls`/`tag`/
+`attrs` became `className`/`as`/spread props, and `position`/`note` became
+`lead`/`footer` so nothing in the API assumes the thing on a card is a task.
+
+The one behaviour worth keeping in words: `accent` left undefined draws no
+mark rather than drawing a grey one. A grey stripe still reads as a mark, and
+the reason to leave it off is that there is nothing to mark. Padding does not
+change between the two, so a row of cards lines up either way.
+
+`Badge` is the board's number badge — a filled pill with a count in it, which
+draws nothing at zero and reads `99+` above its max. `Tag` is the chip that
+sits in a card's tags row, and it takes either a `tone` or one of the ten
+`chart` colours. Those two were both called "badge" by accident; they are
+different objects and now have different names.
+
+Every component's CSS reads semantic tokens and nothing else. There are no
+component tokens, and the build enforces it: a `var(--tenon-color-*)` anywhere
+under `src/` fails the build, because a component naming a primitive is a
+component that will not follow a theme.
+
+`Field` owns its label, hint and error together. A bare input with the label
+wired up somewhere else is how a form loses its labels, and `aria-describedby`
+points at whichever note is actually rendered rather than at an element that
+might not be there.
+
+```bash
+npm run dev     # the component playground, localhost:5199
+```
+
+The playground and the token preview both carry no hard-coded values, so
+anything that looks wrong on either is a token that is wrong or missing. That
+is how the `--tenon-color-background-default` naming mistake was caught: the
+preview had been rendering on browser defaults and looked plausible.
+
+## The build, and the check that is the point of it
+
+```bash
+npm run all        # regenerate the ramps, then build everything
+npm run build      # tokens, then the React library
+npm run tokens     # tokens only
+npm run check      # tokens quietly plus a typecheck, for a pre-commit hook
+npm run dev        # the component playground
+```
+
+`scripts/build.mjs` writes `dist/tenon.css` and `dist/tenon.tokens.json`, and
+refuses to write either if any of four checks fail: light and dark must hold
+the identical key set, every `{alias}` must resolve, no semantic token may
+alias another semantic token, and no component CSS may name a colour
+primitive.
+
+The first is the reason a token pipeline exists here at all. `board.css` had
+`--accent` missing from its dark block for months, used as a `color:` in
+twenty-two places and as a border in nine more, and nothing said a word,
+because a hand-written stylesheet has no way to know a key is absent. A fourth
+check reports WCAG contrast for every text and icon token against its own
+background, and reports rather than fails, because `text.faint` is meant to sit
+where it sits.
+
+## Components
+
 Four so far: `Button`, `Badge`, `Card` and `Field`. Written in TypeScript so
 the `.d.ts` gives prop autocomplete in a plain JavaScript app too.
 

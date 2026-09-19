@@ -20,3 +20,7 @@ section > h2 { margin: 0 0 var(--tenon-dimension-200); }
 .cards h3, .cards p { margin: 0; }
 .cards p { margin-top: var(--tenon-dimension-050); color: var(--tenon-text-subtle); }
 .fields { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--tenon-dimension-200); align-items: start; }
+
+.muted { color: var(--tenon-text-subtle); margin: 0 0 var(--tenon-dimension-200); }
+.bar { height: var(--tenon-dimension-075); border-radius: var(--tenon-radius-full); background: var(--tenon-background-neutral); overflow: hidden; }
+.bar span { display: block; height: 100%; background: var(--tenon-background-accent); }

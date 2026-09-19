@@ -90,19 +90,46 @@
       },
       "success": {
         "$type": "color",
-        "$value": "{color.green.100}"
+        "$value": "{color.green.600}",
+        "$description": "Solid fill, with text.on-success on top, so the status colours behave like accent and a solid green button can be built from them. The tint that used to live here is background.success-subtle. Green and amber sit one ramp step darker than blue, red and orange, because at 550 neither clears 4.5:1 under white — the build measures each on-X against its own fill and says so."
+      },
+      "success-subtle": {
+        "$type": "color",
+        "$value": "{color.green.100}",
+        "$description": "The tint. What background.success held before the status colours were restructured."
       },
       "warning": {
+        "$type": "color",
+        "$value": "{color.amber.600}"
+      },
+      "warning-subtle": {
         "$type": "color",
         "$value": "{color.amber.100}"
       },
       "error": {
         "$type": "color",
+        "$value": "{color.red.550}"
+      },
+      "error-subtle": {
+        "$type": "color",
         "$value": "{color.red.100}"
       },
       "info": {
         "$type": "color",
+        "$value": "{color.blue.550}"
+      },
+      "info-subtle": {
+        "$type": "color",
         "$value": "{color.blue.100}"
+      },
+      "running": {
+        "$type": "color",
+        "$value": "{color.orange.550}",
+        "$description": "A queue an agent is working. Orange rather than amber, because amber already means warning and a running queue and an overdue task must not look the same."
+      },
+      "running-subtle": {
+        "$type": "color",
+        "$value": "{color.orange.100}"
       },
       "overlay": {
         "$type": "color",
@@ -152,17 +179,41 @@
         "$type": "color",
         "$value": "{color.green.650}"
       },
+      "on-success": {
+        "$type": "color",
+        "$value": "{color.base.white}"
+      },
       "warning": {
         "$type": "color",
         "$value": "{color.amber.650}"
+      },
+      "on-warning": {
+        "$type": "color",
+        "$value": "{color.base.white}"
       },
       "error": {
         "$type": "color",
         "$value": "{color.red.650}"
       },
+      "on-error": {
+        "$type": "color",
+        "$value": "{color.base.white}"
+      },
       "info": {
         "$type": "color",
         "$value": "{color.blue.650}"
+      },
+      "on-info": {
+        "$type": "color",
+        "$value": "{color.base.white}"
+      },
+      "running": {
+        "$type": "color",
+        "$value": "{color.orange.650}"
+      },
+      "on-running": {
+        "$type": "color",
+        "$value": "{color.base.white}"
       }
     },
     "icon": {
@@ -209,6 +260,10 @@
       "info": {
         "$type": "color",
         "$value": "{color.blue.650}"
+      },
+      "running": {
+        "$type": "color",
+        "$value": "{color.orange.650}"
       }
     },
     "stroke": {
@@ -255,6 +310,10 @@
       "info": {
         "$type": "color",
         "$value": "{color.blue.550}"
+      },
+      "running": {
+        "$type": "color",
+        "$value": "{color.orange.550}"
       }
     },
     "chart": {

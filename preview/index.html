@@ -56,7 +56,7 @@
 <main>
   <header>
     <h1 class="tenon-heading-1" style="margin:0">Tenon</h1>
-    <p>17 hues &times; 19 steps, 76 semantic tokens, 2 themes.</p>
+    <p id="counts"></p>
     <button id="toggle">Switch theme</button>
   </header>
 
@@ -87,6 +87,19 @@
 
 <script type="module">
 const tokens = await fetch('../dist/tenon.tokens.json').then(r => r.json());
+
+/* Counted rather than typed, so the line cannot go stale the way it did
+   when the status colours were restructured and fourteen tokens arrived. */
+{
+  const hues = new Set(Object.keys(tokens.primitives)
+    .map(k => k.match(/^color\.([a-z]+)\.\d+$/)).filter(Boolean).map(m => m[1]));
+  const steps = new Set(Object.keys(tokens.primitives)
+    .map(k => k.match(/^color\.[a-z]+\.(\d+)$/)).filter(Boolean).map(m => m[1]));
+  const themes = Object.keys(tokens.themes);
+  document.getElementById('counts').textContent =
+    `${hues.size} hues \u00d7 ${steps.size} steps, `
+    + `${Object.keys(tokens.themes[themes[0]]).length} semantic tokens, ${themes.length} themes.`;
+}
 const css = getComputedStyle(document.documentElement);
 const read = (n) => css.getPropertyValue(n).trim();
 
@@ -127,12 +140,13 @@ const CARDS = [
   ['Design oversight', 6, 'warning', 'needs a look'],
   ['Design System', 2, 'error', 'overdue'],
   ['Strategic', 8, 'info', 'planned'],
+  ['Tooling', 7, 'running', 'an agent has it'],
 ];
 document.getElementById('cards').innerHTML = CARDS.map(([name, bucket, tone, label], i) =>
   `<div class="card">
      <h3 class="tenon-heading-3" style="margin:0;color:var(--tenon-chart-${bucket})">${name}</h3>
      <p>Reads background.raised, stroke.default, radius.lg, elevation.raised and chart.${bucket}.</p>
-     <span class="pill" style="background:var(--tenon-background-${tone});color:var(--tenon-text-${tone})">${label}</span>
+     <span class="pill" style="background:var(--tenon-background-${tone}-subtle);color:var(--tenon-text-${tone})">${label}</span>
    </div>`).join('');
 
 renderSemantics();

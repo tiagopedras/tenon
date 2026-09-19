@@ -284,10 +284,24 @@ for (const theme of ['light', 'dark']) {
   const surfaces = { 'bg.default': r['background.default'], 'bg.raised': r['background.raised'] };
   for (const [key, hex] of Object.entries(r)) {
     if (!/^(text|icon)\./.test(key)) continue;
-    if (/(on-accent|inverse)/.test(key)) continue;
+    /* An on-X is never read on a page surface, so measuring it against one
+       says nothing. Each is checked against its own fill just below. */
+    if (/(on-|inverse)/.test(key)) continue;
     if (!/^#[0-9a-f]{6}$/i.test(hex)) continue;
     const worst = Math.min(...Object.values(surfaces).map((s) => contrast(hex, s)));
     if (worst < 4.5) rows.push({ theme, token: key, hex, 'worst ratio': worst.toFixed(2) });
+  }
+
+  /* text.on-X against background.X, which is the only place it is used.
+     This pairing is why background.success is one ramp step darker than
+     the other four in the light theme. */
+  for (const [key, hex] of Object.entries(r)) {
+    const m = key.match(/^text\.on-(.+)$/);
+    if (!m) continue;
+    const fill = r[`background.${m[1]}`];
+    if (!fill || !/^#[0-9a-f]{6}$/i.test(hex) || !/^#[0-9a-f]{6}$/i.test(fill)) continue;
+    const ratio = contrast(hex, fill);
+    if (ratio < 4.5) rows.push({ theme, token: `${key} on background.${m[1]}`, hex, 'worst ratio': ratio.toFixed(2) });
   }
 }
 

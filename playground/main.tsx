@@ -5,9 +5,9 @@ import type { TagChart } from '../src';
 import '../dist/tenon.css';
 import './playground.css';
 
-const VARIANTS = ['primary', 'secondary', 'ghost', 'danger'] as const;
+const VARIANTS = ['primary', 'secondary', 'ghost', 'danger', 'confirm', 'destructive'] as const;
 const SIZES = ['sm', 'md', 'lg'] as const;
-const TONES = ['neutral', 'accent', 'success', 'warning', 'error', 'info'] as const;
+const TONES = ['neutral', 'accent', 'success', 'warning', 'error', 'info', 'running'] as const;
 const BUCKETS: Array<[TagChart, string]> = [
   [1, 'People'], [2, 'Design oversight'], [3, 'Design System'], [4, 'Strategic'],
   [5, 'Hiring'], [6, 'Tooling'], [7, 'Research'], [8, 'Ops'], [9, 'Blocked'], [10, 'Archive'],
@@ -70,7 +70,7 @@ function App() {
       <section>
         <h2 className="tenon-heading-2">Badge</h2>
         <Row title="count">{[1, 7, 42, 128].map((n) => <Badge key={n} count={n} label="waiting on you" />)}</Row>
-        <Row title="tone">{(['accent', 'neutral', 'success', 'warning', 'error'] as const).map((t) => <Badge key={t} count={3} tone={t} />)}</Row>
+        <Row title="tone">{(['accent', 'neutral', 'success', 'warning', 'error', 'running'] as const).map((t) => <Badge key={t} count={3} tone={t} />)}</Row>
         <Row title="zero draws nothing"><Badge count={0} /><span className="tenon-caption">(nothing between these)</span></Row>
       </section>
 
@@ -126,7 +126,7 @@ function App() {
             <Card title="No accent" meta="Queue" />
           </Column>
 
-          <Column title="Running" titleAs="h3" tone="warning" count={1} hint="worked by an agent">
+          <Column title="Running" titleAs="h3" tone="running" count={1} hint="worked by an agent">
             <Card accent="var(--tenon-chart-2)" title="Generating the ramps" summary="A tinted panel and a coloured head." />
           </Column>
 

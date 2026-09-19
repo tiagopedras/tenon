@@ -2,7 +2,7 @@ import type { ReactNode, HTMLAttributes, ElementType } from 'react';
 import { cx } from '../../utils';
 import './Column.css';
 
-export type ColumnTone = 'default' | 'accent' | 'success' | 'warning' | 'error';
+export type ColumnTone = 'default' | 'accent' | 'success' | 'warning' | 'error' | 'running';
 export type ColumnLayout = 'stack' | 'prose';
 
 export interface ColumnProps extends Omit<HTMLAttributes<HTMLElement>, 'title'> {

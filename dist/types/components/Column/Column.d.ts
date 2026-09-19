@@ -1,5 +1,5 @@
 import { ReactNode, HTMLAttributes, ElementType } from 'react';
-export type ColumnTone = 'default' | 'accent' | 'success' | 'warning' | 'error';
+export type ColumnTone = 'default' | 'accent' | 'success' | 'warning' | 'error' | 'running';
 export type ColumnLayout = 'stack' | 'prose';
 export interface ColumnProps extends Omit<HTMLAttributes<HTMLElement>, 'title'> {
     title: ReactNode;

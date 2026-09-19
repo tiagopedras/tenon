@@ -2,7 +2,7 @@ import type { HTMLAttributes } from 'react';
 import { cx } from '../../utils';
 import './Badge.css';
 
-export type BadgeTone = 'accent' | 'neutral' | 'success' | 'warning' | 'error';
+export type BadgeTone = 'accent' | 'neutral' | 'success' | 'warning' | 'error' | 'running';
 
 export interface BadgeProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'children'> {
   /** Nought or less draws nothing at all; above `max` it reads 99+. */

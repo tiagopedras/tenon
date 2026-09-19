@@ -18,10 +18,11 @@
 
 .tenon-tag--neutral { background: var(--tenon-background-neutral); color: var(--tenon-text-subtle); }
 .tenon-tag--accent  { background: var(--tenon-background-selected); color: var(--tenon-text-accent); }
-.tenon-tag--success { background: var(--tenon-background-success); color: var(--tenon-text-success); }
-.tenon-tag--warning { background: var(--tenon-background-warning); color: var(--tenon-text-warning); }
-.tenon-tag--error   { background: var(--tenon-background-error);   color: var(--tenon-text-error); }
-.tenon-tag--info    { background: var(--tenon-background-info);    color: var(--tenon-text-info); }
+.tenon-tag--success { background: var(--tenon-background-success-subtle); color: var(--tenon-text-success); }
+.tenon-tag--warning { background: var(--tenon-background-warning-subtle); color: var(--tenon-text-warning); }
+.tenon-tag--error   { background: var(--tenon-background-error-subtle);   color: var(--tenon-text-error); }
+.tenon-tag--info    { background: var(--tenon-background-info-subtle);    color: var(--tenon-text-info); }
+.tenon-tag--running { background: var(--tenon-background-running-subtle); color: var(--tenon-text-running); }
 
 /* A chart tag colours its text on the neutral chip rather than filling.
    Ten saturated fills side by side is what the board's Timeline learned

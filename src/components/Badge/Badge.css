@@ -22,6 +22,7 @@
 
 .tenon-badge--accent  { background: var(--tenon-background-accent);  color: var(--tenon-text-on-accent); }
 .tenon-badge--neutral { background: var(--tenon-background-neutral); color: var(--tenon-text-subtle); }
-.tenon-badge--success { background: var(--tenon-stroke-success);     color: var(--tenon-text-on-accent); }
-.tenon-badge--warning { background: var(--tenon-stroke-warning);     color: var(--tenon-text-on-accent); }
-.tenon-badge--error   { background: var(--tenon-stroke-error);       color: var(--tenon-text-on-accent); }
+.tenon-badge--success { background: var(--tenon-background-success); color: var(--tenon-text-on-success); }
+.tenon-badge--warning { background: var(--tenon-background-warning); color: var(--tenon-text-on-warning); }
+.tenon-badge--error   { background: var(--tenon-background-error);   color: var(--tenon-text-on-error); }
+.tenon-badge--running { background: var(--tenon-background-running); color: var(--tenon-text-on-running); }

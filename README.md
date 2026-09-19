@@ -75,6 +75,19 @@ warning.
 The ten categorical `chart.1`–`chart.10` tokens are one step off ten different
 ramps. They do the job the board's bucket colours do.
 
+The five status colours — success, warning, error, info and running — are one
+family and behave like accent. `background.X` is the solid fill with
+`text.on-X` on top; `background.X-subtle` is the tint a `Tag` or a quiet
+`danger` button sits on. That rule is what makes a solid green button
+buildable from the same tokens that colour a pale green chip. Green and amber
+fill at ramp step 600 rather than 550, because at 550 neither clears 4.5:1
+under white, and the build measures every `text.on-X` against its own
+`background.X` and says so.
+
+`running` is the fifth. It means a queue an agent is working, and it is orange
+rather than amber because amber already means warning: a running queue and an
+overdue task must not look the same.
+
 ## Typography
 
 A size ramp from 10px to 71px. Below `xl` those are the sizes the board already

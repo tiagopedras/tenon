@@ -52,5 +52,22 @@
 .tenon-button--ghost:not(:disabled):hover  { background: var(--tenon-background-hovered); color: var(--tenon-text-default); }
 .tenon-button--ghost:not(:disabled):active { background: var(--tenon-background-active); }
 
-.tenon-button--danger { background: var(--tenon-background-error); color: var(--tenon-text-error); border-color: var(--tenon-stroke-error); }
-.tenon-button--danger:not(:disabled):hover  { background: var(--tenon-stroke-error); color: var(--tenon-text-on-accent); }
+/* The tinted one. A delete that is one of several things on the row, and
+   reads as dangerous without shouting before you have hovered it. */
+.tenon-button--danger { background: var(--tenon-background-error-subtle); color: var(--tenon-text-error); border-color: var(--tenon-stroke-error); }
+.tenon-button--danger:not(:disabled):hover  { background: var(--tenon-background-error); color: var(--tenon-text-on-error); }
+
+/* The two solid ones, for a pair of buttons that answer a question: accept
+   this plan or bin it. Same weight as primary, and that is the point —
+   neither answer is the quiet one.
+
+   Their hover and active states are mixed rather than tokenised. Mixing
+   towards text.default darkens in the light theme and lightens in the dark
+   one, which is the direction the accent ramp already moves in both. */
+.tenon-button--confirm { background: var(--tenon-background-success); color: var(--tenon-text-on-success); }
+.tenon-button--confirm:not(:disabled):hover  { background: color-mix(in srgb, var(--tenon-background-success) 88%, var(--tenon-text-default)); }
+.tenon-button--confirm:not(:disabled):active { background: color-mix(in srgb, var(--tenon-background-success) 78%, var(--tenon-text-default)); }
+
+.tenon-button--destructive { background: var(--tenon-background-error); color: var(--tenon-text-on-error); }
+.tenon-button--destructive:not(:disabled):hover  { background: color-mix(in srgb, var(--tenon-background-error) 88%, var(--tenon-text-default)); }
+.tenon-button--destructive:not(:disabled):active { background: color-mix(in srgb, var(--tenon-background-error) 78%, var(--tenon-text-default)); }

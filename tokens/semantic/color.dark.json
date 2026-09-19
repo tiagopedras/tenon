@@ -90,19 +90,43 @@
       },
       "success": {
         "$type": "color",
+        "$value": "{color.green.450}"
+      },
+      "success-subtle": {
+        "$type": "color",
         "$value": "{color.green.900}"
       },
       "warning": {
+        "$type": "color",
+        "$value": "{color.amber.450}"
+      },
+      "warning-subtle": {
         "$type": "color",
         "$value": "{color.amber.900}"
       },
       "error": {
         "$type": "color",
+        "$value": "{color.red.450}"
+      },
+      "error-subtle": {
+        "$type": "color",
         "$value": "{color.red.900}"
       },
       "info": {
         "$type": "color",
+        "$value": "{color.blue.450}"
+      },
+      "info-subtle": {
+        "$type": "color",
         "$value": "{color.blue.900}"
+      },
+      "running": {
+        "$type": "color",
+        "$value": "{color.orange.450}"
+      },
+      "running-subtle": {
+        "$type": "color",
+        "$value": "{color.orange.900}"
       },
       "overlay": {
         "$type": "color",
@@ -152,17 +176,41 @@
         "$type": "color",
         "$value": "{color.green.400}"
       },
+      "on-success": {
+        "$type": "color",
+        "$value": "{color.neutral.950}"
+      },
       "warning": {
         "$type": "color",
         "$value": "{color.amber.350}"
+      },
+      "on-warning": {
+        "$type": "color",
+        "$value": "{color.neutral.950}"
       },
       "error": {
         "$type": "color",
         "$value": "{color.red.400}"
       },
+      "on-error": {
+        "$type": "color",
+        "$value": "{color.neutral.950}"
+      },
       "info": {
         "$type": "color",
         "$value": "{color.blue.400}"
+      },
+      "on-info": {
+        "$type": "color",
+        "$value": "{color.neutral.950}"
+      },
+      "running": {
+        "$type": "color",
+        "$value": "{color.orange.350}"
+      },
+      "on-running": {
+        "$type": "color",
+        "$value": "{color.neutral.950}"
       }
     },
     "icon": {
@@ -209,6 +257,10 @@
       "info": {
         "$type": "color",
         "$value": "{color.blue.400}"
+      },
+      "running": {
+        "$type": "color",
+        "$value": "{color.orange.350}"
       }
     },
     "stroke": {
@@ -255,6 +307,10 @@
       "info": {
         "$type": "color",
         "$value": "{color.blue.450}"
+      },
+      "running": {
+        "$type": "color",
+        "$value": "{color.orange.400}"
       }
     },
     "chart": {

@@ -97,16 +97,20 @@
 .tenon-column--success { --tenon-column-tone: var(--tenon-text-success); }
 .tenon-column--warning { --tenon-column-tone: var(--tenon-text-warning); }
 .tenon-column--error   { --tenon-column-tone: var(--tenon-text-error); }
+/* Orange, and not amber, because amber is warning. A queue an agent is
+   working and a task that is overdue must not look the same. */
+.tenon-column--running { --tenon-column-tone: var(--tenon-text-running); }
 
 .tenon-column--accent, .tenon-column--success,
-.tenon-column--warning, .tenon-column--error {
+.tenon-column--warning, .tenon-column--error, .tenon-column--running {
   background: color-mix(in srgb, var(--tenon-column-tone) 6%, var(--tenon-background-raised));
   border-color: color-mix(in srgb, var(--tenon-column-tone) 35%, var(--tenon-stroke-default));
 }
 .tenon-column--accent > .tenon-column__head,
 .tenon-column--success > .tenon-column__head,
 .tenon-column--warning > .tenon-column__head,
-.tenon-column--error > .tenon-column__head {
+.tenon-column--error > .tenon-column__head,
+.tenon-column--running > .tenon-column__head {
   color: var(--tenon-column-tone);
   border-bottom-color: color-mix(in srgb, var(--tenon-column-tone) 20%, var(--tenon-stroke-subtle));
 }

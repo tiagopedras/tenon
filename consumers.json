@@ -1,7 +1,17 @@
 {
-  "$comment": "Who reads Tenon. One route for all of them: a git dependency pinned to a tag. sync reports which tag each is on and writes nothing — bumping a consumer means editing its own package.json and reinstalling, which is the point of pinning. An earlier version of this file had a second 'vendor' route that copied the built CSS into to-dos, on the belief that to-dos had no npm. It has React 18, Vite and TypeScript at its root, and server.py already carries the sibling-package static route twice.",
+  "$comment": "Who reads Tenon. One route for all of them: a git dependency pinned to a tag. sync reports which tag each is on and writes nothing \u2014 bumping a consumer means editing its own package.json and reinstalling, which is the point of pinning. An earlier version of this file had a second 'vendor' route that copied the built CSS into to-dos, on the belief that to-dos had no npm. It has React 18, Vite and TypeScript at its root. Its built CSS is copied out of node_modules into kanban/dist/ by its own vite build, beside board-ui.js, because the Vercel deployment has no server and no node_modules and a static path is the only one both can reach.",
   "consumers": [
-    { "name": "to-dos board", "manifest": "../../to-dos/package.json" },
-    { "name": "ai_canvas",    "manifest": "../../ai_canvas/package.json" }
+    {
+      "name": "to-dos board",
+      "manifest": "../../to-dos/package.json"
+    },
+    {
+      "name": "to-dos companion",
+      "manifest": "../../to-dos/companion/package.json"
+    },
+    {
+      "name": "ai_canvas",
+      "manifest": "../../ai_canvas/package.json"
+    }
   ]
 }

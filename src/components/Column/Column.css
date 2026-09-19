@@ -1,0 +1,160 @@
+/* The column, ported from the to-dos board's colHTML / Column.tsx. On the
+   board every column is one shape — three boards, Overview's seven
+   sections, Matrix, Timeline, Backups, Projects — so the fill, border,
+   radius, gap and both paddings are settled in one place. That is the
+   part worth having, and it is what came across.
+
+   What did not come across is what those columns mean on that board. The
+   dashed edge there says an agent owns the column and you do not drag
+   into it; here `dashed` just draws a dashed edge and the app decides
+   what it means. The orange tint and turning gear on a running queue
+   became `tone` and a `titleAfter` slot, so the icon is the app's. The
+   head is not uppercase, because nothing in Tenon is. */
+
+.tenon-column {
+  display: flex;
+  flex-direction: column;
+  min-height: var(--tenon-dimension-1200);
+  background: var(--tenon-background-raised);
+  border: 1px solid var(--tenon-stroke-default);
+  border-radius: var(--tenon-radius-lg);
+  box-shadow: var(--tenon-elevation-raised);
+  color: var(--tenon-text-default);
+}
+
+/* The one dashed thing, wherever it is used, so the dash keeps meaning
+   one thing inside a given app. */
+.tenon-column--dashed { border-style: dashed; box-shadow: none; }
+
+/* ---- head ---- */
+
+.tenon-column__head {
+  margin: 0;
+  padding: var(--tenon-dimension-125) var(--tenon-dimension-150) var(--tenon-dimension-100);
+  border-bottom: 1px solid var(--tenon-stroke-subtle);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--tenon-dimension-100);
+  font-size: var(--tenon-text-heading-5-size);
+  font-weight: var(--tenon-text-heading-5-weight);
+  letter-spacing: var(--tenon-text-heading-6-letter-spacing);
+  color: var(--tenon-text-subtle);
+  /* So a head carrying nothing but a title lines up with one carrying a
+     count and a control. */
+  min-height: var(--tenon-dimension-500);
+}
+
+/* Two groups pushed apart rather than one row with things floated right.
+   What the column is called sits left, what you do to it sits right, and
+   neither is allowed to shrink the other away. */
+.tenon-column__head-row {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--tenon-dimension-100); min-height: var(--tenon-dimension-250);
+}
+.tenon-column__head-start { display: flex; align-items: center; gap: var(--tenon-dimension-100); min-width: 0; }
+/* Wraps, because a head can carry a control wider than a button. */
+.tenon-column__head-end {
+  display: flex; align-items: center; justify-content: flex-end;
+  gap: var(--tenon-dimension-100); flex-wrap: wrap; min-width: 0;
+}
+
+.tenon-column__title {
+  margin: 0; min-width: 0;
+  font-size: inherit; font-weight: inherit; letter-spacing: inherit; color: inherit;
+}
+
+.tenon-column__hint {
+  font-size: var(--tenon-text-caption-size);
+  font-weight: var(--tenon-text-label-weight);
+  letter-spacing: var(--tenon-text-body-letter-spacing);
+  color: var(--tenon-text-faint);
+}
+
+.tenon-column__count {
+  font-weight: var(--tenon-text-heading-5-weight);
+  font-size: var(--tenon-text-label-size);
+  letter-spacing: var(--tenon-text-body-letter-spacing);
+  color: var(--tenon-text-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+/* What the column is for, inside the column rather than above the row of
+   them. A sentence, so not the head's weight and not its tracking: the
+   heading above it has already had its say. */
+.tenon-column__desc {
+  margin: 0;
+  font-size: var(--tenon-text-caption-size);
+  font-weight: var(--tenon-text-label-weight);
+  line-height: var(--tenon-text-body-line-height);
+  letter-spacing: var(--tenon-text-body-letter-spacing);
+  color: var(--tenon-text-faint);
+}
+
+/* ---- tone: a tinted panel and a coloured head ---- */
+
+.tenon-column--accent  { --tenon-column-tone: var(--tenon-text-accent); }
+.tenon-column--success { --tenon-column-tone: var(--tenon-text-success); }
+.tenon-column--warning { --tenon-column-tone: var(--tenon-text-warning); }
+.tenon-column--error   { --tenon-column-tone: var(--tenon-text-error); }
+
+.tenon-column--accent, .tenon-column--success,
+.tenon-column--warning, .tenon-column--error {
+  background: color-mix(in srgb, var(--tenon-column-tone) 6%, var(--tenon-background-raised));
+  border-color: color-mix(in srgb, var(--tenon-column-tone) 35%, var(--tenon-stroke-default));
+}
+.tenon-column--accent > .tenon-column__head,
+.tenon-column--success > .tenon-column__head,
+.tenon-column--warning > .tenon-column__head,
+.tenon-column--error > .tenon-column__head {
+  color: var(--tenon-column-tone);
+  border-bottom-color: color-mix(in srgb, var(--tenon-column-tone) 20%, var(--tenon-stroke-subtle));
+}
+
+.tenon-column--muted > .tenon-column__head { color: var(--tenon-text-faint); }
+
+/* ---- body and footer ---- */
+
+.tenon-column__body {
+  padding: var(--tenon-dimension-100);
+  display: flex; flex-direction: column;
+  gap: var(--tenon-dimension-100);
+  flex: 1; min-width: 0;
+}
+
+/* A column of prose rather than a column of cards. Cards want a gap
+   between them; paragraphs want their own margins and more room at the
+   edges. */
+.tenon-column--prose > .tenon-column__body {
+  display: block; gap: 0;
+  padding: var(--tenon-dimension-150) var(--tenon-dimension-175) var(--tenon-dimension-175);
+}
+
+.tenon-column__footer { padding: 0 var(--tenon-dimension-100) var(--tenon-dimension-125); }
+
+/* ---- collapsible ---- */
+
+.tenon-column > summary { cursor: pointer; list-style: none; }
+.tenon-column > summary::-webkit-details-marker { display: none; }
+.tenon-column > summary::marker { content: ''; }
+
+.tenon-column__chevron { flex: none; font-size: var(--tenon-text-caption-size); color: var(--tenon-text-faint); line-height: 1; }
+.tenon-column__chevron::before { content: '\25b8'; display: block; transition: transform 120ms ease; }
+.tenon-column[open] > summary .tenon-column__chevron::before { transform: rotate(90deg); }
+
+/* ---- empty ---- */
+
+.tenon-column-empty {
+  color: var(--tenon-text-faint);
+  font-size: var(--tenon-text-label-size);
+  padding: var(--tenon-dimension-075) var(--tenon-dimension-050) var(--tenon-dimension-125);
+}
+/* A boxed empty, for a column of prose. One line of grey text in a wide
+   column reads as a column that failed to load rather than one with
+   nothing in it. */
+.tenon-column-empty--boxed {
+  border: 1px dashed var(--tenon-stroke-default);
+  border-radius: var(--tenon-radius-md);
+  padding: var(--tenon-dimension-200);
+  text-align: center;
+}

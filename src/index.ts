@@ -14,6 +14,9 @@ export type { BadgeProps, BadgeTone } from './components/Badge/Badge';
 export { Tag } from './components/Tag/Tag';
 export type { TagProps, TagTone, TagChart } from './components/Tag/Tag';
 
+export { Column, ColumnEmpty } from './components/Column/Column';
+export type { ColumnProps, ColumnEmptyProps, ColumnTone, ColumnLayout } from './components/Column/Column';
+
 export { Stat } from './components/Stat/Stat';
 export type { StatProps, StatTone } from './components/Stat/Stat';
 

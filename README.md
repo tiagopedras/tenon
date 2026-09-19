@@ -121,11 +121,11 @@ where it sits.
 
 ## Components
 
-Six: `Button`, `Card`, `Badge`, `Tag`, `Stat` and `Field`. Written in TypeScript so
+Seven: `Button`, `Card`, `Column`, `Badge`, `Tag`, `Stat` and `Field`. Written in TypeScript so
 the `.d.ts` gives prop autocomplete in a plain JavaScript app too.
 
 ```jsx
-import { Button, Card, Badge, Tag, Stat, Field } from '@tiagopedras/tenon';
+import { Button, Card, Column, Badge, Tag, Stat, Field } from '@tiagopedras/tenon';
 import '@tiagopedras/tenon/tenon.css';        // tokens
 import '@tiagopedras/tenon/tenon-react.css';  // component styles
 ```
@@ -154,6 +154,28 @@ Every component's CSS reads semantic tokens and nothing else. There are no
 component tokens, and the build enforces it: a `var(--tenon-color-*)` anywhere
 under `src/` fails the build, because a component naming a primitive is a
 component that will not follow a theme.
+
+`Column` is the board's column, where every column in the app is one shape —
+three boards, Overview's seven sections, Matrix, Timeline, Backups, Projects —
+so the fill, border, radius, gap and both paddings are settled in one place.
+That part came across whole. Its head is two groups pushed apart rather than
+one row with things floated right: what the column is called sits left, what
+you do to it sits right, and neither shrinks the other away.
+
+What did not come across is what those columns mean on that board. The dashed
+edge there says an agent owns the column and you do not drag into it; here
+`dashed` draws a dashed edge and the app decides what it means. The orange
+tint and turning gear on a running queue became `tone` and a `titleAfter`
+slot, so the icon belongs to the app. Keep the dash to one meaning per app and
+it keeps reading.
+
+`layout="prose"` is for a column of paragraphs rather than a column of cards:
+their own margins do the spacing and the edges get more room. `collapsible`
+draws the whole thing as a `<details>` whose `<summary>` is the same head, so
+nothing about a column changes by being foldable except the element it is made
+of. `ColumnEmpty` is what a column draws when there is nothing in it, and
+`boxed` is for a wide one, where a single faint line reads as a column that
+failed to load.
 
 `Stat` is the board's StatCard: one number, boxed, with what it counts under
 it. It was three spans scoped to the Reports view until it was pulled out, so
@@ -229,6 +251,28 @@ component that will not follow a theme.
 the board's buckets, and a chart badge colours its text rather than its fill,
 because ten saturated fills side by side is what the board's Timeline learned
 not to do.
+
+`Column` is the board's column, where every column in the app is one shape —
+three boards, Overview's seven sections, Matrix, Timeline, Backups, Projects —
+so the fill, border, radius, gap and both paddings are settled in one place.
+That part came across whole. Its head is two groups pushed apart rather than
+one row with things floated right: what the column is called sits left, what
+you do to it sits right, and neither shrinks the other away.
+
+What did not come across is what those columns mean on that board. The dashed
+edge there says an agent owns the column and you do not drag into it; here
+`dashed` draws a dashed edge and the app decides what it means. The orange
+tint and turning gear on a running queue became `tone` and a `titleAfter`
+slot, so the icon belongs to the app. Keep the dash to one meaning per app and
+it keeps reading.
+
+`layout="prose"` is for a column of paragraphs rather than a column of cards:
+their own margins do the spacing and the edges get more room. `collapsible`
+draws the whole thing as a `<details>` whose `<summary>` is the same head, so
+nothing about a column changes by being foldable except the element it is made
+of. `ColumnEmpty` is what a column draws when there is nothing in it, and
+`boxed` is for a wide one, where a single faint line reads as a column that
+failed to load.
 
 `Stat` is the board's StatCard: one number, boxed, with what it counts under
 it. It was three spans scoped to the Reports view until it was pulled out, so

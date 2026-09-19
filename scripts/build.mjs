@@ -119,8 +119,14 @@ function cssFiles(dir) {
     return e.isDirectory() ? cssFiles(full) : e.name.endsWith('.css') ? [full] : [];
   });
 }
-for (const file of cssFiles(join(ROOT, 'src'))) {
-  const text = readFileSync(file, 'utf8');
+/* Local custom properties a component sets on its own element from a prop.
+   They are not tokens and will not be found in the built CSS, which is the
+   whole reason this list has to be written down. */
+const LOCALS = new Set(['--tenon-card-accent', '--tenon-tag-colour', '--tenon-column-tone']);
+
+const componentCss = cssFiles(join(ROOT, 'src')).map((f) => [f, readFileSync(f, 'utf8')]);
+
+for (const [file, text] of componentCss) {
   for (const m of text.matchAll(/var\(\s*(--tenon-color-[a-z0-9-]+)/g)) {
     errors.push(`${file.replace(ROOT + '/', '')} reads the primitive ${m[1]}`);
   }
@@ -226,6 +232,26 @@ ${block(themeVars('dark'))}
 ${textClasses.join('\n\n')}
 `;
 
+/* Every --tenon- name a component reads has to be one this build emits.
+   A var() naming a token that does not exist falls back silently, or to
+   whatever fallback was typed beside it, and looks completely fine. That
+   has now happened twice here: --tenon-color-background-default, which
+   made the token preview render on browser defaults, and --tenon-text-2xs
+   in the column head. Both looked right. */
+const emitted = new Set(css.match(/^\s*(--tenon-[a-z0-9-]+):/gm)?.map((l) => l.trim().slice(0, -1)) ?? []);
+for (const [file, text] of componentCss) {
+  for (const m of text.matchAll(/var\(\s*(--tenon-[a-z0-9-]+)/g)) {
+    if (!emitted.has(m[1]) && !LOCALS.has(m[1])) {
+      errors.push(`${file.replace(ROOT + '/', '')} reads ${m[1]}, which this build does not emit`);
+    }
+  }
+}
+if (errors.length) {
+  console.error('Build failed.\n');
+  for (const e of errors) console.error(`  ${e}`);
+  process.exit(1);
+}
+
 mkdirSync(join(ROOT, 'dist'), { recursive: true });
 writeFileSync(join(ROOT, 'dist', 'tenon.css'), css);
 
@@ -268,7 +294,7 @@ for (const theme of ['light', 'dark']) {
 console.log(`${STAMP}`);
 console.log(`dist/tenon.css          ${primitiveVars.length} primitives, ${lightKeys.length} semantics x 2 themes`);
 console.log(`dist/tenon.tokens.json  resolved values`);
-console.log(`\nChecks passed: theme parity, alias targets, no semantic-to-semantic aliases,\n               no component CSS reading a colour primitive.`);
+console.log(`\nChecks passed: theme parity, alias targets, no semantic-to-semantic aliases,\n               no component CSS reading a colour primitive,\n               every --tenon- name a component reads is one this build emits.`);
 if (!QUIET) {
   if (rows.length) {
     console.log(`\n${rows.length} text or icon tokens below 4.5:1 on their own background:`);

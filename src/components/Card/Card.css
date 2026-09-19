@@ -22,6 +22,7 @@
    marked. */
 
 .tenon-card {
+  position: relative;
   background: var(--tenon-background-raised);
   border: 1px solid var(--tenon-stroke-default);
   border-radius: var(--tenon-radius-md);
@@ -34,14 +35,26 @@
 
 /* --tenon-card-accent is set by the component from its `accent` prop. It is
    a local custom property, not a token: the value is whatever the caller
-   is marking with, most often one of the ten chart colours. */
-.tenon-card--accent { box-shadow: inset var(--tenon-dimension-050) 0 0 var(--tenon-card-accent); }
+   is marking with, most often one of the ten chart colours.
 
-.tenon-card--flat    { box-shadow: none; }
-.tenon-card--raised  { box-shadow: var(--tenon-elevation-raised); }
-.tenon-card--raised.tenon-card--accent {
-  box-shadow: inset var(--tenon-dimension-050) 0 0 var(--tenon-card-accent), var(--tenon-elevation-raised);
+   Drawn as a pseudo-element rather than an inset shadow. It was a shadow
+   until the flat variant, which sets box-shadow to none, silently erased
+   it on every card that did not ask to be raised — the stripe simply
+   stopped appearing and nothing said why. The two are separate properties
+   now, so elevation and the mark cannot argue. */
+.tenon-card--accent::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: var(--tenon-dimension-050);
+  background: var(--tenon-card-accent);
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+  pointer-events: none;
 }
+
+.tenon-card--flat   { box-shadow: none; }
+.tenon-card--raised { box-shadow: var(--tenon-elevation-raised); }
 
 .tenon-card--draggable { cursor: grab; }
 .tenon-card--draggable:active { cursor: grabbing; }

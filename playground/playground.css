@@ -25,3 +25,5 @@ section > h2 { margin: 0 0 var(--tenon-dimension-200); }
 .bar { height: var(--tenon-dimension-075); border-radius: var(--tenon-radius-full); background: var(--tenon-background-neutral); overflow: hidden; }
 .bar span { display: block; height: 100%; background: var(--tenon-background-accent); }
 .stats { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: var(--tenon-dimension-200); }
+.columns { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--tenon-dimension-150); align-items: start; }
+.columns p { margin: 0 0 var(--tenon-dimension-125); }

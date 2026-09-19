@@ -1,6 +1,6 @@
 import { StrictMode, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Button, Badge, Card, Tag, Stat, Field } from '../src';
+import { Button, Badge, Card, Tag, Stat, Column, ColumnEmpty, Field } from '../src';
 import type { TagChart } from '../src';
 import '../dist/tenon.css';
 import './playground.css';
@@ -108,6 +108,36 @@ function App() {
             body={<div className="bar"><span style={{ width: '62%' }} /></div>}
             footer="5 of 8 steps"
           />
+        </div>
+      </section>
+
+      <section>
+        <h2 className="tenon-heading-2">Column</h2>
+        <p className="tenon-body-sm muted">The board's column. The head is two groups pushed apart, so a long title never squeezes the controls away.</p>
+        <div className="columns">
+          <Column
+            title="To do" titleAs="h3" count={3}
+            action={<Button size="sm" variant="ghost">sort</Button>}
+            desc="What is actually next, as opposed to what exists."
+            footer={<Button size="sm" variant="ghost" style={{ width: '100%' }}>+ add</Button>}
+          >
+            <Card accent="var(--tenon-chart-1)" title="Ship the tokens" meta="People" />
+            <Card accent="var(--tenon-chart-4)" title="Read the parity report" meta="Design System" />
+            <Card title="No accent" meta="Queue" />
+          </Column>
+
+          <Column title="Running" titleAs="h3" tone="warning" count={1} hint="worked by an agent">
+            <Card accent="var(--tenon-chart-2)" title="Generating the ramps" summary="A tinted panel and a coloured head." />
+          </Column>
+
+          <Column title="Waiting for review" titleAs="h3" dashed muted count={0}>
+            <ColumnEmpty>Nothing here.</ColumnEmpty>
+          </Column>
+
+          <Column title="Overview" titleAs="h3" layout="prose" collapsible collapseKey="demo-overview">
+            <p>A column of prose rather than a column of cards, and foldable. Its own margins do the spacing, and the edges get more room.</p>
+            <ColumnEmpty boxed>A boxed empty, for a wide column.</ColumnEmpty>
+          </Column>
         </div>
       </section>
 

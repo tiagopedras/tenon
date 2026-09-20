@@ -1,0 +1,13 @@
+/* Storybook reads Tenon and nothing else, same rule as the token preview:
+   a hard-coded value here would hide a token that is missing. */
+body {
+  background: var(--tenon-background-default);
+  color: var(--tenon-text-default);
+  font-family: var(--tenon-text-body-family);
+  font-size: var(--tenon-text-body-size);
+  line-height: var(--tenon-text-body-line-height);
+}
+.sb-row { display: flex; flex-wrap: wrap; gap: var(--tenon-dimension-100); align-items: center; }
+.sb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--tenon-dimension-200); align-items: start; }
+.sb-bar { height: var(--tenon-dimension-075); border-radius: var(--tenon-radius-full); background: var(--tenon-background-neutral); overflow: hidden; }
+.sb-bar span { display: block; height: 100%; background: var(--tenon-background-accent); }

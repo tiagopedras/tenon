@@ -116,7 +116,7 @@ npm run all        # regenerate the ramps, then build everything
 npm run build      # tokens, then the React library
 npm run tokens     # tokens only
 npm run check      # tokens quietly plus a typecheck, for a pre-commit hook
-npm run dev        # the component playground
+npm run dev        # Storybook, localhost:5199
 ```
 
 `scripts/build.mjs` writes `dist/tenon.css` and `dist/tenon.tokens.json`, and
@@ -228,8 +228,13 @@ points at whichever note is actually rendered rather than at an element that
 might not be there.
 
 ```bash
-npm run dev     # the component playground, localhost:5199
+npm run dev     # Storybook, localhost:5199
 ```
+
+There is one `stories/<Component>.stories.tsx` per component. The toolbar's theme
+switch sets `data-theme` on the root, and the stories render against the built
+`dist/tenon.css`, so `npm run dev` builds the tokens first. A new component gets
+a story file in the same commit.
 
 **The last seven came from two apps that had each drawn their own.** The chat
 engine supplied the `Modal` (its window), `Textarea` (its composer), `Spinner`
@@ -281,7 +286,7 @@ rather than moving it to the box, so an `autoFocus` field keeps it. `Spinner` ta
 still under reduced motion. `LinkButton` is a link that looks like a `Button`, for something
 that goes somewhere rather than doing something.
 
-The playground and the token preview both carry no hard-coded values, so
+Storybook and the token preview both carry no hard-coded values, so
 anything that looks wrong on either is a token that is wrong or missing. That
 is how the `--tenon-color-background-default` naming mistake was caught: the
 preview had been rendering on browser defaults and looked plausible.

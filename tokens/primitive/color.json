@@ -81,6 +81,85 @@
       },
       "$description": "Generated from #5d636e (board --n-500). Do not hand-edit; run scripts/generate-ramps.mjs."
     },
+    "grey": {
+      "50": {
+        "$type": "color",
+        "$value": "#f7f7f7"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#eeeeee"
+      },
+      "150": {
+        "$type": "color",
+        "$value": "#e4e4e4"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#d9d9d9"
+      },
+      "250": {
+        "$type": "color",
+        "$value": "#cccccc"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#bebebe"
+      },
+      "350": {
+        "$type": "color",
+        "$value": "#afafaf"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#a1a1a1"
+      },
+      "450": {
+        "$type": "color",
+        "$value": "#949494"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#868686"
+      },
+      "550": {
+        "$type": "color",
+        "$value": "#797979"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#6c6c6c"
+      },
+      "650": {
+        "$type": "color",
+        "$value": "#5f5f5f"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#525252"
+      },
+      "750": {
+        "$type": "color",
+        "$value": "#464646"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#3a3a3a"
+      },
+      "850": {
+        "$type": "color",
+        "$value": "#2e2e2e"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#222222"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#151515"
+      },
+      "$description": "Generated from #9a9a9a (tiagopedras.com muted text, zero chroma for the site theme). Do not hand-edit; run scripts/generate-ramps.mjs."
+    },
     "slate": {
       "50": {
         "$type": "color",

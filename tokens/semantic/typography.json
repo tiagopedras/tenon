@@ -13,6 +13,17 @@
         "letterSpacing": "{typography.letter-spacing.tight}"
       }
     },
+    "stat": {
+      "$description": "The figure in a Stat. The same as heading-1 today, so a Stat draws as it always did, but a theme can now restyle the figure without touching every heading. The Stat component reads it, and the build writes no .tenon-stat text class because the component owns that name.",
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.family.sans}",
+        "fontSize": "{typography.size.3xl}",
+        "fontWeight": "{typography.weight.bold}",
+        "lineHeight": "{typography.line-height.tight}",
+        "letterSpacing": "{typography.letter-spacing.normal}"
+      }
+    },
     "heading-1": {
       "$type": "typography",
       "$value": {
@@ -109,6 +120,17 @@
       "$value": {
         "fontFamily": "{typography.family.sans}",
         "fontSize": "{typography.size.xs}",
+        "fontWeight": "{typography.weight.regular}",
+        "lineHeight": "{typography.line-height.normal}",
+        "letterSpacing": "{typography.letter-spacing.normal}"
+      }
+    },
+    "caption-sm": {
+      "$description": "One step under caption, at the bottom of the size ladder. For a line of fine print that sits beside a caption, such as a copyright or an inline error.",
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.family.sans}",
+        "fontSize": "{typography.size.2xs}",
         "fontWeight": "{typography.weight.regular}",
         "lineHeight": "{typography.line-height.normal}",
         "letterSpacing": "{typography.letter-spacing.normal}"

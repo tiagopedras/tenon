@@ -25,9 +25,11 @@
 }
 
 .tenon-stat__value {
-  font-size: var(--tenon-text-heading-1-size);
-  font-weight: var(--tenon-text-heading-1-weight);
-  line-height: var(--tenon-text-heading-1-line-height);
+  font-family: var(--tenon-text-stat-family);
+  font-size: var(--tenon-text-stat-size);
+  font-weight: var(--tenon-text-stat-weight);
+  line-height: var(--tenon-text-stat-line-height);
+  letter-spacing: var(--tenon-text-stat-letter-spacing);
   /* So a row of figures does not jitter as the counts change. */
   font-variant-numeric: tabular-nums;
 }

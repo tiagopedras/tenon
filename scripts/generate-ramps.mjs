@@ -33,7 +33,8 @@ const CHROMA = [0.12, 0.22, 0.34, 0.47, 0.60, 0.72, 0.83, 0.91, 0.97, 1.00,
    to touch it casually: changing an anchor moves all 19 of its steps. */
 const HUES = {
   neutral: { hex: '#5d636e', from: 'board --n-500' },
-  slate:   { hex: '#55606e', from: 'board --bucket-10-light' },
+  grey:    { hex: '#9a9a9a', from: 'tiagopedras.com muted text, zero chroma for the site theme' },
+  slate:  { hex: '#55606e', from: 'board --bucket-10-light' },
   blue:    { hex: '#2f6feb', from: 'board --blue-500, the accent' },
   indigo:  { hex: '#4550c9', from: 'board --bucket-8-light' },
   purple:  { hex: '#7c4ddb', from: 'board --bucket-3-light' },

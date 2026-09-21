@@ -1,16 +1,18 @@
 /* Reads the token JSON, checks it, and writes dist/.
    Run: node scripts/build.mjs   (add --quiet to drop the contrast table)
 
-   Three checks run before anything is written, and any of them failing
+   Four checks run before anything is written, and any of them failing
    stops the build:
-     1. theme parity, light and dark hold the identical key set
+     1. theme parity, light, dark and tiagopedras_2026 hold the identical key set
      2. every {alias} resolves to something that exists
      3. no semantic token aliases another semantic token
+     4. a theme's typography file only replaces text styles the shared file
+        has, and gives all five parts of each
    The first is the one that matters. board.css had --accent missing from
    its dark block for months and nothing said a word, because a hand-written
    stylesheet has no way to know a key is absent.
 
-   A fourth check, contrast, reports and does not fail. Some tokens are
+   A fifth check, contrast, reports and does not fail. Some tokens are
    meant to sit below 4.5:1 and the token file says which.
    ------------------------------------------------------------------- */
 
@@ -48,6 +50,7 @@ const hoistColor = ({ color = {}, ...rest }) => ({ ...color, ...rest });
 const themes = {
   light: hoistColor(strip(read('tokens/semantic/color.light.json'))),
   dark: hoistColor(strip(read('tokens/semantic/color.dark.json'))),
+  tiagopedras_2026: hoistColor(strip(read('tokens/semantic/color.tiagopedras_2026.json'))),
 };
 
 /* ---- flatten ---------------------------------------------------------- */
@@ -69,6 +72,15 @@ const flatThemes = Object.fromEntries(
   Object.entries(themes).map(([n, t]) => [n, flatten(t)])
 );
 
+/* A theme may carry its own text styles in tokens/semantic/typography.<theme>.json.
+   Each replaces the shared style of the same name inside that theme's block,
+   and a style it leaves out keeps the shared one, so the file can be partial. */
+const flatTextThemes = {};
+for (const name of Object.keys(themes)) {
+  const file = `tokens/semantic/typography.${name}.json`;
+  if (existsSync(join(ROOT, file))) flatTextThemes[name] = flatten(strip(read(file)));
+}
+
 /* ---- checks ----------------------------------------------------------- */
 
 const errors = [];
@@ -77,6 +89,9 @@ const lightKeys = Object.keys(flatThemes.light).sort();
 const darkKeys = Object.keys(flatThemes.dark).sort();
 for (const k of lightKeys) if (!darkKeys.includes(k)) errors.push(`dark is missing ${k}`);
 for (const k of darkKeys) if (!lightKeys.includes(k)) errors.push(`light is missing ${k}`);
+const personalKeys = Object.keys(flatThemes.tiagopedras_2026).sort();
+for (const k of lightKeys) if (!personalKeys.includes(k)) errors.push(`tiagopedras_2026 is missing ${k}`);
+for (const k of personalKeys) if (!lightKeys.includes(k)) errors.push(`light is missing ${k}, which tiagopedras_2026 has`);
 
 const ALIAS = /^\{([^}]+)\}$/;
 
@@ -104,6 +119,31 @@ for (const [theme, flat] of Object.entries(flatThemes)) {
     const m = typeof node.$value === 'string' && node.$value.match(ALIAS);
     if (m && !(m[1] in flatPrimitives)) {
       errors.push(`${theme}: ${key} aliases {${m[1]}}, which is not a primitive`);
+    }
+  }
+}
+
+/* Only tiagopedras_2026 has a CSS block that emits a typography file. Light
+   and dark share :root and a media query with the shared styles, so a file
+   for either would be read and then dropped without a word. */
+const TEXT_PARTS = ['fontFamily', 'fontSize', 'fontWeight', 'lineHeight', 'letterSpacing'];
+for (const theme of ['light', 'dark']) {
+  if (flatTextThemes[theme]) errors.push(`typography.${theme}.json exists, but only tiagopedras_2026 emits a typography file`);
+}
+for (const [theme, flat] of Object.entries(flatTextThemes)) {
+  for (const [key, node] of Object.entries(flat)) {
+    if (flatShared[key]?.$type !== 'typography') {
+      errors.push(`${theme} typography: ${key} is not a text style in the shared file`);
+      continue;
+    }
+    for (const part of TEXT_PARTS) {
+      if (!(part in node.$value)) errors.push(`${theme} typography: ${key} is missing ${part}`);
+    }
+    for (const [part, val] of Object.entries(node.$value)) {
+      const m = typeof val === 'string' && val.match(ALIAS);
+      if (m && !(m[1] in flatPrimitives)) {
+        errors.push(`${theme} typography: ${key}.${part} aliases {${m[1]}}, which is not a primitive`);
+      }
     }
   }
 }
@@ -169,6 +209,16 @@ const primitiveVars = Object.entries(flatPrimitives)
 /* A composite text style becomes one var per part plus a shorthand, since
    `font:` cannot carry letter-spacing and a class is the only place the
    five parts sit together. */
+const partVars = (path, v, opts) => Object.entries({
+  family: v.fontFamily, size: v.fontSize, weight: v.fontWeight,
+  'line-height': v.lineHeight, 'letter-spacing': v.letterSpacing,
+}).map(([part, val]) => [`${cssName(path)}-${part}`, cssValue({ $value: val }, opts)]);
+
+/* A text style whose name a component already uses as its own class. The
+   vars are still written, and the component reads them, but a .tenon-stat
+   text class would put the figure's font on the whole Stat box. */
+const OWNED_BY_COMPONENT = new Set(['text.stat']);
+
 const textVars = [];
 const textClasses = [];
 for (const [path, node] of Object.entries(flatShared)) {
@@ -176,14 +226,8 @@ for (const [path, node] of Object.entries(flatShared)) {
     textVars.push([cssName(path), cssValue(node)]);
     continue;
   }
-  const v = node.$value;
-  const parts = {
-    family: v.fontFamily, size: v.fontSize, weight: v.fontWeight,
-    'line-height': v.lineHeight, 'letter-spacing': v.letterSpacing,
-  };
-  for (const [part, val] of Object.entries(parts)) {
-    textVars.push([`${cssName(path)}-${part}`, cssValue({ $value: val })]);
-  }
+  textVars.push(...partVars(path, node.$value));
+  if (OWNED_BY_COMPONENT.has(path)) continue;
   const cls = path.replace(/^text\./, '').replace(/\./g, '-');
   textClasses.push(
     `.tenon-${cls} {\n` +
@@ -198,13 +242,23 @@ for (const [path, node] of Object.entries(flatShared)) {
 const themeVars = (name) =>
   Object.entries(flatThemes[name]).map(([p, n]) => [cssName(p), cssValue(n)]);
 
+/* The classes above read these vars, so redefining them inside a theme's
+   block restyles every use of the class and every component with no new rule. */
+const themeTextVars = (name) =>
+  Object.entries(flatTextThemes[name] ?? {}).flatMap(([p, n]) => partVars(p, n.$value));
+
 const css = `/* ${STAMP}
    Generated by scripts/build.mjs. Do not edit.
-   ${primitiveVars.length} primitives, ${lightKeys.length} semantic tokens per theme, 2 themes.
+   ${primitiveVars.length} primitives, ${lightKeys.length} semantic tokens per theme, 3 themes.
 
    Light is the default. Dark applies when the system asks for it, unless
    [data-theme="light"] is set, and applies unconditionally under
-   [data-theme="dark"]. So a manual toggle needs no rebuild. */
+   [data-theme="dark"]. So a manual toggle needs no rebuild. The
+   tiagopedras_2026 theme is never automatic: it applies only under
+   :root[data-theme="tiagopedras_2026"], written with :root so it outranks the
+   automatic dark rule above it on a system set to dark. Its own text styles,
+   from typography.tiagopedras_2026.json, sit at the end of that block and
+   replace the shared ones of the same name. */
 
 :root {
   color-scheme: light dark;
@@ -227,6 +281,14 @@ ${block(themeVars('dark'), '    ')}
 
 [data-theme="dark"] {
 ${block(themeVars('dark'))}
+}
+
+:root[data-theme="tiagopedras_2026"] {
+  color-scheme: dark;
+${block(themeVars('tiagopedras_2026'))}
+
+  /* ---- text styles that replace the shared ones ---- */
+${block(themeTextVars('tiagopedras_2026'))}
 }
 
 ${textClasses.join('\n\n')}
@@ -273,13 +335,18 @@ const resolved = {
     Object.entries(flatThemes).map(([t, f]) =>
       [t, Object.fromEntries(Object.entries(f).map(([p, n]) => [p, cssValue(n, { literal: true })]))])
   ),
+  themeTypography: Object.fromEntries(
+    Object.entries(flatTextThemes).map(([t, f]) =>
+      [t, Object.fromEntries(Object.entries(f).map(([p, n]) =>
+        [p, Object.fromEntries(partVars(p, n.$value, { literal: true }).map(([k, v]) => [k.replace(`${cssName(p)}-`, ''), v]))]))])
+  ),
 };
 writeFileSync(join(ROOT, 'dist', 'tenon.tokens.json'), JSON.stringify(resolved, null, 2) + '\n');
 
 /* ---- contrast report -------------------------------------------------- */
 
 const rows = [];
-for (const theme of ['light', 'dark']) {
+for (const theme of ['light', 'dark', 'tiagopedras_2026']) {
   const r = resolved.themes[theme];
   const surfaces = { 'bg.default': r['background.default'], 'bg.raised': r['background.raised'] };
   for (const [key, hex] of Object.entries(r)) {
@@ -306,9 +373,9 @@ for (const theme of ['light', 'dark']) {
 }
 
 console.log(`${STAMP}`);
-console.log(`dist/tenon.css          ${primitiveVars.length} primitives, ${lightKeys.length} semantics x 2 themes`);
+console.log(`dist/tenon.css          ${primitiveVars.length} primitives, ${lightKeys.length} semantics x 3 themes`);
 console.log(`dist/tenon.tokens.json  resolved values`);
-console.log(`\nChecks passed: theme parity, alias targets, no semantic-to-semantic aliases,\n               no component CSS reading a colour primitive,\n               every --tenon- name a component reads is one this build emits.`);
+console.log(`\nChecks passed: theme parity (light, dark, tiagopedras_2026), alias targets, no semantic-to-semantic aliases,\n               theme typography files replace only styles that exist, with all five parts,\n               no component CSS reading a colour primitive,\n               every --tenon- name a component reads is one this build emits.`);
 if (!QUIET) {
   if (rows.length) {
     console.log(`\n${rows.length} text or icon tokens below 4.5:1 on their own background:`);

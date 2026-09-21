@@ -13,6 +13,20 @@ needs a decision, a new tag, or a new piece of the app before it can be built.
 
 ## Small
 
+- **The warning and error text tokens are too heavy on dark surfaces, and the fix belongs in Tenon so every app gets it.**
+  `text.warning` and `text.error` in `tokens/semantic/color.dark.json:183` and
+  `:191` alias `color.amber.350` and `color.red.400`, which read loud on the to-dos
+  board's "needs scoring" and "urgent" chips. Moving them to `color.amber.300` and
+  `color.red.350` lightens both, and in `tokens/semantic/color.light.json:186` and
+  `:194` the matching step is `color.amber.600` and `color.red.600` in place of
+  `.650`. The fills (`background.warning-subtle`, `background.error-subtle`) stay
+  where they are. It moves every consumer of those two tokens at once, soon and
+  overdue dates and placeholders included, which is the intent, so the urgent chip
+  and the overdue date beside it stay the same red. Check the light pairs still
+  clear 4.5:1 on their fills before building, then tag a minor version and bump
+  the pin in `to-dos/package.json`. Sits next to the urgency-colours entry below,
+  which covers the timeline bars rather than text.
+
 - **`Column` gives its body a class and no props, so a caller cannot make the body a drop target.**
   `bodyClassName` in `src/components/Column/Column.tsx` reaches the body's
   `className` and nothing else, while `...rest` goes to the outer element. The

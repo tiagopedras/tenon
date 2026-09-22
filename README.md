@@ -111,7 +111,9 @@ component that reads a text style follows. Today only `tiagopedras_2026` has
 one: Fraunces for `title`, `stat` and `heading-1` to `heading-5`, Inter for the rest,
 and the site's fluid `clamp()` sizes, which sit off the ladder above on purpose.
 Tenon names the families but never loads them, so the app has to load Fraunces
-and Inter itself, and the trial faces the site really uses stay out of this repo.
+and Inter itself (Storybook does it from Google Fonts, in
+`.storybook/preview-head.html`), and the trial faces the site really uses stay out of the repo. Storybook picks
+them up from a gitignored `.storybook/fonts-private/` when it is there.
 
 One Figma constraint worth knowing before the library gets built. Figma
 variables cannot hold a composite value, so the six headings land there as

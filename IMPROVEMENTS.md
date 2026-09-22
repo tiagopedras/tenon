@@ -27,7 +27,7 @@ needs a decision, a new tag, or a new piece of the app before it can be built.
   the pin in `to-dos/package.json`. Sits next to the urgency-colours entry below,
   which covers the timeline bars rather than text.
 
-- **`Column` gives its body a class and no props, so a caller cannot make the body a drop target.**
+- ~~**`Column` gives its body a class and no props, so a caller cannot make the body a drop target.**~~ **Built by the improvements agent, 22 Sep 2026.**
   `bodyClassName` in `src/components/Column/Column.tsx` reaches the body's
   `className` and nothing else, while `...rest` goes to the outer element. The
   to-dos board's `BoardView` needed handlers and a `data-tier` on the body, and

@@ -44,13 +44,17 @@ export interface ColumnProps extends Omit<HTMLAttributes<HTMLElement>, 'title'> 
    *  Falls back to nothing rather than to the title, which is not an id. */
   collapseKey?: string;
   bodyClassName?: string;
+  /** Spread onto the body rather than the column, for anything that should
+   *  cover the list and not the head: drop handlers, a data attribute. Its
+   *  className is merged with bodyClassName. */
+  bodyProps?: HTMLAttributes<HTMLDivElement>;
   children?: ReactNode;
 }
 
 export function Column({
   title, titleAs: Title = 'h2', titleAfter, hint, sort, count, action, filters,
   desc, footer, layout = 'stack', tone = 'default', muted, dashed,
-  collapsible, open, collapseKey, className, bodyClassName, children, ...rest
+  collapsible, open, collapseKey, className, bodyClassName, bodyProps, children, ...rest
 }: ColumnProps) {
   const classes = cx(
     'tenon-column',
@@ -83,7 +87,7 @@ export function Column({
 
   const inner = (
     <>
-      <div className={cx('tenon-column__body', bodyClassName)}>{children}</div>
+      <div {...bodyProps} className={cx('tenon-column__body', bodyClassName, bodyProps?.className)}>{children}</div>
       {footer ? <div className="tenon-column__footer">{footer}</div> : null}
     </>
   );

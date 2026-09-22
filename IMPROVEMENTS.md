@@ -13,7 +13,7 @@ needs a decision, a new tag, or a new piece of the app before it can be built.
 
 ## Small
 
-- **The warning and error text tokens are too heavy on dark surfaces, and the fix belongs in Tenon so every app gets it.**
+- ~~**The warning and error text tokens are too heavy on dark surfaces, and the fix belongs in Tenon so every app gets it.**~~ **Built by the improvements agent, 22 Sep 2026.**
   `text.warning` and `text.error` in `tokens/semantic/color.dark.json:183` and
   `:191` alias `color.amber.350` and `color.red.400`, which read loud on the to-dos
   board's "needs scoring" and "urgent" chips. Moving them to `color.amber.300` and

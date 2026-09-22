@@ -182,7 +182,7 @@
       },
       "warning": {
         "$type": "color",
-        "$value": "{color.amber.350}"
+        "$value": "{color.amber.300}"
       },
       "on-warning": {
         "$type": "color",
@@ -190,7 +190,7 @@
       },
       "error": {
         "$type": "color",
-        "$value": "{color.red.400}"
+        "$value": "{color.red.350}"
       },
       "on-error": {
         "$type": "color",

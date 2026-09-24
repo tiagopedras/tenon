@@ -154,9 +154,10 @@ did.
 
 ## Components
 
-Eighteen: `Button`, `Card`, `Column`, `Badge`, `Tag`, `Stat` and `Field`, then `Modal`, `Textarea`,
+Twenty: `Button`, `Card`, `Column`, `Badge`, `Tag`, `Stat` and `Field`, then `Modal`, `Textarea`,
 `Spinner`, `Pill`, `Alert`, `Switch` and `SegmentedControl`, then `Window`, `Markdown`,
-`EditableText` and `Disclosure`. `LinkButton` is `Button`'s anchor form and is not counted
+`EditableText` and `Disclosure`, then `DragHandle` and `DropLine`, which come with the
+`useReorder` hook. `LinkButton` is `Button`'s anchor form and is not counted
 separately. Written in TypeScript so the `.d.ts` gives prop autocomplete in a plain
 JavaScript app too.
 
@@ -298,6 +299,24 @@ rather than moving it to the box, so an `autoFocus` field keeps it. `Spinner` ta
 `variant="glyph"`, the cycling asterisks the Claude CLI draws while it thinks, which hold
 still under reduced motion. `LinkButton` is a link that looks like a `Button`, for something
 that goes somewhere rather than doing something.
+
+**Drag to reorder is one hook and two small pieces**, added in v0.8.0 so the
+agents dashboard and the to-dos board drag the same way. `useReorder({ keys, onMove,
+axis })` hands back, per item, `handleProps` for whatever it is picked up by and
+`itemProps` for the item itself, plus `listProps` for the list around them. Spread
+`handleProps` on a `DragHandle` to pick an item up by a grip, which the dashboard needs
+because its rows already use a plain drag to paint hours, or on the item itself to pick
+up the whole thing. The picture under the cursor is always the whole item. The fade on
+what is being carried waits a tick after the drag starts, because the browser takes its
+picture just after that and would otherwise take a faded one. Where it will land is a
+line in the accent with a dot at each end, the board's drop line: `DropLine` as an
+element a list inserts between items, or drawn on the hovered item itself through
+`data-tenon-drop`, which is what a grid of cards needs. Set `--tenon-reorder-gap` on
+the list to the gap between its items and the line sits in the middle of it.
+`reorderKeys` and `applySavedOrder` are the two sums around it: where a key goes after
+a drop, and how a saved order sorts a list that has grown since. The hook reorders one
+list. Moving between lists, like the board's columns, stays with the app, because the
+rules for what may go where are the app's. There is no keyboard way to reorder yet.
 
 Storybook and the token preview both carry no hard-coded values, so
 anything that looks wrong on either is a token that is wrong or missing. That

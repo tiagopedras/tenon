@@ -1,0 +1,66 @@
+/* Drag to reorder: the grip, the fade on what is being carried, and the
+   line that says where it will land.
+
+   The line is the to-dos board's: a 3px bar in the accent with a dot at
+   each end. It is drawn two ways with one recipe. `.tenon-dropline` is an
+   element a list inserts between items. `[data-tenon-drop]` draws it on the
+   hovered item's `::after` instead, centred in the gap before or after it,
+   which is what a grid needs since an inserted element would take a cell.
+   `::after` because Card already spends `::before` on its accent stripe. */
+
+.tenon-draghandle {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tenon-dimension-200);
+  height: var(--tenon-dimension-200);
+  color: var(--tenon-text-faint);
+  cursor: grab;
+}
+.tenon-draghandle:active { cursor: grabbing; }
+.tenon-draghandle svg { width: 10px; height: 16px; display: block; pointer-events: none; }
+
+[data-tenon-dragging] { opacity: 0.4; }
+
+/* Zero specificity, so any position a caller already set wins. */
+:where([data-tenon-reorder]) { position: relative; }
+
+.tenon-dropline,
+[data-tenon-drop]::after {
+  --tenon-dropline-color: var(--tenon-background-accent);
+  background:
+    radial-gradient(circle, var(--tenon-dropline-color) 3.5px, transparent 4px) left center / 7px 7px no-repeat,
+    radial-gradient(circle, var(--tenon-dropline-color) 3.5px, transparent 4px) right center / 7px 7px no-repeat,
+    linear-gradient(var(--tenon-dropline-color), var(--tenon-dropline-color)) center / calc(100% - 6px) 3px no-repeat;
+  pointer-events: none;
+}
+
+.tenon-dropline { flex: none; height: 7px; margin: -2px -3px; }
+
+[data-tenon-drop]::after {
+  content: '';
+  position: absolute;
+  left: -3px;
+  right: -3px;
+  height: 7px;
+  z-index: 2;
+}
+[data-tenon-drop='before']::after { top: calc(var(--tenon-reorder-gap, 0px) / -2 - 3.5px); }
+[data-tenon-drop='after']::after { bottom: calc(var(--tenon-reorder-gap, 0px) / -2 - 3.5px); }
+
+/* Left to right: the same line stood upright in the gap beside the item. */
+[data-tenon-axis='x'] > [data-tenon-drop]::after {
+  top: -3px;
+  bottom: -3px;
+  left: auto;
+  right: auto;
+  width: 7px;
+  height: auto;
+  background:
+    radial-gradient(circle, var(--tenon-dropline-color) 3.5px, transparent 4px) center top / 7px 7px no-repeat,
+    radial-gradient(circle, var(--tenon-dropline-color) 3.5px, transparent 4px) center bottom / 7px 7px no-repeat,
+    linear-gradient(var(--tenon-dropline-color), var(--tenon-dropline-color)) center / 3px calc(100% - 6px) no-repeat;
+}
+[data-tenon-axis='x'] > [data-tenon-drop='before']::after { left: calc(var(--tenon-reorder-gap, 0px) / -2 - 3.5px); }
+[data-tenon-axis='x'] > [data-tenon-drop='after']::after { right: calc(var(--tenon-reorder-gap, 0px) / -2 - 3.5px); }

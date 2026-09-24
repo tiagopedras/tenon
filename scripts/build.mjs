@@ -162,7 +162,7 @@ function cssFiles(dir) {
 /* Local custom properties a component sets on its own element from a prop.
    They are not tokens and will not be found in the built CSS, which is the
    whole reason this list has to be written down. */
-const LOCALS = new Set(['--tenon-card-accent', '--tenon-tag-colour', '--tenon-column-tone', '--tenon-modal-width']);
+const LOCALS = new Set(['--tenon-card-accent', '--tenon-tag-colour', '--tenon-column-tone', '--tenon-modal-width', '--tenon-dropline-color', '--tenon-reorder-gap']);
 
 const componentCss = cssFiles(join(ROOT, 'src')).map((f) => [f, readFileSync(f, 'utf8')]);
 

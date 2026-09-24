@@ -62,4 +62,14 @@ export type { EditableTextProps } from './components/EditableText/EditableText';
 export { Disclosure } from './components/Disclosure/Disclosure';
 export type { DisclosureProps } from './components/Disclosure/Disclosure';
 
+/* Drag to reorder. Written for the agents dashboard's agents and targets,
+   with the to-dos board's drop line, so the two apps drag the same way. */
+export { useReorder, reorderKeys, applySavedOrder } from './components/Reorder/useReorder';
+export type {
+  ReorderOptions, ReorderItem, ReorderItemProps, ReorderHandleProps, ReorderAxis, DropSide,
+} from './components/Reorder/useReorder';
+export { DragHandle } from './components/Reorder/DragHandle';
+export type { DragHandleProps } from './components/Reorder/DragHandle';
+export { DropLine } from './components/Reorder/DropLine';
+
 export { cx } from './utils';

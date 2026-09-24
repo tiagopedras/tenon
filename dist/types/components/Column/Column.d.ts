@@ -40,9 +40,13 @@ export interface ColumnProps extends Omit<HTMLAttributes<HTMLElement>, 'title'> 
      *  Falls back to nothing rather than to the title, which is not an id. */
     collapseKey?: string;
     bodyClassName?: string;
+    /** Spread onto the body rather than the column, for anything that should
+     *  cover the list and not the head: drop handlers, a data attribute. Its
+     *  className is merged with bodyClassName. */
+    bodyProps?: HTMLAttributes<HTMLDivElement>;
     children?: ReactNode;
 }
-export declare function Column({ title, titleAs: Title, titleAfter, hint, sort, count, action, filters, desc, footer, layout, tone, muted, dashed, collapsible, open, collapseKey, className, bodyClassName, children, ...rest }: ColumnProps): import("react").JSX.Element;
+export declare function Column({ title, titleAs: Title, titleAfter, hint, sort, count, action, filters, desc, footer, layout, tone, muted, dashed, collapsible, open, collapseKey, className, bodyClassName, bodyProps, children, ...rest }: ColumnProps): import("react").JSX.Element;
 export interface ColumnEmptyProps extends HTMLAttributes<HTMLDivElement> {
     /** A dashed box rather than a line of grey text. For a wide column,
      *  where one faint line reads as a column that failed to load. */

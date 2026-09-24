@@ -396,15 +396,15 @@ var k = t(function({ autoGrow: e = !1, invalid: t, className: r, onChange: i, va
 	"∗",
 	"✳",
 	"✢"
-], j = 110;
-function M() {
+], ee = 110;
+function j() {
 	return typeof matchMedia == "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
-function N({ size: e = "md", label: t = "Working", variant: n = "ring", className: i, ...a }) {
+function M({ size: e = "md", label: t = "Working", variant: n = "ring", className: i, ...a }) {
 	let [o, c] = s(0);
 	return r(() => {
-		if (n !== "glyph" || M()) return;
-		let e = setInterval(() => c((e) => (e + 1) % A.length), j);
+		if (n !== "glyph" || j()) return;
+		let e = setInterval(() => c((e) => (e + 1) % A.length), ee);
 		return () => clearInterval(e);
 	}, [n]), /* @__PURE__ */ l("span", {
 		role: "status",
@@ -419,7 +419,7 @@ function N({ size: e = "md", label: t = "Working", variant: n = "ring", classNam
 }
 //#endregion
 //#region src/components/Pill/Pill.tsx
-function P({ tone: e = "neutral", dot: t = !1, caps: n = !1, className: r, children: i, ...a }) {
+function N({ tone: e = "neutral", dot: t = !1, caps: n = !1, className: r, children: i, ...a }) {
 	return /* @__PURE__ */ u("span", {
 		className: f("tenon-pill", `tenon-pill--${e}`, n && "tenon-pill--caps", r),
 		...a,
@@ -431,16 +431,16 @@ function P({ tone: e = "neutral", dot: t = !1, caps: n = !1, className: r, child
 }
 //#endregion
 //#region src/components/Alert/Alert.tsx
-var F = {
+var te = {
 	neutral: "status",
 	info: "status",
 	success: "status",
 	warning: "alert",
 	error: "alert"
 };
-function I({ tone: e = "neutral", title: t, actions: n, className: r, children: i, ...a }) {
+function P({ tone: e = "neutral", title: t, actions: n, className: r, children: i, ...a }) {
 	return /* @__PURE__ */ u("div", {
-		role: F[e],
+		role: te[e],
 		className: f("tenon-alert", `tenon-alert--${e}`, r),
 		...a,
 		children: [
@@ -461,7 +461,7 @@ function I({ tone: e = "neutral", title: t, actions: n, className: r, children: 
 }
 //#endregion
 //#region src/components/Switch/Switch.tsx
-var ee = t(function({ checked: e, onChange: t, className: n, onClick: r, type: i = "button", ...a }, o) {
+var ne = t(function({ checked: e, onChange: t, className: n, onClick: r, type: i = "button", ...a }, o) {
 	return /* @__PURE__ */ l("button", {
 		ref: o,
 		type: i,
@@ -476,7 +476,7 @@ var ee = t(function({ checked: e, onChange: t, className: n, onClick: r, type: i
 });
 //#endregion
 //#region src/components/SegmentedControl/SegmentedControl.tsx
-function L({ options: e, value: t, onChange: n, className: r, ...i }) {
+function F({ options: e, value: t, onChange: n, className: r, ...i }) {
 	let a = o(null), s = (t, r) => {
 		let i = t.key === "ArrowRight" || t.key === "ArrowDown" ? 1 : t.key === "ArrowLeft" || t.key === "ArrowUp" ? -1 : 0;
 		if (i) {
@@ -514,12 +514,12 @@ function L({ options: e, value: t, onChange: n, className: r, ...i }) {
 }
 //#endregion
 //#region src/components/Window/Window.tsx
-var te = 24, R = 260, z = "cubic-bezier(0.4, 0, 0.2, 1)", ne = [
+var re = 24, I = 260, L = "cubic-bezier(0.4, 0, 0.2, 1)", ie = [
 	"left",
 	"top",
 	"width",
 	"height"
-].map((e) => `${e} ${R}ms ${z}`).join(", "), re = [
+].map((e) => `${e} ${I}ms ${L}`).join(", "), ae = [
 	"n",
 	"s",
 	"e",
@@ -528,58 +528,58 @@ var te = 24, R = 260, z = "cubic-bezier(0.4, 0, 0.2, 1)", ne = [
 	"nw",
 	"se",
 	"sw"
-], B = () => typeof matchMedia == "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
-function V(e) {
+], oe = () => typeof matchMedia == "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
+function R(e) {
 	let t = o(e);
 	return t.current = e, t;
 }
-function H({ open: e, onClose: t, title: c, subtitle: m, headEnd: h, footer: g, rect: _, onRectLive: v, onRectChange: y, growFrom: b, zIndex: x, active: S = !0, peeked: C = !1, onFocus: w, closeButton: T = !0, bare: E = !1, minWidth: D = 420, maxWidth: O = 800, minHeight: k = 320, className: A, children: j, ...M }) {
-	let N = o(null), P = i(), [F, I] = s(null), [ee, L] = s(!1), [H, U] = s(!1), [W, G] = s(!1), K = o(null), q = V(t), J = V(v), ie = V(y), ae = V(w), oe = V(S), Y = V(b), se = V(H), X = o({
+function z({ open: e, onClose: t, title: c, subtitle: m, headEnd: h, footer: g, rect: _, onRectLive: v, onRectChange: y, growFrom: b, zIndex: x, active: S = !0, peeked: C = !1, onFocus: w, closeButton: T = !0, bare: E = !1, minWidth: D = 420, maxWidth: O = 800, minHeight: k = 320, className: A, children: ee, ...j }) {
+	let M = o(null), N = i(), [te, P] = s(null), [ne, F] = s(!1), [z, B] = s(!1), [V, H] = s(!1), U = o(null), W = R(t), se = R(v), ce = R(y), le = R(w), ue = R(S), G = R(b), K = R(z), q = o({
 		title: c,
 		subtitle: m,
 		headEnd: h,
 		footer: g,
-		children: j,
+		children: ee,
 		rect: _ ?? null,
 		bare: E,
 		className: A,
-		rest: M
+		rest: j
 	});
-	e && (X.current = {
+	e && (q.current = {
 		title: c,
 		subtitle: m,
 		headEnd: h,
 		footer: g,
-		children: j,
+		children: ee,
 		rect: _ ?? null,
 		bare: E,
 		className: A,
-		rest: M
+		rest: j
 	});
-	let Z = X.current, Q = o({
+	let J = q.current, Y = o({
 		minWidth: D,
 		maxWidth: O,
 		minHeight: k
 	});
-	Q.current = {
+	Y.current = {
 		minWidth: D,
 		maxWidth: O,
 		minHeight: k
 	};
-	let ce = n((e) => {
-		let t = Q.current, n = Math.max(t.minWidth, Math.min(t.maxWidth, e.width)), r = Math.max(t.minHeight, e.height);
+	let X = n((e) => {
+		let t = Y.current, n = Math.max(t.minWidth, Math.min(t.maxWidth, e.width)), r = Math.max(t.minHeight, e.height);
 		return {
 			width: n,
-			height: Math.min(r, window.innerHeight - te),
+			height: Math.min(r, window.innerHeight - re),
 			x: Math.max(-n + 120, Math.min(e.x, window.innerWidth - 120)),
 			y: Math.max(38, Math.min(e.y, window.innerHeight - 60))
 		};
 	}, []);
 	if (r(() => {
-		se.current || I(null);
-	}, [_]), e && !K.current) {
+		K.current || P(null);
+	}, [_]), e && !U.current) {
 		let e = Math.min(O, window.innerWidth - 48), t = Math.min(680, window.innerHeight - 48 - 40);
-		K.current = {
+		U.current = {
 			x: Math.round((window.innerWidth - e) / 2),
 			y: Math.round((window.innerHeight - t) / 2) + 12,
 			width: e,
@@ -588,14 +588,14 @@ function H({ open: e, onClose: t, title: c, subtitle: m, headEnd: h, footer: g, 
 	}
 	r(() => {
 		if (!e) {
-			L(!1);
+			F(!1);
 			return;
 		}
-		let t = requestAnimationFrame(() => L(!0));
+		let t = requestAnimationFrame(() => F(!0));
 		return () => cancelAnimationFrame(t);
 	}, [e]), a(() => {
-		let t = N.current, n = Y.current;
-		if (!e || !t || !n || B()) return;
+		let t = M.current, n = G.current;
+		if (!e || !t || !n || oe()) return;
 		let r = t.getBoundingClientRect();
 		r.width && r.height && t.animate([{
 			transform: `translate(${n.left - r.left}px,${n.top - r.top}px) scale(${n.width / r.width},${n.height / r.height})`,
@@ -604,17 +604,17 @@ function H({ open: e, onClose: t, title: c, subtitle: m, headEnd: h, footer: g, 
 			transform: "translate(0,0) scale(1,1)",
 			opacity: 1
 		}], {
-			duration: R,
-			easing: z,
+			duration: I,
+			easing: L,
 			fill: "both"
 		});
 	}, [e]);
-	let [le, ue] = s(e);
-	e !== le && (ue(e), G(!e && !!Y.current && !B())), a(() => {
-		let e = N.current, t = Y.current;
-		if (!W || !e || !t) return;
+	let [Z, de] = s(e);
+	e !== Z && (de(e), H(!e && !!G.current && !oe())), a(() => {
+		let e = M.current, t = G.current;
+		if (!V || !e || !t) return;
 		let n = e.getBoundingClientRect(), r = !1, i = () => {
-			r || (r = !0, G(!1));
+			r || (r = !0, H(!1));
 		}, a = e.animate([{
 			transform: "translate(0,0) scale(1,1)",
 			opacity: 1
@@ -622,41 +622,41 @@ function H({ open: e, onClose: t, title: c, subtitle: m, headEnd: h, footer: g, 
 			transform: `translate(${t.left - n.left}px,${t.top - n.top}px) scale(${t.width / n.width},${t.height / n.height})`,
 			opacity: .5
 		}], {
-			duration: R,
-			easing: z,
+			duration: I,
+			easing: L,
 			fill: "both"
 		});
 		a.onfinish = i, a.oncancel = i;
 		let o = setTimeout(i, 410);
 		return () => clearTimeout(o);
-	}, [W]), r(() => {
-		!e && !W && (K.current = null);
-	}, [e, W]), r(() => {
+	}, [V]), r(() => {
+		!e && !V && (U.current = null);
+	}, [e, V]), r(() => {
 		if (!e) return;
 		let t = (e) => {
-			e.key === "Escape" && oe.current && (e.target?.closest?.("[data-tenon-editing]") || (e.stopPropagation(), q.current()));
+			e.key === "Escape" && ue.current && (e.target?.closest?.("[data-tenon-editing]") || (e.stopPropagation(), W.current()));
 		};
 		return window.addEventListener("keydown", t, !0), () => window.removeEventListener("keydown", t, !0);
 	}, [e]), r(() => {
-		let t = N.current;
+		let t = M.current;
 		e && t && !t.contains(document.activeElement) && t.focus({ preventScroll: !0 });
 	}, [e]);
-	let $ = F ?? Z.rect ?? K.current ?? {
+	let Q = te ?? J.rect ?? U.current ?? {
 		x: 0,
 		y: 0,
 		width: D,
 		height: k
-	}, de = V($), fe = (e, t) => {
+	}, fe = R(Q), $ = (e, t) => {
 		t.preventDefault();
 		let n = {
 			x: t.clientX,
 			y: t.clientY,
-			rect: { ...de.current }
+			rect: { ...fe.current }
 		};
-		U(!0);
-		let r = n.rect, i = Q.current, a = (t) => {
+		B(!0);
+		let r = n.rect, i = Y.current, a = (t) => {
 			let a = t.clientX - n.x, o = t.clientY - n.y, s = n.rect, c;
-			if (e === "move") c = ce({
+			if (e === "move") c = X({
 				x: s.x + a,
 				y: s.y + o,
 				width: s.width,
@@ -671,73 +671,73 @@ function H({ open: e, onClose: t, title: c, subtitle: m, headEnd: h, footer: g, 
 					let e = Math.max(i.minHeight, s.height - o);
 					c.y = s.y + (s.height - e), c.height = e;
 				}
-				c = ce(c);
+				c = X(c);
 			}
-			r = c, I(c), J.current?.(c);
+			r = c, P(c), se.current?.(c);
 		}, o = () => {
-			window.removeEventListener("pointermove", a), window.removeEventListener("pointerup", o), r !== n.rect && ie.current?.(r), requestAnimationFrame(() => U(!1));
+			window.removeEventListener("pointermove", a), window.removeEventListener("pointerup", o), r !== n.rect && ce.current?.(r), requestAnimationFrame(() => B(!1));
 		};
 		window.addEventListener("pointermove", a), window.addEventListener("pointerup", o);
 	};
-	return !e && !W ? null : d(/* @__PURE__ */ l("div", {
+	return !e && !V ? null : d(/* @__PURE__ */ l("div", {
 		className: "tenon-window-layer",
 		style: { zIndex: x },
 		children: /* @__PURE__ */ u("div", {
-			ref: N,
+			ref: M,
 			role: "dialog",
-			"aria-labelledby": P,
+			"aria-labelledby": N,
 			tabIndex: -1,
-			className: f("tenon-window", C && "tenon-window--peeked", Z.className),
+			className: f("tenon-window", C && "tenon-window--peeked", J.className),
 			style: {
-				left: $.x,
-				top: $.y,
-				width: $.width,
-				height: $.height,
-				transition: H || !ee ? "none" : ne
+				left: Q.x,
+				top: Q.y,
+				width: Q.width,
+				height: Q.height,
+				transition: z || !ne ? "none" : ie
 			},
-			onPointerDownCapture: () => ae.current?.(),
-			...Z.rest,
+			onPointerDownCapture: () => le.current?.(),
+			...J.rest,
 			children: [
 				/* @__PURE__ */ u("div", {
 					className: "tenon-modal__head tenon-window__head",
 					onPointerDown: (e) => {
-						e.target.closest("button,a,input,textarea,[contenteditable=\"true\"]") || fe("move", e);
+						e.target.closest("button,a,input,textarea,[contenteditable=\"true\"]") || $("move", e);
 					},
 					children: [
 						/* @__PURE__ */ u("div", {
 							className: "tenon-modal__titles",
 							children: [/* @__PURE__ */ l("h2", {
-								id: P,
+								id: N,
 								className: "tenon-modal__title",
-								children: Z.title
-							}), Z.subtitle && /* @__PURE__ */ l("div", {
+								children: J.title
+							}), J.subtitle && /* @__PURE__ */ l("div", {
 								className: "tenon-modal__subtitle",
-								children: Z.subtitle
+								children: J.subtitle
 							})]
 						}),
-						Z.headEnd,
+						J.headEnd,
 						T && /* @__PURE__ */ l(p, {
 							variant: "ghost",
 							size: "sm",
 							iconOnly: !0,
 							"aria-label": "Close",
-							onClick: () => q.current(),
+							onClick: () => W.current(),
 							children: "×"
 						})
 					]
 				}),
 				/* @__PURE__ */ l("div", {
-					className: f("tenon-modal__body", Z.bare && "tenon-modal__body--bare"),
-					children: Z.children
+					className: f("tenon-modal__body", J.bare && "tenon-modal__body--bare"),
+					children: J.children
 				}),
-				Z.footer && /* @__PURE__ */ l("div", {
-					className: f("tenon-modal__footer", Z.bare && "tenon-modal__footer--bare"),
-					children: Z.footer
+				J.footer && /* @__PURE__ */ l("div", {
+					className: f("tenon-modal__footer", J.bare && "tenon-modal__footer--bare"),
+					children: J.footer
 				}),
-				re.map((e) => /* @__PURE__ */ l("div", {
+				ae.map((e) => /* @__PURE__ */ l("div", {
 					className: f("tenon-window__grip", `tenon-window__grip--${e}`),
 					"data-edge": e,
-					onPointerDown: (t) => fe(e, t)
+					onPointerDown: (t) => $(e, t)
 				}, e))
 			]
 		})
@@ -745,7 +745,7 @@ function H({ open: e, onClose: t, title: c, subtitle: m, headEnd: h, footer: g, 
 }
 //#endregion
 //#region src/components/Markdown/Markdown.tsx
-var U = /https?:\/\/[^\s<>"')\]]+/g, W = [
+var B = /https?:\/\/[^\s<>"')\]]+/g, V = [
 	{
 		re: /\*\*([^*]+)\*\*/,
 		tag: "strong",
@@ -767,36 +767,36 @@ var U = /https?:\/\/[^\s<>"')\]]+/g, W = [
 		lead: !1
 	}
 ];
-function G(e, t) {
-	for (let { re: n, tag: r, lead: i } of W) {
+function H(e, t) {
+	for (let { re: n, tag: r, lead: i } of V) {
 		let a = n.exec(e);
 		if (!a) continue;
 		let o = i ? a[1] : "", s = i ? a[2] : a[1], c = r;
 		return [
-			...G(e.slice(0, a.index) + o, `${t}a`),
-			/* @__PURE__ */ l(c, { children: G(s, `${t}i`) }, `${t}m`),
-			...G(e.slice(a.index + a[0].length), `${t}z`)
+			...H(e.slice(0, a.index) + o, `${t}a`),
+			/* @__PURE__ */ l(c, { children: H(s, `${t}i`) }, `${t}m`),
+			...H(e.slice(a.index + a[0].length), `${t}z`)
 		];
 	}
 	return e ? [e] : [];
 }
-function K(e, t) {
+function U(e, t) {
 	let n = [], r = 0;
-	for (let i of e.matchAll(U)) {
+	for (let i of e.matchAll(B)) {
 		let a = i[0], o = "";
 		for (; /[.,;:!?]$/.test(a);) o = a.slice(-1) + o, a = a.slice(0, -1);
-		n.push(...G(e.slice(r, i.index), `${t}t${r}`)), n.push(/* @__PURE__ */ l("a", {
+		n.push(...H(e.slice(r, i.index), `${t}t${r}`)), n.push(/* @__PURE__ */ l("a", {
 			href: a,
 			className: "tenon-markdown__link",
 			children: a
 		}, `${t}l${i.index}`)), r = i.index + i[0].length - o.length;
 	}
-	return n.push(...G(e.slice(r), `${t}e`)), n;
+	return n.push(...H(e.slice(r), `${t}e`)), n;
 }
-function q(e) {
-	return e.split(/(`[^`]+`)/).flatMap((e, t) => t % 2 ? [/* @__PURE__ */ l("code", { children: e.slice(1, -1) }, `c${t}`)] : K(e, `p${t}`));
+function W(e) {
+	return e.split(/(`[^`]+`)/).flatMap((e, t) => t % 2 ? [/* @__PURE__ */ l("code", { children: e.slice(1, -1) }, `c${t}`)] : U(e, `p${t}`));
 }
-function J(e) {
+function se(e) {
 	let t = [], n = [], r = null, i = null, a = () => {
 		n.length && (t.push({
 			kind: "p",
@@ -851,29 +851,29 @@ function J(e) {
 		text: i.join("\n")
 	}), s(), t;
 }
-function ie({ children: t, inline: n = !1, className: r }) {
+function ce({ children: t, inline: n = !1, className: r }) {
 	return n ? /* @__PURE__ */ l("span", {
 		className: f("tenon-markdown", r),
-		children: q(t)
+		children: W(t)
 	}) : /* @__PURE__ */ l("div", {
 		className: f("tenon-markdown", r),
-		children: J(String(t)).map((t, n) => {
+		children: se(String(t)).map((t, n) => {
 			if (t.kind === "code") return /* @__PURE__ */ l("pre", { children: /* @__PURE__ */ l("code", { children: t.text }) }, n);
 			if (t.kind === "h") return /* @__PURE__ */ l("p", {
 				className: "tenon-markdown__heading",
-				children: q(t.text)
+				children: W(t.text)
 			}, n);
 			if (t.kind === "list") {
 				let e = t.ordered ? "ol" : "ul";
-				return /* @__PURE__ */ l(e, { children: t.items.map((e, t) => /* @__PURE__ */ l("li", { children: q(e) }, t)) }, n);
+				return /* @__PURE__ */ l(e, { children: t.items.map((e, t) => /* @__PURE__ */ l("li", { children: W(e) }, t)) }, n);
 			}
-			return /* @__PURE__ */ l("p", { children: t.lines.map((t, n) => /* @__PURE__ */ u(e, { children: [n > 0 && /* @__PURE__ */ l("br", {}), q(t)] }, n)) }, n);
+			return /* @__PURE__ */ l("p", { children: t.lines.map((t, n) => /* @__PURE__ */ u(e, { children: [n > 0 && /* @__PURE__ */ l("br", {}), W(t)] }, n)) }, n);
 		})
 	});
 }
 //#endregion
 //#region src/components/EditableText/EditableText.tsx
-function ae({ value: e, onCommit: t, hint: n = "Double-click to rename", className: i }) {
+function le({ value: e, onCommit: t, hint: n = "Double-click to rename", className: i }) {
 	let a = o(null), [c, u] = s(!1), [d, p] = s(e);
 	return r(() => {
 		c || p(e);
@@ -908,7 +908,7 @@ function ae({ value: e, onCommit: t, hint: n = "Double-click to rename", classNa
 }
 //#endregion
 //#region src/components/Disclosure/Disclosure.tsx
-function oe({ summary: e, open: t, defaultOpen: n = !1, onOpenChange: r, className: i, children: a }) {
+function ue({ summary: e, open: t, defaultOpen: n = !1, onOpenChange: r, className: i, children: a }) {
 	let [o, c] = s(n), d = t ?? o;
 	return /* @__PURE__ */ u("div", {
 		className: f("tenon-disclosure", d && "tenon-disclosure--open", i),
@@ -931,12 +931,37 @@ function oe({ summary: e, open: t, defaultOpen: n = !1, onOpenChange: r, classNa
 	});
 }
 //#endregion
+//#region src/components/Reorder/reorderCore.ts
+var G = "data-tenon-reorder", K = "data-tenon-drop", q = "data-tenon-dragging", J = "data-tenon-axis", Y = "data-tenon-grip", X = (e, t) => e === t || !!e && !!t && e.key === t.key && e.after === t.after;
+function Z(e, t, n, r) {
+	let i = e.getBoundingClientRect();
+	return r === "x" ? t > i.left + i.width / 2 : n > i.top + i.height / 2;
+}
+function de(e, t, n) {
+	if (!n.after) return n.key;
+	let r = e.filter((e) => e !== t), i = r.indexOf(n.key);
+	return i + 1 < r.length ? r[i + 1] : null;
+}
+function Q(e, t, n) {
+	let r = e.dataTransfer;
+	if (r && (r.effectAllowed = "move", r.setData("text/plain", t), n)) {
+		let t = n.getBoundingClientRect();
+		r.setDragImage(n, e.clientX - t.left, e.clientY - t.top);
+	}
+}
+var fe = (e) => {
+	setTimeout(e, 0);
+};
+function $(e) {
+	e.preventDefault(), e.stopPropagation(), e.dataTransfer && (e.dataTransfer.dropEffect = "move");
+}
+//#endregion
 //#region src/components/Reorder/useReorder.ts
-function Y(e, t, n) {
+function pe(e, t, n) {
 	let r = e.filter((e) => e !== t), i = n == null ? r.length : Math.max(0, r.indexOf(n));
 	return r.splice(i, 0, t), r;
 }
-function se(e, t, n) {
+function me(e, t, n) {
 	if (!n.length) return e;
 	let r = new Map(n.map((e, t) => [e, t]));
 	return e.map((e, i) => ({
@@ -944,23 +969,15 @@ function se(e, t, n) {
 		r: r.get(t(e)) ?? n.length + i
 	})).sort((e, t) => e.r - t.r).map((e) => e.item);
 }
-function X({ keys: e, onMove: t, axis: n = "y" }) {
+function he({ keys: e, onMove: t, axis: n = "y" }) {
 	let [r, i] = s(null), [a, c] = s(null), l = o(null), u = o(null), d = (e) => {
-		let t = u.current;
-		t === e || t && e && t.key === e.key && t.after === e.after || (u.current = e, c(e));
+		X(u.current, e) || (u.current = e, c(e));
 	}, f = () => {
 		l.current = null, u.current = null, i(null), c(null);
 	}, p = () => {
 		let n = l.current, r = u.current;
-		if (n && r && r.key !== n) {
-			let i = e.filter((e) => e !== n), a = i.indexOf(r.key);
-			t(n, r.after ? a + 1 < i.length ? i[a + 1] : null : r.key);
-		}
-		f();
-	}, m = (e) => {
-		let t = e.currentTarget.getBoundingClientRect();
-		return n === "x" ? e.clientX > t.left + t.width / 2 : e.clientY > t.top + t.height / 2;
-	};
+		n && r && r.key !== n && t(n, de(e, n, r)), f();
+	}, m = (e) => Z(e.currentTarget, e.clientX, e.clientY, n);
 	return {
 		item: (e) => {
 			let t = r && r !== e && a && a.key === e ? a.after ? "after" : "before" : null;
@@ -970,15 +987,9 @@ function X({ keys: e, onMove: t, axis: n = "y" }) {
 				handleProps: {
 					draggable: !0,
 					onDragStart: (t) => {
-						t.stopPropagation(), t.dataTransfer.effectAllowed = "move", t.dataTransfer.setData("text/plain", e);
-						let n = t.currentTarget.closest("[data-tenon-reorder]");
-						if (n) {
-							let e = n.getBoundingClientRect();
-							t.dataTransfer.setDragImage(n, t.clientX - e.left, t.clientY - e.top);
-						}
-						l.current = e, setTimeout(() => {
+						t.stopPropagation(), Q(t, e, t.currentTarget.closest("[data-tenon-reorder]")), l.current = e, fe(() => {
 							l.current === e && i(e);
-						}, 0);
+						});
 					},
 					onDragEnd: f
 				},
@@ -987,13 +998,13 @@ function X({ keys: e, onMove: t, axis: n = "y" }) {
 					"data-tenon-drop": t ?? void 0,
 					"data-tenon-dragging": r === e ? "" : void 0,
 					onDragOver: (t) => {
-						l.current && (t.preventDefault(), t.stopPropagation(), t.dataTransfer.dropEffect = "move", d(l.current === e ? null : {
+						l.current && ($(t), d(l.current === e ? null : {
 							key: e,
 							after: m(t)
 						}));
 					},
 					onDrop: (t) => {
-						l.current && (t.preventDefault(), t.stopPropagation(), l.current !== e && d({
+						l.current && ($(t), l.current !== e && d({
 							key: e,
 							after: m(t)
 						}), p());
@@ -1004,21 +1015,80 @@ function X({ keys: e, onMove: t, axis: n = "y" }) {
 		listProps: {
 			"data-tenon-axis": n,
 			onDragOver: (e) => {
-				l.current && (e.preventDefault(), e.stopPropagation());
+				l.current && $(e);
 			},
 			onDrop: (e) => {
-				l.current && (e.preventDefault(), e.stopPropagation(), p());
+				l.current && ($(e), p());
 			}
 		},
 		dragging: r
 	};
 }
 //#endregion
+//#region src/components/Reorder/bindReorder.ts
+function ge(e, t) {
+	let { onMove: n, axis: r = "y", grip: i = `[${Y}]`, item: a = `[${G}]`, keyOf: o = (e) => e.getAttribute("data-tenon-reorder") ?? "" } = t;
+	e.setAttribute(J, r);
+	let s = null, c = null, l = (t) => {
+		let n = t instanceof Element ? t.closest(a) : null;
+		for (; n && n.parentElement?.closest("[data-tenon-axis]") !== e;) n = n.parentElement?.closest(a) ?? null;
+		return n;
+	}, u = () => Array.from(e.querySelectorAll(a)).filter((t) => t.parentElement?.closest(`[${J}]`) === e).map(o), d = (e) => {
+		X(c, e) && c?.el === e?.el || (c?.el.removeAttribute(K), c = e, e && e.el.setAttribute(K, e.after ? "after" : "before"));
+	}, f = () => {
+		s?.el.removeAttribute(q), d(null), s = null;
+	}, p = (t) => {
+		let n = t.target instanceof Element ? t.target.closest(i) : null;
+		n && e.contains(n) && l(n) && (n.draggable = !0);
+	}, m = (e) => {
+		let t = e.target instanceof Element ? e.target.closest(i) : null, n = t && l(t);
+		if (!n) return;
+		e.stopPropagation();
+		let r = o(n);
+		Q(e, r, n);
+		let a = {
+			key: r,
+			el: n
+		};
+		s = a, e.target.addEventListener("dragend", f, { once: !0 }), fe(() => {
+			s === a && n.setAttribute(q, "");
+		});
+	}, h = (e) => {
+		if (!s) return;
+		$(e);
+		let t = l(e.target);
+		if (!t) return;
+		let n = o(t);
+		d(n === s.key ? null : {
+			key: n,
+			el: t,
+			after: Z(t, e.clientX, e.clientY, r)
+		});
+	}, g = (e) => {
+		if (!s) return;
+		$(e);
+		let t = l(e.target);
+		t && o(t) !== s.key && d({
+			key: o(t),
+			el: t,
+			after: Z(t, e.clientX, e.clientY, r)
+		});
+		let i = s.key, a = c, p = u();
+		f(), a && a.key !== i && n(i, de(p, i, a));
+	}, _ = (e) => {
+		s && $(e);
+	};
+	return e.addEventListener("pointerdown", p), e.addEventListener("dragstart", m), e.addEventListener("dragenter", _), e.addEventListener("dragover", h), e.addEventListener("drop", g), e.addEventListener("dragend", f), () => {
+		f(), e.removeAttribute(J), e.removeEventListener("pointerdown", p), e.removeEventListener("dragstart", m), e.removeEventListener("dragenter", _), e.removeEventListener("dragover", h), e.removeEventListener("drop", g), e.removeEventListener("dragend", f);
+	};
+}
+//#endregion
 //#region src/components/Reorder/DragHandle.tsx
-function Z({ className: e, ...t }) {
+function _e({ className: e, ...t }) {
 	return /* @__PURE__ */ l("span", {
 		className: f("tenon-draghandle", e),
 		"aria-hidden": "true",
+		"data-tenon-grip": "",
 		...t,
 		children: /* @__PURE__ */ u("svg", {
 			viewBox: "0 0 10 16",
@@ -1060,9 +1130,19 @@ function Z({ className: e, ...t }) {
 		})
 	});
 }
+function ve(e) {
+	return `<span class="${e ? `tenon-draghandle ${e}` : "tenon-draghandle"}" aria-hidden="true" data-tenon-grip=""><svg viewBox="0 0 10 16" fill="currentColor" aria-hidden="true" draggable="false">${[
+		[3, 3],
+		[7, 3],
+		[3, 8],
+		[7, 8],
+		[3, 13],
+		[7, 13]
+	].map(([e, t]) => `<circle cx="${e}" cy="${t}" r="1.3"></circle>`).join("")}</svg></span>`;
+}
 //#endregion
 //#region src/components/Reorder/DropLine.tsx
-function Q({ className: e, ...t }) {
+function ye({ className: e, ...t }) {
 	return /* @__PURE__ */ l("div", {
 		className: f("tenon-dropline", e),
 		"aria-hidden": "true",
@@ -1070,4 +1150,4 @@ function Q({ className: e, ...t }) {
 	});
 }
 //#endregion
-export { I as Alert, _ as Badge, p as Button, g as Card, y as Column, b as ColumnEmpty, oe as Disclosure, Z as DragHandle, Q as DropLine, ae as EditableText, S as Field, m as LinkButton, ie as Markdown, D as Modal, O as ModalPane, P as Pill, L as SegmentedControl, N as Spinner, x as Stat, ee as Switch, v as Tag, k as Textarea, H as Window, se as applySavedOrder, f as cx, q as inlineNodes, Y as reorderKeys, X as useReorder };
+export { P as Alert, _ as Badge, p as Button, g as Card, y as Column, b as ColumnEmpty, ue as Disclosure, _e as DragHandle, ye as DropLine, le as EditableText, S as Field, m as LinkButton, ce as Markdown, D as Modal, O as ModalPane, N as Pill, F as SegmentedControl, M as Spinner, x as Stat, ne as Switch, v as Tag, k as Textarea, z as Window, me as applySavedOrder, ge as bindReorder, f as cx, ve as dragHandleHTML, W as inlineNodes, pe as reorderKeys, he as useReorder };

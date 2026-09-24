@@ -318,6 +318,17 @@ a drop, and how a saved order sorts a list that has grown since. The hook reorde
 list. Moving between lists, like the board's columns, stays with the app, because the
 rules for what may go where are the app's. There is no keyboard way to reorder yet.
 
+**`bindReorder` is the same thing for a list built as an HTML string**, added in
+v0.9.0 because most of the to-dos board is plain JavaScript that a React hook cannot
+reach. `bindReorder(list, { onMove, axis, grip, item, keyOf })` binds once to the list
+element and returns a function that unbinds it. Its listeners sit on the list rather
+than on each row, so the list can redraw its rows after every move without binding
+again. Rows carry `data-tenon-reorder="key"` and a drag starts only from a grip,
+`[data-tenon-grip]` unless told otherwise, which `dragHandleHTML()` emits: the same
+markup as `<DragHandle/>`, character for character. The hook and this function share
+their rules in `reorderCore.ts`, so the drag picture, the late fade, which half of a row
+the pointer is in, the drop line and the event stopping at the list are written once.
+
 Storybook and the token preview both carry no hard-coded values, so
 anything that looks wrong on either is a token that is wrong or missing. That
 is how the `--tenon-color-background-default` naming mistake was caught: the

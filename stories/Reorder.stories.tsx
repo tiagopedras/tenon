@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Card, DragHandle, DropLine, reorderKeys, useReorder } from '../src';
+import { Card, DragHandle, DropLine, bindReorder, dragHandleHTML, reorderKeys, useReorder } from '../src';
 
 const meta = {
   title: 'Components/Reorder',
@@ -62,3 +62,31 @@ export const Line: Story = {
     </div>
   ),
 };
+
+/* No React inside the list: the rows are an HTML string redrawn after every
+   move, the way the to-dos board's editors are built. React only gives the
+   story somewhere to put it. */
+function PlainRows() {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const list = ref.current!;
+    let keys = START;
+    const draw = () => {
+      list.innerHTML = keys
+        .map(
+          (k) =>
+            `<div data-tenon-reorder="${k}" style="display:flex;align-items:center;gap:8px;` +
+            `padding:8px 12px;border-bottom:1px solid var(--tenon-stroke-subtle);` +
+            `background:var(--tenon-background-default)">${dragHandleHTML()}<span>${k}</span></div>`,
+        )
+        .join('');
+    };
+    draw();
+    return bindReorder(list, {
+      onMove: (key, before) => { keys = reorderKeys(keys, key, before); draw(); },
+    });
+  }, []);
+  return <div ref={ref} style={{ ['--tenon-reorder-gap' as string]: '0px', maxWidth: 320 }} />;
+}
+
+export const Plain: Story = { name: 'Plain DOM, bindReorder', render: () => <PlainRows /> };

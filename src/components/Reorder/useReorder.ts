@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react';
 import type { DragEvent } from 'react';
+import { afterPicture, beforeKey, claim, isAfter, sameOver, startDrag } from './reorderCore';
+import type { DropSide, Over, ReorderAxis } from './reorderCore';
 import './Reorder.css';
 
 /* Drag to reorder one list of keyed things.
@@ -25,10 +27,12 @@ import './Reorder.css';
    spread onto anything, a Card included, with no class merging:
    `data-tenon-dragging` fades the item, `data-tenon-drop` draws the line.
    Set `--tenon-reorder-gap` on the list to the gap between its items so
-   the line sits in the middle of it. */
+   the line sits in the middle of it.
 
-export type ReorderAxis = 'x' | 'y';
-export type DropSide = 'before' | 'after';
+   The rules themselves live in `reorderCore.ts`, shared with
+   `bindReorder`, the same thing for a list built as an HTML string. */
+
+export type { ReorderAxis, DropSide };
 
 export interface ReorderOptions {
   /** Every key in the list, in the order shown. */
@@ -62,8 +66,6 @@ export interface ReorderItem {
   itemProps: ReorderItemProps;
 }
 
-type Over = { key: string; after: boolean };
-
 /** Move `key` to sit just before `before`, or last when `before` is null. */
 export function reorderKeys(keys: string[], key: string, before: string | null): string[] {
   const rest = keys.filter((k) => k !== key);
@@ -93,8 +95,7 @@ export function useReorder({ keys, onMove, axis = 'y' }: ReorderOptions) {
   const overRef = useRef<Over | null>(null);
 
   const setOver = (o: Over | null) => {
-    const cur = overRef.current;
-    if (cur === o || (cur && o && cur.key === o.key && cur.after === o.after)) return;
+    if (sameOver(overRef.current, o)) return;
     overRef.current = o;
     setOverState(o);
   };
@@ -109,18 +110,11 @@ export function useReorder({ keys, onMove, axis = 'y' }: ReorderOptions) {
   const commit = () => {
     const d = draggingRef.current;
     const o = overRef.current;
-    if (d && o && o.key !== d) {
-      const rest = keys.filter((k) => k !== d);
-      const i = rest.indexOf(o.key);
-      onMove(d, o.after ? (i + 1 < rest.length ? rest[i + 1] : null) : o.key);
-    }
+    if (d && o && o.key !== d) onMove(d, beforeKey(keys, d, o));
     end();
   };
 
-  const sideOf = (ev: DragEvent<HTMLElement>) => {
-    const r = ev.currentTarget.getBoundingClientRect();
-    return axis === 'x' ? ev.clientX > r.left + r.width / 2 : ev.clientY > r.top + r.height / 2;
-  };
+  const sideOf = (ev: DragEvent<HTMLElement>) => isAfter(ev.currentTarget, ev.clientX, ev.clientY, axis);
 
   const item = (key: string): ReorderItem => {
     const drop: DropSide | null =
@@ -132,16 +126,9 @@ export function useReorder({ keys, onMove, axis = 'y' }: ReorderOptions) {
         draggable: true,
         onDragStart: (ev) => {
           ev.stopPropagation();
-          ev.dataTransfer.effectAllowed = 'move';
-          // Firefox cancels a drag that carries no data.
-          ev.dataTransfer.setData('text/plain', key);
-          const box = ev.currentTarget.closest('[data-tenon-reorder]');
-          if (box) {
-            const r = box.getBoundingClientRect();
-            ev.dataTransfer.setDragImage(box, ev.clientX - r.left, ev.clientY - r.top);
-          }
+          startDrag(ev, key, ev.currentTarget.closest('[data-tenon-reorder]'));
           draggingRef.current = key;
-          setTimeout(() => { if (draggingRef.current === key) setDragging(key); }, 0);
+          afterPicture(() => { if (draggingRef.current === key) setDragging(key); });
         },
         onDragEnd: end,
       },
@@ -151,15 +138,12 @@ export function useReorder({ keys, onMove, axis = 'y' }: ReorderOptions) {
         'data-tenon-dragging': dragging === key ? '' : undefined,
         onDragOver: (ev) => {
           if (!draggingRef.current) return;
-          ev.preventDefault();
-          ev.stopPropagation();
-          ev.dataTransfer.dropEffect = 'move';
+          claim(ev);
           setOver(draggingRef.current === key ? null : { key, after: sideOf(ev) });
         },
         onDrop: (ev) => {
           if (!draggingRef.current) return;
-          ev.preventDefault();
-          ev.stopPropagation();
+          claim(ev);
           if (draggingRef.current !== key) setOver({ key, after: sideOf(ev) });
           commit();
         },
@@ -173,13 +157,11 @@ export function useReorder({ keys, onMove, axis = 'y' }: ReorderOptions) {
     'data-tenon-axis': axis,
     onDragOver: (ev: DragEvent<HTMLElement>) => {
       if (!draggingRef.current) return;
-      ev.preventDefault();
-      ev.stopPropagation();
+      claim(ev);
     },
     onDrop: (ev: DragEvent<HTMLElement>) => {
       if (!draggingRef.current) return;
-      ev.preventDefault();
-      ev.stopPropagation();
+      claim(ev);
       commit();
     },
   };

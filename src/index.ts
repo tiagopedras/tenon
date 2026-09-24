@@ -68,7 +68,9 @@ export { useReorder, reorderKeys, applySavedOrder } from './components/Reorder/u
 export type {
   ReorderOptions, ReorderItem, ReorderItemProps, ReorderHandleProps, ReorderAxis, DropSide,
 } from './components/Reorder/useReorder';
-export { DragHandle } from './components/Reorder/DragHandle';
+export { bindReorder } from './components/Reorder/bindReorder';
+export type { BindReorderOptions } from './components/Reorder/bindReorder';
+export { DragHandle, dragHandleHTML } from './components/Reorder/DragHandle';
 export type { DragHandleProps } from './components/Reorder/DragHandle';
 export { DropLine } from './components/Reorder/DropLine';
 

@@ -1,6 +1,6 @@
 import { DragEvent } from 'react';
-export type ReorderAxis = 'x' | 'y';
-export type DropSide = 'before' | 'after';
+import { DropSide, ReorderAxis } from './reorderCore';
+export type { ReorderAxis, DropSide };
 export interface ReorderOptions {
     /** Every key in the list, in the order shown. */
     keys: string[];

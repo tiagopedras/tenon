@@ -17,6 +17,11 @@ div.tenon-markdown > *:last-child { margin-bottom: 0; }
 .tenon-markdown a { color: var(--tenon-text-link); }
 .tenon-markdown a:hover { color: var(--tenon-text-link-hovered); }
 
+/* [placeholder] — a bracket with nothing to fill it in from yet, kept in the
+   text rather than dropped so it reads as a gap still waiting on something,
+   not as ordinary prose. */
+.tenon-markdown__placeholder { color: var(--tenon-text-faint); font-style: italic; }
+
 .tenon-markdown code {
   font-family: var(--tenon-text-code-family);
   font-size: 0.92em;

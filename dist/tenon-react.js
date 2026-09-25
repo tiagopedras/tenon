@@ -745,7 +745,7 @@ function z({ open: e, onClose: t, title: c, subtitle: m, headEnd: h, footer: g, 
 }
 //#endregion
 //#region src/components/Markdown/Markdown.tsx
-var B = /https?:\/\/[^\s<>"')\]]+/g, V = [
+var B = /\[([^[\]\n]+)\]\(([^()\s]+)\)|(https?:\/\/[^\s<>"')\]]+)|\[([^[\]\n]+)\]/g, V = [
 	{
 		re: /\*\*([^*]+)\*\*/,
 		tag: "strong",
@@ -783,13 +783,24 @@ function H(e, t) {
 function U(e, t) {
 	let n = [], r = 0;
 	for (let i of e.matchAll(B)) {
-		let a = i[0], o = "";
-		for (; /[.,;:!?]$/.test(a);) o = a.slice(-1) + o, a = a.slice(0, -1);
-		n.push(...H(e.slice(r, i.index), `${t}t${r}`)), n.push(/* @__PURE__ */ l("a", {
-			href: a,
+		let [a, o, s, c] = i;
+		if (n.push(...H(e.slice(r, i.index), `${t}t${r}`)), s !== void 0) n.push(/* @__PURE__ */ l("a", {
+			href: s,
 			className: "tenon-markdown__link",
+			children: o
+		}, `${t}l${i.index}`)), r = i.index + a.length;
+		else if (c !== void 0) {
+			let e = c, o = "";
+			for (; /[.,;:!?]$/.test(e);) o = e.slice(-1) + o, e = e.slice(0, -1);
+			n.push(/* @__PURE__ */ l("a", {
+				href: e,
+				className: "tenon-markdown__link",
+				children: e
+			}, `${t}l${i.index}`)), r = i.index + a.length - o.length;
+		} else n.push(/* @__PURE__ */ l("em", {
+			className: "tenon-markdown__placeholder",
 			children: a
-		}, `${t}l${i.index}`)), r = i.index + i[0].length - o.length;
+		}, `${t}h${i.index}`)), r = i.index + a.length;
 	}
 	return n.push(...H(e.slice(r), `${t}e`)), n;
 }

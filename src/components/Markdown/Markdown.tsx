@@ -21,8 +21,15 @@ export interface MarkdownProps {
 
 /* A URL written in a reply becomes a link. Trailing sentence punctuation
    stays out of the href, since a full stop after a link is almost never part
-   of it. What a click does is the page's business: this only draws the link. */
-const URL_RE = /https?:\/\/[^\s<>"')\]]+/g;
+   of it. What a click does is the page's business: this only draws the link.
+
+   Three things, tried in this order at every position so the first to match
+   wins: [text](url), a labelled link; a bare URL; and [placeholder], a
+   bracket with nothing to fill it in from, kept as a marker of something
+   still waiting to be written in rather than dropped or guessed at. A
+   labelled link is tried first so its own [text] is never mistaken for a
+   placeholder afterwards. */
+const LINK_RE = /\[([^[\]\n]+)\]\(([^()\s]+)\)|(https?:\/\/[^\s<>"')\]]+)|\[([^[\]\n]+)\]/g;
 
 /* Emphasis, tried in this order. The underscore form needs a boundary before
    it, so snake_case_words are left alone. */
@@ -52,13 +59,22 @@ function emphasis(text: string, key: string): ReactNode[] {
 function links(text: string, key: string): ReactNode[] {
   const out: ReactNode[] = [];
   let last = 0;
-  for (const m of text.matchAll(URL_RE)) {
-    let url = m[0];
-    let tail = '';
-    while (/[.,;:!?]$/.test(url)) { tail = url.slice(-1) + tail; url = url.slice(0, -1); }
+  for (const m of text.matchAll(LINK_RE)) {
+    const [whole, labelledText, labelledUrl, bareUrl] = m;
     out.push(...emphasis(text.slice(last, m.index), `${key}t${last}`));
-    out.push(<a key={`${key}l${m.index}`} href={url} className="tenon-markdown__link">{url}</a>);
-    last = m.index! + m[0].length - tail.length;
+    if (labelledUrl !== undefined) {
+      out.push(<a key={`${key}l${m.index}`} href={labelledUrl} className="tenon-markdown__link">{labelledText}</a>);
+      last = m.index! + whole.length;
+    } else if (bareUrl !== undefined) {
+      let url = bareUrl;
+      let tail = '';
+      while (/[.,;:!?]$/.test(url)) { tail = url.slice(-1) + tail; url = url.slice(0, -1); }
+      out.push(<a key={`${key}l${m.index}`} href={url} className="tenon-markdown__link">{url}</a>);
+      last = m.index! + whole.length - tail.length;
+    } else {
+      out.push(<em key={`${key}h${m.index}`} className="tenon-markdown__placeholder">{whole}</em>);
+      last = m.index! + whole.length;
+    }
   }
   out.push(...emphasis(text.slice(last), `${key}e`));
   return out;

@@ -25,3 +25,11 @@ export const Default: Story = {};
 export const Inline: Story = {
   args: { inline: true, children: 'Just **one line** with `code` in it.' },
 };
+
+export const LinksAndPlaceholders: Story = {
+  args: {
+    children: 'A [labelled link](https://tenon.example/docs) reads as prose, ' +
+      'where a bare URL like https://tenon.example still becomes a link on its own. ' +
+      'A bracket with nothing to fill it in yet, like [the missing piece], stays visible as a gap.',
+  },
+};

@@ -29,6 +29,11 @@
    not to do. */
 .tenon-tag--chart { background: var(--tenon-background-neutral); color: var(--tenon-tag-colour); }
 
+/* Same pattern as chart: text-only on the neutral chip, sharing the
+   Timeline's own urgency colours rather than a tone of their own. */
+.tenon-tag--urgent { background: var(--tenon-background-neutral); color: var(--tenon-status-over); }
+.tenon-tag--soon   { background: var(--tenon-background-neutral); color: var(--tenon-status-soon); }
+
 .tenon-tag__dot {
   width: var(--tenon-dimension-075);
   height: var(--tenon-dimension-075);

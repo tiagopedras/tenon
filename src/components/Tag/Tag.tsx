@@ -2,7 +2,7 @@ import type { HTMLAttributes, CSSProperties } from 'react';
 import { cx } from '../../utils';
 import './Tag.css';
 
-export type TagTone = 'neutral' | 'accent' | 'success' | 'warning' | 'error' | 'info' | 'running';
+export type TagTone = 'neutral' | 'accent' | 'success' | 'warning' | 'error' | 'info' | 'running' | 'urgent' | 'soon';
 /** The ten categorical colours. One per bucket, as on the board. */
 export type TagChart = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 

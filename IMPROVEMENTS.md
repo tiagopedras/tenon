@@ -36,17 +36,13 @@ needs a decision, a new tag, or a new piece of the app before it can be built.
   `HTMLAttributes<HTMLDivElement>` and merged with `bodyClassName`, would let it
   move them back. It is a new prop and not a breaking one, so a minor version.
 
-- **The urgency colours are too saturated for a tag to use.** `color.base.urgent`
-  (`#ff1e2d`) and `color.base.soon` (`#ffa600`) in `tokens/primitive/color.json:1357`
-  are full chroma and carry `$description` lines saying fills only, never text;
-  `color.status.over` and `color.status.soon` in `tokens/semantic/color.light.json:362`
-  alias them straight through, same in both themes. Picking quieter values for
-  those two hexes is the whole change — the names, the aliases and the timeline
-  wiring stay as they are, and the `$description` lines get their "full chroma"
-  wording dropped. Then `.tenon-tag--urgent` and `.tenon-tag--soon` join the tone
-  classes in `Tag.css`, using `--tenon-status-over` and `--tenon-status-soon` as
-  the text colour on the neutral chip the way `.tenon-tag--chart` already does.
-  Check the timeline bars still read as urgent at the new values before running
-  the build.
+- ~~**The urgency colours are too saturated for a tag to use.**~~ **Built, 25 Sep 2026.**
+  `color.base.urgent` and `color.base.soon` in `tokens/primitive/color.json` now
+  alias `color.red.550` and `color.amber.600` instead of the full-chroma hexes,
+  and their `$description` lines drop the "full chroma" wording. `.tenon-tag--urgent`
+  and `.tenon-tag--soon` join the tone classes in `Tag.css`, using
+  `--tenon-status-over` and `--tenon-status-soon` as the text colour on the neutral
+  chip, the way `.tenon-tag--chart` does. `TagTone` in `Tag.tsx` gains both. Built
+  as v0.10.0 — still need to bump the pin in `to-dos/package.json`.
 
 ## Big

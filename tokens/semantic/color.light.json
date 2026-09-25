@@ -363,7 +363,7 @@
       "over": {
         "$type": "color",
         "$value": "{color.base.urgent}",
-        "$description": "Timeline urgency, and only there. Full chroma so an overdue bar does not read as an eleventh bucket. Same in both themes."
+        "$description": "Timeline urgency and an urgent/soon tag's text colour. Same in both themes."
       },
       "soon": {
         "$type": "color",

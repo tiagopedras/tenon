@@ -1,6 +1,6 @@
 {
-  "$version": "0.9.0",
-  "$built": "Tenon v0.9.0, built 2026-09-25",
+  "$version": "0.10.0",
+  "$built": "Tenon v0.10.0, built 2026-09-25",
   "primitives": {
     "color.neutral.50": "#f6f7f8",
     "color.neutral.100": "#edeef1",
@@ -346,8 +346,8 @@
     "color.cyan.950": "#00191f",
     "color.base.white": "#ffffff",
     "color.base.black": "#000000",
-    "color.base.urgent": "#ff1e2d",
-    "color.base.soon": "#ffa600",
+    "color.base.urgent": "#d13a35",
+    "color.base.soon": "#955e00",
     "dimension.0": "0px",
     "dimension.100": "8px",
     "dimension.125": "10px",
@@ -603,8 +603,8 @@
       "chart.8": "#4d5ad8",
       "chart.9": "#c02b29",
       "chart.10": "#616d7c",
-      "status.over": "#ff1e2d",
-      "status.soon": "#ffa600",
+      "status.over": "#d13a35",
+      "status.soon": "#955e00",
       "elevation.raised": "0px 1px 2px 0px #101c2c10",
       "elevation.overlay": "0px 1px 2px 0px #101c2c0f, 0px 4px 12px 0px #101c2c0d",
       "elevation.modal": "0px 4px 8px 0px #101c2c14, 0px 16px 32px 0px #101c2c14"
@@ -695,8 +695,8 @@
       "chart.8": "#96a9ff",
       "chart.9": "#ff887c",
       "chart.10": "#a6b1be",
-      "status.over": "#ff1e2d",
-      "status.soon": "#ffa600",
+      "status.over": "#d13a35",
+      "status.soon": "#955e00",
       "elevation.raised": "0px 1px 2px 0px #0000004d",
       "elevation.overlay": "0px 1px 2px 0px #0000004d, 0px 6px 16px 0px #00000040",
       "elevation.modal": "0px 4px 8px 0px #00000059, 0px 16px 32px 0px #00000059"
@@ -787,8 +787,8 @@
       "chart.8": "#96a9ff",
       "chart.9": "#ff887c",
       "chart.10": "#a6b1be",
-      "status.over": "#ff1e2d",
-      "status.soon": "#ffa600",
+      "status.over": "#d13a35",
+      "status.soon": "#955e00",
       "elevation.raised": "0px 1px 2px 0px #0000004d",
       "elevation.overlay": "0px 1px 2px 0px #0000004d, 0px 6px 16px 0px #00000040",
       "elevation.modal": "0px 4px 8px 0px #00000059, 0px 16px 32px 0px #00000059"

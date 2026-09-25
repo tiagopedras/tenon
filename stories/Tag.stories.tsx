@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Tag } from '../src';
 import type { TagChart } from '../src';
 
-const TONES = ['neutral', 'accent', 'success', 'warning', 'error', 'info', 'running'] as const;
+const TONES = ['neutral', 'accent', 'success', 'warning', 'error', 'info', 'running', 'urgent', 'soon'] as const;
 const BUCKETS: Array<[TagChart, string]> = [
   [1, 'People'], [2, 'Design oversight'], [3, 'Design System'], [4, 'Strategic'],
   [5, 'Hiring'], [6, 'Tooling'], [7, 'Research'], [8, 'Ops'], [9, 'Blocked'], [10, 'Archive'],

@@ -1435,13 +1435,13 @@
       },
       "urgent": {
         "$type": "color",
-        "$value": "#ff1e2d",
-        "$description": "Full chroma, outside the red ramp. Fills only, never text."
+        "$value": "{color.red.550}",
+        "$description": "In the red ramp, at a step legible as text. Fills the timeline's overdue bar and a tag's text colour."
       },
       "soon": {
         "$type": "color",
-        "$value": "#ffa600",
-        "$description": "Full chroma, outside the amber ramp. Fills only, never text."
+        "$value": "{color.amber.600}",
+        "$description": "In the amber ramp, at a step legible as text. Fills the timeline's due-soon bar and a tag's text colour."
       }
     }
   }

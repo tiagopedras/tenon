@@ -13,6 +13,42 @@ needs a decision, a new tag, or a new piece of the app before it can be built.
 
 ## Small
 
+- **The tiagopedras_2026 theme never got the lighter warning text the dark theme did.**
+  `text.warning` and `icon.warning` in `tokens/semantic/color.tiagopedras_2026.json:185`
+  and `:251` still alias `color.amber.350`, the value the 22 Sep change moved off in
+  `color.dark.json`. The error pair was left alone there too. Moving both to the dark
+  theme's steps (`color.amber.300`, `color.red.350`) keeps the three themes saying the
+  same thing about how loud a warning is. It measures 7.24:1 on `background.warning-subtle`
+  today, so contrast is no obstacle either way.
+  Build: Sonnet. Id `tiagopedras-theme-warning-text`.
+  Files: `tokens/semantic/color.tiagopedras_2026.json`.
+  Tests: `npm run tokens` (rebuilds the theme and reprints the contrast report).
+  Open: none.
+
+- **Three consumers are behind the current tag.** `npm run sync` on 25 Sep 2026 reports
+  the to-dos board on v0.10.0, the companion (`to-dos/companion/package.json:15`) on
+  v0.7.0, agents-dashboard (`agents-dashboard/package.json:15`) on v0.9.0, and ai_canvas
+  with Tenon not installed at all, although `consumers.json` lists it. The first two are
+  a pin bump and an `npm install` each, in their own repos. ai_canvas is an adoption
+  rather than a bump and wants its own entry in that repo's backlog once it starts.
+  Build: Opus. Id `tenon-consumers-behind-tag`.
+  Files: `../../to-dos/package.json`, `../../to-dos/companion/package.json`,
+  `../../agents-dashboard/package.json`.
+  Tests: `npm run sync`.
+  Open: none.
+
+- **The build's contrast report never measures status text on its own subtle fill.**
+  The check in `scripts/build.mjs:349` measures `text.*` and `icon.*` against
+  `background.default` and `background.raised`, and `text.on-X` against `background.X`,
+  but not `text.warning` on `background.warning-subtle`, which is where the chips put
+  it. Measured by hand on 25 Sep 2026 every pair clears 4.5:1, light warning closest at
+  4.67. A third loop pairing `text.X` with `background.X-subtle` would catch it the day a
+  ramp step moves.
+  Build: Sonnet. Id `contrast-check-status-subtle`.
+  Files: `scripts/build.mjs`.
+  Tests: `npm run tokens` (reprints the contrast report with the new pairing).
+  Open: none.
+
 - ~~**The warning and error text tokens are too heavy on dark surfaces, and the fix belongs in Tenon so every app gets it.**~~ **Built by the improvements agent, 22 Sep 2026.**
   `text.warning` and `text.error` in `tokens/semantic/color.dark.json:183` and
   `:191` alias `color.amber.350` and `color.red.400`, which read loud on the to-dos

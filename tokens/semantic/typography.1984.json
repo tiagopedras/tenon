@@ -1,6 +1,6 @@
 {
   "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
-  "$description": "Text styles for the tiagopedras_2026 theme, taken from DESIGN-tiago-pedras-site.md. Each style here replaces the shared style of the same name inside that theme's CSS block; a style not listed keeps the shared one. Sizes, line heights and one letter spacing are literal because the site sits off the shared ladder on purpose (12, 13, 15 and 17px, and fluid clamp() sizes that the dimension type cannot write). Families and weights alias primitives. heading-5, heading-6, label and code have no site original, so they were written for it and are also in DESIGN-tiago-pedras-site.md. The site-only styles quote, logo, label-caps and label-caps-sm are not carried over.",
+  "$description": "Text styles for the 1984 theme, taken from DESIGN-tiago-pedras-site.md. Each style here replaces the shared style of the same name inside that theme's CSS block; a style not listed keeps the shared one. Sizes, line heights and one letter spacing are literal because the site sits off the shared ladder on purpose (12, 13, 15 and 17px, and fluid clamp() sizes that the dimension type cannot write). Families and weights alias primitives. heading-5, heading-6, label and code have no site original, so they were written for it and are also in DESIGN-tiago-pedras-site.md. The site-only styles quote, logo, label-caps and label-caps-sm are not carried over.",
   "text": {
     "title": {
       "$description": "The site's display-hero. Fluid, 32px up to 56px.",

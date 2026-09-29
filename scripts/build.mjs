@@ -3,7 +3,7 @@
 
    Four checks run before anything is written, and any of them failing
    stops the build:
-     1. theme parity, light, dark and tiagopedras_2026 hold the identical key set
+     1. theme parity, light, dark and 1984 hold the identical key set
      2. every {alias} resolves to something that exists
      3. no semantic token aliases another semantic token
      4. a theme's typography file only replaces text styles the shared file
@@ -50,7 +50,7 @@ const hoistColor = ({ color = {}, ...rest }) => ({ ...color, ...rest });
 const themes = {
   light: hoistColor(strip(read('tokens/semantic/color.light.json'))),
   dark: hoistColor(strip(read('tokens/semantic/color.dark.json'))),
-  tiagopedras_2026: hoistColor(strip(read('tokens/semantic/color.tiagopedras_2026.json'))),
+  '1984': hoistColor(strip(read('tokens/semantic/color.1984.json'))),
 };
 
 /* ---- flatten ---------------------------------------------------------- */
@@ -89,9 +89,9 @@ const lightKeys = Object.keys(flatThemes.light).sort();
 const darkKeys = Object.keys(flatThemes.dark).sort();
 for (const k of lightKeys) if (!darkKeys.includes(k)) errors.push(`dark is missing ${k}`);
 for (const k of darkKeys) if (!lightKeys.includes(k)) errors.push(`light is missing ${k}`);
-const personalKeys = Object.keys(flatThemes.tiagopedras_2026).sort();
-for (const k of lightKeys) if (!personalKeys.includes(k)) errors.push(`tiagopedras_2026 is missing ${k}`);
-for (const k of personalKeys) if (!lightKeys.includes(k)) errors.push(`light is missing ${k}, which tiagopedras_2026 has`);
+const personalKeys = Object.keys(flatThemes['1984']).sort();
+for (const k of lightKeys) if (!personalKeys.includes(k)) errors.push(`1984 is missing ${k}`);
+for (const k of personalKeys) if (!lightKeys.includes(k)) errors.push(`light is missing ${k}, which 1984 has`);
 
 const ALIAS = /^\{([^}]+)\}$/;
 
@@ -123,12 +123,12 @@ for (const [theme, flat] of Object.entries(flatThemes)) {
   }
 }
 
-/* Only tiagopedras_2026 has a CSS block that emits a typography file. Light
+/* Only the 1984 theme has a CSS block that emits a typography file. Light
    and dark share :root and a media query with the shared styles, so a file
    for either would be read and then dropped without a word. */
 const TEXT_PARTS = ['fontFamily', 'fontSize', 'fontWeight', 'lineHeight', 'letterSpacing'];
 for (const theme of ['light', 'dark']) {
-  if (flatTextThemes[theme]) errors.push(`typography.${theme}.json exists, but only tiagopedras_2026 emits a typography file`);
+  if (flatTextThemes[theme]) errors.push(`typography.${theme}.json exists, but only the 1984 theme emits a typography file`);
 }
 for (const [theme, flat] of Object.entries(flatTextThemes)) {
   for (const [key, node] of Object.entries(flat)) {
@@ -254,10 +254,10 @@ const css = `/* ${STAMP}
    Light is the default. Dark applies when the system asks for it, unless
    [data-theme="light"] is set, and applies unconditionally under
    [data-theme="dark"]. So a manual toggle needs no rebuild. The
-   tiagopedras_2026 theme is never automatic: it applies only under
-   :root[data-theme="tiagopedras_2026"], written with :root so it outranks the
+   1984 theme is never automatic: it applies only under
+   :root[data-theme="1984"], written with :root so it outranks the
    automatic dark rule above it on a system set to dark. Its own text styles,
-   from typography.tiagopedras_2026.json, sit at the end of that block and
+   from typography.1984.json, sit at the end of that block and
    replace the shared ones of the same name. */
 
 :root {
@@ -283,12 +283,12 @@ ${block(themeVars('dark'), '    ')}
 ${block(themeVars('dark'))}
 }
 
-:root[data-theme="tiagopedras_2026"] {
+:root[data-theme="1984"] {
   color-scheme: dark;
-${block(themeVars('tiagopedras_2026'))}
+${block(themeVars('1984'))}
 
   /* ---- text styles that replace the shared ones ---- */
-${block(themeTextVars('tiagopedras_2026'))}
+${block(themeTextVars('1984'))}
 }
 
 ${textClasses.join('\n\n')}
@@ -346,7 +346,7 @@ writeFileSync(join(ROOT, 'dist', 'tenon.tokens.json'), JSON.stringify(resolved, 
 /* ---- contrast report -------------------------------------------------- */
 
 const rows = [];
-for (const theme of ['light', 'dark', 'tiagopedras_2026']) {
+for (const theme of ['light', 'dark', '1984']) {
   const r = resolved.themes[theme];
   const surfaces = { 'bg.default': r['background.default'], 'bg.raised': r['background.raised'] };
   for (const [key, hex] of Object.entries(r)) {
@@ -375,7 +375,7 @@ for (const theme of ['light', 'dark', 'tiagopedras_2026']) {
 console.log(`${STAMP}`);
 console.log(`dist/tenon.css          ${primitiveVars.length} primitives, ${lightKeys.length} semantics x 3 themes`);
 console.log(`dist/tenon.tokens.json  resolved values`);
-console.log(`\nChecks passed: theme parity (light, dark, tiagopedras_2026), alias targets, no semantic-to-semantic aliases,\n               theme typography files replace only styles that exist, with all five parts,\n               no component CSS reading a colour primitive,\n               every --tenon- name a component reads is one this build emits.`);
+console.log(`\nChecks passed: theme parity (light, dark, 1984), alias targets, no semantic-to-semantic aliases,\n               theme typography files replace only styles that exist, with all five parts,\n               no component CSS reading a colour primitive,\n               every --tenon- name a component reads is one this build emits.`);
 if (!QUIET) {
   if (rows.length) {
     console.log(`\n${rows.length} text or icon tokens below 4.5:1 on their own background:`);

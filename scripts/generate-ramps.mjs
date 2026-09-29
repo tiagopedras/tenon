@@ -104,17 +104,18 @@ for (const [name, { hex, from }] of Object.entries(HUES)) {
   });
 }
 
-/* Four values that are deliberately not on a ramp. White and black are
-   endpoints, not steps, and putting them in the neutral ramp is what makes
-   a "lightest neutral" quietly become pure white on one theme. The two
-   urgency colours are at full chroma on purpose: the board's own red and
-   amber sit at the same saturation as the categorical hues, and a 12px
-   timeline bar carrying one of them said nothing. */
+/* Values that sit outside the ramps. White and black are endpoints, not
+   steps, and putting them in the neutral ramp is what makes a "lightest
+   neutral" quietly become pure white on one theme. Yellow is the 1984
+   theme's accent at full chroma, which no generated step reaches: the
+   yellow ramp's lightest steps are cream. The two urgency colours alias a
+   ramp step legible as text, so a tag can use them as well as the timeline. */
 primitives.base = {
   white:  { $type: 'color', $value: '#ffffff' },
   black:  { $type: 'color', $value: '#000000' },
-  urgent: { $type: 'color', $value: '#ff1e2d', $description: 'Full chroma, outside the red ramp. Fills only, never text.' },
-  soon:   { $type: 'color', $value: '#ffa600', $description: 'Full chroma, outside the amber ramp. Fills only, never text.' },
+  yellow: { $type: 'color', $value: '#ffff00', $description: 'Full chroma, outside the yellow ramp. The 1984 theme\'s accent: fills, and text on a dark surface only.' },
+  urgent: { $type: 'color', $value: '{color.red.550}', $description: 'In the red ramp, at a step legible as text. Fills the timeline\'s overdue bar and a tag\'s text colour.' },
+  soon:   { $type: 'color', $value: '{color.amber.600}', $description: 'In the amber ramp, at a step legible as text. Fills the timeline\'s due-soon bar and a tag\'s text colour.' },
 };
 
 writeFileSync(OUT, JSON.stringify({

@@ -1433,6 +1433,11 @@
         "$type": "color",
         "$value": "#000000"
       },
+      "yellow": {
+        "$type": "color",
+        "$value": "#ffff00",
+        "$description": "Full chroma, outside the yellow ramp. The 1984 theme's accent: fills, and text on a dark surface only."
+      },
       "urgent": {
         "$type": "color",
         "$value": "{color.red.550}",

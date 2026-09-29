@@ -13,7 +13,7 @@ import './preview.css';
    localStorage: an iframe reads it on load, and follows a change through
    the `storage` event, which fires in every other same-origin document. */
 const KEY = 'tenon-storybook-theme';
-const THEMES = ['light', 'dark', 'tiagopedras_2026'];
+const THEMES = ['light', 'dark', '1984'];
 
 const stored = () => {
   try { return localStorage.getItem(KEY) ?? 'system'; } catch { return 'system'; }
@@ -55,7 +55,7 @@ const preview: Preview = {
           { value: 'system', title: 'System' },
           { value: 'light', title: 'Light' },
           { value: 'dark', title: 'Dark' },
-          { value: 'tiagopedras_2026', title: 'tiagopedras_2026' },
+          { value: '1984', title: '1984' },
         ],
         dynamicTitle: true,
       },

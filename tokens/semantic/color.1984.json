@@ -1,6 +1,6 @@
 {
   "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
-  "$description": "Tenon semantic colour, tiagopedras_2026 theme: the tiagopedras.com look. Dark only, pure greys, no brand hue, so accent and link sit on the white end of the grey ramp. Status and chart colours are the shared hues. Every value aliases a primitive except the overlay and the shadows. Same key set as light and dark; scripts/build.mjs fails if it drifts.",
+  "$description": "Tenon semantic colour, 1984 theme: the tiagopedras.com look with one loud accent. Dark only, pure greys, and a full-chroma yellow (color.base.yellow) for accent and link, with the darkest grey as text and icons on it. Accent hovered and active are the same yellow, so a filled control's hover state has to come from something other than its fill. Status and chart colours are the shared hues. Every value aliases a primitive except the overlay and the shadows. Same key set as light and dark; scripts/build.mjs fails if it drifts.",
   "color": {
     "background": {
       "default": {
@@ -34,15 +34,15 @@
       },
       "accent": {
         "$type": "color",
-        "$value": "{color.grey.50}"
+        "$value": "{color.base.yellow}"
       },
       "accent-hovered": {
         "$type": "color",
-        "$value": "{color.grey.100}"
+        "$value": "{color.base.yellow}"
       },
       "accent-active": {
         "$type": "color",
-        "$value": "{color.grey.150}"
+        "$value": "{color.base.yellow}"
       },
       "neutral": {
         "$type": "color",
@@ -150,7 +150,7 @@
       },
       "accent": {
         "$type": "color",
-        "$value": "{color.grey.50}"
+        "$value": "{color.base.yellow}"
       },
       "on-accent": {
         "$type": "color",
@@ -166,11 +166,11 @@
       },
       "link": {
         "$type": "color",
-        "$value": "{color.grey.50}"
+        "$value": "{color.base.yellow}"
       },
       "link-hovered": {
         "$type": "color",
-        "$value": "{color.grey.200}"
+        "$value": "{color.base.yellow}"
       },
       "success": {
         "$type": "color",
@@ -228,7 +228,7 @@
       },
       "accent": {
         "$type": "color",
-        "$value": "{color.grey.50}"
+        "$value": "{color.base.yellow}"
       },
       "on-accent": {
         "$type": "color",
@@ -278,7 +278,7 @@
       },
       "accent": {
         "$type": "color",
-        "$value": "{color.grey.50}"
+        "$value": "{color.base.yellow}"
       },
       "focus": {
         "$type": "color",

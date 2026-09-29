@@ -13,15 +13,15 @@ needs a decision, a new tag, or a new piece of the app before it can be built.
 
 ## Small
 
-- **The tiagopedras_2026 theme never got the lighter warning text the dark theme did.**
-  `text.warning` and `icon.warning` in `tokens/semantic/color.tiagopedras_2026.json:185`
+- **The 1984 theme never got the lighter warning text the dark theme did.**
+  `text.warning` and `icon.warning` in `tokens/semantic/color.1984.json:185`
   and `:251` still alias `color.amber.350`, the value the 22 Sep change moved off in
   `color.dark.json`. The error pair was left alone there too. Moving both to the dark
   theme's steps (`color.amber.300`, `color.red.350`) keeps the three themes saying the
   same thing about how loud a warning is. It measures 7.24:1 on `background.warning-subtle`
   today, so contrast is no obstacle either way.
-  Build: Sonnet. Id `tiagopedras-theme-warning-text`.
-  Files: `tokens/semantic/color.tiagopedras_2026.json`.
+  Build: Sonnet. Id `1984-theme-warning-text`.
+  Files: `tokens/semantic/color.1984.json`.
   Tests: `npm run tokens` (rebuilds the theme and reprints the contrast report).
   Open: none.
 

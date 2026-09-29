@@ -250,6 +250,15 @@ switch sets `data-theme` on the root, and the stories render against the built
 `dist/tenon.css`, so `npm run dev` builds the tokens first. A new component gets
 a story file in the same commit.
 
+Above the components, Storybook's Tokens section has five pages, in
+`stories/tokens/`: colour primitives, theme colours, typography, dimensions and
+elevation. They draw every token from `dist/tenon.tokens.json`, and read the
+source files in `tokens/` only for which primitive a token aliases, so a token
+change shows up there after `npm run tokens` with nothing to edit. The theme
+colour and elevation pages paint light, dark and 1984 side by side by setting a
+theme's resolved values as custom properties on a wrapper, which is why they
+read the same whatever the toolbar is set to.
+
 **The last seven came from two apps that had each drawn their own.** The chat
 engine supplied the `Modal` (its window), `Textarea` (its composer), `Spinner`
 (its working mark), `Pill` (its tool-call chip) and `Alert` (its permission

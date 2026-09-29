@@ -1,0 +1,122 @@
+/* The token pages' own chrome. It reads Tenon and nothing else, same rule
+   as preview.css, so it follows the toolbar theme. The swatches and samples
+   it frames take their values from the token data instead. */
+
+.tk-page { max-width: 1200px; }
+.tk-page > p, .tk-section > p { color: var(--tenon-text-subtle); max-width: 68ch; margin: 0 0 var(--tenon-dimension-200); }
+.tk-page h1 { margin: 0 0 var(--tenon-dimension-100); }
+.tk-section { margin-top: var(--tenon-dimension-500); }
+.tk-section > h2 { margin: 0 0 var(--tenon-dimension-050); }
+.tk-code {
+  font-family: var(--tenon-text-code-family);
+  font-size: var(--tenon-text-caption-size);
+  line-height: var(--tenon-text-caption-line-height);
+}
+.tk-subtle { color: var(--tenon-text-subtle); }
+.tk-faint { color: var(--tenon-text-faint); }
+.tk-scroll { overflow-x: auto; padding-bottom: var(--tenon-dimension-100); }
+
+/* ---- colour primitives ---- */
+.tk-ramp {
+  display: grid;
+  grid-template-columns: 6rem repeat(var(--tk-steps), minmax(52px, 1fr));
+  gap: var(--tenon-dimension-025);
+  align-items: start;
+  margin-bottom: var(--tenon-dimension-150);
+  min-width: max-content;
+}
+.tk-ramp__name { padding-top: var(--tenon-dimension-100); }
+.tk-swatch { display: flex; flex-direction: column; gap: var(--tenon-dimension-025); min-width: 0; }
+.tk-swatch__chip {
+  height: var(--tenon-dimension-500);
+  border-radius: var(--tenon-radius-sm);
+  box-shadow: inset 0 0 0 1px var(--tenon-stroke-subtle);
+}
+.tk-swatch .tk-code { font-size: var(--tenon-text-caption-sm-size); white-space: nowrap; }
+
+/* ---- theme colours ---- */
+.tk-table { display: grid; grid-template-columns: minmax(12rem, 1.1fr) repeat(3, minmax(11rem, 1fr)); min-width: 48rem; }
+.tk-table__head {
+  background: var(--tenon-background-default);
+  padding: var(--tenon-dimension-100) var(--tenon-dimension-150);
+  border-bottom: 1px solid var(--tenon-stroke-default);
+}
+.tk-table__name {
+  padding: var(--tenon-dimension-100) var(--tenon-dimension-150) var(--tenon-dimension-100) 0;
+  border-bottom: 1px solid var(--tenon-stroke-subtle);
+  display: flex; flex-direction: column; gap: var(--tenon-dimension-025);
+}
+.tk-table__name .tk-code { color: var(--tenon-text-default); font-weight: var(--tenon-text-label-weight); }
+.tk-table__name span:last-child { font-size: var(--tenon-text-caption-size); color: var(--tenon-text-subtle); }
+
+/* A cell is painted in its own theme by themeScope(), so from here down
+   the vars are that theme's rather than the toolbar's. */
+.tk-cell {
+  background: var(--tenon-background-default);
+  color: var(--tenon-text-default);
+  border-bottom: 1px solid var(--tenon-stroke-subtle);
+  padding: var(--tenon-dimension-100) var(--tenon-dimension-150);
+  display: flex; align-items: center; gap: var(--tenon-dimension-150);
+}
+.tk-cell__values { display: flex; flex-direction: column; min-width: 0; }
+.tk-cell__values .tk-code:last-child { color: var(--tenon-text-subtle); }
+.tk-chip {
+  flex: none;
+  width: var(--tenon-dimension-500); height: var(--tenon-dimension-500);
+  border-radius: var(--tenon-radius-default);
+  display: grid; place-items: center;
+  box-shadow: inset 0 0 0 1px var(--tenon-stroke-subtle);
+  font-weight: var(--tenon-text-label-weight);
+}
+.tk-chip--stroke { box-shadow: none; border-width: var(--tenon-dimension-025); border-style: solid; }
+.tk-chip--ink { font-size: var(--tenon-text-heading-3-size); }
+
+/* ---- typography ---- */
+.tk-type {
+  display: grid; grid-template-columns: minmax(10rem, 14rem) 1fr;
+  gap: var(--tenon-dimension-100) var(--tenon-dimension-300);
+  padding: var(--tenon-dimension-200) 0;
+  border-bottom: 1px solid var(--tenon-stroke-subtle);
+}
+.tk-type__meta { display: flex; flex-direction: column; gap: var(--tenon-dimension-050); }
+.tk-type__meta .tk-code { color: var(--tenon-text-subtle); }
+.tk-type__samples { display: flex; flex-direction: column; gap: var(--tenon-dimension-200); min-width: 0; }
+.tk-type__sample { overflow-wrap: anywhere; }
+.tk-type__override {
+  border-radius: var(--tenon-radius-md);
+  padding: var(--tenon-dimension-150) var(--tenon-dimension-200);
+  background: var(--tenon-background-default);
+  color: var(--tenon-text-default);
+  display: flex; flex-direction: column; gap: var(--tenon-dimension-100);
+}
+.tk-type__override .tk-code { color: var(--tenon-text-subtle); }
+.tk-scale { display: flex; flex-direction: column; }
+.tk-scale__row {
+  display: grid; grid-template-columns: 10rem 6rem 1fr;
+  gap: var(--tenon-dimension-200); align-items: baseline;
+  padding: var(--tenon-dimension-075) 0;
+  border-bottom: 1px solid var(--tenon-stroke-subtle);
+}
+.tk-scale__row > :last-child { min-width: 0; overflow-wrap: anywhere; }
+
+/* ---- dimensions ---- */
+.tk-bar { height: var(--tenon-dimension-200); background: var(--tenon-background-accent); border-radius: var(--tenon-radius-sm); min-width: 1px; }
+.tk-bar--zero { background: none; border-left: 1px dashed var(--tenon-stroke-strong); }
+.tk-radii { display: grid; grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr)); gap: var(--tenon-dimension-200); }
+.tk-radius { display: flex; flex-direction: column; gap: var(--tenon-dimension-075); }
+.tk-radius__shape {
+  width: var(--tenon-dimension-1200); height: var(--tenon-dimension-1200);
+  background: var(--tenon-background-selected);
+  border: var(--tenon-dimension-025) solid var(--tenon-stroke-accent);
+}
+
+/* ---- elevation ---- */
+.tk-elev { display: grid; grid-template-columns: repeat(3, minmax(14rem, 1fr)); gap: var(--tenon-dimension-200); min-width: 44rem; }
+.tk-elev__panel {
+  background: var(--tenon-background-default);
+  color: var(--tenon-text-default);
+  border-radius: var(--tenon-radius-lg);
+  padding: var(--tenon-dimension-300);
+  display: flex; flex-direction: column; gap: var(--tenon-dimension-200);
+}
+.tk-elev__panel .tk-code { color: var(--tenon-text-subtle); overflow-wrap: anywhere; }

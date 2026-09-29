@@ -72,6 +72,13 @@ const preview: Preview = {
   parameters: {
     layout: 'padded',
     backgrounds: { disabled: true },
+    /* Tokens first, the way the package is built. The five token pages keep
+       the order they are read in rather than falling into alphabetical. */
+    options: {
+      storySort: {
+        order: ['Tokens', ['Colour primitives', 'Theme colours', 'Typography', 'Dimensions', 'Elevation'], 'Components'],
+      },
+    },
   },
 };
 

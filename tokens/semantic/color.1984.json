@@ -5,11 +5,11 @@
     "background": {
       "default": {
         "$type": "color",
-        "$value": "{color.grey.950}"
+        "$value": "{color.base.black}"
       },
       "raised": {
         "$type": "color",
-        "$value": "{color.grey.900}",
+        "$value": "{color.base.black}",
         "$description": "Cards, panels, anything sitting above the page."
       },
       "sunken": {
@@ -18,19 +18,19 @@
       },
       "subtle": {
         "$type": "color",
-        "$value": "{color.grey.850}"
+        "$value": "{color.grey.900}"
       },
       "hovered": {
         "$type": "color",
-        "$value": "{color.grey.850}"
+        "$value": "{color.grey.900}"
       },
       "active": {
         "$type": "color",
-        "$value": "{color.grey.800}"
+        "$value": "{color.grey.850}"
       },
       "selected": {
         "$type": "color",
-        "$value": "{color.grey.800}"
+        "$value": "{color.grey.850}"
       },
       "accent": {
         "$type": "color",
@@ -46,19 +46,19 @@
       },
       "neutral": {
         "$type": "color",
-        "$value": "{color.grey.800}"
+        "$value": "{color.grey.850}"
       },
       "neutral-hovered": {
         "$type": "color",
-        "$value": "{color.grey.750}"
+        "$value": "{color.grey.800}"
       },
       "neutral-active": {
         "$type": "color",
-        "$value": "{color.grey.700}"
+        "$value": "{color.grey.750}"
       },
       "inverse": {
         "$type": "color",
-        "$value": "{color.grey.50}"
+        "$value": "{color.base.white}"
       },
       "inverse-hovered": {
         "$type": "color",
@@ -70,23 +70,23 @@
       },
       "input": {
         "$type": "color",
-        "$value": "{color.grey.900}"
+        "$value": "{color.base.black}"
       },
       "input-hovered": {
         "$type": "color",
-        "$value": "{color.grey.850}"
+        "$value": "{color.grey.900}"
       },
       "input-active": {
         "$type": "color",
-        "$value": "{color.grey.900}"
+        "$value": "{color.base.black}"
       },
       "disabled": {
         "$type": "color",
-        "$value": "{color.grey.850}"
+        "$value": "{color.grey.900}"
       },
       "skeleton": {
         "$type": "color",
-        "$value": "{color.grey.800}"
+        "$value": "{color.grey.850}"
       },
       "success": {
         "$type": "color",
@@ -137,15 +137,15 @@
     "text": {
       "default": {
         "$type": "color",
-        "$value": "{color.grey.50}"
+        "$value": "{color.base.white}"
       },
       "subtle": {
         "$type": "color",
-        "$value": "{color.grey.300}"
+        "$value": "{color.grey.150}"
       },
       "faint": {
         "$type": "color",
-        "$value": "{color.grey.450}",
+        "$value": "{color.grey.300}",
         "$description": "Non-essential text only. It does not clear 4.5:1 and the build says so."
       },
       "accent": {
@@ -154,15 +154,15 @@
       },
       "on-accent": {
         "$type": "color",
-        "$value": "{color.grey.950}"
+        "$value": "{color.base.black}"
       },
       "inverse": {
         "$type": "color",
-        "$value": "{color.grey.900}"
+        "$value": "{color.base.black}"
       },
       "disabled": {
         "$type": "color",
-        "$value": "{color.grey.650}"
+        "$value": "{color.grey.500}"
       },
       "link": {
         "$type": "color",
@@ -178,7 +178,7 @@
       },
       "on-success": {
         "$type": "color",
-        "$value": "{color.grey.950}"
+        "$value": "{color.base.black}"
       },
       "warning": {
         "$type": "color",
@@ -186,7 +186,7 @@
       },
       "on-warning": {
         "$type": "color",
-        "$value": "{color.grey.950}"
+        "$value": "{color.base.black}"
       },
       "error": {
         "$type": "color",
@@ -194,7 +194,7 @@
       },
       "on-error": {
         "$type": "color",
-        "$value": "{color.grey.950}"
+        "$value": "{color.base.black}"
       },
       "info": {
         "$type": "color",
@@ -202,7 +202,7 @@
       },
       "on-info": {
         "$type": "color",
-        "$value": "{color.grey.950}"
+        "$value": "{color.base.black}"
       },
       "running": {
         "$type": "color",
@@ -210,21 +210,21 @@
       },
       "on-running": {
         "$type": "color",
-        "$value": "{color.grey.950}"
+        "$value": "{color.base.black}"
       }
     },
     "icon": {
       "default": {
         "$type": "color",
-        "$value": "{color.grey.300}"
+        "$value": "{color.grey.150}"
       },
       "subtle": {
         "$type": "color",
-        "$value": "{color.grey.450}"
+        "$value": "{color.grey.300}"
       },
       "strong": {
         "$type": "color",
-        "$value": "{color.grey.50}"
+        "$value": "{color.base.white}"
       },
       "accent": {
         "$type": "color",
@@ -232,15 +232,15 @@
       },
       "on-accent": {
         "$type": "color",
-        "$value": "{color.grey.950}"
+        "$value": "{color.base.black}"
       },
       "inverse": {
         "$type": "color",
-        "$value": "{color.grey.900}"
+        "$value": "{color.base.black}"
       },
       "disabled": {
         "$type": "color",
-        "$value": "{color.grey.650}"
+        "$value": "{color.grey.500}"
       },
       "success": {
         "$type": "color",
@@ -266,15 +266,15 @@
     "stroke": {
       "default": {
         "$type": "color",
-        "$value": "{color.grey.800}"
+        "$value": "{color.grey.650}"
       },
       "subtle": {
         "$type": "color",
-        "$value": "{color.grey.850}"
+        "$value": "{color.grey.750}"
       },
       "strong": {
         "$type": "color",
-        "$value": "{color.grey.700}"
+        "$value": "{color.grey.500}"
       },
       "accent": {
         "$type": "color",
@@ -282,15 +282,15 @@
       },
       "focus": {
         "$type": "color",
-        "$value": "{color.grey.50}"
+        "$value": "{color.base.white}"
       },
       "disabled": {
         "$type": "color",
-        "$value": "{color.grey.850}"
+        "$value": "{color.grey.800}"
       },
       "hovered": {
         "$type": "color",
-        "$value": "{color.grey.700}"
+        "$value": "{color.grey.500}"
       },
       "success": {
         "$type": "color",

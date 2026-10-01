@@ -44,7 +44,11 @@ export function StepSlider<V extends string = string>(
   const committed = found < 0 ? 0 : found;
   /* While dragging the handle follows the pointer without telling the caller;
      onChange fires once, when the pointer lifts. */
-  const [drag, setDrag] = useState<number | null>(null);
+  const [drag, setDragState] = useState<number | null>(null);
+  /* Read by the pointer handlers as well, since a move and the release that
+     follows it can arrive before React has rendered the first. */
+  const dragging = useRef<number | null>(null);
+  const setDrag = (i: number | null) => { dragging.current = i; setDragState(i); };
   const idx = drag ?? committed;
   const track = useRef<HTMLDivElement>(null);
   const root = useRef<HTMLDivElement>(null);
@@ -72,10 +76,10 @@ export function StepSlider<V extends string = string>(
     track.current!.setPointerCapture(e.pointerId);
     setDrag(at(e.clientX));
   };
-  const move = (e: PointerEvent) => { if (drag !== null) setDrag(at(e.clientX)); };
+  const move = (e: PointerEvent) => { if (dragging.current !== null) setDrag(at(e.clientX)); };
   const up = () => {
-    if (drag === null) return;
-    const i = drag;
+    const i = dragging.current;
+    if (i === null) return;
     setDrag(null);
     commit(i);
   };

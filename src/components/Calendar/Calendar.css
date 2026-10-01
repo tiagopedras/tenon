@@ -1,0 +1,101 @@
+/* Came from the to-dos board's date pickers in the task panel. */
+
+.tenon-calendar {
+  padding: 9px 10px 8px;
+  border: 1px solid var(--tenon-stroke-default);
+  border-radius: var(--tenon-radius-md);
+  background: var(--tenon-background-default);
+}
+.tenon-calendar__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 7px; }
+.tenon-calendar__head strong { font-size: var(--tenon-text-label-size); font-weight: 650; }
+
+.tenon-calendar__nav,
+.tenon-calendar__small {
+  border: 1px solid var(--tenon-stroke-default);
+  border-radius: var(--tenon-radius-default);
+  background: var(--tenon-background-raised);
+  color: var(--tenon-text-subtle);
+  font-size: var(--tenon-text-label-size);
+  cursor: pointer;
+}
+.tenon-calendar__nav { width: 24px; height: 24px; line-height: 1; }
+.tenon-calendar__small { flex: 1; padding: 4px 8px; font-weight: 600; }
+.tenon-calendar__nav:hover, .tenon-calendar__small:hover { color: var(--tenon-text-default); border-color: var(--tenon-text-faint); }
+.tenon-calendar button:focus-visible { outline: 2px solid var(--tenon-stroke-focus); outline-offset: 1px; }
+
+.tenon-calendar__grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+.tenon-calendar__weekday {
+  padding-bottom: 3px;
+  color: var(--tenon-text-faint);
+  font-size: var(--tenon-text-label-size);
+  font-weight: 650;
+  text-align: center;
+}
+.tenon-calendar__day {
+  padding: 5px 0;
+  border: 1px solid transparent;
+  border-radius: var(--tenon-radius-default);
+  background: transparent;
+  color: var(--tenon-text-default);
+  font-size: var(--tenon-text-label-size);
+  text-align: center;
+  cursor: pointer;
+}
+.tenon-calendar__day:hover { background: var(--tenon-background-neutral); }
+.tenon-calendar__day--pad { visibility: hidden; }
+.tenon-calendar__day--today { color: var(--tenon-text-accent); font-weight: 700; }
+.tenon-calendar__day--on,
+.tenon-calendar__day--on:hover,
+.tenon-calendar__day--on.tenon-calendar__day--today {
+  background: var(--tenon-background-accent);
+  border-color: var(--tenon-stroke-accent);
+  color: var(--tenon-text-on-accent);
+  font-weight: 650;
+}
+.tenon-calendar__foot {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  padding-top: 7px;
+  border-top: 1px solid var(--tenon-stroke-subtle);
+}
+
+.tenon-date-button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  min-height: 33px;
+  padding: 5px 9px;
+  border: 1px solid var(--tenon-stroke-default);
+  border-radius: var(--tenon-radius-default);
+  background: var(--tenon-background-default);
+  color: var(--tenon-text-default);
+  font-family: var(--tenon-text-label-family);
+  font-size: var(--tenon-text-label-size);
+  text-align: left;
+  cursor: pointer;
+}
+.tenon-date-button:hover { border-color: var(--tenon-text-faint); }
+.tenon-date-button:focus-visible { outline: 2px solid var(--tenon-stroke-focus); outline-offset: 1px; }
+.tenon-date-button--empty { color: var(--tenon-text-faint); }
+.tenon-date-button:disabled { cursor: default; color: var(--tenon-text-faint); }
+/* A calendar drawn in CSS: an outline, a header rule and two hangers, so it
+   takes the field's colour and carries no icon dependency. */
+.tenon-date-button::after {
+  content: '';
+  flex: none;
+  width: 12px;
+  height: 12px;
+  margin-left: auto;
+  border: 1.5px solid currentColor;
+  border-radius: var(--tenon-radius-sm);
+  opacity: 0.55;
+  background:
+    linear-gradient(currentColor, currentColor) 0 2.5px / 100% 1.5px no-repeat,
+    linear-gradient(currentColor, currentColor) 2px -1.5px / 1.5px 3px no-repeat,
+    linear-gradient(currentColor, currentColor) 6.5px -1.5px / 1.5px 3px no-repeat;
+  background-origin: border-box;
+}
+.tenon-date-button:hover::after { opacity: 0.9; }
+.tenon-date-button:disabled::after { content: none; }

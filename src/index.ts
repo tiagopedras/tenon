@@ -59,6 +59,14 @@ export type { StepSliderProps, Step } from './components/StepSlider/StepSlider';
 export { TagChip, TagChipAdd } from './components/TagChip/TagChip';
 export type { TagChipProps, TagChipAddProps } from './components/TagChip/TagChip';
 
+export { Calendar, toIsoDate } from './components/Calendar/Calendar';
+export type { CalendarProps } from './components/Calendar/Calendar';
+export { DateButton } from './components/Calendar/DateButton';
+export type { DateButtonProps } from './components/Calendar/DateButton';
+
+export { Dropdown } from './components/Dropdown/Dropdown';
+export type { DropdownProps, DropdownOption } from './components/Dropdown/Dropdown';
+
 /* Added for the chat window, which became a React component in the chat
    engine and needed more than the first fourteen had. Each is a thing another
    window, a dashboard or a reader of model output will want too. */

@@ -47,6 +47,12 @@ export type { SwitchProps } from './components/Switch/Switch';
 export { SegmentedControl } from './components/SegmentedControl/SegmentedControl';
 export type { SegmentedControlProps, SegmentOption } from './components/SegmentedControl/SegmentedControl';
 
+export { ToggleGroup } from './components/ToggleGroup/ToggleGroup';
+export type { ToggleGroupProps, ToggleOption } from './components/ToggleGroup/ToggleGroup';
+
+export { ToggleChip } from './components/ToggleChip/ToggleChip';
+export type { ToggleChipProps } from './components/ToggleChip/ToggleChip';
+
 /* Added for the chat window, which became a React component in the chat
    engine and needed more than the first fourteen had. Each is a thing another
    window, a dashboard or a reader of model output will want too. */

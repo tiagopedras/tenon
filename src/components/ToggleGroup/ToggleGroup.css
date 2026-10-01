@@ -1,0 +1,61 @@
+/* Came from the to-dos board's bucket and theme tabs. */
+
+.tenon-toggle-group {
+  display: inline-flex;
+  padding: var(--tenon-dimension-025);
+  gap: var(--tenon-dimension-025);
+  border-radius: var(--tenon-radius-md);
+  background: var(--tenon-background-neutral);
+}
+
+.tenon-toggle-group__option {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tenon-dimension-100);
+  padding: var(--tenon-dimension-050) var(--tenon-dimension-150);
+  border: 1px solid transparent;
+  border-radius: var(--tenon-radius-default);
+  background: transparent;
+  color: var(--tenon-text-subtle);
+  font-family: var(--tenon-text-label-family);
+  font-size: var(--tenon-text-label-size);
+  font-weight: var(--tenon-text-label-weight);
+  line-height: var(--tenon-text-label-line-height);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.tenon-toggle-group__option:not(:disabled):hover { color: var(--tenon-text-default); }
+.tenon-toggle-group__option:focus-visible { outline: 2px solid var(--tenon-stroke-focus); outline-offset: 1px; }
+.tenon-toggle-group__option:disabled { cursor: not-allowed; color: var(--tenon-text-disabled); }
+
+.tenon-toggle-group__option--on {
+  background: var(--tenon-background-raised);
+  color: var(--tenon-text-default);
+  border-color: var(--tenon-stroke-default);
+  box-shadow: var(--tenon-elevation-raised);
+}
+
+.tenon-toggle-group__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--tenon-toggle-colour);
+  opacity: 0.5;
+}
+.tenon-toggle-group__option--on .tenon-toggle-group__dot { opacity: 1; }
+
+.tenon-toggle-group__count {
+  min-width: 19px;
+  padding: 0 5px;
+  border-radius: var(--tenon-radius-default);
+  background: var(--tenon-background-raised);
+  color: var(--tenon-text-faint);
+  font-weight: 650;
+  text-align: center;
+}
+.tenon-toggle-group__option--on .tenon-toggle-group__count {
+  background: var(--tenon-background-neutral);
+  color: var(--tenon-text-subtle);
+}

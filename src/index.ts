@@ -53,6 +53,12 @@ export type { ToggleGroupProps, ToggleOption } from './components/ToggleGroup/To
 export { ToggleChip } from './components/ToggleChip/ToggleChip';
 export type { ToggleChipProps } from './components/ToggleChip/ToggleChip';
 
+export { StepSlider } from './components/StepSlider/StepSlider';
+export type { StepSliderProps, Step } from './components/StepSlider/StepSlider';
+
+export { TagChip, TagChipAdd } from './components/TagChip/TagChip';
+export type { TagChipProps, TagChipAddProps } from './components/TagChip/TagChip';
+
 /* Added for the chat window, which became a React component in the chat
    engine and needed more than the first fourteen had. Each is a thing another
    window, a dashboard or a reader of model output will want too. */

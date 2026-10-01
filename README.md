@@ -154,8 +154,8 @@ did.
 
 ## Components
 
-Twenty-two: `Button`, `Card`, `Column`, `Badge`, `Tag`, `Stat` and `Field`, then `Modal`, `Textarea`,
-`Spinner`, `Pill`, `Alert`, `Switch` and `SegmentedControl`, then `ToggleGroup` and `ToggleChip` (the board's bucket tabs and its filter chip), then `Window`, `Markdown`,
+Twenty-four: `Button`, `Card`, `Column`, `Badge`, `Tag`, `Stat` and `Field`, then `Modal`, `Textarea`,
+`Spinner`, `Pill`, `Alert`, `Switch` and `SegmentedControl`, then `ToggleGroup`, `ToggleChip`, `StepSlider` and `TagChip` (the board's bucket tabs, filter chip, Impact slider and task tags), then `Window`, `Markdown`,
 `EditableText` and `Disclosure`, then `DragHandle` and `DropLine`, which come with the
 `useReorder` hook. `LinkButton` is `Button`'s anchor form and is not counted
 separately. Written in TypeScript so the `.d.ts` gives prop autocomplete in a plain

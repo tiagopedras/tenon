@@ -1,0 +1,40 @@
+/* Came from the to-dos board's Tags section in the task panel. */
+
+.tenon-tag-chip {
+  display: inline-block;
+  padding: 2px 7px;
+  border: 1px solid transparent;
+  border-radius: var(--tenon-radius-default);
+  background: var(--tenon-background-neutral);
+  color: var(--tenon-text-subtle);
+  font-family: inherit;
+  font-size: var(--tenon-text-label-size);
+  font-weight: 600;
+  cursor: pointer;
+}
+.tenon-tag-chip:not(:disabled):hover { border-color: var(--tenon-stroke-default); }
+.tenon-tag-chip:focus-visible { outline: 2px solid var(--tenon-stroke-focus); outline-offset: 1px; }
+
+.tenon-tag-chip--readonly, .tenon-tag-chip--readonly:hover { cursor: default; border-color: transparent; }
+
+.tenon-tag-chip--warning {
+  background: var(--tenon-background-warning-subtle);
+  color: var(--tenon-text-warning);
+  border-color: color-mix(in srgb, var(--tenon-text-warning) 40%, transparent);
+}
+
+/* Dashed, the way every add control reads, so it is not mistaken for a tag. */
+.tenon-tag-chip--add { background: transparent; color: var(--tenon-text-faint); border: 1px dashed var(--tenon-stroke-default); }
+.tenon-tag-chip--add:hover { color: var(--tenon-text-default); border-color: var(--tenon-text-default); }
+
+.tenon-tag-chip__input {
+  min-width: 40px;
+  width: auto;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+}

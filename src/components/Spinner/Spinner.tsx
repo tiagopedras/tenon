@@ -15,8 +15,10 @@ const FRAME_MS = 110;
 /* thinking-orbs draws three tuned designs, at 20, 32 and 64px, and nothing in
    between. Each size takes the nearest, and Spinner.css draws the canvas a
    quarter wider than the ring's box, since the orb fills about 80% of its
-   canvas: the dots come out the ring's width and the box does not move. */
-const ORB_SIZES: Record<SpinnerSize, OrbSize> = { sm: 20, md: 20, lg: 32 };
+   canvas: the dots come out the ring's width and the box does not move.
+   lg takes the 64 design and draws it smaller, since stretching the 32 one
+   to 40px made its dots soft and blocky. */
+const ORB_SIZES: Record<SpinnerSize, OrbSize> = { sm: 20, md: 20, lg: 64 };
 
 export interface SpinnerProps extends HTMLAttributes<HTMLSpanElement> {
   size?: SpinnerSize;

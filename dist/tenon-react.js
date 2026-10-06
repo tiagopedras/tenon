@@ -400,7 +400,7 @@ var A = t(function({ autoGrow: e = !1, invalid: t, className: r, onChange: i, va
 ], ee = 110, M = {
 	sm: 20,
 	md: 20,
-	lg: 32
+	lg: 64
 };
 function te() {
 	return typeof matchMedia == "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;

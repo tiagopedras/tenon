@@ -13,6 +13,13 @@ needs a decision, a new tag, or a new piece of the app before it can be built.
 
 ## Small
 
+- **The Card in code still stacks tags and meta above the summary, where the Figma Card now puts the summary straight under the title.**
+  `Card` in `src/components/Card/Card.tsx:98` renders head, then `tags`, then `meta`, then `summary`. The Figma Card (`Containers` page, component set `Card`) was re-laid out to eyebrow, head, summary, tags, meta. Matching it is a reorder of the three `row(...)` calls at lines 98 to 100. The margins in `src/components/Card/Card.css` are written against the old neighbours (`.tenon-card__summary` 125 at line 124, `.tenon-card__tags` 075, `.tenon-card__meta` 100), so the summary's top margin wants to drop to the head-to-tags distance and the tags row needs a top margin that follows the summary. Consumers pick the new order up on their next tag bump: the to-dos board's card and the plan card are the two that set all of `tags`, `meta` and `summary`.
+  Build: Sonnet. Id `card-summary-under-title`.
+  Files: `src/components/Card/Card.tsx`, `src/components/Card/Card.css`, `stories/Card.stories.tsx`.
+  Tests: `npm run check`.
+  Open: does the spacing between summary and tags stay at the current 075? Default: yes, reuse the existing 075 and 100 margins and only move the summary's 125 down to 075.
+
 - **The 1984 theme never got the lighter warning text the dark theme did.**
   `text.warning` and `icon.warning` in `tokens/semantic/color.1984.json:185`
   and `:251` still alias `color.amber.350`, the value the 22 Sep change moved off in

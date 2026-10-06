@@ -1,6 +1,6 @@
 {
   "name": "@tiagopedras/tenon",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "description": "The shared design system. Tokens first, components later.",
   "type": "module",
   "files": [
@@ -54,5 +54,8 @@
     "type": "git",
     "url": "git+https://github.com/tiagopedras/tenon.git"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "thinking-orbs": "^0.3.2"
+  }
 }

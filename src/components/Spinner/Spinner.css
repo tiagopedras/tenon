@@ -31,6 +31,24 @@
 .tenon-spinner--glyph.tenon-spinner--md { font-size: var(--tenon-text-body-size); }
 .tenon-spinner--glyph.tenon-spinner--lg { font-size: var(--tenon-text-heading-4-size); }
 
+/* The orb keeps the ring's box, so swapping one for the other moves nothing
+   beside it. Its canvas is drawn a quarter larger and centred, spilling past
+   the box on every side, because the sphere fills only about 80% of its
+   canvas. The span's colour is the orb's ink; Spinner.tsx reads it. */
+.tenon-spinner--orb {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  animation: none;
+  color: var(--tenon-text-accent);
+}
+.tenon-spinner__orb {
+  flex: none;
+  width: 125%;
+  height: 125%;
+}
+
 @keyframes tenon-spin { to { transform: rotate(360deg); } }
 
 /* Held still, not removed: a static ring still says "busy". */

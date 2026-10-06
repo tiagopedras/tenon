@@ -309,6 +309,26 @@ rather than moving it to the box, so an `autoFocus` field keeps it. `Spinner` ta
 still under reduced motion. `LinkButton` is a link that looks like a `Button`, for something
 that goes somewhere rather than doing something.
 
+**`Spinner` draws a thinking orb by default since v0.16.0.** The chat engine had
+already swapped its ring for the dotted spheres from
+[thinking-orbs](https://libraries.dev/orbs) (MIT, Jakub Antalik), and making the
+orb Tenon's default means every app picks it up on its next tag with no code
+change. `variant="ring"` and `variant="glyph"` still draw what they did. `state`
+picks one of the orb's nine animations, for a caller whose spinner follows
+what a run is doing. Unless asked it is `solving`, the one the chat engine draws
+while a run thinks, because `working`, the library's own default, is a loose
+scatter of dots that does not read as a sphere at 12px. The orb keeps the ring's box at each
+size, 10, 16 and 32px, and draws its canvas a quarter larger and centred over
+it, at 12.5, 20 and 40px, because the sphere fills only about 80% of its canvas.
+The dots come out the ring's width and nothing beside them moves. The library
+tunes three designs, at 20, 32 and 64px, so `sm` and `md` draw the 20 and `lg`
+the 32. Its ink is the accent text colour, read off the span at runtime because
+the library takes an `rgb()` string and cannot read a custom property. Whether
+it sits on a dark page is read off `--tenon-background-default`, which is how it
+knows 1984 is dark. Under reduced motion it holds a still frame by itself.
+thinking-orbs is Tenon's one runtime dependency, left out of the bundle so an
+app that also loads the chat engine gets one copy.
+
 **Drag to reorder is one hook and two small pieces**, added in v0.8.0 so the
 agents dashboard and the to-dos board drag the same way. `useReorder({ keys, onMove,
 axis })` hands back, per item, `handleProps` for whatever it is picked up by and

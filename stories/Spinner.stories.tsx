@@ -12,12 +12,31 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Ring: Story = {};
+const STATES = ['working', 'searching', 'solving', 'listening', 'connecting', 'weaving', 'composing', 'breathing', 'shaping'] as const;
+
+export const Orb: Story = {};
 
 export const Sizes: Story = {
   render: () => (
     <div className="sb-row">
       {SIZES.map((z) => <Spinner key={z} size={z} label={`Working, ${z}`} />)}
+    </div>
+  ),
+};
+
+export const States: Story = {
+  name: 'Orb states',
+  render: () => (
+    <div className="sb-row">
+      {STATES.map((s) => <Spinner key={s} size="lg" state={s} label={s} title={s} />)}
+    </div>
+  ),
+};
+
+export const Ring: Story = {
+  render: () => (
+    <div className="sb-row">
+      {SIZES.map((z) => <Spinner key={z} variant="ring" size={z} label={`Working, ${z}`} />)}
     </div>
   ),
 };

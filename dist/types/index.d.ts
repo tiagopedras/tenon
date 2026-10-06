@@ -17,7 +17,7 @@ export type { ModalProps, ModalPaneProps, ModalSize } from './components/Modal/M
 export { Textarea } from './components/Textarea/Textarea';
 export type { TextareaProps } from './components/Textarea/Textarea';
 export { Spinner } from './components/Spinner/Spinner';
-export type { SpinnerProps, SpinnerSize } from './components/Spinner/Spinner';
+export type { SpinnerProps, SpinnerSize, SpinnerState } from './components/Spinner/Spinner';
 export { Pill } from './components/Pill/Pill';
 export type { PillProps, PillTone } from './components/Pill/Pill';
 export { Alert } from './components/Alert/Alert';

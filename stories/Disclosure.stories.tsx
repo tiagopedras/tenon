@@ -7,7 +7,7 @@ const meta = {
   tags: ['autodocs'],
   args: {
     summary: '3 steps · Read, Grep',
-    children: <ol style={{ margin: 0 }}><li>Read 360.md</li><li>Grep probation</li><li>Read template</li></ol>,
+    children: <ol style={{ margin: 0 }}><li>Read notes.md</li><li>Grep deadline</li><li>Read template</li></ol>,
   },
   parameters: {
     docs: { description: { component: 'The quiet summary line that opens into more, with the arrow always drawn.' } },

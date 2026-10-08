@@ -6,7 +6,7 @@ const meta = {
   title: 'Components/EditableText',
   component: EditableText,
   tags: ['autodocs'],
-  args: { value: 'Reading the 360 responses', onCommit: () => {} },
+  args: { value: 'Reading the survey notes', onCommit: () => {} },
   parameters: {
     docs: { description: { component: 'A name that becomes a field on double-click.' } },
   },

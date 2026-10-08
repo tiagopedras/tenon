@@ -24,7 +24,7 @@ type Story = StoryObj<typeof meta>;
 function CardWindow() {
   const [open, setOpen] = useState(false);
   const [rect, setRect] = useState<WindowRect | null>(null);
-  const [name, setName] = useState('Reading the 360 responses');
+  const [name, setName] = useState('Reading the survey notes');
   const [origin, setOrigin] = useState<WindowOrigin | null>(null);
   return (
     <>
@@ -35,7 +35,7 @@ function CardWindow() {
         open={open}
         onClose={() => setOpen(false)}
         title={<EditableText value={name} onCommit={setName} />}
-        subtitle="Design oversight · ~/Code/twinkl-hr"
+        subtitle="Design oversight · ~/Code/notes"
         rect={rect}
         onRectChange={setRect}
         growFrom={origin}
@@ -45,7 +45,7 @@ function CardWindow() {
       >
         <div style={{ padding: 16, overflowY: 'auto' }}>
           <Disclosure summary="3 steps · Read, Grep">
-            <ol style={{ margin: 0 }}><li>Read 360.md</li><li>Grep probation</li><li>Read template</li></ol>
+            <ol style={{ margin: 0 }}><li>Read notes.md</li><li>Grep deadline</li><li>Read template</li></ol>
           </Disclosure>
           <Markdown>{'A **reply** with `code`, _italics_ and a link https://tenon.example/docs.\n\n- one\n- two\n\n```\nnpm run build\n```'}</Markdown>
         </div>

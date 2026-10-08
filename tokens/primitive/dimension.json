@@ -1,6 +1,6 @@
 {
   "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
-  "$description": "One dimension scale, read by spacing, radius, border width, icon size and anything else measured in pixels. There is no semantic tier above it: a gap does not change between light and dark, so the tier would rename a value and add nothing. The numbering matches Twinkl's spacing collection, where the step is the pixel value times 12.5, so 100 is 8px.",
+  "$description": "One dimension scale, read by spacing, radius, border width, icon size and anything else measured in pixels. There is no semantic tier above it: a gap does not change between light and dark, so the tier would rename a value and add nothing. The step is the pixel value times 12.5, so 100 is 8px.",
   "dimension": {
     "0":    { "$type": "dimension", "$value": { "value": 0,   "unit": "px" } },
     "012":  { "$type": "dimension", "$value": { "value": 1,   "unit": "px" } },

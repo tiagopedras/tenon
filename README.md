@@ -20,13 +20,13 @@ already carries a two-tier token block: primitives that are ramps with no
 opinion, semantics that say what a colour is *for*. Tenon keeps that shape and
 takes its colour anchors from it, so the board's palette survives the move.
 
-The other parent is the Twinkl design system, read from the snapshot at
-`ds-inventory/snapshots/figma/2026-09-04`. Tenon copies its structure —
+The other parent is a previous design system I worked on. Tenon copies its
+structure —
 nineteen-step ramps numbered 50 to 950, spacing numbered so that 100 is 8px, a
 semantic colour layer split into background, text, icon and stroke — and none
 of its values.
 
-Two things Twinkl does that Tenon does not. It has 102 component tokens, almost
+Two things that system does and Tenon does not. It has 102 component tokens, almost
 all of them for the button, and Tenon has none: a component's CSS reads
 `var(--tenon-background-accent)` directly, and a component needing a value no
 semantic token covers means the semantic layer has a gap to fill rather than a
@@ -45,7 +45,7 @@ So spacing, radius, border width, breakpoints and icon sizes all read one
 `dimension` scale directly, and the rule that nothing reads a primitive applies
 to colour, where it earns its keep.
 
-Twinkl is inconsistent in both directions here — its spacing sits in primitives
+That system is inconsistent in both directions here — its spacing sits in primitives
 with nothing above it, its rounding sits in semantics with nothing below it —
 and Tenon collapses both onto the single scale. Radius keeps names (`radius.md`,
 `radius.full`) because a radius is the one measurement a component should not

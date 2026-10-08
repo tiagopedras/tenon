@@ -1,5 +1,5 @@
 /* Reads semantic tokens only. No primitive is named here, and there are no
-   button tokens: Twinkl has 26 of them and every one is a place a decision
+   button tokens, since each would be a place a decision
    can drift away from the one the semantic layer already made. */
 
 .tenon-button {

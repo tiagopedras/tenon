@@ -136,7 +136,7 @@ styles the shared file has, every `{alias}` must resolve, no semantic token may
 alias another semantic token, no component CSS may name a colour primitive,
 and every `--tenon-` name a component reads must be one the build emits.
 
-The first is the reason a token pipeline exists here at all. `a stylesheet` had
+The first is the reason a token pipeline exists here at all. A stylesheet had
 `--accent` missing from its dark block for months, used as a `color:` in
 twenty-two places and as a border in nine more, and nothing said a word,
 because a hand-written stylesheet has no way to know a key is absent. The last

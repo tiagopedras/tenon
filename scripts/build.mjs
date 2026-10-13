@@ -8,7 +8,7 @@
      3. no semantic token aliases another semantic token
      4. a theme's typography file only replaces text styles the shared file
         has, and gives all five parts of each
-   The first is the one that matters. a stylesheet had --accent missing from
+   The first is the one that matters. A stylesheet had --accent missing from
    its dark block for months and nothing said a word, because a hand-written
    stylesheet has no way to know a key is absent.
 

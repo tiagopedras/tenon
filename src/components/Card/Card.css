@@ -1,5 +1,5 @@
 /* The card, ported from a task board's cardShellHTML / Card.tsx. The
-   that version is the one that survived five views, so its anatomy is
+   layout was refined across five views, so its anatomy is
    the one Tenon keeps. What changed is the names: no `.card`, no `--bc`,
    no assumption that the thing on a card is a task.
 

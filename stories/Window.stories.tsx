@@ -35,7 +35,7 @@ function CardWindow() {
         open={open}
         onClose={() => setOpen(false)}
         title={<EditableText value={name} onCommit={setName} />}
-        subtitle="Design oversight · ~/Code/notes"
+        subtitle="Design oversight · ~/projects/my-app"
         rect={rect}
         onRectChange={setRect}
         growFrom={origin}

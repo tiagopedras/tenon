@@ -14,7 +14,7 @@ type Story = StoryObj<typeof meta>;
 export const Neutral: Story = {};
 
 export const Info: Story = {
-  args: { tone: 'info', title: 'Claude wants to run a command', children: 'git status in /Users/tiagopedras/Code' },
+  args: { tone: 'info', title: 'Claude wants to run a command', children: 'git status in ~/projects/my-app' },
 };
 
 export const Success: Story = {

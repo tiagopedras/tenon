@@ -1,26 +1,24 @@
 # Tenon
 
-The shared design system for the projects in `~/Code`. Code is the source of
+A design system. Code is the source of
 truth; the Figma library is a replica built from it, not the other way round.
 
 Tenon is tokens plus eighteen React components. The tokens came first on purpose:
 a component built on a set that is still moving has to be rebuilt when the set
 settles.
 
-One thing to know about reach. The CSS file works anywhere, so the to-dos
-board, which is plain HTML and CSS, can adopt the tokens today. The React
-components only reach a React app, which means the personal site and the
-board's own `kanban/ui/`. That is an argument for the token layer being the
-part that matters first.
+One thing to know about reach. The CSS file works anywhere, so a plain HTML and
+CSS project can adopt the tokens today. The React components only reach a React
+app. That is an argument for the token layer being the part that matters first.
 
 ## Where it came from
 
-The to-dos board is the furthest-along project here, and its `board.css`
-already carries a two-tier token block: primitives that are ramps with no
-opinion, semantics that say what a colour is *for*. Tenon keeps that shape and
-takes its colour anchors from it, so the board's palette survives the move.
+Tenon started from a task board's stylesheet that already carried a two-tier
+token block: primitives that are ramps with no opinion, semantics that say what
+a colour is *for*. Tenon keeps that shape and takes its colour anchors from it,
+so that palette survives the move.
 
-The other parent is a previous design system I worked on. Tenon copies its
+The other parent is an earlier design system. Tenon copies its
 structure —
 nineteen-step ramps numbered 50 to 950, spacing numbered so that 100 is 8px, a
 semantic colour layer split into background, text, icon and stroke — and none
@@ -167,7 +165,7 @@ import '@tiagopedras/tenon/tenon.css';        // tokens
 import '@tiagopedras/tenon/tenon-react.css';  // component styles
 ```
 
-**`Card` and `Badge` came from the to-dos board**, not from here. The board's
+**`Card` and `Badge` came from a task board**, not from here. Its
 card had already survived five views — the board, Plans, Execution, Overview
 and the queue — which is a harder test than anything Tenon could have given a
 card written fresh. So its anatomy is the one Tenon keeps, and what changed is
@@ -262,21 +260,20 @@ read the same whatever the toolbar is set to.
 **The last seven came from two apps that had each drawn their own.** The chat
 engine supplied the `Modal` (its window), `Textarea` (its composer), `Spinner`
 (its working mark), `Pill` (its tool-call chip) and `Alert` (its permission
-prompt). The agents dashboard supplied `Switch` and `SegmentedControl`, and
+prompt). A dashboard app supplied `Switch` and `SegmentedControl`, and
 its detail and log sheets are the same shape as the chat's window, which is
 why `Modal` is written for both. Neither app loads them, because both are
 plain JavaScript with no React, and the chat engine is dropped into hosts it
 does not control, so it cannot require one. For now they are where the anatomy
 lives once: a change to how a switch or a dialog looks is made here, and the
-apps' own copies follow it by hand until the dashboard is rebuilt on React
-(its `IMPROVEMENTS.md` has that entry).
+apps' own copies follow it by hand until they are rebuilt on React.
 
 `Pill` is `Tag`'s outlined counterpart. A `Tag` is a filled chip in a row of
 labels; a `Pill` is drawn round something that happened or a state something
 is in. `Modal` closes on Escape, the X and the scrim, keeps Tab inside the box
 and gives focus back to whatever opened it, and it renders into `document.body`
 so no ancestor's `overflow` or `transform` can clip it. Its four sizes are
-400, 560, 760 and 912px. The to-dos board's plan modal is the most developed
+400, 560, 760 and 912px. The plan modal in that board is the most developed
 of the three it came from, so `Modal` also takes `resizable` (drag the corner,
 and `resizeKey` keeps the size for next time), `layout="split"` with
 `ModalPane` columns that each scroll and stack on a phone, `initialFocus="footer"`
@@ -329,8 +326,7 @@ knows 1984 is dark. Under reduced motion it holds a still frame by itself.
 thinking-orbs is Tenon's one runtime dependency, left out of the bundle so an
 app that also loads the chat engine gets one copy.
 
-**Drag to reorder is one hook and two small pieces**, added in v0.8.0 so the
-agents dashboard and the to-dos board drag the same way. `useReorder({ keys, onMove,
+**Drag to reorder is one hook and two small pieces**, added in v0.8.0 so two apps drag the same way. `useReorder({ keys, onMove,
 axis })` hands back, per item, `handleProps` for whatever it is picked up by and
 `itemProps` for the item itself, plus `listProps` for the list around them. Spread
 `handleProps` on a `DragHandle` to pick an item up by a grip, which the dashboard needs
@@ -348,7 +344,7 @@ list. Moving between lists, like the board's columns, stays with the app, becaus
 rules for what may go where are the app's. There is no keyboard way to reorder yet.
 
 **`bindReorder` is the same thing for a list built as an HTML string**, added in
-v0.9.0 because most of the to-dos board is plain JavaScript that a React hook cannot
+v0.9.0 because plenty of apps are plain JavaScript that a React hook cannot
 reach. `bindReorder(list, { onMove, axis, grip, item, keyOf })` binds once to the list
 element and returns a function that unbinds it. Its listeners sit on the list rather
 than on each row, so the list can redraw its rows after every move without binding
@@ -412,11 +408,7 @@ import { Button, Card } from '@tiagopedras/tenon';
 one is on and writes nothing: moving a consumer forward means editing its own
 `package.json`, which is the point of pinning.
 
-Both consumers are React. The to-dos board looks like it is not — plain HTML,
-CSS and a Python server — but it has React 18, Vite and TypeScript at its root
-and a growing `kanban/ui/`, and `server.py` already serves a sibling package's
-assets twice over. There was briefly a second route here that copied the built
-CSS into it. There is one route.
+There is one route. Built CSS is never copied into a consumer.
 
 ## Releasing
 

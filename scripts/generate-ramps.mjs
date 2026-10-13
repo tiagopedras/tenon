@@ -1,6 +1,6 @@
 /* Generates tokens/primitive/color.json: 17 hues x 19 steps, from one
-   anchor hex each. The anchors are the colours the to-dos board already
-   uses, so the ramps carry that palette rather than replacing it.
+   anchor hex each. The anchors are the colours an earlier task board already
+   used, so the ramps carry that palette rather than replacing it.
 
    Two curves do the work. LIGHTNESS is a fixed table, identical on every
    hue, which is what makes blue-600 and green-600 the same weight on the
@@ -33,7 +33,7 @@ const CHROMA = [0.12, 0.22, 0.34, 0.47, 0.60, 0.72, 0.83, 0.91, 0.97, 1.00,
    to touch it casually: changing an anchor moves all 19 of its steps. */
 const HUES = {
   neutral: { hex: '#5d636e', from: 'board --n-500' },
-  grey:    { hex: '#9a9a9a', from: 'tiagopedras.com muted text, zero chroma for the site theme' },
+  grey:    { hex: '#9a9a9a', from: 'muted text on the site theme, zero chroma' },
   slate:  { hex: '#55606e', from: 'board --bucket-10-light' },
   blue:    { hex: '#2f6feb', from: 'board --blue-500, the accent' },
   indigo:  { hex: '#4550c9', from: 'board --bucket-8-light' },

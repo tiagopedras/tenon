@@ -1,7 +1,7 @@
 {
   "name": "@tiagopedras/tenon",
   "version": "0.16.1",
-  "description": "The shared design system. Tokens first, components later.",
+  "description": "A design system: colour, type, dimension and elevation tokens built to one CSS file, plus React components.",
   "type": "module",
   "files": [
     "dist",

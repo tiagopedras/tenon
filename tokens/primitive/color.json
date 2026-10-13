@@ -158,7 +158,7 @@
         "$type": "color",
         "$value": "#151515"
       },
-      "$description": "Generated from #9a9a9a (tiagopedras.com muted text, zero chroma for the site theme). Do not hand-edit; run scripts/generate-ramps.mjs."
+      "$description": "Generated from #9a9a9a (muted text on the site theme, zero chroma). Do not hand-edit; run scripts/generate-ramps.mjs."
     },
     "slate": {
       "50": {

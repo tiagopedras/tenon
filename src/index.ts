@@ -3,8 +3,8 @@
 export { Button, LinkButton } from './components/Button/Button';
 export type { ButtonProps, ButtonVariant, ButtonSize, LinkButtonProps } from './components/Button/Button';
 
-/* Card and Badge came from the to-dos board, which had already run them
-   across five views. Their anatomy is the board's; only the names changed. */
+/* Card and Badge came from a task board, which had already run them
+   across five views. Their anatomy is a task board's; only the names changed. */
 export { Card } from './components/Card/Card';
 export type { CardProps, CardSlot, CardElevation } from './components/Card/Card';
 
@@ -23,7 +23,7 @@ export type { StatProps, StatTone } from './components/Stat/Stat';
 export { Field } from './components/Field/Field';
 export type { FieldProps } from './components/Field/Field';
 
-/* The rest came from the chat engine and the agents dashboard, two apps that
+/* The rest came from the chat engine and a dashboard, two apps that
    had each drawn their own. Neither loads them: both are plain JavaScript
    with no React, so for now this is where the anatomy is written down. */
 export { Modal, ModalPane } from './components/Modal/Modal';
@@ -82,8 +82,8 @@ export type { EditableTextProps } from './components/EditableText/EditableText';
 export { Disclosure } from './components/Disclosure/Disclosure';
 export type { DisclosureProps } from './components/Disclosure/Disclosure';
 
-/* Drag to reorder. Written for the agents dashboard's agents and targets,
-   with the to-dos board's drop line, so the two apps drag the same way. */
+/* Drag to reorder. Written for a dashboard's agents and targets,
+   with a task board's drop line, so the two apps drag the same way. */
 export { useReorder, reorderKeys, applySavedOrder } from './components/Reorder/useReorder';
 export type {
   ReorderOptions, ReorderItem, ReorderItemProps, ReorderHandleProps, ReorderAxis, DropSide,

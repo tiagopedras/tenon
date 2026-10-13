@@ -7,7 +7,7 @@ export interface CardProps extends Omit<HTMLAttributes<HTMLElement>, 'title' | '
     title?: ReactNode;
     /** Above the title, in the accent colour, so a card's mark and its label agree. */
     eyebrow?: CardSlot;
-    /** Pushed to the right-hand end of the eyebrow row. The board's plan card
+    /** Pushed to the right-hand end of the eyebrow row. A task board's plan card
      *  puts how far the agent got, and whether it stopped to ask, up here. */
     eyebrowEnd?: ReactNode;
     /** Before the title. A position, an index, a key. */

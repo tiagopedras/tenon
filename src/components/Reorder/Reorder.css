@@ -1,7 +1,7 @@
 /* Drag to reorder: the grip, the fade on what is being carried, and the
    line that says where it will land.
 
-   The line is the to-dos board's: a 3px bar in the accent with a dot at
+   The line is a task board's: a 3px bar in the accent with a dot at
    each end. It is drawn two ways with one recipe. `.tenon-dropline` is an
    element a list inserts between items. `[data-tenon-drop]` draws it on the
    hovered item's `::after` instead, centred in the gap before or after it,

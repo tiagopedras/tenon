@@ -20,8 +20,8 @@ export const Grouped: Story = {
           onChange={setV}
           options={[
             { value: '', label: 'Nobody' },
-            { value: 'Plan agent', label: 'Plan agent', group: 'Agents', icon: dot('var(--tenon-chart-1)') },
-            { value: 'Implement agent', label: 'Implement agent', group: 'Agents', icon: dot('var(--tenon-chart-2)') },
+            { value: 'Planner', label: 'Planner', group: 'Agents', icon: dot('var(--tenon-chart-1)') },
+            { value: 'Builder', label: 'Builder', group: 'Agents', icon: dot('var(--tenon-chart-2)') },
             { value: 'Vasco P.', label: 'Vasco P.', group: 'People' },
           ]}
         />

@@ -1,7 +1,7 @@
 /* Tag's outlined counterpart. A Tag is a filled chip that sits in a row of
    labels; a Pill is drawn round a thing that happened or a state something
    is in, so it takes a border and lets the surface behind it show. Came from
-   the chat engine's tool-call pill and the agents dashboard's state pill. */
+   the chat engine's tool-call pill and a dashboard's state pill. */
 
 .tenon-pill {
   display: inline-flex;

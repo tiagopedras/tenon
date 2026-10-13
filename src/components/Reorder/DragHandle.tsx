@@ -23,7 +23,7 @@ export function DragHandle({ className, ...rest }: DragHandleProps) {
 }
 
 /** `<DragHandle/>` as an HTML string, for a list built as one. The same
- *  markup, byte for byte, which the to-dos board's tests hold it to. */
+ *  markup, byte for byte, which a task board's tests hold it to. */
 export function dragHandleHTML(className?: string): string {
   const cls = className ? `tenon-draghandle ${className}` : 'tenon-draghandle';
   const dots = [[3, 3], [7, 3], [3, 8], [7, 8], [3, 13], [7, 13]]

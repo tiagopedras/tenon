@@ -32,7 +32,7 @@ export interface ColumnProps extends Omit<HTMLAttributes<HTMLElement>, 'title'> 
   /** A quieter head, for a column that is finished or parked. */
   muted?: boolean;
   /** Draws a dashed edge. Tenon does not say what that means — on the
-   *  to-dos board it means an agent owns the column and you do not drag
+   *  task board it means an agent owns the column and you do not drag
    *  into it, and the dash reads because nothing else in the app is
    *  dashed. Keep it to one meaning per app and it keeps working. */
   dashed?: boolean;

@@ -7,7 +7,7 @@ const meta = {
   tags: ['autodocs'],
   args: { title: 'Write the Tenon migration note' },
   parameters: {
-    docs: { description: { component: "The board's card, renamed. Every row is optional except the title." } },
+    docs: { description: { component: "A task board's card, renamed. Every row is optional except the title." } },
   },
 } satisfies Meta<typeof Card>;
 

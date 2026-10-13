@@ -79,7 +79,7 @@
         "$type": "color",
         "$value": "#131518"
       },
-      "$description": "Generated from #5d636e (board --n-500). Do not hand-edit; run scripts/generate-ramps.mjs."
+      "$description": "Generated from #5d636e (earlier palette --n-500). Do not hand-edit; run scripts/generate-ramps.mjs."
     },
     "grey": {
       "50": {
@@ -237,7 +237,7 @@
         "$type": "color",
         "$value": "#121519"
       },
-      "$description": "Generated from #55606e (board --bucket-10-light). Do not hand-edit; run scripts/generate-ramps.mjs."
+      "$description": "Generated from #55606e (earlier palette --bucket-10-light). Do not hand-edit; run scripts/generate-ramps.mjs."
     },
     "blue": {
       "50": {
@@ -316,7 +316,7 @@
         "$type": "color",
         "$value": "#031234"
       },
-      "$description": "Generated from #2f6feb (board --blue-500, the accent). Do not hand-edit; run scripts/generate-ramps.mjs."
+      "$description": "Generated from #2f6feb (earlier palette --blue-500, the accent). Do not hand-edit; run scripts/generate-ramps.mjs."
     },
     "indigo": {
       "50": {
@@ -395,7 +395,7 @@
         "$type": "color",
         "$value": "#0c1034"
       },
-      "$description": "Generated from #4550c9 (board --bucket-8-light). Do not hand-edit; run scripts/generate-ramps.mjs."
+      "$description": "Generated from #4550c9 (earlier palette --bucket-8-light). Do not hand-edit; run scripts/generate-ramps.mjs."
     },
     "purple": {
       "50": {
@@ -474,7 +474,7 @@
         "$type": "color",
         "$value": "#180a32"
       },
-      "$description": "Generated from #7c4ddb (board --bucket-3-light). Do not hand-edit; run scripts/generate-ramps.mjs."
+      "$description": "Generated from #7c4ddb (earlier palette --bucket-3-light). Do not hand-edit; run scripts/generate-ramps.mjs."
     },
     "plum": {
       "50": {
@@ -632,7 +632,7 @@
         "$type": "color",
         "$value": "#290515"
       },
-      "$description": "Generated from #b1306b (board --bucket-5-light). Do not hand-edit; run scripts/generate-ramps.mjs."
+      "$description": "Generated from #b1306b (earlier palette --bucket-5-light). Do not hand-edit; run scripts/generate-ramps.mjs."
     },
     "rose": {
       "50": {
@@ -790,7 +790,7 @@
         "$type": "color",
         "$value": "#2d0404"
       },
-      "$description": "Generated from #c8322f (board --red-500). Do not hand-edit; run scripts/generate-ramps.mjs."
+      "$description": "Generated from #c8322f (earlier palette --red-500). Do not hand-edit; run scripts/generate-ramps.mjs."
     },
     "orange": {
       "50": {
@@ -869,7 +869,7 @@
         "$type": "color",
         "$value": "#280a00"
       },
-      "$description": "Generated from #e0610f (board --orange-500). Do not hand-edit; run scripts/generate-ramps.mjs."
+      "$description": "Generated from #e0610f (earlier palette --orange-500). Do not hand-edit; run scripts/generate-ramps.mjs."
     },
     "brown": {
       "50": {
@@ -948,7 +948,7 @@
         "$type": "color",
         "$value": "#1f1106"
       },
-      "$description": "Generated from #8a5a2f (board --bucket-7-light). Do not hand-edit; run scripts/generate-ramps.mjs."
+      "$description": "Generated from #8a5a2f (earlier palette --bucket-7-light). Do not hand-edit; run scripts/generate-ramps.mjs."
     },
     "amber": {
       "50": {
@@ -1027,7 +1027,7 @@
         "$type": "color",
         "$value": "#211100"
       },
-      "$description": "Generated from #9a6100 (board --amber-500). Do not hand-edit; run scripts/generate-ramps.mjs."
+      "$description": "Generated from #9a6100 (earlier palette --amber-500). Do not hand-edit; run scripts/generate-ramps.mjs."
     },
     "yellow": {
       "50": {
@@ -1264,7 +1264,7 @@
         "$type": "color",
         "$value": "#031a0b"
       },
-      "$description": "Generated from #1f7a45 (board --green-500). Do not hand-edit; run scripts/generate-ramps.mjs."
+      "$description": "Generated from #1f7a45 (earlier palette --green-500). Do not hand-edit; run scripts/generate-ramps.mjs."
     },
     "teal": {
       "50": {
@@ -1343,7 +1343,7 @@
         "$type": "color",
         "$value": "#00191f"
       },
-      "$description": "Generated from #0f7d93 (board --bucket-6-light). Do not hand-edit; run scripts/generate-ramps.mjs."
+      "$description": "Generated from #0f7d93 (earlier palette --bucket-6-light). Do not hand-edit; run scripts/generate-ramps.mjs."
     },
     "cyan": {
       "50": {

@@ -25,7 +25,7 @@ export const WithActions: Story = {
   args: {
     tone: 'warning',
     title: 'Allow this edit?',
-    children: 'It rewrites board.css in place.',
+    children: 'It rewrites a stylesheet in place.',
     actions: (
       <>
         <Button size="sm" variant="confirm">Allow</Button>

@@ -1,5 +1,5 @@
-/* The card, ported from the to-dos board's cardShellHTML / Card.tsx. The
-   board's version is the one that survived five views, so its anatomy is
+/* The card, ported from a task board's cardShellHTML / Card.tsx. The
+   that version is the one that survived five views, so its anatomy is
    the one Tenon keeps. What changed is the names: no `.card`, no `--bc`,
    no assumption that the thing on a card is a task.
 
@@ -76,7 +76,7 @@
   color: var(--tenon-card-accent, var(--tenon-text-subtle));
 }
 
-/* Anything in the eyebrow that belongs at the far end. The board's plan card
+/* Anything in the eyebrow that belongs at the far end. A task board's plan card
    puts how far the agent got up here, beside the state word. */
 .tenon-card__eyebrow-end {
   margin-left: auto;

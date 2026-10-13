@@ -6,9 +6,9 @@ import './Reorder.css';
 
 /* Drag to reorder one list of keyed things.
 
-   Written for the agents dashboard, where rows are picked up by a grip
+   Written for a dashboard, where rows are picked up by a grip
    because the row itself already owns a pointer drag (painting hours), and
-   shaped by what the to-dos board had already learnt the hard way:
+   shaped by what a task board had already learnt the hard way:
 
    - the browser takes its picture of the dragged thing just after
      dragstart returns, so the fade that marks it waits a tick, or the
@@ -21,7 +21,7 @@ import './Reorder.css';
    Lists nest (rows inside a card inside a list of cards). Each hook answers
    only for a drag it started, so an outer list and an inner one never
    handle each other's drops. Moving between two lists is not this hook's
-   job: the board's columns do that with their own rules.
+   job: a task board's columns do that with their own rules.
 
    State goes out as data attributes rather than classes, so the item props
    spread onto anything, a Card included, with no class merging:

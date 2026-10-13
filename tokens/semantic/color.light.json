@@ -320,7 +320,7 @@
       "1": {
         "$type": "color",
         "$value": "{color.blue.600}",
-        "$description": "Ten categorical colours, one step off ten different ramps. Same job as the board's bucket colours, and the reason the hue list is as long as it is."
+        "$description": "Ten categorical colours, one step off ten different ramps. Same job as a task board's bucket colours, and the reason the hue list is as long as it is."
       },
       "2": {
         "$type": "color",

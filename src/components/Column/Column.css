@@ -1,6 +1,5 @@
-/* The column, ported from the to-dos board's colHTML / Column.tsx. On the
-   board every column is one shape — three boards, Overview's seven
-   sections, Matrix, Timeline, Backups, Projects — so the fill, border,
+/* The column, ported from a task board's colHTML / Column.tsx. On the
+   board every column is one shape, so the fill, border,
    radius, gap and both paddings are settled in one place. That is the
    part worth having, and it is what came across.
 

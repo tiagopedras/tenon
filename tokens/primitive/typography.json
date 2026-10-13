@@ -39,7 +39,7 @@
       "8xl": { "$type": "dimension", "$value": { "value": 71, "unit": "px" } }
     },
     "weight": {
-      "$description": "Four. The board carries thirteen, including 520, 560, 570 and 680, which are the kind of value that gets typed once and copied forever.",
+      "$description": "Four. A task board carried thirteen, including 520, 560, 570 and 680, which are the kind of value that gets typed once and copied forever.",
       "regular":  { "$type": "fontWeight", "$value": 400 },
       "medium":   { "$type": "fontWeight", "$value": 500 },
       "semibold": { "$type": "fontWeight", "$value": 600 },

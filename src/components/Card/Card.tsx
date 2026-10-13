@@ -3,10 +3,10 @@ import { cx } from '../../utils';
 import './Card.css';
 
 /* A row given either as nodes or as markup something else already built.
-   The second form is not decoration: the to-dos board runs a card summary
+   The second form is not decoration: a task board runs a card summary
    through its own Markdown and builds its score chips as a string, and
    wrapping either in a span to carry it would put an element in the
-   markup that the board's own string builder does not emit. It goes on
+   markup that a task board's own string builder does not emit. It goes on
    the row's own div, which is the element both spellings agree on. */
 export type CardSlot = ReactNode | { __html: string };
 
@@ -16,7 +16,7 @@ export interface CardProps extends Omit<HTMLAttributes<HTMLElement>, 'title' | '
   title?: ReactNode;
   /** Above the title, in the accent colour, so a card's mark and its label agree. */
   eyebrow?: CardSlot;
-  /** Pushed to the right-hand end of the eyebrow row. The board's plan card
+  /** Pushed to the right-hand end of the eyebrow row. A task board's plan card
    *  puts how far the agent got, and whether it stopped to ask, up here. */
   eyebrowEnd?: ReactNode;
   /** Before the title. A position, an index, a key. */

@@ -6,7 +6,7 @@ const meta = {
   title: 'Components/Switch',
   component: Switch,
   tags: ['autodocs'],
-  args: { checked: true, 'aria-label': 'Improvements agent' },
+  args: { checked: true, 'aria-label': 'Nightly job' },
   parameters: {
     docs: {
       description: {
@@ -23,7 +23,7 @@ function Toggle({ initial }: { initial: boolean }) {
   const [on, setOn] = useState(initial);
   return (
     <div className="sb-row">
-      <Switch checked={on} onChange={setOn} aria-label="Improvements agent" />
+      <Switch checked={on} onChange={setOn} aria-label="Nightly job" />
       <span className="tenon-body-sm">{on ? 'on' : 'off'}</span>
     </div>
   );

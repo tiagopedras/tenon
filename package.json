@@ -25,8 +25,7 @@
     "all": "npm run generate && npm run build",
     "dev": "npm run storybook",
     "storybook": "npm run tokens && storybook dev -p 5199 --no-open",
-    "build-storybook": "npm run tokens && storybook build -o storybook-static",
-    "sync": "node scripts/sync.mjs"
+    "build-storybook": "npm run tokens && storybook build -o storybook-static"
   },
   "devDependencies": {
     "@storybook/addon-docs": "^10.6.0",

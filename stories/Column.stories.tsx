@@ -10,7 +10,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: "The board's column. The head is two groups pushed apart, so a long title never squeezes the controls away.",
+        component: "A task board's column. The head is two groups pushed apart, so a long title never squeezes the controls away.",
       },
     },
   },

@@ -6,7 +6,7 @@ import type { Over, ReorderAxis } from './reorderCore';
 import './Reorder.css';
 
 /* `useReorder` for a list built as an HTML string, which a React hook
-   cannot reach. Written for the to-dos board's editors, drawer and
+   cannot reach. Written for a task board's editors, drawer and
    timeline. Same rules, same look, from the same helpers.
 
    Bind once on the list element. Listeners are delegated to it, so the

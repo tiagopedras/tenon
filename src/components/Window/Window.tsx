@@ -68,7 +68,7 @@ function useLatest<T>(value: T) {
    incurious about why a rect changed: a saved position, a grid cell, a parked
    spot are all `rect`. What stays here is the gesture: dragging, resizing,
    the grow and shrink, and reporting where the window ended up. Came from the
-   chat engine's windowed mode, which ai_canvas uses for a card. */
+   chat engine's windowed mode, which a canvas app can use for a card. */
 export function Window({
   open, onClose, title, subtitle, headEnd, footer, rect, onRectLive, onRectChange, growFrom, zIndex,
   active = true, peeked = false, onFocus, closeButton = true, bare = false,

@@ -1,6 +1,6 @@
-/* One number, boxed, with what it counts underneath. Ported from the board's
+/* One number, boxed, with what it counts underneath. Ported from a task board's
    StatCard, which was three spans scoped to the Reports view until it was
-   pulled out — so the one shape the board uses for "the answer to the
+   pulled out — so the one shape a task board uses for "the answer to the
    question you opened this view for" could not be drawn anywhere else.
 
    The eyebrow sits inside the box rather than above it, so the name of the

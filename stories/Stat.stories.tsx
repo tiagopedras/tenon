@@ -7,7 +7,7 @@ const meta = {
   tags: ['autodocs'],
   args: { eyebrow: 'completed', value: 42, caption: 'tasks this month' },
   parameters: {
-    docs: { description: { component: "The board's StatCard. One number, and what it counts." } },
+    docs: { description: { component: "A task board's StatCard. One number, and what it counts." } },
   },
 } satisfies Meta<typeof Stat>;
 

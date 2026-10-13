@@ -1,10 +1,10 @@
 /* A dialog over a scrim: a head, a body that scrolls, and a footer that does
-   not. Came from the chat engine's window, and the agents dashboard's detail
+   not. Came from the chat engine's window, and a dashboard's detail
    and log sheets are the same shape. Position, stacking and the scrim are the
    component's; the width is a size and the content is the caller's.
 
    The resizable corner, the split body, the ⌘↵ shortcut and the phone-width
-   behaviour came from the to-dos board's plan modal, which had been through
+   behaviour came from a task board's plan modal, which had been through
    more than the other two put together. */
 
 .tenon-modal {

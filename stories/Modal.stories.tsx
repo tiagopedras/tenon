@@ -44,8 +44,8 @@ export const ChatWindow: Story = {
         <Modal
           open={open}
           onClose={close}
-          title="Improvements agent"
-          subtitle="agents-dashboard · 06:00"
+          title="Nightly job"
+          subtitle="scheduler · 06:00"
           size="lg"
           footer={<><Textarea autoGrow placeholder="Reply…" style={{ flex: 1 }} /><Button variant="primary">Send</Button></>}
         >

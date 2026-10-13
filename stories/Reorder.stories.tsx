@@ -17,7 +17,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const START = ['Plan agent', 'Improve agent', 'UX agent', 'Implement agent'];
+const START = ['Planner', 'Reviewer', 'Designer', 'Builder'];
 
 function Rows({ axis }: { axis: 'x' | 'y' }) {
   const [keys, setKeys] = useState(START);
@@ -64,7 +64,7 @@ export const Line: Story = {
 };
 
 /* No React inside the list: the rows are an HTML string redrawn after every
-   move, the way the to-dos board's editors are built. React only gives the
+   move, the way a task board's editors are built. React only gives the
    story somewhere to put it. */
 function PlainRows() {
   const ref = useRef<HTMLDivElement>(null);

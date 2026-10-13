@@ -1,6 +1,6 @@
 /* An on/off setting that takes effect the moment it is flipped. If it needs
    a Save button after it, it should be a checkbox in a Field instead. Came
-   from the agents dashboard's row switch. */
+   from a dashboard's row switch. */
 
 .tenon-switch {
   position: relative;

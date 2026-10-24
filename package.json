@@ -1,11 +1,13 @@
 {
   "name": "@tiagopedras/tenon",
-  "version": "0.16.1",
+  "version": "0.17.0",
   "description": "A design system: colour, type, dimension and elevation tokens built to one CSS file, plus React components.",
   "type": "module",
   "files": [
     "dist",
-    "tokens"
+    "tokens",
+    "DESIGN.md",
+    "design-md/assets"
   ],
   "exports": {
     ".": {
@@ -14,6 +16,7 @@
     },
     "./tenon.css": "./dist/tenon.css",
     "./tenon-react.css": "./dist/tenon-react.css",
+    "./tn-page.css": "./design-md/assets/tn-page.css",
     "./tokens": "./dist/tenon.tokens.json",
     "./tokens/*": "./tokens/*"
   },

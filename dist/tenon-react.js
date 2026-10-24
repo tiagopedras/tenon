@@ -73,9 +73,9 @@ function _({ title: e, eyebrow: t, eyebrowEnd: n, lead: r, action: i, tags: a, m
 					}) : null
 				]
 			}),
+			g("tenon-card__summary", s),
 			g("tenon-card__tags", a),
 			g("tenon-card__meta", o),
-			g("tenon-card__summary", s),
 			c ? /* @__PURE__ */ l("div", {
 				className: "tenon-card__body",
 				children: c

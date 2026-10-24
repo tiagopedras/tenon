@@ -68,8 +68,9 @@ The generated ramps are consistent enough to state a rule: **every hue clears
 off the neutral ramp is what stops "the lightest neutral" quietly becoming pure
 white. `base.yellow` is pure `#ffff00`, the 1984 theme's accent, kept off the
 yellow ramp because no generated step gets near it. `base.urgent` and
-`base.soon` are the timeline's overdue and due-soon colours, and alias a red and
-an amber step legible as text so a tag can use them too.
+`base.soon` are the timeline's overdue and due-soon anchors. The tokens a tag
+reads, `status.over` and `status.soon`, take a red and an amber ramp step per
+theme instead, since one hex cannot clear 4.5:1 on a light fill and a dark one.
 
 The ten categorical `chart.1`–`chart.10` tokens are one step off ten different
 ramps. They do the job the task board's bucket colours do.
@@ -143,12 +144,15 @@ because a hand-written stylesheet has no way to know a key is absent. The last
 is there because a `var()` naming a token that does not exist falls back
 silently and looks completely fine, which has happened twice here.
 
-Contrast reports rather than fails, because `text.faint` is meant to sit where
-it sits. It measures every text and icon token against its own background, and
+Contrast reports rather than fails, because `text.disabled` is meant to sit
+below AA. It measures every text and icon token against its own background,
 every `text.on-X` against `background.X`, which is the only surface an on-X is
-ever read on. Measuring the on-X tokens against a page surface, as it did until
-v0.4.0, printed ten rows of 1.00 that meant nothing and hid the one row that
-did.
+ever read on, every `text.X` against the `background.X-subtle` tint a tag sits
+on, and `status.over` and `status.soon` against `background.neutral`, where the
+urgent and soon tags put them. Measuring the on-X tokens against a page
+surface, as it did until v0.4.0, printed ten rows of 1.00 that meant nothing
+and hid the one row that did. Since v0.17.0 the disabled tokens are the only
+rows it prints, in light and dark.
 
 ## Components
 
@@ -406,6 +410,13 @@ Moving a consumer forward means editing its own `package.json`, which is the
 point of pinning.
 
 There is one route. Built CSS is never copied into a consumer.
+
+`DESIGN.md` at the root is for an agent building a page somewhere with no
+Tenon setup to copy from. It links Tenon's own CSS from jsDelivr at a tag and
+adds one small page layer, `design-md/assets/tn-page.css`, which reads only
+Tenon's tokens and is exported as `@tiagopedras/tenon/tn-page.css`. Both ship
+from v0.17.0. `design-md/README.md` explains how it was built and what has been
+checked.
 
 ## Releasing
 

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tidepool, a Sunday digest for everything you saved</title>
+  <meta name="description" content="Tidepool is a small Mac app that collects the links, screenshots and notes you drop on it during the week and turns them into one Sunday digest.">
+  <link href="https://cdn.jsdelivr.net/gh/tiagopedras/tenon@v0.16.1/dist/tenon.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/tiagopedras/tenon@v0.16.1/dist/tenon-react.css" rel="stylesheet">
+  <link href="../../../assets/tn-page.css" rel="stylesheet">
+  <style>
+    .tn-custom-facts {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .tn-custom-facts li {
+      padding: var(--tenon-dimension-12) 0;
+      border-bottom: 1px solid var(--tenon-stroke-subtle);
+    }
+    .tn-custom-facts li:first-child {
+      border-top: 1px solid var(--tenon-stroke-subtle);
+    }
+    .tn-custom-facts strong {
+      display: block;
+    }
+    .tn-custom-join {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      gap: var(--tenon-dimension-12);
+    }
+    .tn-custom-join .tenon-field {
+      flex: 1 1 240px;
+      min-width: 0;
+    }
+  </style>
+</head>
+<body class="tn-shell">
+  <a class="tn-skip-link" href="#main">Skip to content</a>
+  <div class="tn-page">
+    <header class="tn-header">
+      <a class="tn-identity" href="/">Tidepool</a>
+      <nav aria-label="Main"><ul class="tn-nav">
+        <li><a href="#how" aria-current="page">How it works</a></li>
+        <li><a href="#beta">Beta</a></li>
+      </ul></nav>
+    </header>
+
+    <main id="main">
+      <section class="tn-hero">
+        <h1 class="tenon-title">Everything you saved, in one page on Sunday.</h1>
+        <p class="tn-hero-lede">Tidepool is a small Mac app. Drop links, screenshots and notes on it during the week, and it turns them into a single digest you can actually finish.</p>
+        <div class="tn-hero-actions">
+          <a class="tenon-button tenon-button--primary tenon-button--lg" href="#beta">Join the beta</a>
+          <span class="tenon-caption">Free during the beta</span>
+        </div>
+      </section>
+
+      <section class="tn-section" id="how" aria-labelledby="how-h">
+        <div class="tn-split">
+          <div class="tn-stack">
+            <h2 class="tenon-heading-1" id="how-h">For people who save things to read later and never do</h2>
+            <p class="tenon-body tn-reading">Saving is quick and reading is not, so the pile grows. Tidepool keeps what you dropped on it all week in one place, then gives it back once, as one page, on Sunday.</p>
+          </div>
+          <ul class="tn-custom-facts">
+            <li>
+              <strong class="tenon-label">Works offline</strong>
+              <span class="tenon-body-sm">Drop things on it anywhere, with or without a connection.</span>
+            </li>
+            <li>
+              <strong class="tenon-label">Nothing leaves your machine</strong>
+              <span class="tenon-body-sm">Your links, screenshots and notes stay on your Mac.</span>
+            </li>
+            <li>
+              <strong class="tenon-label">One page you can print</strong>
+              <span class="tenon-body-sm">The digest is a single page, so it fits on paper as well as on screen.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="tn-section" aria-labelledby="evidence-h">
+        <div class="tn-split">
+          <div class="tn-stat-strip">
+            <div class="tenon-stat tenon-stat--success">
+              <span class="tenon-stat__eyebrow">Saved links opened</span>
+              <span class="tenon-stat__value">3x</span>
+              <span class="tenon-stat__caption">more than before, among early testers</span>
+            </div>
+          </div>
+          <div class="tn-stack">
+            <h2 class="tenon-heading-2" id="evidence-h">Early testers opened three times more of what they saved</h2>
+            <p class="tenon-body-sm tn-reading">Measured across 41 testers over 4 weeks.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="tn-band tn-section" id="beta" aria-labelledby="beta-h">
+        <div class="tn-stack tn-reading">
+          <h2 class="tenon-heading-2" id="beta-h">Join the beta</h2>
+          <p class="tenon-body">Tidepool is free while it is in beta.</p>
+          <form class="tn-custom-join" action="#beta">
+            <div class="tenon-field">
+              <label class="tenon-field__label" for="email">Email address</label>
+              <input class="tenon-field__control" id="email" name="email" type="email" autocomplete="email" aria-describedby="email-note">
+              <span class="tenon-field__note" id="email-note">Used only to send you the beta.</span>
+            </div>
+            <button class="tenon-button tenon-button--secondary tenon-button--md" type="submit">Join the beta</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="tn-footer">
+      <span class="tenon-caption">Tidepool, a side project. Mac only.</span>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shelfwise: a reading tracker</title>
+  <link href="../../dist/tenon.css" rel="stylesheet">
+  <link href="../../dist/tenon-react.css" rel="stylesheet">
+  <link href="../assets/tn-page.css" rel="stylesheet">
+</head>
+<!-- Smoke test. Invented product, invented data. Uses every tn-* class once
+     or more, and the Tenon components that work as plain HTML. -->
+<body class="tn-shell">
+  <a class="tn-skip-link" href="#main">Skip to content</a>
+  <div class="tn-page">
+    <header class="tn-header">
+      <a class="tn-identity" href="#">Shelfwise</a>
+      <nav aria-label="Main">
+        <ul class="tn-nav">
+          <li><a href="#" aria-current="page">Product</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#">Changelog</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="tn-hero" aria-labelledby="hero-title">
+        <h1 class="tenon-title" id="hero-title">Know what you read, not just what you bought.</h1>
+        <p class="tn-hero-lede">Shelfwise logs every book you start, how far you got and why you stopped, so next month's pile is shorter and better.</p>
+        <div class="tn-hero-actions">
+          <a class="tenon-button tenon-button--primary tenon-button--lg" href="#">Start a shelf</a>
+          <a class="tenon-button tenon-button--secondary tenon-button--lg" href="#preview">See it working</a>
+          <span class="tenon-caption">Free for 20 books</span>
+        </div>
+      </section>
+
+      <section class="tn-section" id="preview" aria-labelledby="preview-title">
+        <div class="tn-section-head">
+          <h2 id="preview-title">One board for every book in progress</h2>
+          <p>Columns for where each book is, cards for each book, and the numbers that say whether this month went well.</p>
+        </div>
+
+        <div class="tn-band">
+          <div class="tn-app">
+            <aside class="tn-sidebar" aria-label="Shelves">
+              <span class="tenon-label">Shelves</span>
+              <ul class="tn-nav">
+                <li><a href="#" aria-current="page">This month</a></li>
+                <li><a href="#">Abandoned</a></li>
+                <li><a href="#">Wishlist</a></li>
+              </ul>
+            </aside>
+            <div class="tn-main">
+              <div class="tn-toolbar">
+                <h3>This month</h3>
+                <div class="tn-cluster">
+                  <div class="tenon-segmented" role="radiogroup" aria-label="View">
+                    <button type="button" role="radio" aria-checked="true" class="tenon-segmented__option tenon-segmented__option--on">Board</button>
+                    <button type="button" role="radio" aria-checked="false" class="tenon-segmented__option">List</button>
+                  </div>
+                  <button type="button" class="tenon-button tenon-button--primary tenon-button--md">Add book</button>
+                </div>
+              </div>
+
+              <div class="tn-stat-strip">
+                <div class="tenon-stat">
+                  <span class="tenon-stat__eyebrow">Finished</span>
+                  <span class="tenon-stat__value">4</span>
+                  <span class="tenon-stat__caption">of 7 started</span>
+                </div>
+                <div class="tenon-stat tenon-stat--success">
+                  <span class="tenon-stat__eyebrow">Pages read</span>
+                  <span class="tenon-stat__value">1,240</span>
+                  <span class="tenon-stat__caption">up 18% on last month</span>
+                </div>
+                <div class="tenon-stat tenon-stat--warning">
+                  <span class="tenon-stat__eyebrow">Stalled</span>
+                  <span class="tenon-stat__value">2</span>
+                  <span class="tenon-stat__caption">untouched for 14 days</span>
+                </div>
+              </div>
+
+              <div class="tn-board">
+                <section class="tenon-column">
+                  <div class="tenon-column__head">
+                    <div class="tenon-column__head-row">
+                      <div class="tenon-column__head-start"><h4 class="tenon-column__title">Reading</h4></div>
+                      <div class="tenon-column__head-end"><span class="tenon-column__count">2</span></div>
+                    </div>
+                  </div>
+                  <div class="tenon-column__body">
+                    <div class="tenon-card tenon-card--raised">
+                      <div class="tenon-card__head"><div class="tenon-card__title">The Long Way Down</div></div>
+                      <div class="tenon-card__tags"><span class="tenon-tag tenon-tag--accent">Fiction</span></div>
+                      <div class="tenon-card__meta">Page 212 of 340</div>
+                    </div>
+                    <div class="tenon-card tenon-card--raised">
+                      <div class="tenon-card__head"><div class="tenon-card__title">Small Rooms</div></div>
+                      <div class="tenon-card__tags"><span class="tenon-tag tenon-tag--soon">Due back Friday</span></div>
+                      <div class="tenon-card__meta">Page 40 of 288</div>
+                    </div>
+                  </div>
+                </section>
+                <section class="tenon-column tenon-column--success">
+                  <div class="tenon-column__head">
+                    <div class="tenon-column__head-row">
+                      <div class="tenon-column__head-start"><h4 class="tenon-column__title">Finished</h4></div>
+                      <div class="tenon-column__head-end"><span class="tenon-column__count">1</span></div>
+                    </div>
+                  </div>
+                  <div class="tenon-column__body">
+                    <div class="tenon-card tenon-card--raised">
+                      <div class="tenon-card__head"><div class="tenon-card__title">Field Notes on Rain</div></div>
+                      <div class="tenon-card__tags"><span class="tenon-tag tenon-tag--success">5 stars</span></div>
+                    </div>
+                  </div>
+                </section>
+                <section class="tenon-column tenon-column--warning">
+                  <div class="tenon-column__head">
+                    <div class="tenon-column__head-row">
+                      <div class="tenon-column__head-start"><h4 class="tenon-column__title">Stalled</h4></div>
+                      <div class="tenon-column__head-end"><span class="tenon-column__count">1</span></div>
+                    </div>
+                  </div>
+                  <div class="tenon-column__body">
+                    <div class="tenon-card tenon-card--raised">
+                      <div class="tenon-card__head"><div class="tenon-card__title">A History of Salt</div></div>
+                      <div class="tenon-card__meta">Stopped at page 96</div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+
+              <div class="tenon-alert tenon-alert--info" role="status">
+                <div class="tenon-alert__title">Two books are stalled</div>
+                <div class="tenon-alert__body">Move them to Abandoned or set a page to reach by Sunday.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tn-section" aria-labelledby="why-title">
+        <div class="tn-split">
+          <div class="tn-section-head">
+            <h2 id="why-title">Why it works</h2>
+            <p>Three things it does that a list in a notes app does not.</p>
+          </div>
+          <ul class="tn-feature-list">
+            <li class="tn-feature">
+              <h3 class="tn-feature-title">Remembers where you stopped</h3>
+              <p class="tn-feature-body">Every book keeps its page, so the board shows progress, not just titles.</p>
+            </li>
+            <li class="tn-feature">
+              <h3 class="tn-feature-title">Notices what stalled</h3>
+              <p class="tn-feature-body">A book untouched for 14 days moves to Stalled on its own.</p>
+            </li>
+            <li class="tn-feature">
+              <h3 class="tn-feature-title">Ends the month with a number</h3>
+              <p class="tn-feature-body">Pages read, by genre, on one scale.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="tn-section tn-band" aria-labelledby="notify-title">
+        <div class="tn-section-head">
+          <h2 id="notify-title">Hear when the iPhone app ships</h2>
+        </div>
+        <form class="tn-inline-form">
+          <label class="tenon-field__label" for="notify">Email address</label>
+          <div class="tn-inline-form-row">
+            <input class="tenon-field__control" id="notify" type="email" aria-describedby="notify-note">
+            <button type="submit" class="tenon-button tenon-button--secondary tenon-button--md">Notify me</button>
+          </div>
+          <span class="tenon-field__note" id="notify-note">One email, when it ships.</span>
+        </form>
+      </section>
+
+      <section class="tn-section" aria-labelledby="genres-title">
+        <div class="tn-split">
+          <div class="tn-section-head">
+            <h2 id="genres-title">Where the hours went</h2>
+            <p>Pages read this month by genre. One scale for every bar.</p>
+          </div>
+          <ul class="tn-bar-list" aria-label="Pages read by genre">
+            <li class="tn-bar">
+              <span class="tn-bar-label">Fiction</span>
+              <span class="tn-bar-track"><span class="tn-bar-fill" style="width: 100%"></span></span>
+              <span class="tn-bar-value">620</span>
+            </li>
+            <li class="tn-bar">
+              <span class="tn-bar-label">Essays</span>
+              <span class="tn-bar-track"><span class="tn-bar-fill" style="width: 56%"></span></span>
+              <span class="tn-bar-value">350</span>
+            </li>
+            <li class="tn-bar">
+              <span class="tn-bar-label">History</span>
+              <span class="tn-bar-track"><span class="tn-bar-fill" style="width: 44%"></span></span>
+              <span class="tn-bar-value">270</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="tn-section" id="pricing" aria-labelledby="pricing-title">
+        <div class="tn-section-head">
+          <h2 id="pricing-title">Pricing</h2>
+        </div>
+        <div class="tn-table-wrap">
+          <table>
+            <caption>Both plans include unlimited shelves.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Plan</th>
+                <th scope="col">Books tracked</th>
+                <th scope="col" data-numeric>Per month</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Free</th>
+                <td>Up to 20</td>
+                <td data-numeric class="tn-numeric">£0</td>
+              </tr>
+              <tr>
+                <th scope="row">Reader</th>
+                <td>No limit</td>
+                <td data-numeric class="tn-numeric">£3</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tn-grid">
+          <div class="tn-col-8 tn-reading">
+            <div class="tn-stack">
+              <h3>Get the monthly summary</h3>
+              <p>One email on the first of the month. Nothing else.</p>
+              <div class="tenon-field">
+                <label class="tenon-field__label" for="email">Email address</label>
+                <input class="tenon-field__control" id="email" type="email" aria-describedby="email-note">
+                <span class="tenon-field__note" id="email-note">We never share it.</span>
+              </div>
+              <div class="tn-cluster">
+                <button type="button" class="tenon-switch tenon-switch--on" role="switch" aria-checked="true" aria-labelledby="digest-label"></button>
+                <span id="digest-label" class="tenon-body-sm">Include books I abandoned</span>
+              </div>
+              <div class="tn-cluster">
+                <button type="button" class="tenon-button tenon-button--primary tenon-button--md">Subscribe</button>
+                <span class="tenon-pill tenon-pill--neutral">No spam</span>
+                <span class="tn-visually-hidden">Subscribing sends one email a month.</span>
+              </div>
+            </div>
+          </div>
+          <div class="tn-col-4">
+            <div class="tenon-card tenon-card--flat">
+              <div class="tenon-card__head"><div class="tenon-card__title">Reader since</div></div>
+              <div class="tenon-card__body"><span class="tenon-badge tenon-badge--accent">12</span> <span class="tenon-caption">months on the Reader plan, on average</span></div>
+            </div>
+          </div>
+          <div class="tn-col-6"><p class="tenon-body-sm">Cancel any time from the account page.</p></div>
+          <div class="tn-col-6"><p class="tenon-body-sm">Prices include VAT.</p></div>
+          <div class="tn-col-12"><p class="tenon-caption">Shelfwise is an invented product used to test this stylesheet.</p></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="tn-footer">Shelfwise, an example page for the Tenon page layer.</footer>
+  </div>
+</body>
+</html>

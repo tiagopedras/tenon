@@ -370,6 +370,26 @@ for (const theme of ['light', 'dark', '1984']) {
     const ratio = contrast(hex, fill);
     if (ratio < 4.5) rows.push({ theme, token: `${key} on background.${m[1]}`, hex, 'worst ratio': ratio.toFixed(2) });
   }
+
+  /* text.X against background.X-subtle, wherever that fill exists. */
+  for (const [key, hex] of Object.entries(r)) {
+    const m = key.match(/^text\.([a-z]+)$/);
+    if (!m) continue;
+    const fill = r[`background.${m[1]}-subtle`];
+    if (!fill || !/^#[0-9a-f]{6}$/i.test(hex) || !/^#[0-9a-f]{6}$/i.test(fill)) continue;
+    const ratio = contrast(hex, fill);
+    if (ratio < 4.5) rows.push({ theme, token: `${key} on background.${m[1]}-subtle`, hex, 'worst ratio': ratio.toFixed(2) });
+  }
+
+  /* The urgent and soon tags set status.over and status.soon as text on
+     background.neutral. */
+  for (const key of ['status.over', 'status.soon']) {
+    const hex = r[key];
+    const fill = r['background.neutral'];
+    if (!hex || !fill || !/^#[0-9a-f]{6}$/i.test(hex) || !/^#[0-9a-f]{6}$/i.test(fill)) continue;
+    const ratio = contrast(hex, fill);
+    if (ratio < 4.5) rows.push({ theme, token: `${key} on background.neutral`, hex, 'worst ratio': ratio.toFixed(2) });
+  }
 }
 
 console.log(`${STAMP}`);

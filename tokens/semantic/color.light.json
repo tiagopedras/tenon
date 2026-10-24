@@ -148,8 +148,8 @@
       },
       "faint": {
         "$type": "color",
-        "$value": "{color.neutral.550}",
-        "$description": "Non-essential text only. It does not clear 4.5:1 and the build says so."
+        "$value": "{color.neutral.600}",
+        "$description": "Non-essential text. Quieter than text.subtle, still clears 4.5:1."
       },
       "accent": {
         "$type": "color",
@@ -223,7 +223,7 @@
       },
       "subtle": {
         "$type": "color",
-        "$value": "{color.neutral.550}"
+        "$value": "{color.neutral.600}"
       },
       "strong": {
         "$type": "color",
@@ -362,12 +362,12 @@
     "status": {
       "over": {
         "$type": "color",
-        "$value": "{color.base.urgent}",
-        "$description": "Timeline urgency and an urgent/soon tag's text colour. Same in both themes."
+        "$value": "{color.red.650}",
+        "$description": "Timeline urgency and an urgent/soon tag's text colour. A ramp step per theme so it clears 4.5:1 on background.neutral."
       },
       "soon": {
         "$type": "color",
-        "$value": "{color.base.soon}"
+        "$value": "{color.amber.700}"
       }
     }
   },

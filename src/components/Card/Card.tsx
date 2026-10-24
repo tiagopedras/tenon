@@ -98,9 +98,9 @@ export function Card({
           {action ? <span className="tenon-card__action">{action}</span> : null}
         </div>
       )}
+      {row('tenon-card__summary', summary)}
       {row('tenon-card__tags', tags)}
       {row('tenon-card__meta', meta)}
-      {row('tenon-card__summary', summary)}
       {body ? <div className="tenon-card__body">{body}</div> : null}
       {row('tenon-card__footer', footer)}
       {children}

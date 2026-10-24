@@ -7,7 +7,7 @@
   background: var(--tenon-background-default);
 }
 .tenon-calendar__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 7px; }
-.tenon-calendar__head strong { font-size: var(--tenon-text-label-size); font-weight: 650; }
+.tenon-calendar__head strong { font-size: var(--tenon-text-label-size); font-weight: 700; }
 
 .tenon-calendar__nav,
 .tenon-calendar__small {
@@ -28,7 +28,7 @@
   padding-bottom: 3px;
   color: var(--tenon-text-faint);
   font-size: var(--tenon-text-label-size);
-  font-weight: 650;
+  font-weight: 700;
   text-align: center;
 }
 .tenon-calendar__day {
@@ -50,7 +50,7 @@
   background: var(--tenon-background-accent);
   border-color: var(--tenon-stroke-accent);
   color: var(--tenon-text-on-accent);
-  font-weight: 650;
+  font-weight: 700;
 }
 .tenon-calendar__foot {
   display: flex;

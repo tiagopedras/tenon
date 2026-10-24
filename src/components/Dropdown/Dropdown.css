@@ -50,7 +50,7 @@
   padding: 7px 9px 3px;
   color: var(--tenon-text-subtle);
   font-size: var(--tenon-text-label-size);
-  font-weight: 560;
+  font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -66,9 +66,9 @@
   color: var(--tenon-text-default);
   font-family: var(--tenon-text-label-family);
   font-size: var(--tenon-text-label-size);
-  font-weight: 520;
+  font-weight: 600;
   text-align: left;
   cursor: pointer;
 }
 .tenon-dropdown__item:hover, .tenon-dropdown__item:focus-visible { background: var(--tenon-background-neutral); outline: none; }
-.tenon-dropdown__item--on { font-weight: 640; }
+.tenon-dropdown__item--on { font-weight: 700; }

@@ -91,7 +91,7 @@
 .tenon-step-slider__stop:first-child { transform: translateX(0); text-align: left; }
 .tenon-step-slider__stop:last-child { transform: translateX(-100%); text-align: right; }
 .tenon-step-slider__stop:hover { color: var(--tenon-text-default); background: var(--tenon-background-neutral); }
-.tenon-step-slider__stop--on { color: var(--tenon-text-default); font-weight: 650; }
+.tenon-step-slider__stop--on { color: var(--tenon-text-default); font-weight: 700; }
 
 .tenon-step-slider__select { display: none; width: 100%; }
 @media (max-width: 640px) {

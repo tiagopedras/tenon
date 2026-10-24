@@ -8,9 +8,9 @@
      eyebrow   small, bold, coloured by the accent, so a card's mark and
                its label agree
      head      lead · title · action
+     summary   what the thing says, at rest
      tags      chips
      meta      where it sits, and links off it
-     summary   what the thing says, at rest
      body      an unwrapped slot, for a progress bar or a chart
      footer    a last quiet line
 
@@ -121,7 +121,7 @@
 }
 
 .tenon-card__summary {
-  margin-top: var(--tenon-dimension-125);
+  margin-top: var(--tenon-dimension-075);
   font-size: var(--tenon-text-body-sm-size);
   line-height: var(--tenon-text-body-sm-line-height);
   color: var(--tenon-text-subtle);

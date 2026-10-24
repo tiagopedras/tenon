@@ -63,7 +63,7 @@ Standalone HTML links the tagged files:
 
 Keep all three on the same tag. If the CDN cannot be reached, copy `design-md/assets/tn-page.css` into the project unchanged. Never emit a `file://` URL, a placeholder URL or a CSS `@import`, and never read the stylesheets into context; use the names documented here.
 
-Load no web font. Tenon's sans family is the system stack, so the page renders in the reader's system font.
+Inter is Tenon's intended font. `tenon.css` loads it from Google Fonts with its own first line, so load no other web font and add no `<link>` for it. The system stack after Inter is the fallback if Google Fonts cannot be reached.
 
 In a React project, prefer the components (`Button`, `Card`, `Column`, `Stat`, `Field` and the rest) over their class names. Do not restyle a Tenon component to make one page work, and never add a parallel component layer.
 

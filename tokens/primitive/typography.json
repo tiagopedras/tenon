@@ -5,7 +5,8 @@
     "family": {
       "sans": {
         "$type": "fontFamily",
-        "$value": ["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Inter", "Roboto", "Helvetica", "Arial", "sans-serif"]
+        "$value": ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif"],
+        "$description": "Inter first, loaded from Google Fonts by tenon.css. The system stack after it is the fallback while the font loads or when it cannot be reached."
       },
       "serif": {
         "$type": "fontFamily",
@@ -15,7 +16,7 @@
       "inter": {
         "$type": "fontFamily",
         "$value": ["Inter", "-apple-system", "Segoe UI", "sans-serif"],
-        "$description": "Inter first, where sans leads with the system font. The site theme's own Graphik Trial is a trial licence and stays out of a public repo."
+        "$description": "Inter first, as sans now does. Kept as its own name so the 1984 theme can say Inter on purpose. The site theme's own Graphik Trial is a trial licence and stays out of a public repo."
       },
       "mono": {
         "$type": "fontFamily",

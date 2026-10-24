@@ -109,9 +109,10 @@ the build writes them at the end of that theme's block, so every class and
 component that reads a text style follows. Today only `1984` has
 one: Fraunces for `title`, `stat` and `heading-1` to `heading-5`, Inter for the rest,
 and the site's fluid `clamp()` sizes, which sit off the ladder above on purpose.
-Tenon names the families but never loads them, so the app has to load Fraunces
-and Inter itself (Storybook does it from Google Fonts, in
-`.storybook/preview-head.html`), and the trial faces the site really uses stay out of the repo. Storybook picks
+Inter is Tenon's intended font. `tenon.css` loads Inter and Fraunces from Google
+Fonts with an `@import` on its first line, so a consumer needs no font setup
+(Storybook keeps its own link in
+`.storybook/preview-head.html`). The trial faces the site really uses stay out of the repo. Storybook picks
 them up from a gitignored `.storybook/fonts-private/` when it is there.
 
 One Figma constraint worth knowing before the library gets built. Figma

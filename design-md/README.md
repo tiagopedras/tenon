@@ -43,15 +43,9 @@ exists.
 
 ## Where code and Figma disagree
 
-Code wins in both cases, as the README says it should. Decided on 24 Oct 2026:
-Figma changes to follow the code in both, and the code stays as it is.
-
-- **Font.** Figma sets every style in Inter. `tenon.css` puts the system font
-  first and Inter fourth, so on a Mac a page renders in San Francisco.
-  DESIGN.md follows the code and tells agents to load no web font. Figma's
-  styles move to the system font.
-- **Heading 6.** Figma's `text/heading-6` is uppercase; the code's is not.
-  Figma's loses the uppercase.
+Figma and code now agree on Inter, loaded from Google Fonts through
+`tenon.css`. One difference remains and Tiago has accepted it: Figma's
+`text/heading-6` is uppercase, and the code's is not.
 
 ## The easiest mistake
 

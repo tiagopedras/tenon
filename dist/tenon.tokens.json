@@ -378,7 +378,7 @@
     "breakpoint.xl": "1280px",
     "breakpoint.2xl": "1440px",
     "breakpoint.3xl": "1768px",
-    "typography.family.sans": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Inter, Roboto, Helvetica, Arial, sans-serif",
+    "typography.family.sans": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
     "typography.family.serif": "Fraunces, Georgia, \"Iowan Old Style\", serif",
     "typography.family.inter": "Inter, -apple-system, \"Segoe UI\", sans-serif",
     "typography.family.mono": "ui-monospace, SFMono-Regular, \"SF Mono\", Menlo, Consolas, monospace",
@@ -411,91 +411,91 @@
   },
   "shared": {
     "text.title": {
-      "fontFamily": "-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif",
+      "fontFamily": "Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif",
       "fontSize": "56px",
       "fontWeight": "700",
       "lineHeight": "1.2",
       "letterSpacing": "-0.01rem"
     },
     "text.stat": {
-      "fontFamily": "-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif",
+      "fontFamily": "Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif",
       "fontSize": "28px",
       "fontWeight": "700",
       "lineHeight": "1.2",
       "letterSpacing": "0rem"
     },
     "text.heading-1": {
-      "fontFamily": "-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif",
+      "fontFamily": "Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif",
       "fontSize": "28px",
       "fontWeight": "700",
       "lineHeight": "1.2",
       "letterSpacing": "-0.01rem"
     },
     "text.heading-2": {
-      "fontFamily": "-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif",
+      "fontFamily": "Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif",
       "fontSize": "24px",
       "fontWeight": "700",
       "lineHeight": "1.3",
       "letterSpacing": "-0.01rem"
     },
     "text.heading-3": {
-      "fontFamily": "-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif",
+      "fontFamily": "Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif",
       "fontSize": "20px",
       "fontWeight": "600",
       "lineHeight": "1.3",
       "letterSpacing": "0rem"
     },
     "text.heading-4": {
-      "fontFamily": "-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif",
+      "fontFamily": "Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif",
       "fontSize": "16px",
       "fontWeight": "600",
       "lineHeight": "1.4",
       "letterSpacing": "0rem"
     },
     "text.heading-5": {
-      "fontFamily": "-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif",
+      "fontFamily": "Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif",
       "fontSize": "14px",
       "fontWeight": "600",
       "lineHeight": "1.4",
       "letterSpacing": "0rem"
     },
     "text.heading-6": {
-      "fontFamily": "-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif",
+      "fontFamily": "Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif",
       "fontSize": "12px",
       "fontWeight": "600",
       "lineHeight": "1.4",
       "letterSpacing": "0.02rem"
     },
     "text.body": {
-      "fontFamily": "-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif",
+      "fontFamily": "Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif",
       "fontSize": "14px",
       "fontWeight": "400",
       "lineHeight": "1.4",
       "letterSpacing": "0rem"
     },
     "text.body-sm": {
-      "fontFamily": "-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif",
+      "fontFamily": "Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif",
       "fontSize": "12px",
       "fontWeight": "400",
       "lineHeight": "1.4",
       "letterSpacing": "0rem"
     },
     "text.label": {
-      "fontFamily": "-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif",
+      "fontFamily": "Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif",
       "fontSize": "12px",
       "fontWeight": "500",
       "lineHeight": "1.4",
       "letterSpacing": "0rem"
     },
     "text.caption": {
-      "fontFamily": "-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif",
+      "fontFamily": "Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif",
       "fontSize": "10px",
       "fontWeight": "400",
       "lineHeight": "1.4",
       "letterSpacing": "0rem"
     },
     "text.caption-sm": {
-      "fontFamily": "-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif",
+      "fontFamily": "Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif",
       "fontSize": "8px",
       "fontWeight": "400",
       "lineHeight": "1.4",

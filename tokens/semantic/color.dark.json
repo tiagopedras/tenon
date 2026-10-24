@@ -359,12 +359,12 @@
     "status": {
       "over": {
         "$type": "color",
-        "$value": "{color.base.urgent}",
-        "$description": "Timeline urgency and an urgent/soon tag's text colour. Same in both themes."
+        "$value": "{color.red.350}",
+        "$description": "Timeline urgency and an urgent/soon tag's text colour. Lighter than light mode so it clears 4.5:1 on background.neutral."
       },
       "soon": {
         "$type": "color",
-        "$value": "{color.base.soon}"
+        "$value": "{color.amber.300}"
       }
     }
   },

@@ -182,7 +182,7 @@
       },
       "warning": {
         "$type": "color",
-        "$value": "{color.amber.350}"
+        "$value": "{color.amber.300}"
       },
       "on-warning": {
         "$type": "color",
@@ -190,7 +190,7 @@
       },
       "error": {
         "$type": "color",
-        "$value": "{color.red.400}"
+        "$value": "{color.red.350}"
       },
       "on-error": {
         "$type": "color",
@@ -248,11 +248,11 @@
       },
       "warning": {
         "$type": "color",
-        "$value": "{color.amber.350}"
+        "$value": "{color.amber.300}"
       },
       "error": {
         "$type": "color",
-        "$value": "{color.red.400}"
+        "$value": "{color.red.350}"
       },
       "info": {
         "$type": "color",
@@ -359,12 +359,12 @@
     "status": {
       "over": {
         "$type": "color",
-        "$value": "{color.base.urgent}",
-        "$description": "Timeline urgency and an urgent/soon tag's text colour. Same in both themes."
+        "$value": "{color.red.350}",
+        "$description": "Timeline urgency and an urgent/soon tag's text colour. A ramp step per theme so it clears 4.5:1 on background.neutral."
       },
       "soon": {
         "$type": "color",
-        "$value": "{color.base.soon}"
+        "$value": "{color.amber.300}"
       }
     }
   },

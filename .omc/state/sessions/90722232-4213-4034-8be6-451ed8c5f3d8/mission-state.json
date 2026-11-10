@@ -1,0 +1,117 @@
+{
+  "updatedAt": "2026-10-15T12:40:11.068Z",
+  "missions": [
+    {
+      "id": "session:90722232-4213-4034-8be6-451ed8c5f3d8:none",
+      "source": "session",
+      "name": "none",
+      "objective": "Session mission",
+      "createdAt": "2026-10-15T12:35:01.254Z",
+      "updatedAt": "2026-10-15T12:40:11.068Z",
+      "status": "done",
+      "workerCount": 1,
+      "taskCounts": {
+        "total": 1,
+        "pending": 0,
+        "blocked": 0,
+        "inProgress": 0,
+        "completed": 1,
+        "failed": 0
+      },
+      "agents": [
+        {
+          "name": "research-agent:a187f1f",
+          "role": "research-agent",
+          "ownership": "a187f1fc6a20164c9",
+          "status": "done",
+          "currentStep": null,
+          "latestUpdate": "completed",
+          "completedSummary": null,
+          "updatedAt": "2026-10-15T12:40:11.068Z"
+        }
+      ],
+      "timeline": [
+        {
+          "id": "session-start:a187f1fc6a20164c9:2026-10-15T12:35:01.254Z",
+          "at": "2026-10-15T12:35:01.254Z",
+          "kind": "update",
+          "agent": "research-agent:a187f1f",
+          "detail": "started research-agent:a187f1f",
+          "sourceKey": "session-start:a187f1fc6a20164c9"
+        },
+        {
+          "id": "session-stop:a49f0df8ed3690607:2026-10-15T12:35:32.310Z",
+          "at": "2026-10-15T12:35:32.310Z",
+          "kind": "completion",
+          "agent": "research-agent:a187f1f",
+          "detail": "completed",
+          "sourceKey": "session-stop:a49f0df8ed3690607"
+        },
+        {
+          "id": "session-stop:a4e69f18b74c584ac:2026-10-15T12:36:03.672Z",
+          "at": "2026-10-15T12:36:03.672Z",
+          "kind": "completion",
+          "agent": "research-agent:a187f1f",
+          "detail": "completed",
+          "sourceKey": "session-stop:a4e69f18b74c584ac"
+        },
+        {
+          "id": "session-stop:a0c4c8b191c58bd82:2026-10-15T12:36:34.620Z",
+          "at": "2026-10-15T12:36:34.620Z",
+          "kind": "completion",
+          "agent": "research-agent:a187f1f",
+          "detail": "completed",
+          "sourceKey": "session-stop:a0c4c8b191c58bd82"
+        },
+        {
+          "id": "session-stop:a4c826c5bdd438cae:2026-10-15T12:37:05.591Z",
+          "at": "2026-10-15T12:37:05.591Z",
+          "kind": "completion",
+          "agent": "research-agent:a187f1f",
+          "detail": "completed",
+          "sourceKey": "session-stop:a4c826c5bdd438cae"
+        },
+        {
+          "id": "session-stop:ad50150a8e1ec1b98:2026-10-15T12:37:36.774Z",
+          "at": "2026-10-15T12:37:36.774Z",
+          "kind": "completion",
+          "agent": "research-agent:a187f1f",
+          "detail": "completed",
+          "sourceKey": "session-stop:ad50150a8e1ec1b98"
+        },
+        {
+          "id": "session-stop:a7b7a9a6b4fa0e66e:2026-10-15T12:38:07.890Z",
+          "at": "2026-10-15T12:38:07.890Z",
+          "kind": "completion",
+          "agent": "research-agent:a187f1f",
+          "detail": "completed",
+          "sourceKey": "session-stop:a7b7a9a6b4fa0e66e"
+        },
+        {
+          "id": "session-stop:ae184d6f5d47f451c:2026-10-15T12:38:38.878Z",
+          "at": "2026-10-15T12:38:38.878Z",
+          "kind": "completion",
+          "agent": "research-agent:a187f1f",
+          "detail": "completed",
+          "sourceKey": "session-stop:ae184d6f5d47f451c"
+        },
+        {
+          "id": "session-stop:ae7dabfb93bf14f9a:2026-10-15T12:39:10.183Z",
+          "at": "2026-10-15T12:39:10.183Z",
+          "kind": "completion",
+          "agent": "research-agent:a187f1f",
+          "detail": "completed",
+          "sourceKey": "session-stop:ae7dabfb93bf14f9a"
+        },
+        {
+          "id": "session-stop:a187f1fc6a20164c9:2026-10-15T12:40:11.068Z",
+          "at": "2026-10-15T12:40:11.068Z",
+          "kind": "completion",
+          "agent": "research-agent:a187f1f",
+          "detail": "completed",
+          "sourceKey": "session-stop:a187f1fc6a20164c9"
+        }
+      ]
+    }
+  ]
+}

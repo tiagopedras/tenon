@@ -1,0 +1,50 @@
+/* Textarea's skin on a native select, so the list that opens is the
+   system's own, with its keyboard and its screen reader behaviour. The
+   select draws no arrow of its own once its appearance is off, so the
+   wrapper holds one, and the click goes through it to the select. */
+
+.tenon-select { position: relative; display: block; width: 100%; }
+
+.tenon-select__control {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: var(--tenon-dimension-500);
+  margin: 0;
+  padding: var(--tenon-dimension-100) var(--tenon-dimension-400) var(--tenon-dimension-100) var(--tenon-dimension-150);
+  appearance: none;
+  background: var(--tenon-background-input);
+  color: var(--tenon-text-default);
+  border: 1px solid var(--tenon-stroke-default);
+  border-radius: var(--tenon-radius-lg);
+  font-family: var(--tenon-text-body-family);
+  font-size: var(--tenon-text-body-size);
+  line-height: var(--tenon-typography-line-height-relaxed);
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.tenon-select__control:hover:not(:disabled) { background: var(--tenon-background-input-hovered); border-color: var(--tenon-stroke-hovered); }
+.tenon-select__control:focus-visible {
+  background: var(--tenon-background-input-active);
+  border-color: var(--tenon-stroke-accent);
+  outline: 2px solid var(--tenon-stroke-focus);
+  outline-offset: -1px;
+}
+.tenon-select__control:disabled { background: var(--tenon-background-disabled); color: var(--tenon-text-disabled); cursor: not-allowed; }
+
+.tenon-select--invalid .tenon-select__control { border-color: var(--tenon-stroke-error); }
+.tenon-select--invalid .tenon-select__control:focus-visible { outline-color: var(--tenon-stroke-error); }
+
+/* Shared with Field's select, which moves it in to match its own padding. */
+.tenon-select__chevron {
+  position: absolute;
+  top: 50%;
+  right: var(--tenon-dimension-150);
+  width: var(--tenon-dimension-150);
+  height: var(--tenon-dimension-150);
+  transform: translateY(-50%);
+  color: var(--tenon-icon-subtle);
+  pointer-events: none;
+}
+:disabled + .tenon-select__chevron { color: var(--tenon-text-disabled); }

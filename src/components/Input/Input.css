@@ -1,0 +1,41 @@
+/* Textarea's skin on one line, so a form mixing the two reads as one set.
+   Repeated rather than shared for the reason Textarea gives: each class
+   names its own control. 40px tall, the height a one-row Textarea starts at. */
+
+.tenon-input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: var(--tenon-dimension-500);
+  margin: 0;
+  padding: var(--tenon-dimension-100) var(--tenon-dimension-150);
+  background: var(--tenon-background-input);
+  color: var(--tenon-text-default);
+  border: 1px solid var(--tenon-stroke-default);
+  border-radius: var(--tenon-radius-lg);
+  font-family: var(--tenon-text-body-family);
+  font-size: var(--tenon-text-body-size);
+  line-height: var(--tenon-typography-line-height-relaxed);
+}
+
+/* Safari draws a search field its own way and ignores padding until told not to. */
+.tenon-input[type='search'] { appearance: none; }
+
+.tenon-input::placeholder { color: var(--tenon-text-faint); }
+.tenon-input:hover:not(:disabled):not([readonly]) { background: var(--tenon-background-input-hovered); border-color: var(--tenon-stroke-hovered); }
+.tenon-input:focus-visible {
+  background: var(--tenon-background-input-active);
+  border-color: var(--tenon-stroke-accent);
+  outline: 2px solid var(--tenon-stroke-focus);
+  outline-offset: -1px;
+}
+.tenon-input:disabled { background: var(--tenon-background-disabled); color: var(--tenon-text-disabled); cursor: not-allowed; }
+
+/* Read-only keeps its text at full strength, since it is there to be read
+   and copied, and drops the white fill that says "type here". It still
+   takes focus, so the outline stays. */
+.tenon-input[readonly] { background: var(--tenon-background-subtle); border-color: var(--tenon-stroke-subtle); }
+.tenon-input[readonly]:focus-visible { background: var(--tenon-background-subtle); border-color: var(--tenon-stroke-subtle); }
+
+.tenon-input--invalid { border-color: var(--tenon-stroke-error); }
+.tenon-input--invalid:focus-visible { outline-color: var(--tenon-stroke-error); }

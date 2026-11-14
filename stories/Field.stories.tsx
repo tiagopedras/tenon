@@ -30,6 +30,22 @@ export const Multiline: Story = {
   args: { label: 'Notes', multiline: true, rows: 3, placeholder: 'Anything worth remembering' },
 };
 
+export const Select: Story = {
+  args: {
+    label: 'Model',
+    select: true,
+    hint: 'Used for every new chat.',
+    defaultValue: 'sonnet',
+    children: (
+      <>
+        <option value="haiku">Quick (Haiku)</option>
+        <option value="sonnet">Everyday (Sonnet)</option>
+        <option value="opus">Deep (Opus)</option>
+      </>
+    ),
+  },
+};
+
 export const Disabled: Story = {
   args: { label: 'Locked', disabled: true, defaultValue: 'Cannot be edited' },
 };

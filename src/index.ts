@@ -32,6 +32,14 @@ export type { ModalProps, ModalPaneProps, ModalSize } from './components/Modal/M
 export { Textarea } from './components/Textarea/Textarea';
 export type { TextareaProps } from './components/Textarea/Textarea';
 
+/* Textarea's siblings, for a settings page: one line of text, and a
+   native select in the same skin. */
+export { Input } from './components/Input/Input';
+export type { InputProps, InputType } from './components/Input/Input';
+
+export { Select } from './components/Select/Select';
+export type { SelectProps } from './components/Select/Select';
+
 export { Spinner } from './components/Spinner/Spinner';
 export type { SpinnerProps, SpinnerSize, SpinnerState } from './components/Spinner/Spinner';
 

@@ -1,6 +1,7 @@
 import { useId } from 'react';
-import type { InputHTMLAttributes, TextareaHTMLAttributes, ReactNode } from 'react';
+import type { InputHTMLAttributes, TextareaHTMLAttributes, SelectHTMLAttributes, ReactNode } from 'react';
 import { cx } from '../../utils';
+import { SelectChevron } from '../Select/Select';
 import './Field.css';
 
 interface Shared {
@@ -15,13 +16,16 @@ interface Shared {
 
 export type FieldProps =
   & Shared
-  & ({ multiline?: false } & Omit<InputHTMLAttributes<HTMLInputElement>, 'required' | 'className'>
-    | { multiline: true } & Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'required' | 'className'>);
+  & ({ multiline?: false; select?: false } & Omit<InputHTMLAttributes<HTMLInputElement>, 'required' | 'className'>
+    | { multiline: true; select?: false } & Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'required' | 'className'>
+    /* The options are the children, as <option> and <optgroup>. */
+    | { select: true; multiline?: false }
+      & Omit<SelectHTMLAttributes<HTMLSelectElement>, 'required' | 'className' | 'multiple' | 'size'>);
 
 export function Field({ label, hint, error, required, className, ...rest }: FieldProps) {
   const id = useId();
   const noteId = `${id}-note`;
-  const { multiline, ...control } = rest as { multiline?: boolean } & Record<string, unknown>;
+  const { multiline, select, ...control } = rest as { multiline?: boolean; select?: boolean } & Record<string, unknown>;
   const note = error ?? hint;
 
   /* aria-describedby points at whichever note is actually rendered, and
@@ -42,9 +46,16 @@ export function Field({ label, hint, error, required, className, ...rest }: Fiel
         {label}
         {required && <span className="tenon-field__required" aria-hidden="true">*</span>}
       </label>
-      {multiline
-        ? <textarea {...(shared as TextareaHTMLAttributes<HTMLTextAreaElement> & { id: string })} />
-        : <input {...(shared as InputHTMLAttributes<HTMLInputElement> & { id: string })} />}
+      {select
+        ? (
+          <span className="tenon-field__select">
+            <select {...(shared as SelectHTMLAttributes<HTMLSelectElement> & { id: string })} />
+            <SelectChevron />
+          </span>
+        )
+        : multiline
+          ? <textarea {...(shared as TextareaHTMLAttributes<HTMLTextAreaElement> & { id: string })} />
+          : <input {...(shared as InputHTMLAttributes<HTMLInputElement> & { id: string })} />}
       {note && (
         <span id={noteId} className={cx('tenon-field__note', error && 'tenon-field__note--error')}>
           {note}

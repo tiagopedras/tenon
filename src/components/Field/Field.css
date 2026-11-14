@@ -51,3 +51,10 @@
 .tenon-field__note--error { color: var(--tenon-text-error); }
 
 textarea.tenon-field__control { resize: vertical; min-height: var(--tenon-dimension-800); }
+
+/* The select keeps Field's padding and makes room on the right for
+   Select's chevron, which sits as far in as the text does. */
+.tenon-field__select { position: relative; display: block; }
+select.tenon-field__control { appearance: none; padding-right: var(--tenon-dimension-300); text-overflow: ellipsis; cursor: pointer; }
+select.tenon-field__control:disabled { cursor: not-allowed; }
+.tenon-field__select .tenon-select__chevron { right: var(--tenon-dimension-100); }

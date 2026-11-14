@@ -157,8 +157,8 @@ rows it prints, in light and dark.
 
 ## Components
 
-Twenty-seven: `Button`, `Card`, `Column`, `Badge`, `Tag`, `Stat` and `Field`, then `Modal`, `Textarea`,
-`Spinner`, `Pill`, `Alert`, `Switch` and `SegmentedControl`, then `ToggleGroup`, `ToggleChip`, `StepSlider`, `TagChip`, `Calendar` with its `DateButton`, and `Dropdown` (the task board's bucket tabs, filter chip, Impact slider, task tags, date pickers and Delegate to field), then `Window`, `Markdown`,
+Twenty-nine: `Button`, `Card`, `Column`, `Badge`, `Tag`, `Stat` and `Field`, then `Modal`, `Textarea`,
+`Input`, `Select`, `Spinner`, `Pill`, `Alert`, `Switch` and `SegmentedControl`, then `ToggleGroup`, `ToggleChip`, `StepSlider`, `TagChip`, `Calendar` with its `DateButton`, and `Dropdown` (the task board's bucket tabs, filter chip, Impact slider, task tags, date pickers and Delegate to field), then `Window`, `Markdown`,
 `EditableText` and `Disclosure`, then `DragHandle` and `DropLine`, which come with the
 `useReorder` hook. `LinkButton` is `Button`'s anchor form and is not counted
 separately. Written in TypeScript so the `.d.ts` gives prop autocomplete in a plain
@@ -285,6 +285,22 @@ from inside a text field. `Switch` is for a setting
 that applies the moment it flips; one that needs a Save is a checkbox in a
 `Field`. `Textarea` is the bare control; with a label, use `Field` with
 `multiline`.
+
+**`Input` and `Select` are `Textarea`'s siblings**, added in v0.18.0 for a task
+board's settings pages. `Input` is one line of text, in the types that are one
+(`text`, `email`, `number`, `search`, `url`, `tel`, `password`), so a checkbox is
+never drawn as a text box. `Select` is the native select in the same skin with a
+chevron added, because the list the system opens already has the keyboard and
+screen reader behaviour a hand-drawn one would have to copy. Its options are
+plain `<option>` children; a list whose options carry an icon or sit under a
+heading is a `Dropdown`. All three bare controls share a skin and start 40px
+tall, so a form mixing them reads as one set. `Input` has a read-only look,
+which keeps the text at full strength and drops the white fill. A select has
+no read-only state in HTML, so a value that cannot change is text or a disabled
+select. With a label, `Field` draws the input already and takes `select` for
+the other, with the options as its children. `Field`'s controls keep their own,
+slightly tighter skin, so a page uses either `Field` or the bare controls for a
+group of fields rather than mixing the two in one row.
 
 **The last four came from the chat window becoming React.** The chat engine's window was
 plain JavaScript that drew its own dialog, and rebuilding it on Tenon's components showed

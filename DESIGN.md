@@ -56,9 +56,9 @@ import '@tiagopedras/tenon/tn-page.css';
 Standalone HTML links the tagged files:
 
 ```html
-<link href="https://cdn.jsdelivr.net/gh/tiagopedras/tenon@v0.17.0/dist/tenon.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/gh/tiagopedras/tenon@v0.17.0/dist/tenon-react.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/gh/tiagopedras/tenon@v0.17.0/design-md/assets/tn-page.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/tiagopedras/tenon@v0.18.0/dist/tenon.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/tiagopedras/tenon@v0.18.0/dist/tenon-react.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/tiagopedras/tenon@v0.18.0/design-md/assets/tn-page.css" rel="stylesheet">
 ```
 
 Keep all three on the same tag. If the CDN cannot be reached, copy `design-md/assets/tn-page.css` into the project unchanged. Never emit a `file://` URL, a placeholder URL or a CSS `@import`, and never read the stylesheets into context; use the names documented here.
@@ -295,7 +295,9 @@ Tenon's components that work as plain HTML, from `tenon-react.css`, with their m
 - `tenon-pill` with `--neutral`, `--accent`, `--success`, `--warning` or `--error`.
 - `tenon-badge` with `--accent`, `--neutral`, `--success`, `--warning`, `--error` or `--running`, holding a count.
 - `tenon-alert` with `--neutral`, `--info`, `--success`, `--warning` or `--error`, holding `tenon-alert__title`, `tenon-alert__body` and optional `tenon-alert__actions`.
-- `tenon-field`, holding `tenon-field__label`, `tenon-field__control` and `tenon-field__note`.
+- `tenon-field`, holding `tenon-field__label`, `tenon-field__control` and `tenon-field__note`. A select in a field sits in `tenon-field__select`, followed by the chevron `<svg class="tenon-select__chevron" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`.
+- `tenon-input`, a bare one-line `<input>` with no label of its own, with `tenon-input--invalid` when wrong.
+- `tenon-select`, a `<span>` holding a `<select class="tenon-select__control">` and the same chevron, with `tenon-select--invalid` on the span when wrong.
 - `tenon-segmented`, a `role="radiogroup"` holding `tenon-segmented__option` buttons, the chosen one with `tenon-segmented__option--on`.
 - `tenon-switch`, an empty `<button role="switch">`, with `tenon-switch--on` when on.
 

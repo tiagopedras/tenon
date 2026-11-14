@@ -1,7 +1,0 @@
-{
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"rtk read src/components/Modal/Modal.tsx --max-lines 60; echo ======; rtk read src/components/Window/Window.tsx --max-lines 60; echo ======; rtk grep -n -iE \\\"modal|window\\\" README.md HANDO...",
-  "error": "Exit code 1\nimport { useEffect, useId, useRef } from 'react';\nimport type { ReactNode } from 'react';\nimport { createPortal } from 'react-dom';\nimport { cx } from '../../utils';\nimport { Button } from '../Button/Button';\nimport './Modal.css';\n\n/** 400, 560, 760 and 912px. A confirmation, a form, a document, and a document with a side column. */\nexport type ModalSize = 'sm' | 'md' | 'lg' | 'xl';\n\nexport interface ModalProps {\n  open: boolean;\n  onClose: () => void;\n  title: ReactNode;\n  /** A qui...",
-  "timestamp": "2026-10-01T09:48:29.541Z",
-  "retry_count": 1
-}
